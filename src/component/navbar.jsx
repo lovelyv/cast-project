@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './navbar.module.css';
+import logo from '../assets/logo.png';
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,10 @@ function Navbar() {
     return (
         <nav className={styles.navbar}>
             <div className={styles.navContent}>
-                <h1 className={styles.logo}>NRI Stories</h1>
+                <div className={styles.logoContainer}>
+                    <img src={logo} alt="Logo" className={styles.logoImage} />
+                    <h1 className={styles.logo}>NRI Stories</h1>
+                </div>
                 <button 
                     className={styles.hamburger} 
                     onClick={toggleMenu}
