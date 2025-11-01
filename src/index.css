@@ -210,6 +210,33 @@ button:focus-visible {
 
 /* Responsive: stack hero layout on small screens */
 @media (max-width: 768px) {
+  /* Move social banner to bottom-center on small screens (safe-area aware) */
+  .social-banner-container {
+    position: fixed;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    top: auto !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin: 0;
+    width: min(60vw, 240px);
+    z-index: 25;
+  }
+  .social-banner { width: 100%; height: auto; }
+  /* Dropdown opens upward from bottom-centered banner */
+  .social-menu {
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 100% !important;
+    transform-origin: bottom center;
+    transform: translate(-50%, 2px);
+  }
+  .social-banner-container:hover .social-menu,
+  .social-menu:hover {
+    transform: translate(-50%, 0);
+  }
+
   .hero-section {
     height: auto;
     min-height: 100svh; /* maintain good viewport coverage */
