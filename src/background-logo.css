@@ -1,0 +1,42 @@
+/* Force InfoBox text to white */
+.info-box-row .info-box-wrapper p,
+.info-box-row .info-box-wrapper strong,
+.info-box-row .info-box-wrapper span,
+.info-box-row .info-box-wrapper {
+  color: #fff !important;
+}
+/* Set InfoBox font color to white */
+.info-box-row .info-box-wrapper,
+.info-box-row.right .info-box-wrapper,
+.info-box-row {
+  color: #fff !important;
+}
+/* Set all paragraph font color to black */
+p {
+  color: #000 !important;
+}
+/* Let the app control background (gradient + watermark + glitter) */
+body {
+  background: transparent !important;
+  position: relative;
+}
+
+/* Apply background logo to #root for better visibility */
+#root {
+  position: relative;
+  min-height: 100vh;
+  background: transparent;
+}
+
+#root::before {
+  display: none;
+}
+
+/* Ensure App content is above the background */
+.App {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+/* Remove the after pseudo-element */

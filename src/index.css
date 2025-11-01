@@ -1,11 +1,30 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', Roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Dark theme */
+  color-scheme: dark;
+  color: #e6edf3; /* light text for dark bg */
+  /* Dark blue/ink palette */
+  --bg1: #0b0f1a;  /* deep slate */
+  --bg2: #0a0e17;  /* darker slate */
+  --bg3: #090d14;  /* near-black blue */
+  --spot1: #2b4c7a33; /* soft cool glow */
+  --spot2: #1e3a5f26; /* lighter cool glow */
+  --spot3: #14253d1f; /* subtle highlight */
+  background:
+  /* soft glows */
+  radial-gradient(1200px 800px at 12% 12%, var(--spot1) 0%, transparent 55%),
+  radial-gradient(1000px 700px at 88% 88%, var(--spot2) 0%, transparent 55%),
+  radial-gradient(900px 600px at 15% 85%, var(--spot3) 0%, transparent 50%),
+  /* subtle diagonal cool tint */
+  linear-gradient(140deg, rgba(80, 140, 255, 0.06), transparent 60%),
+  /* gentle vignette to make content pop */
+  radial-gradient(120% 80% at 50% 120%, rgba(0, 0, 0, 0.22), transparent 60%),
+  /* base gradient */
+  linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 42%, var(--bg3) 100%);
+  background-attachment: fixed;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,19 +34,25 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #8ab4ff; /* readable on dark */
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #a6c8ff;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden; /* prevent any horizontal scroll/gap on the left */
 }
 
 h1 {
@@ -56,13 +81,317 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #e6edf3; /* ensure consistent text color */
   }
   a:hover {
-    color: #747bff;
+    color: #a6c8ff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #1f2937;
   }
+}
+
+/* Subtle glitter overlay for a brighter, lively background */
+.glitter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0; /* Sits below content but above base background */
+  /* Multiple layers of tiny radial dots to simulate glitter */
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.55) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.4) 0.8px, transparent 1.2px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.35) 0.6px, transparent 1px);
+  background-size: 8px 8px, 10px 10px, 12px 12px;
+  background-position: 0 0, 0 0, 0 0;
+  opacity: 0.03; /* dimmer for dark background */
+  mix-blend-mode: screen; /* Brightens underlying areas gently */
+  animation: glitterMove 14s linear infinite;
+}
+
+@keyframes glitterMove {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+  50% {
+    background-position: 180px 120px, -140px 100px, 100px -120px;
+  }
+  100% {
+    background-position: 360px 240px, -280px 200px, 200px -240px;
+  }
+}
+
+/* Soft glow to make the page feel a touch brighter */
+.glitter-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 500px at 10% 10%, rgba(255, 255, 255, 0.14), transparent 60%),
+    radial-gradient(900px 500px at 90% 90%, rgba(255, 255, 255, 0.12), transparent 60%);
+}
+
+/* Slow fade-in for hero logo */
+.hero-fade-in {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: heroFadeIn 5s ease-out 0.15s forwards;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Copy container now visible immediately; lines handle their own animation */
+.copy-slide-in {
+  opacity: 1;
+  transform: none;
+  width: 38vw;           /* set final width from start to avoid clipping */
+  overflow: visible;     /* allow line slide overflow during animation */
+  will-change: auto;
+}
+
+@keyframes copySlideIn {
+  from { opacity: 0; transform: translateX(16px); width: 0; }
+  to { opacity: 1; transform: translateX(0); width: 38vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-slide-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    width: 38vw;
+  }
+}
+
+/* Staggered line slide-ins for the headline */
+.line-slide {
+  display: block;            /* force line breaks */
+  opacity: 0;
+  transform: translateX(12px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  animation: lineSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered to animate alongside hero fade-in (hero starts at 0.15s)
+  Each line: 0.6s duration with ~0.15s pause */
+.delay-1 { animation-delay: 2.0s; }
+.delay-2 { animation-delay: 3.8s; }
+.delay-3 { animation-delay: 4.6s; }
+.delay-4 { animation-delay: 5.4s; }
+.delay-5 { animation-delay: 6.2s; }
+
+@keyframes lineSlideIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line-slide {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Responsive: stack hero layout on small screens */
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto;
+    min-height: 100svh; /* maintain good viewport coverage */
+  }
+  .hero-container {
+    flex-direction: column;
+    gap: 0;
+  }
+  :root {
+    --left-width: 100vw;
+    --right-width: 100vw;
+    --left-height: auto;                    /* let image container size to content */
+    --hero-img-width: min(68vw, 520px);     /* smaller, centered image */
+    --hero-img-height: auto;                /* keep aspect ratio */
+  }
+  .hero-left {
+    width: 100vw;
+    height: auto;
+  }
+  .hero-image {
+    object-position: center center;       /* center the image */
+    display: block;                       /* enable auto centering with margins */
+    margin: 24px auto 8px;                /* center horizontally and add spacing */
+  }
+  .hero-right {
+    max-width: 100vw;
+    width: 100vw;
+    padding: 16px;
+    box-sizing: border-box;
+    align-items: center;                   /* center children horizontally */
+  }
+  /* Center text and animate copy from bottom on mobile */
+  .hero-right h1 { text-align: center; }
+  .hero-subcopy { text-align: center; margin-left: auto; margin-right: auto; }
+  .hero-right .share-button { align-self: center; }
+  .copy-slide-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: heroCopyUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  }
+}
+
+@keyframes heroCopyUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Social banner hover effect */
+.social-banner {
+  transition: transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 160ms ease;
+  opacity: 0.95;
+  cursor: pointer;
+}
+.social-banner:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+  opacity: 1;
+}
+
+/* Dropdown for social banner */
+.social-banner-container {
+  display: block;
+}
+/* Toggle button (unstyled) */
+.social-toggle {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+.social-toggle:focus-visible {
+  outline: 2px solid rgba(138, 180, 255, 0.9);
+  outline-offset: 2px;
+}
+.social-menu {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  padding-top: 10px; /* extra top padding bridges the gap */
+  background: rgba(9, 13, 20, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  position: absolute;
+  right: 0;
+  top: 100%;
+  min-width: 180px;
+  opacity: 0;
+  transform: translateY(-2px);
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 140ms ease;
+  z-index: 25;
+}
+.social-banner-container:hover .social-menu,
+.social-menu:hover {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.social-menu li {
+  margin: 0;
+}
+.social-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  color: #e6edf3;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.3;
+  border-radius: 8px;
+}
+.social-menu a:hover,
+.social-menu a:focus {
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+
+/* Small round icons for dropdown */
+.sm-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0;
+  line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18);
+}
+.sm-icon.fb { background: #1877F2; }
+.sm-icon.ig {
+  background: radial-gradient(circle at 30% 30%, #FFDD55, #FF543E 45%, #C837AB 75%, #4C3F91);
+}
+.sm-icon.x { background: #111827; }
+.sm-icon.yt { background: #FF0000; }
+
+.sm-icon.fb::after { content: 'f'; transform: translateY(-0.5px); }
+.sm-icon.ig::after { content: '◉'; font-size: 10px; }
+.sm-icon.x::after { content: 'X'; font-size: 10px; letter-spacing: -0.5px; }
+.sm-icon.yt::after { content: '▶'; font-size: 10px; }
+
+/* Concept link styles removed */
+
+/* Share button on homepage */
+.share-button {
+  margin-top: 32px;
+  padding: 12px 28px;
+  background: rgba(138, 180, 255, 0.12);
+  border: 1.5px solid rgba(138, 180, 255, 0.3);
+  border-radius: 24px;
+  color: #e6edf3;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+.share-button:hover {
+  background: rgba(138, 180, 255, 0.2);
+  border-color: rgba(138, 180, 255, 0.5);
+  color: #a6c8ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 180, 255, 0.15);
+}
+.share-button:active {
+  transform: translateY(0);
+}
+
+/* Hero subcopy under headline */
+.hero-subcopy {
+  max-width: 36vw;
+  color: #c9d1d9;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+  margin-bottom: 6px;
 }

@@ -3,21 +3,31 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #fff;
+  /* match page background (use top gradient color) */
+  background: var(--bg1);
   padding: 1rem 0 0 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   z-index: 1000;
   box-sizing: border-box;
 }
 
 .navContent {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; /* shift all items to the left */
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   position: relative;
-  padding: 0 1rem;
+  padding: 0; /* mobile handles its own padding on .navbar */
+  gap: 1.5rem;
+}
+
+/* Add a little left spacing on larger screens */
+@media (min-width: 769px) {
+  .navContent {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(2rem, env(safe-area-inset-right)); /* add a bit more breathing room on the right */
+  }
 }
 
 .navList {
@@ -28,13 +38,37 @@
   padding: 0;
 }
 
+/* Distribute nav links across the remaining width on larger screens */
+@media (min-width: 769px) {
+  .navList {
+    flex: 1;
+    justify-content: space-between;
+    gap: 0; /* evenly spread items to the right edge */
+    padding-right: max(2rem, env(safe-area-inset-right)); /* ensure last item never touches edge */
+    min-width: 0; /* allow flexbox to calculate width correctly */
+    flex-wrap: wrap; /* prevent cropping; allow second row if needed */
+    row-gap: 0.25rem;
+  }
+  /* Extra safety on the last item regardless of container padding */
+  .navList li:last-child {
+    padding-right: 0.5rem;
+  }
+}
+
 .navLink {
   text-decoration: none;
-  color: #333;
+  color: #333; /* readable on light page background */
 }
 
 .navLink:hover {
   color: #666;
+}
+
+.navLinkActive {
+  color: #333;
+  font-weight: 600;
+  border-bottom: 2px solid #666;
+  padding-bottom: 2px;
 }
 
 .logoContainer {
@@ -43,9 +77,19 @@
   gap: 0.75rem;
 }
 
+/* Thin separator after the title */
+.separator {
+  width: 1px;
+  height: 36px;
+  background: rgba(0, 0, 0, 0.12);
+  margin: 0 0.75rem;
+}
+
 .logoImage {
-  height: clamp(50px, 8vw, 80px);
+  height: clamp(60px, 8vw, 80px);
   width: auto;
+  margin-bottom: 0.2rem;
+  margin-top: -0.3rem;
 }
 
 .logo {
@@ -75,8 +119,9 @@
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 2rem; /* extra right/left padding on mobile */
   }
+  .separator { display: none; }
   
   .hamburger {
     display: flex;
@@ -91,7 +136,7 @@
     width: 100%;
     max-height: 0;
     overflow: hidden;
-    background-color: #fff;
+    background: var(--bg1); /* match page background */
     flex-direction: column;
     gap: 0;
     padding: 0;
@@ -106,7 +151,7 @@
   
   .navList li {
     width: 100%;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e6e6e6;
   }
   
   .navList li:last-child {
@@ -121,6 +166,6 @@
   }
   
   .navLink:hover {
-    background-color: #f5f5f5;
+    background-color: rgba(0,0,0,0.03);
   }
 }

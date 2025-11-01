@@ -3,11 +3,11 @@ import React from 'react';
 function InfoBox({ children }) {
     return (
         <div style={{
-            background: '#23272f',
+            background: '#e8ecf5',
             borderRadius: '18px',
             padding: 'clamp(12px, 2.5vw, 24px)',
-            color: '#f3f4f6',
-            boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
+            color: '#23272f',
+            boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
             width: '100%',
             maxWidth: '100%',
             margin: '0 auto',

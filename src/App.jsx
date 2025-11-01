@@ -1,156 +1,146 @@
 import Navbar from "./component/navbar";
-import nriimage from "./assets/nri1.png";
-import InfoBox from "./component/infobox";
+import SocialBanner from "./component/socialBanner";
+import logo from "./assets/logo.png";
+import homepageBackLogo from "./assets/homepagebacklogo.png";
 
 function App() {
+  // Determine if we're on the homepage (support dev "/" and base path, plus index.html)
+  const base = import.meta.env.BASE_URL || "/";
+  const path = window.location.pathname;
+  const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+  const homeCandidates = new Set([
+    '/',
+    baseWithSlash,
+    `${baseWithSlash}index.html`,
+  ]);
+  const isHome = homeCandidates.has(path);
+
   return (
     <div className="App">
-      <style>{`
-        /* Medium-only spacing: offset right box and clear fixed navbar */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .info-box-row.right .info-box-wrapper {
-            margin-right: 2.5% !important;
-          }
-          .main-layout {
-            padding-top: 4% !important;
-          }
-          .heading-text {
-            margin-top: 1rem !important;
-            white-space: nowrap !important;
-          }
-        }
-        @media (min-width: 1025px) {
-          .heading-text {
-            white-space: nowrap !important;
-          }
-        }
-        @media (max-width: 1024px) {
-          .info-box-row.right {
-            padding-right: 2.5% !important;
-          }
-          .content-column {
-            padding-right: 2.5% !important;
-          }
-        }
-        @media (max-width: 768px) {
-          .info-box-wrapper {
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .info-box-row {
-            justify-content: center !important;
-            padding-right: 4% !important;
-          }
-          /* Remove medium-only right margin on small screens to prevent overflow */
-          .info-box-row.right .info-box-wrapper {
-            margin-right: 0 !important;
-          }
-          .main-layout {
-            flex-direction: column !important;
-            padding-top: 80px !important;
-          }
-          .image-column {
-            flex: 0 0 auto !important;
-            width: 100% !important;
-            margin-top: 0 !important;
-          }
-          .image-column img {
-            padding-left: 0 !important;
-            padding-top: 0 !important;
-            height: 50vh !important;
-          }
-          .content-column {
-            padding-right: 4% !important;
-          }
-        }
-      `}</style>
-      <Navbar />
-      <div className="main-layout" style={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: '24px',
-        padding: '0 20px',
-        alignItems: 'center',
-        width: '100%',
-        maxWidth: '100%',
-        boxSizing: 'border-box',
-        overflow: 'visible',
-        justifyContent: 'center'
-      }}>
-        {/* Left: responsive image */}
-  <div className="image-column" style={{ flex: '0 0 50%', display: 'flex', justifyContent: 'center', overflow: 'hidden', borderTopLeftRadius: '8px', borderBottomLeftRadius: '8px', borderTopRightRadius: '8px', borderBottomRightRadius: '8px', boxShadow: '0 8px 24px rgba(16,24,40,0.08)' }}>
-          <img
-            src={nriimage}
-            alt="NRI"
+      {/* Background watermark (fixed) only on subpages */}
+      {!isHome && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          backgroundImage: `url(${logo})`,
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '45vw auto',
+          opacity: 0.15,
+          pointerEvents: 'none',
+          zIndex: 0
+        }} />
+      )}
+
+      {/* Subtle glitter overlay to make background a bit brighter */}
+      <div className="glitter-overlay" aria-hidden="true" />
+
+      {/* Top concept link removed */}
+
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        {/* Social icons strip at top-right on all pages */}
+        <SocialBanner position="top-right" size="sm" />
+        {!isHome && <Navbar />}
+
+        {/* Hero section on homepage that scrolls with content */}
+        {isHome && (
+          <section
+            className="hero-section"
             style={{
+              height: 'min(100svh, 100vh)',
+              display: 'flex',
+              alignItems: 'stretch',
+              justifyContent: 'flex-start',
               width: '100%',
-              height: '75vh',
-              objectFit: 'cover',
-              paddingLeft: 0,
-              boxSizing: 'border-box',
-              borderRadius: 0
+              padding: '0',
+              margin: '0',
+              position: 'relative',
+              overflowX: 'hidden',
             }}
-          />
-        </div>
+            aria-label="Homepage hero"
+          >
+            <div className="hero-container" style={{
+              display: 'flex',
+              alignItems: 'stretch',
+              justifyContent: 'flex-start',
+              width: '100%',
+              gap: 0,
+              flexWrap: 'nowrap',
+            }}>
+              {/* Left: Image */}
+              <div
+                className="hero-left"
+                style={{
+                  flex: '0 0 var(--left-width, 58vw)',
+                  maxWidth: 'var(--left-width, 58vw)',
+                  minWidth: 0,
+                  overflow: 'hidden',
+                  marginLeft: 0,
+                  marginRight: 0,
+                  position: 'relative',
+                  height: 'var(--left-height, 100vh)',
+                }}
+              >
+                <img
+                  className="hero-fade-in hero-image"
+                  src={homepageBackLogo}
+                  alt="NRI Stories emblem"
+                  style={{
+                    width: 'var(--hero-img-width, auto)',
+                    height: 'var(--hero-img-height, 100%)',
+                    maxWidth: 'var(--left-width, 58vw)',
+                    maxHeight: '100vh',
+                    display: 'block',
+                    objectFit: 'contain',
+                    objectPosition: 'left center',
+                    padding: '0',
+                    border: 'none',
+                    outline: 'none',
+                  }}
+                />
+              </div>
 
-        {/* Right: heading and alternating InfoBoxes */}
-  <div className="content-column" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'stretch', paddingRight: '2.5%', minWidth: 0, maxWidth: '100%', boxSizing: 'border-box' }}>
-          <p className="heading-text" style={{
-            display: 'block',
-            fontWeight: 700,
-            fontSize: 'clamp(1.5rem, 4vw, 4rem)',
-            margin: 0,
-            marginTop: '2rem',
-            width: '100%',
-            maxWidth: '100%',
-            alignSelf: 'stretch',
-            color: '#f3f4f6',
-            lineHeight: 1.3,
-            letterSpacing: '0.2px',
-            fontFamily: "'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', Arial",
-            textAlign: 'center',
-            wordWrap: 'break-word',
-            overflowWrap: 'break-word',
-            overflow: 'visible'
-          }}>
-            The viewing experience.
-          </p>
-
-          <div style={{ width: '100%', margin: '2rem auto 0', display: 'flex', flexDirection: 'column', gap: '12px', overflow: 'visible' }}>
-            {/* Box 1 - Left */}
-            <div className="info-box-row" style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
-              <div className="info-box-wrapper" style={{ width: '50%', minWidth: 0 }}>
-                <InfoBox>
-                  <strong>Visual Storytelling</strong>
-                  <p>Cinematic B-roll, archival images and on-location frames add context and depth.</p>
-                </InfoBox>
+              {/* Right: Copy */}
+              <div
+                className="hero-right copy-slide-in"
+                style={{
+                  flex: '0 0 auto',
+                  maxWidth: 'var(--right-width, 38vw)',
+                  minWidth: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  marginLeft: 0,
+                  position: 'relative',
+                }}
+              >
+                <h1 style={{
+                  margin: 0,
+                  fontWeight: 800,
+                  fontSize: 'clamp(24px, 4.8vw, 64px)',
+                  lineHeight: 1.1,
+                  letterSpacing: '0.2px',
+                }}>
+                  <span className="line-slide delay-1">Real People.</span>
+                  <span className="line-slide delay-2">Real Journeys.</span>
+                  <span className="line-slide delay-3">Real Emotions.</span>
+                </h1>
+                <p className="hero-subcopy line-slide delay-4" style={{ marginTop: '14px' }}>
+                  Authentic stories from the global Indian diaspora - told straight from the heart in a visually immersive, documentary-style format.
+                </p>
+                <button className="share-button line-slide delay-4">
+                  Share Your Story
+                </button>
               </div>
             </div>
-
-            {/* Box 2 - Right */}
-            <div className="info-box-row right" style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', overflow: 'visible' }}>
-              <div className="info-box-wrapper" style={{ width: '50%', minWidth: 0, maxWidth: '50%' }}>
-                <InfoBox>
-                  <strong>Sound you can feel</strong>
-                  <p>Voice first, with layered sound design and a score that supports the emotion — never distracts.</p>
-                </InfoBox>
-              </div>
-            </div>
-
-            {/* Box 3 - Left; pulled slightly closer to Box 2 */}
-            <div className="info-box-row" style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '-6px', width: '100%' }}>
-              <div className="info-box-wrapper" style={{ width: '50%', minWidth: 0 }}>
-                <InfoBox>
-                  <strong>Editorial arcs</strong>
-                  <p>Each episode is structured for momentum — opening hook, rising stakes, resolution, and reflection.</p>
-                </InfoBox>
-              </div>
-            </div>
-          </div>
-        </div>
+          </section>
+        )}
       </div>
     </div>
   );
 }
 
-export default App; 
+export default App;

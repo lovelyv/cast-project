@@ -1,0 +1,43 @@
+<svg width="800" height="120" viewBox="0 0 800 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="socialTitle socialDesc">
+  <title id="socialTitle">Social media icons strip</title>
+  <desc id="socialDesc">A horizontal strip of social media icons: Facebook, Instagram, X, and YouTube</desc>
+  
+  <!-- Background is transparent so it blends with the page -->
+  
+  <!-- Facebook -->
+  <g transform="translate(291,60)">
+    <circle r="44" fill="#1877F2" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <!-- simple "f" glyph -->
+    <path d="M6 -14h-10v-10c0-2.2 1.8-4 4-4h6v-16h-9c-11.6 0-21 9.4-21 21v9h-10v16h10v36h20v-36h10l3-16z" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Instagram -->
+  <g transform="translate(341,60)">
+    <defs>
+      <radialGradient id="igGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-30 -30) rotate(45) scale(120)">
+        <stop offset="0%" stop-color="#FFDD55"/>
+        <stop offset="30%" stop-color="#FF543E"/>
+        <stop offset="60%" stop-color="#C837AB"/>
+        <stop offset="100%" stop-color="#4C3F91"/>
+      </radialGradient>
+    </defs>
+  <rect x="-44" y="-44" width="88" height="88" rx="24" fill="url(#igGrad)"/>
+  <rect x="-44" y="-44" width="88" height="88" rx="24" fill="none" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <circle cx="0" cy="0" r="22" stroke="#fff" stroke-width="8" fill="none"/>
+    <circle cx="24" cy="-24" r="6" fill="#fff"/>
+  </g>
+
+  <!-- X (Twitter) -->
+  <g transform="translate(391,60)">
+    <circle r="44" fill="#111827" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M-18 -24 L14 24 H2 L-30 -24 H-18 Z M-14 24 L18 -24 H6 L-26 24 H-14 Z" fill="#FFFFFF"/>
+  </g>
+
+  <!-- YouTube -->
+  <g transform="translate(441,60)">
+    <rect x="-52" y="-32" width="104" height="64" rx="16" fill="#FF0000" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="M-10 -16 L26 0 L-10 16 Z" fill="#FFFFFF"/>
+  </g>
+
+  
+</svg>
