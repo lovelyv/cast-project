@@ -13,13 +13,13 @@
 
 .navContent {
   display: flex;
-  justify-content: flex-start; /* shift all items to the left */
+  justify-content: flex-start; /* mobile default */
   align-items: center;
   width: 100%;
   margin: 0;
   position: relative;
   padding: 0; /* mobile handles its own padding on .navbar */
-  gap: 1.5rem;
+  gap: 0.75rem; /* tighter spacing between logo and nav */
 }
 
 /* Add a little left spacing on larger screens */
@@ -33,42 +33,76 @@
 .navList {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: 1rem; /* reduce default gap between items */
   margin: 0;
   padding: 0;
 }
 
 /* Distribute nav links across the remaining width on larger screens */
 @media (min-width: 769px) {
+  .navContent {
+    justify-content: flex-start; /* keep logo and title to the left */
+  }
   .navList {
-    flex: 1;
-    justify-content: space-between;
-    gap: 0; /* evenly spread items to the right edge */
-    padding-right: max(2rem, env(safe-area-inset-right)); /* ensure last item never touches edge */
-    min-width: 0; /* allow flexbox to calculate width correctly */
-    flex-wrap: wrap; /* prevent cropping; allow second row if needed */
-    row-gap: 0.25rem;
+    position: absolute;         /* center nav independently of logo */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    gap: 1.25rem;               /* even spacing between items */
+    padding: 0;                 /* no extra padding */
+    min-width: 0;               /* allow wrap if needed */
+    flex-wrap: nowrap;          /* keep on one line where possible */
+    row-gap: 0;
   }
   /* Extra safety on the last item regardless of container padding */
   .navList li:last-child {
-    padding-right: 0.5rem;
+    padding-right: 0;
   }
 }
 
 .navLink {
   text-decoration: none;
-  color: #333; /* readable on light page background */
+  color: #FFFF33; /* fluorescent yellow - matches H1 */
+  position: relative;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .navLink:hover {
-  color: #666;
+  color: #FFFF66; /* lighter yellow on hover */
+  transform: translateY(-1px);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #FFFF66;
+  border-radius: 2px;
+  transition: width 0.2s ease;
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after {
+  width: 100%;
+}
+
+.navLink:focus-visible {
+  outline: none;
 }
 
 .navLinkActive {
-  color: #333;
+  color: #FFFF33; /* fluorescent yellow - matches H1 */
   font-weight: 600;
-  border-bottom: 2px solid #666;
+  border-bottom: 2px solid #FFFF33;
   padding-bottom: 2px;
+}
+
+/* Avoid double underline when an item is active */
+.navLinkActive::after {
+  display: none;
 }
 
 .logoContainer {
@@ -86,7 +120,7 @@
 }
 
 .logoImage {
-  height: clamp(60px, 8vw, 80px);
+  height: clamp(68px, 9vw, 96px); /* slightly bigger logo */
   width: auto;
   margin-bottom: 0.2rem;
   margin-top: -0.3rem;
@@ -95,7 +129,19 @@
 .logo {
   margin: 0;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
-  color: #333;
+  color: #FFFF33; /* fluorescent yellow - matches H1 */
+}
+
+.logoLink {
+  color: inherit;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.logoLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 51, 0.6);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 .hamburger {
@@ -112,20 +158,21 @@
 .hamburgerLine {
   width: 25px;
   height: 3px;
-  background-color: #333;
+  background-color: #FFFF33; /* fluorescent yellow - matches H1 */
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 0.5rem 2rem; /* extra right/left padding on mobile */
+    padding: 0.5rem 0.75rem; /* tighter side padding so hamburger sits near the edge */
   }
   .separator { display: none; }
   
   .hamburger {
     display: flex;
     padding-right: 0;
+    margin-left: auto; /* push hamburger to extreme right */
   }
   
   .navList {
@@ -160,12 +207,12 @@
   
   .navLink {
     display: block;
-    padding: 1rem 1.5rem;
-    color: #333;
+    padding: 0.75rem 1rem; /* tighter mobile spacing */
+    color: #FFFF33; /* fluorescent yellow - matches H1 */
     font-size: 1rem;
   }
   
   .navLink:hover {
-    background-color: rgba(0,0,0,0.03);
+    background-color: rgba(255, 255, 51, 0.08); /* subtle yellow tint on hover */
   }
 }

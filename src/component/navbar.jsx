@@ -4,6 +4,7 @@ import logo from '../assets/logo.png';
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const base = import.meta.env.BASE_URL || '/';
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -14,7 +15,9 @@ function Navbar() {
             <div className={styles.navContent}>
                 <div className={styles.logoContainer}>
                     <img src={logo} alt="Logo" className={styles.logoImage} />
-                    <h1 className={styles.logo}>NRI Stories</h1>
+                    <a href={base} className={styles.logoLink} aria-label="Go to homepage">
+                        <h1 className={styles.logo}>NRI Stories</h1>
+                    </a>
                 </div>
                 <div className={styles.separator} aria-hidden="true" />
                 <button 
@@ -27,14 +30,10 @@ function Navbar() {
                     <span className={styles.hamburgerLine}></span>
                 </button>
                 <ul className={`${styles.navList} ${isMenuOpen ? styles.navListOpen : ''}`}>
-                    <li><a className={`${styles.navLink} ${styles.navLinkActive}`} href="default.asp">Background</a></li>
-                    <li><a className={styles.navLink} href="news.asp">Concept</a></li>
-                    <li><a className={styles.navLink} href="contact.asp">Approach</a></li>
-                    <li><a className={styles.navLink} href="contact.asp">Treatment</a></li>
-                    <li><a className={styles.navLink} href="contact.asp">Stories</a></li>
-                    <li><a className={styles.navLink} href="contact.asp">Platforms</a></li>
-                    <li><a className={styles.navLink} href="contact.asp">Plans</a></li>
-                    <li><a className={styles.navLink} href="about.asp">Reach out</a></li>
+                                <li><a className={styles.navLink} href="#thoughts">The Thought</a></li>
+                    <li><a className={styles.navLink} href="news.asp">You a fit?</a></li>
+                    <li><a className={styles.navLink} href="contact.asp">Our Showcase</a></li>
+                    <li><a className={styles.navLink} href="contact.asp">Jump In</a></li>
                 </ul>
             </div>
         </nav>

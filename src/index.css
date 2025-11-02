@@ -45,6 +45,7 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
+  overflow-x: hidden; /* prevent horizontal scroll on small screens */
 }
 
 body {
@@ -54,6 +55,122 @@ body {
   width: 100%;
   overflow-x: hidden; /* prevent any horizontal scroll/gap on the left */
 }
+
+/* Simple top-left utility links */
+
+/* Inline hero links above the headline */
+.hero-links { display: none; } /* removed in favor of fixed top links */
+
+/* Fixed top-left utility links on same row as Social Banner (top-right) */
+.top-links { display: none; }
+
+/* Links positioned at the top of the copy column, aligning next to the image */
+.hero-right .hero-links {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1;
+  color: #cfe0ff;
+  background: rgba(9,13,20,0.4);
+  backdrop-filter: blur(6px);
+  padding: 6px 14px; /* more left/right padding */
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Mobile hamburger for hero links */
+.hero-menu-toggle {
+  display: none; /* hidden on desktop */
+  position: absolute;
+  top: 8px;
+  right: 0;
+  background: rgba(9,13,20,0.4);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  z-index: 6;
+}
+.hero-menu-toggle .hamburger {
+  display: inline-block;
+  width: 18px;
+  height: 14px;
+  position: relative;
+}
+.hero-menu-toggle .hamburger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #cfe0ff;
+  border-radius: 2px;
+}
+.hero-menu-toggle .hamburger span:nth-child(1) { top: 0; }
+.hero-menu-toggle .hamburger span:nth-child(2) { top: 6px; }
+.hero-menu-toggle .hamburger span:nth-child(3) { top: 12px; }
+
+.hero-menu {
+  display: none; /* hidden by default */
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  min-width: 180px;
+  background: rgba(9,13,20,0.92);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  z-index: 6;
+}
+.hero-menu.open { display: block; }
+.hero-menu li { margin: 0; }
+.hero-menu a {
+  display: block;
+  padding: 10px 12px;
+  color: #e6edf3;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.3;
+  border-radius: 8px;
+}
+.hero-menu a:hover,
+.hero-menu a:focus { background: rgba(255,255,255,0.06); outline: none; }
+.hero-right .hero-links a {
+  color: #cfe0ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.hero-right .hero-links a:hover,
+.hero-right .hero-links a:focus {
+  color: #a6c8ff;
+  outline: none;
+}
+.hero-right .hero-links .divider { opacity: 0.6; }
+
+@media (max-width: 768px) {
+  /* On mobile, center within the copy column top area */
+  .hero-right .hero-links {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 8px;
+    font-size: 13px;
+    gap: 8px;
+    padding: 5px 12px; /* more left/right padding on mobile */
+    border-radius: 9px;
+  }
+  .hero-menu-toggle { display: inline-flex; }
+  /* Hide inline links on small screens in favor of hamburger */
+  .hero-right .hero-links { display: none; }
+}
+
+/* Top banner pattern removed */
 
 h1 {
   font-size: 3.2em;
@@ -163,6 +280,11 @@ button:focus-visible {
   will-change: auto;
 }
 
+/* Prevent CTA from stretching to container width on desktop */
+.hero-right .share-button {
+  align-self: flex-start;
+}
+
 @keyframes copySlideIn {
   from { opacity: 0; transform: translateX(16px); width: 0; }
   to { opacity: 1; transform: translateX(0); width: 38vw; }
@@ -210,6 +332,7 @@ button:focus-visible {
 
 /* Responsive: stack hero layout on small screens */
 @media (max-width: 768px) {
+  /* top banner variable removed */
   /* Move social banner to bottom-center on small screens (safe-area aware) */
   .social-banner-container {
     position: fixed;
@@ -219,7 +342,7 @@ button:focus-visible {
     right: auto !important;
     transform: translateX(-50%) !important;
     margin: 0;
-    width: min(60vw, 240px);
+    width: 100vw; /* full viewport width on small */
     z-index: 25;
   }
   .social-banner { width: 100%; height: auto; }
@@ -247,19 +370,28 @@ button:focus-visible {
   }
   :root {
     --left-width: 100vw;
-    --right-width: min(92vw, 640px); /* fit viewport with side margins */
+    --right-width: 100vw; /* use full viewport width; container padding provides side space */
     --left-height: auto;                    /* let image container size to content */
-    --hero-img-width: min(68vw, 520px);     /* smaller, centered image */
-    --hero-img-height: auto;                /* keep aspect ratio */
+    --hero-img-width: 90vw;                 /* 90% of viewport width for breathing room */
+    --hero-img-height: auto;                /* auto height maintains aspect ratio */
   }
   .hero-left {
     width: 100vw;
     height: auto;
+    overflow: visible !important;           /* allow full image display, override inline styles */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
   }
   .hero-image {
-    object-position: center center;       /* center the image */
+    object-position: center center !important;       /* center the image on small, override inline */
     display: block;                       /* enable auto centering with margins */
-    margin: 24px auto 8px;                /* center horizontally and add spacing */
+    margin: 0 auto 8px;                   /* remove top margin on small viewports */
+    object-fit: contain;                  /* prevent cropping; fit entire image */
+    width: 90vw !important;               /* 90% viewport width with breathing room */
+    height: auto !important;              /* auto height maintains aspect ratio */
+    max-width: 90vw;                      /* cap at 90vw */
+    max-height: 65vh;                     /* cap height to leave room for copy */
   }
   .hero-right {
     max-width: var(--right-width, 100vw);
@@ -268,22 +400,41 @@ button:focus-visible {
     padding: 0 clamp(14px, 4vw, 24px) 16px;/* side padding for breathing room */
     box-sizing: border-box;
     align-items: center;                    /* center children horizontally */
+    justify-content: flex-start !important; /* move content closer to top */
+    padding-top: 12px;                      /* small breathing room from top */
   }
   /* Tighter CTA sizing on small screens */
   .hero-right .share-button {
-    font-size: clamp(12px, 3.2vw, 14px);
-    padding: 8px 14px;
+    font-size: clamp(16px, 4.5vw, 20px);
+    padding: 12px 18px; /* taller on mobile */
     width: auto;               /* avoid stretching */
     white-space: nowrap;        /* keep on one line */
+    margin-top: 14px;           /* match subcopy spacing (was 32px from base) */
   }
   /* Center text and animate copy from bottom on mobile */
-  .hero-right h1 { text-align: center; }
-  .hero-subcopy { text-align: center; margin-left: auto; margin-right: auto; }
+  .hero-right h1 { 
+    text-align: center; 
+    margin-top: 40vh; /* push headline down further on small viewports */
+  }
+  /* Increase selector specificity so this overrides the later base .hero-subcopy */
+  .hero-right .hero-subcopy {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 14px;    /* match top spacing with bottom */
+    margin-bottom: 14px; /* match bottom spacing with top */
+    width: 100%;
+    max-width: none; /* remove desktop cap */
+    display: block;
+  }
   .hero-right .share-button { align-self: center; }
   .copy-slide-in {
     opacity: 0;
     transform: translateY(16px);
     animation: heroCopyUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    width: 100%;              /* allow copy column to span available width on small */
+    max-width: 100%;
+    overflow: visible;
   }
 }
 
@@ -398,13 +549,13 @@ button:focus-visible {
 /* Share button on homepage */
 .share-button {
   margin-top: 32px;
-  padding: 8px 16px;
+  padding: 10px 18px; /* more horizontal padding */
   background: rgba(138, 180, 255, 0.12);
   border: 1.5px solid rgba(138, 180, 255, 0.3);
   border-radius: 18px;
   color: #e6edf3;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 20px; /* bigger font size */
+  font-weight: 1000;
   letter-spacing: 0.1px;
   cursor: pointer;
   transition: all 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -412,6 +563,7 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;              /* spacing between text and icon */
   width: auto;            /* ensure content-based width */
   white-space: nowrap;    /* prevent wrapping */
 }
@@ -439,13 +591,135 @@ button:focus-visible {
 /* Desktop: keep CTA compact on large viewports */
 @media (min-width: 1024px) {
   .share-button {
-    font-size: 12px;
-    padding: 6px 12px;
+    font-size: 18px; /* bigger on desktop too */
+    padding: 8px 14px; /* slightly more horizontal padding on desktop */
     border-radius: 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 6px;              /* spacing between text and icon */
     width: auto;            /* keep to content */
     white-space: nowrap;    /* single line */
+  }
+}
+
+/* HitIt Page Styles */
+.hit-it-page {
+  min-height: 100svh;          /* allow page to grow taller than viewport */
+  box-sizing: border-box;      /* include padding inside the box */
+  padding: 120px 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;          /* avoid horizontal scroll */
+  overflow-y: auto;            /* allow vertical scrolling when content exceeds */
+  background-color: #B8D4E8;   /* pastel blue background for subpages */
+}
+
+.hit-it-page-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;               /* center the container horizontally */
+  text-align: center;           /* center text content */
+  display: flex;                /* center child elements */
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hit-it-page-container h1 {
+  color: #1a3a52;  /* dark blue for readability on pastel background */
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 800;
+  margin: 0 0 30px 0;
+  text-align: center;
+  line-height: 1.2;
+  padding-inline: clamp(16px, 4vw, 40px); /* increased breathing room around headlines */
+}
+
+.hit-it-page-container h2 {
+  color: #1a3a52;  /* same dark blue as h1 */
+  font-size: clamp(24px, 4.5vw, 42px);
+  font-weight: 700;
+  margin: 40px 0 20px 0;
+  text-align: center;
+  line-height: 1.3;
+  padding-inline: clamp(16px, 4vw, 40px);
+}
+
+.hit-it-page-container p {
+  color: #0d2d44;  /* dark blue-grey for body text readability */
+  font-size: clamp(20px, 2.6vw, 24px); /* larger, responsive body text */
+  line-height: 1.75; /* more comfortable reading */
+  font-weight: 600;  /* bolder copy */
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+/* Info boxes grid */
+.info-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 1200px;
+  padding-inline: clamp(16px, 4vw, 40px); /* same horizontal padding as headlines */
+  box-sizing: border-box; /* include padding in width calculation */
+}
+
+.info-box {
+  background: #D4E9F7;  /* softer light blue */
+  border: 2px solid rgba(26, 58, 82, 0.2);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  flex: 0 0 40%;
+  box-sizing: border-box; /* include padding and border in width */
+}
+
+.info-box h3 {
+  color: #1a3a52;
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.info-box p {
+  color: #0d2d44;
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.6;
+  font-weight: 500;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .hit-it-page {
+    padding: 88px 16px 28px 16px;  /* balanced padding on small screens */
+  }
+  
+  .info-boxes {
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+    padding-inline: 20px; /* increased right padding on mobile */
+  }
+  
+  .info-box {
+    flex: 1 1 auto;
+    width: auto; /* let it size naturally with padding */
+    max-width: 100%;
   }
 }
