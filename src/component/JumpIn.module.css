@@ -1,0 +1,67 @@
+.form {
+  isolation: isolate; /* prevent ancestor blend/opacity from affecting children */
+}
+
+.opaqueField {
+  background: #ffffff !important;
+  background-image: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+  opacity: 1 !important;
+  mix-blend-mode: normal;
+  backdrop-filter: none !important;
+  filter: none !important;
+  box-shadow: none;
+  color: #0d2d44;
+}
+
+/* Set field width to 50% and center it (higher specificity to beat globals) */
+input.opaqueField.field50,
+textarea.opaqueField.field50 {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  input.opaqueField.field50,
+  textarea.opaqueField.field50 {
+    width: 100%;
+  }
+}
+
+/* Fixed 40% width for text inputs only (no mobile override) */
+input.opaqueField.input40 {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.invalid {
+  border: 1px solid #b00020 !important; /* accessible red */
+}
+
+.errorText {
+  color: #b00020;
+  font-size: 14px;
+  line-height: 1.3;
+  margin-top: 4px;
+}
+
+/* Ensure autofill keeps solid background on WebKit/Blink */
+.opaqueField:-webkit-autofill,
+.opaqueField:-webkit-autofill:hover,
+.opaqueField:-webkit-autofill:focus,
+.opaqueField:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #0d2d44 !important;
+  caret-color: #0d2d44;
+  transition: background-color 5000s ease-in-out 0s; /* neutralize flash */
+}
+
+/* iOS safari */
+input.opaqueField, textarea.opaqueField {
+  background-clip: padding-box;
+}

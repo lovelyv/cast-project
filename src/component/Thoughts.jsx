@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 
-function Thoughts() {
+function Thoughts({ scrollTo }) {
+  useEffect(() => {
+    if (!scrollTo) return;
+    const scrollToTarget = () => {
+      const el = document.getElementById(scrollTo);
+      if (!el) return;
+      const header = document.querySelector('nav');
+      const headerHeight = header ? header.offsetHeight : 0;
+      const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 12; // small breathing space
+      window.scrollTo({ top, behavior: 'smooth' });
+    };
+    // ensure layout and fixed navbar are in place
+    const t = setTimeout(scrollToTarget, 50);
+    return () => clearTimeout(t);
+  }, [scrollTo]);
   return (
     <div className="App">
       {/* Background watermark */}
@@ -18,9 +32,9 @@ function Thoughts() {
 Traditional podcasts rely heavily on talk-based formats: two cameras, one composite shot, minimal narrative structure.
 The ones that thrive do so through storytelling craft — not technology — by holding audience attention through cinematic pacing, emotional truth, and immersive presentation.
           </p>
-          <h1 style={{ marginTop: '60px' }}>Format</h1>
+          <h1 id="format" style={{ marginTop: '60px' }}>Format</h1>
           <p>
-            <span style={{ color: '#D2691E', fontWeight: '700' }}>Introducing DocuCast™</span> — Podcasts with Visual Enrichment.
+            <span style={{ color: '#D2691E', fontWeight: '700' }}>Introducing DocuCast<span className="reg-mark">®</span></span> — Podcasts with Visual Enrichment.
  A hybrid between a podcast and a documentary, each episode weaves interviews, archival footage, and cinematic visuals into a single narrative arc.
  It's storytelling that looks, sounds, and feels different — a documentary in podcast form.
           </p>

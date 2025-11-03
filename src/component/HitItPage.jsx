@@ -13,7 +13,7 @@ function HitItPage() {
       <div className="hit-it-page">
         <div className="hit-it-page-container">
           <p>
-            NRI Stories™ is a next-generation storytelling platform — real stories, told without filters, judgment, or embellishment. Every episode explores the lived experiences of Non-Resident Indians — their journeys across continents, sacrifices, ambitions, and triumphs. We believe that authentic emotion, not opinion, drives connection.
+            NRI Stories<span className="reg-mark">®</span> is a next-generation storytelling platform — real stories, told without filters, judgment, or embellishment. Every episode explores the lived experiences of Non-Resident Indians — their journeys across continents, sacrifices, ambitions, and triumphs. We believe that authentic emotion, not opinion, drives connection.
           </p>
 
           {/* Add your form or content here */}

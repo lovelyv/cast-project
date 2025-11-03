@@ -23,7 +23,7 @@
 }
 
 /* Add a little left spacing on larger screens */
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .navContent {
     padding-left: max(1rem, env(safe-area-inset-left));
     padding-right: max(2rem, env(safe-area-inset-right)); /* add a bit more breathing room on the right */
@@ -39,7 +39,7 @@
 }
 
 /* Distribute nav links across the remaining width on larger screens */
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .navContent {
     justify-content: flex-start; /* keep logo and title to the left */
   }
@@ -62,13 +62,13 @@
 
 .navLink {
   text-decoration: none;
-  color: #FFFF33; /* fluorescent yellow - matches H1 */
+  color: #FFFFAA; /* slightly darker pastel yellow - matches H1 */
   position: relative;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .navLink:hover {
-  color: #FFFF66; /* lighter yellow on hover */
+  color: #FFFFCC; /* lighter on hover */
   transform: translateY(-1px);
 }
 
@@ -79,7 +79,7 @@
   bottom: -4px;
   width: 0;
   height: 2px;
-  background: #FFFF66;
+  background: #FFFFCC; /* match hover tone */
   border-radius: 2px;
   transition: width 0.2s ease;
 }
@@ -94,9 +94,9 @@
 }
 
 .navLinkActive {
-  color: #FFFF33; /* fluorescent yellow - matches H1 */
+  color: #FFFFAA; /* slightly darker pastel yellow - matches H1 */
   font-weight: 600;
-  border-bottom: 2px solid #FFFF33;
+  border-bottom: 2px solid #FFFFAA;
   padding-bottom: 2px;
 }
 
@@ -109,6 +109,23 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.logoWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.logoRegMark {
+  position: absolute;
+  top: 20px;
+  left: 62%;
+  transform: translateX(-50%);
+  font-size: 0.7em;
+  color: #FFFFAA;
+  opacity: 0.9;
+  font-weight: 600;
+  z-index: 1;
 }
 
 /* Thin separator after the title */
@@ -129,7 +146,16 @@
 .logo {
   margin: 0;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
-  color: #FFFF33; /* fluorescent yellow - matches H1 */
+  color: #FFFFAA; /* slightly darker pastel yellow - matches H1 */
+}
+
+.regMark {
+  font-size: 0.75em;
+  vertical-align: super;
+  line-height: 1;
+  margin-left: 3px;
+  color: inherit; /* keep same color as logo */
+  opacity: 0.9;
 }
 
 .logoLink {
@@ -139,7 +165,7 @@
 }
 
 .logoLink:focus-visible {
-  outline: 2px solid rgba(255, 255, 51, 0.6);
+  outline: 2px solid rgba(255, 255, 170, 0.6);
   outline-offset: 2px;
   border-radius: 6px;
 }
@@ -153,17 +179,56 @@
   cursor: pointer;
   padding: 8px;
   z-index: 1001;
+  text-decoration: none; /* prevent any underline */
+  transition: transform 180ms ease; /* subtle scale on hover */
+}
+
+/* Do not show focus box when clicked by mouse/touch; keep it for keyboard */
+.hamburger:focus {
+  outline: none;
+  box-shadow: none;
+}
+.hamburger:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+.hamburger:focus-visible {
+  outline: 2px solid rgba(255, 255, 170, 0.6);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 .hamburgerLine {
   width: 25px;
   height: 3px;
-  background-color: #FFFF33; /* fluorescent yellow - matches H1 */
+  background-color: #FFFFAA; /* slightly darker pastel yellow - matches H1 */
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: transform 180ms ease, width 180ms ease, background-color 180ms ease;
+  text-decoration: none; /* ensure lines never get underlined */
 }
 
-@media (max-width: 768px) {
+.hamburger:hover {
+  transform: scale(1.04);
+}
+
+/* Expand effect: widen and nudge lines apart slightly */
+.hamburger:hover .hamburgerLine {
+  width: 28px;
+}
+.hamburger:hover .hamburgerLine:first-child {
+  transform: translateY(-1px);
+}
+.hamburger:hover .hamburgerLine:last-child {
+  transform: translateY(1px);
+}
+
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:focus-visible {
+  text-decoration: none; /* no underline on hover/focus */
+}
+
+@media (max-width: 1024px) {
   .navbar {
     padding: 0.5rem 0.75rem; /* tighter side padding so hamburger sits near the edge */
   }
@@ -189,16 +254,19 @@
     padding: 0;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: max-height 0.3s ease, padding 0.3s ease;
+    pointer-events: none; /* prevent hover on hidden links (no underline when hovering hamburger) */
   }
   
   .navListOpen {
     max-height: 400px;
     padding: 1rem 0;
+    pointer-events: auto; /* re-enable interactions when open */
   }
   
   .navList li {
     width: 100%;
-    border-bottom: 1px solid #e6e6e6;
+    /* lighter separator lines for mobile menu */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
   
   .navList li:last-child {
@@ -208,11 +276,18 @@
   .navLink {
     display: block;
     padding: 0.75rem 1rem; /* tighter mobile spacing */
-    color: #FFFF33; /* fluorescent yellow - matches H1 */
+    color: #FFFFAA; /* slightly darker pastel yellow - matches H1 */
     font-size: 1rem;
   }
   
   .navLink:hover {
-    background-color: rgba(255, 255, 51, 0.08); /* subtle yellow tint on hover */
+    background-color: rgba(255, 255, 170, 0.08); /* subtle yellow tint on hover */
+  }
+
+  /* Do not show underline on hover for hamburger list items */
+  .navLink::after,
+  .navLink:hover::after,
+  .navLink:focus-visible::after {
+    display: none !important;
   }
 }

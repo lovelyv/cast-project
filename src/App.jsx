@@ -4,7 +4,9 @@ import SocialBanner from "./component/socialBanner";
 import HitItPage from "./component/HitItPage";
 import SubpageWatermark from "./component/SubpageWatermark";
 import Thoughts from "./component/Thoughts";
-import logo from "./assets/logo.png";
+import YouAFit from "./component/YouAFit";
+import OurShowcase from "./component/OurShowcase";
+import JumpIn from "./component/JumpIn";
 import homepageBackLogo from "./assets/homepagebacklogo.png";
 //import topBanner from "./assets/tobbanner.png";
 
@@ -31,6 +33,10 @@ function App() {
   // Route to subpages by hash
   if (route === 'hitit') return <HitItPage />;
   if (route === 'thoughts') return <Thoughts />;
+  if (route === 'thoughts-format') return <Thoughts scrollTo="format" />;
+  if (route === 'youafit') return <YouAFit />;
+  if (route === 'showcase') return <OurShowcase />;
+  if (route === 'jumpin') return <JumpIn />;
 
   return (
     <div className="App">
@@ -120,6 +126,25 @@ function App() {
                 }}
               >
                 {/* Top links removed */}
+                {/* Tagline above the main headline */}
+                <a
+                  href="#thoughts-format"
+                  className="hero-tagline line-slide delay-0"
+                  style={{
+                    color: '#FFFFFF',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.12em',
+                    fontSize: 'clamp(12px, 1.2vw, 16px)',
+                    marginTop: 'var(--hero-tagline-mt, 0px)',
+                    marginBottom: '8px',
+                    opacity: 0.95,
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <span style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '2px' }}>DOCUCAST</span><span className="reg-mark">®</span> • PODCASTS WITH VISUAL ENRICHMENT
+                </a>
 
                 <h1 style={{
                   margin: 0,
@@ -127,14 +152,14 @@ function App() {
                   fontSize: 'clamp(24px, 4.8vw, 64px)',
                   lineHeight: 1.1,
                   letterSpacing: '0.2px',
-                  color: '#FFFF33', /* fluorescent yellow */
+                  color: '#FFFFAA', /* slightly darker pastel yellow */
                 }}>
                   <span className="line-slide delay-1">Real People.</span>
                   <span className="line-slide delay-2">Real Journeys.</span>
                   <span className="line-slide delay-3">Real Emotions.</span>
                 </h1>
                 <p className="hero-subcopy line-slide delay-4" style={{ marginTop: '14px' }}>
-                  NRI Stories™ is a next-generation storytelling platform <br/>
+                  NRI Stories<span className="reg-mark">®</span> is a next-generation storytelling platform <br/>
                   Authentic stories from the global Indian diaspora.<br/> 
                   Told straight from the heart.<br/> 
                   In a visually immersive, documentary-style.

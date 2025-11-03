@@ -1,0 +1,13 @@
+/* OurShowcase page-scoped styles */
+
+/* Typography matching "Stories of" (Garamond italic, bold) */
+.storiesOf {
+  font-family: Garamond, serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* High-contrast closing line color with enough specificity to override container p rule */
+p.contrastText {
+  color: #D2691E; /* chocolate brown */
+}
