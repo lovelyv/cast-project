@@ -1,3 +1,26 @@
+.reg-mark {
+  font-size: 0.7em;
+  vertical-align: super;
+  margin-left: 0.1em;
+  letter-spacing: 0;
+}
+.embossed {
+  background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Sentinel', 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.5px;
+  font-size: 2.1rem;
+  line-height: 1.1;
+  text-shadow:
+    0 1px 1px #fff8dc,
+    0 2px 4px #b8860b,
+    1px 1px 2px #fff8dc,
+    0 0 8px #ffd70099;
+}
 .headline-spaced {
   display: block;
   margin-bottom: 12px;

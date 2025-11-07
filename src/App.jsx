@@ -75,9 +75,9 @@ function App() {
                 {/* Tagline above the main headline */}
                
                 <p className={`${styles["hero-subcopy"]} line-slide delay-1`}>
-                  NRI Stories<span className="reg-mark">®</span><br></br> is a next-generation storytelling platform<br/>Authentic stories<br></br>from the global Indian diaspora.<br/> 
+                  <span className={styles.embossed}>NRI Stories<span className={styles['reg-mark']}>®</span></span><br></br> is a next-generation storytelling platform<br/>Authentic stories<br></br>from the global Indian diaspora.<br/> 
                   Told straight from the heart.<br/> 
-                  In a visually immersive, documentary-style.
+                  In a visually immersive, documentary-&nbsp;style.
                 </p>
                 <h1 className={styles["headline"]}>
                   <span className={"line-slide delay-2 " + styles["headline-spaced"]}>Real People.</span>
