@@ -74,18 +74,17 @@ function App() {
                 {/* Top links removed */}
                 {/* Tagline above the main headline */}
                
-
-                <h1 className={styles["headline"]}>
-                  <span className="line-slide delay-1">Real People.</span>
-                  <span className="line-slide delay-2">Real Journeys.</span>
-                  <span className="line-slide delay-3">Real Emotions.</span>
-                </h1>
-                <p className={`${styles["hero-subcopy"]} line-slide delay-4`}>
-                  NRI Stories<span className="reg-mark">®</span> is a next-generation storytelling platform <br/>
-                  Authentic stories from the global Indian diaspora.<br/> 
+                <p className={`${styles["hero-subcopy"]} line-slide delay-1`}>
+                  NRI Stories<span className="reg-mark">®</span><br></br> is a next-generation storytelling platform<br/>Authentic stories<br></br>from the global Indian diaspora.<br/> 
                   Told straight from the heart.<br/> 
                   In a visually immersive, documentary-style.
                 </p>
+                <h1 className={styles["headline"]}>
+                  <span className={"line-slide delay-2 " + styles["headline-spaced"]}>Real People.</span>
+                  <span className={"line-slide delay-3 " + styles["headline-spaced"]}>Real Journeys.</span>
+                  <span className="line-slide delay-4">Real Emotions.</span>
+                </h1>
+                
                 <button className="share-button popout-hitit-button line-slide delay-4" onClick={() => { window.location.hash = '#hitit'; }}>
                   Hit It
                 </button>
