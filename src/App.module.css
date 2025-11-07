@@ -1,3 +1,21 @@
+/* Slide-in animation for hero section lines */
+.line-slide {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.line-slide.in {
+  opacity: 1;
+  transform: none;
+}
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.5s; }
+.delay-4 { transition-delay: 0.7s; }
+.share-button.popout-hitit-button:hover, .share-button.popout-hitit-button:active, .share-button.popout-hitit-button:focus {
+  animation: none !important;
+  transform: none !important;
+}
 .reg-mark {
   font-size: 0.7em;
   vertical-align: super;
@@ -116,8 +134,8 @@
     right: 0 !important;
     display: flex !important;
     flex-direction: column;
-    align-items: center !important;
-    justify-content: center !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
     text-align: center !important;
     box-sizing: border-box !important;
   }
@@ -463,4 +481,16 @@
   margin-left: auto !important;
   margin-right: auto !important;
   text-align: center !important;
+  padding-bottom: 3.5rem !important;
+  margin-bottom: 3.5rem !important;
+}
+
+@media (max-width: 600px) {
+  .share-button.popout-hitit-button {
+    margin-bottom: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+  .headline {
+    font-size: clamp(28px, 7vw, 40px) !important;
+  }
 }
