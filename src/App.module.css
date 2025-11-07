@@ -1,3 +1,13 @@
+.share-button.popout-hitit-button.line-slide {
+  visibility: hidden !important;
+}
+.share-button.popout-hitit-button.line-slide.in {
+  visibility: visible !important;
+}
+/* Prevent line break for documentary-style on small screens */
+.nowrap {
+  white-space: nowrap;
+}
 /* Slide-in animation for hero section lines */
 .line-slide {
   opacity: 0;
@@ -477,7 +487,7 @@
 }
 
 .share-button.popout-hitit-button {
-  display: block !important;
+  display: none;
   margin-left: auto !important;
   margin-right: auto !important;
   text-align: center !important;

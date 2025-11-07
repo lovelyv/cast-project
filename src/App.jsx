@@ -15,8 +15,10 @@ const SUBPAGE_WATERMARK_OPACITY = 0.17;
 function App() {
   // For slide-in animation on viewport
   const [slideIn, setSlideIn] = useState(false);
+  const [showButton, setShowButton] = useState(() => false);
   const heroRef = useRef(null);
   const subcopyRef = useRef(null);
+  const realEmotionsRef = useRef(null);
   useEffect(() => {
     // Helper to check if small viewport
     const isSmall = () => window.innerWidth <= 600;
@@ -48,6 +50,22 @@ function App() {
     }
     return () => observer && observer.disconnect();
   }, []);
+
+  // Show button only when 'Real Emotions.' is visible after slideIn
+  useEffect(() => {
+    if (!slideIn || !realEmotionsRef.current) {
+      setShowButton(false);
+      return;
+    }
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        setShowButton(entry.isIntersecting);
+      },
+      { threshold: 0.9 }
+    );
+    observer.observe(realEmotionsRef.current);
+    return () => observer.disconnect();
+  }, [slideIn]);
   // simple hash-based router
   const [route, setRoute] = useState(() => (window.location.hash || '').replace('#',''));
   useEffect(() => {
@@ -110,19 +128,24 @@ function App() {
                 {/* Tagline above the main headline */}
                
                 <p ref={subcopyRef} className={`${styles["hero-subcopy"]} line-slide delay-1`}>
-                  <span className={styles.embossed}>NRI Stories<span className={styles['reg-mark']}>®</span></span><br></br> is a next-generation storytelling platform<br/>Authentic stories<br></br>from the global Indian diaspora.<br/> 
+                  <span className={styles.embossed}>NRI Stories<span className={styles['reg-mark']}>®</span></span><br></br> is a next-generation storytelling platform.<br></br><br></br>Authentic stories<br></br>from the global Indian diaspora.<br></br><br></br>
                   Told straight from the heart.<br/> 
-                  In a visually immersive, documentary-&nbsp;style.
+                  In a visually immersive, <span className={styles.nowrap}>documentary-style</span>.
                 </p>
                 <h1 className={styles["headline"]}>
                   <span className={`line-slide delay-2 ${slideIn ? 'in' : ''} ${styles["headline-spaced"]}`}>Real People.</span>
                   <span className={`line-slide delay-3 ${slideIn ? 'in' : ''} ${styles["headline-spaced"]}`}>Real Journeys.</span>
-                  <span className={`line-slide delay-4 ${slideIn ? 'in' : ''}`}>Real Emotions.</span>
+                  <span ref={realEmotionsRef} className={`line-slide delay-4 ${slideIn ? 'in' : ''}`}>Real Emotions.</span>
                 </h1>
                 
-                <button className={`share-button popout-hitit-button line-slide delay-4${slideIn ? ' in' : ''}`} onClick={() => { window.location.hash = '#hitit'; }}>
-                  Hit It
-                </button>
+                {slideIn && showButton && (
+                  <button
+                    className={`share-button popout-hitit-button line-slide delay-4 in`}
+                    onClick={() => { window.location.hash = '#hitit'; }}
+                  >
+                    Hit It
+                  </button>
+                )}
                 <div style={{ height: '3.5rem', width: '100%' }} aria-hidden="true"></div>
               </div>
             </div>
