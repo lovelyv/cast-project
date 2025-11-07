@@ -8,7 +8,9 @@ import YouAFit from "./component/YouAFit";
 import OurShowcase from "./component/OurShowcase";
 import JumpIn from "./component/JumpIn";
 import homepageBackLogo from "./assets/homepagebacklogo.png";
-//import topBanner from "./assets/tobbanner.png";
+import styles from "./App.module.css";
+
+const SUBPAGE_WATERMARK_OPACITY = 0.17;
 
 function App() {
   // simple hash-based router
@@ -42,7 +44,7 @@ function App() {
     <div className="App">
       {/* Background watermark (fixed) only on subpages */}
       {!isHome && (
-        <SubpageWatermark size="45vw" opacity={0.15} position="center center" zIndex={0} />
+        <SubpageWatermark size="45vw" opacity={SUBPAGE_WATERMARK_OPACITY} position="center center" zIndex={0} />
       )}
 
       {/* Subtle glitter overlay to make background a bit brighter */}
@@ -55,117 +57,37 @@ function App() {
 
         {/* Hero section on homepage that scrolls with content */}
         {isHome && (
-          <section
-            className="hero-section"
-            style={{
-              height: 'min(100svh, 100vh)',
-              display: 'flex',
-              alignItems: 'stretch',
-              justifyContent: 'flex-start',
-              width: '100%',
-              padding: '0',
-              margin: '0',
-              position: 'relative',
-              overflowX: 'hidden',
-            }}
-            aria-label="Homepage hero"
-          >
-            <div className="hero-container" style={{
-              display: 'flex',
-              alignItems: 'stretch',
-              justifyContent: 'flex-start',
-              width: '100%',
-              gap: 0,
-              flexWrap: 'nowrap',
-            }}>
+          <section className={styles["hero-section"]} aria-label="Homepage hero">
+            <div className={styles["hero-container"]}>
               {/* Left: Image */}
-              <div
-                className="hero-left"
-                style={{
-                  flex: '0 0 var(--left-width, 58vw)',
-                  maxWidth: 'var(--left-width, 58vw)',
-                  minWidth: 0,
-                  overflow: 'hidden',
-                  marginLeft: 0,
-                  marginRight: 0,
-                  position: 'relative',
-                  height: 'var(--left-height, 100vh)',
-                }}
-              >
+              <div className={styles["hero-left"]}>
                 {/* Mobile hamburger and dropdown removed on homepage */}
                 <img
-                  className="hero-fade-in hero-image"
+                  className={`${styles["hero-fade-in"]} ${styles["hero-image"]}`}
                   src={homepageBackLogo}
                   alt="NRI Stories emblem"
-                  style={{
-                    width: 'var(--hero-img-width, auto)',
-                    height: 'var(--hero-img-height, 100%)',
-                    maxWidth: 'var(--left-width, 58vw)',
-                    display: 'block',
-                    objectFit: 'contain',
-                    objectPosition: 'left center',
-                    padding: '0',
-                    border: 'none',
-                    outline: 'none',
-                  }}
                 />
               </div>
 
               {/* Right: Copy */}
-              <div
-                className="hero-right copy-slide-in"
-                style={{
-                  flex: '0 0 auto',
-                  maxWidth: 'var(--right-width, 38vw)',
-                  minWidth: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  marginLeft: 0,
-                  position: 'relative',
-                }}
-              >
+              <div className={`${styles["hero-right"]} copy-slide-in`}>
                 {/* Top links removed */}
                 {/* Tagline above the main headline */}
-                <a
-                  href="#thoughts-format"
-                  className="hero-tagline line-slide delay-0"
-                  style={{
-                    color: '#FFFFFF',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.12em',
-                    fontSize: 'clamp(12px, 1.2vw, 16px)',
-                    marginTop: 'var(--hero-tagline-mt, 0px)',
-                    marginBottom: '8px',
-                    opacity: 0.95,
-                    textDecoration: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <span style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '2px' }}>DOCUCAST</span><span className="reg-mark">®</span> • PODCASTS WITH VISUAL ENRICHMENT
-                </a>
+               
 
-                <h1 style={{
-                  margin: 0,
-                  fontWeight: 800,
-                  fontSize: 'clamp(24px, 4.8vw, 64px)',
-                  lineHeight: 1.1,
-                  letterSpacing: '0.2px',
-                  color: '#FFFFAA', /* slightly darker pastel yellow */
-                }}>
+                <h1 className={styles["headline"]}>
                   <span className="line-slide delay-1">Real People.</span>
                   <span className="line-slide delay-2">Real Journeys.</span>
                   <span className="line-slide delay-3">Real Emotions.</span>
                 </h1>
-                <p className="hero-subcopy line-slide delay-4" style={{ marginTop: '14px' }}>
+                <p className={`${styles["hero-subcopy"]} line-slide delay-4`}>
                   NRI Stories<span className="reg-mark">®</span> is a next-generation storytelling platform <br/>
                   Authentic stories from the global Indian diaspora.<br/> 
                   Told straight from the heart.<br/> 
                   In a visually immersive, documentary-style.
                 </p>
-                <button className="share-button line-slide delay-4" onClick={() => { window.location.hash = '#hitit'; }}>
-                  Hit It <span aria-hidden="true"></span>
+                <button className="share-button popout-hitit-button line-slide delay-4" onClick={() => { window.location.hash = '#hitit'; }}>
+                  Hit It
                 </button>
               </div>
             </div>
