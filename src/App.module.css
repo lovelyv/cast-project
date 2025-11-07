@@ -493,6 +493,9 @@
   text-align: center !important;
   padding-bottom: 3.5rem !important;
   margin-bottom: 3.5rem !important;
+  width: 10vw;
+  min-width: 80px;
+  max-width: 180px;
 }
 
 @media (max-width: 600px) {

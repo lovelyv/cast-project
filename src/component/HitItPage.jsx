@@ -1,25 +1,60 @@
 import React from 'react';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
+import hindilogo from '../assets/hindilogo.png';
+import '../App.css';
+import { Link } from 'react-router-dom';
+
 
 function HitItPage() {
+  const [imgSize, setImgSize] = React.useState({ width: null, height: null });
+
+  React.useEffect(() => {
+    const img = new window.Image();
+    img.onload = () => {
+      setImgSize({ width: img.naturalWidth, height: img.naturalHeight });
+    };
+    img.src = hindilogo;
+  }, []);
+
   return (
-    <div className="App">
+    <>
+    <div className="App" style={{ paddingTop: '0rem', position: 'relative', minHeight: '100vh' }}>
       {/* Background watermark */}
-  <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
+      <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
 
       <Navbar />
 
       <div className="hit-it-page">
         <div className="hit-it-page-container">
+          
           <p>
-            Its all about real stories,<br></br>told without filters, judgment, or embellishment.<br></br><p>Every episode explores the lived experiences of Non-Resident Indians —<br></br> their journeys across continents, sacrifices, ambitions, and triumphs. We believe that authentic emotion, not opinion, drives connection.
+            Its all about real stories.<br></br>Told without filters, judgment, or embellishment.<br></br><br></br>Every story explores<br></br>the lived experiences of Non-Resident Indians.<br></br>People of Indian heritage<br></br><br></br>
+            Their journeys across continents.<br></br>Sacrifices, ambitions, and triumphs.<br></br><br></br>We firmly believe that 
+            authentic emotion, not opinion<br></br>drives connection.
           </p>
-    </p>
           {/* Add your form or content here */}
+         <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <img src={hindilogo} alt="Hindi Logo" style={{ width: '40vw', maxWidth: 300, minWidth: 80, height: 'auto' }} />
+          </div>
+     
         </div>
       </div>
     </div>
+    {/* Right-bottom clickable arrow and label */}
+    <a
+      href="#thoughts"
+      className="thethought-arrow-link"
+      style={{
+        position: 'fixed',
+        right: '2vw',
+        bottom: '2vw'
+      }}
+    >
+      <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
+      <span>The Thought</span>
+    </a>
+    </>
   );
 }
 

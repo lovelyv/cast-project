@@ -1,17 +1,31 @@
-#root {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0; /* remove default left/right padding */
-  text-align: initial;
+.thethought-arrow-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  background: rgba(255,255,255,0.85);
+  border-radius: 2em;
+  padding: 0.5em 1.2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  font-size: 1.1em;
+  z-index: 1000;
+  transition: background 0.2s, color 0.2s;
+}
+.thethought-arrow-link:hover {
+  background: #222 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: background 0.2s, color 0.2s;
+}
+@media (max-width: 600px) {
+  .thethought-arrow-link {
+    font-size: 0.85em !important;
+    padding: 0.4em 0.8em !important;
+  }
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }

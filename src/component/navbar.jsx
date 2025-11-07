@@ -51,7 +51,7 @@ function Navbar() {
             <div className={styles.navContent}>
                 <div className={styles.logoContainer}>
                     <div className={styles.logoWrapper}>
-                        <span className={styles.logoRegMark} aria-hidden="true">®</span>
+                        {/* Removed registered mark */}
                         <img src={logo} alt="Logo" className={styles.logoImage} />
                     </div>
                     <a href={base} className={styles.logoLink} aria-label="Go to homepage">
