@@ -19,7 +19,7 @@ function HitItPage() {
 
   return (
     <>
-    <div className="App" style={{ paddingTop: '0rem', position: 'relative', minHeight: '100vh' }}>
+  <div className="App hititpage-padded" style={{ position: 'relative', minHeight: '100vh' }}>
       {/* Background watermark */}
       <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
 
