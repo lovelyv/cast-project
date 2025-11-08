@@ -30,8 +30,7 @@ function HitItPage() {
           
           <p>
             Its all about real stories.<br></br>Told without filters, judgment, or embellishment.<br></br><br></br>Every story explores<br></br>the lived experiences of Non-Resident Indians.<br></br>People of Indian heritage<br></br><br></br>
-            Their journeys across continents.<br></br>Sacrifices, ambitions, and triumphs.<br></br><br></br>We firmly believe that 
-            authentic emotion, not opinion<br></br>drives connection.
+            Their journeys across continents.<br></br>Sacrifices, ambitions, and triumphs.<br></br><br></br>We firmly believe that <br></br>authentic emotion, not opinion<br></br>drives connection.
           </p>
           {/* Add your form or content here */}
          <div style={{ display: 'flex', justifyContent: 'center' }}>
