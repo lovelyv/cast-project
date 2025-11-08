@@ -471,7 +471,7 @@
   font-size: clamp(24px, 4.8vw, 64px);
   line-height: 1.1;
   letter-spacing: 0.2px;
-  color: #FFFFAA;
+  color: orange;
   text-align: left;
   font-family: 'Times New Roman', Times, serif;
 }
