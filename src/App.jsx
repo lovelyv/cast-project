@@ -13,59 +13,12 @@ import styles from "./App.module.css";
 const SUBPAGE_WATERMARK_OPACITY = 0.17;
 
 function App() {
-  // For slide-in animation on viewport
-  const [slideIn, setSlideIn] = useState(false);
-  const [showButton, setShowButton] = useState(() => false);
+  // Remove slide-in animation for button; show immediately
   const heroRef = useRef(null);
   const subcopyRef = useRef(null);
-  const realEmotionsRef = useRef(null);
-  useEffect(() => {
-    // Helper to check if small viewport
-    const isSmall = () => window.innerWidth <= 600;
-    let observer;
-    if (isSmall()) {
-      if (!subcopyRef.current) return;
-      observer = new window.IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setSlideIn(true);
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.7 }
-      );
-      observer.observe(subcopyRef.current);
-    } else {
-      if (!heroRef.current) return;
-      observer = new window.IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setSlideIn(true);
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.2 }
-      );
-      observer.observe(heroRef.current);
-    }
-    return () => observer && observer.disconnect();
-  }, []);
+  // Slide-in effect removed; button will show immediately
 
-  // Show button only when 'Real Emotions.' is visible after slideIn
-  useEffect(() => {
-    if (!slideIn || !realEmotionsRef.current) {
-      setShowButton(false);
-      return;
-    }
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        setShowButton(entry.isIntersecting);
-      },
-      { threshold: 0.9 }
-    );
-    observer.observe(realEmotionsRef.current);
-    return () => observer.disconnect();
-  }, [slideIn]);
+  // Slide-in effect removed; button will show immediately
   // simple hash-based router
   const [route, setRoute] = useState(() => (window.location.hash || '').replace('#',''));
   useEffect(() => {
@@ -127,25 +80,43 @@ function App() {
                 {/* Top links removed */}
                 {/* Tagline above the main headline */}
                
-                <p ref={subcopyRef} className={`${styles["hero-subcopy"]} line-slide delay-1`}>
-                  <span className={styles.embossed}>NRI Stories<span className={styles['reg-mark']}>®</span></span><br></br> is a next-generation storytelling platform.<br></br><br></br>Authentic stories<br></br>from the global Indian diaspora.<br></br><br></br>
+                <p ref={subcopyRef} className={`${styles["hero-subcopy"]}`}>
+                  <span className={styles.embossed}><span className={styles.nowrap}>NRI Stories&nbsp;<span className={styles['reg-mark']}>®</span></span></span><br></br> is a next-generation storytelling platform.<br></br><br></br>Authentic stories<br></br>from the global Indian diaspora.<br></br><br></br>
                   Told straight from the heart.<br/> 
                   In a visually immersive, <span className={styles.nowrap}>documentary-style</span>.
                 </p>
                 <h1 className={styles["headline"]}>
-                  <span className={`line-slide delay-2 ${slideIn ? 'in' : ''} ${styles["headline-spaced"]}`}>Real People.</span>
-                  <span className={`line-slide delay-3 ${slideIn ? 'in' : ''} ${styles["headline-spaced"]}`}>Real Journeys.</span>
-                  <span ref={realEmotionsRef} className={`line-slide delay-4 ${slideIn ? 'in' : ''}`}>Real Emotions.</span>
+                  <span className={styles["headline-spaced"]}>Real People.</span>
+                  <span className={styles["headline-spaced"]}>Real Journeys.</span>
+                  <span>Real Emotions.</span>
                 </h1>
-                
+                <div style={{ marginTop: '2.2rem' }}></div>
+                <button
+                  className={styles.pulse}
+                  style={{
+                    background: 'linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%)',
+                    color: '#3a2600',
+                    border: 'none',
+                    fontWeight: 700,
+                    fontSize: '1.2rem',
+                    borderRadius: '2.2rem',
+                    boxShadow: '0 2px 12px 0 rgba(255,140,0,0.10)',
+                    cursor: 'pointer',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    display: 'block',
+                    padding: '0.9em 2.2em',
+                  }}
+                  onClick={() => { window.location.hash = '#hitit'; }}
+                >
+                  Hit It
+                </button>
+                {/* Restore original slide-in and showButton logic for Hit It button */}
+                {/*
                 {slideIn && showButton && (
-                  <button
-                    className={`share-button popout-hitit-button line-slide delay-4 in`}
-                    onClick={() => { window.location.hash = '#hitit'; }}
-                  >
-                    Hit It
-                  </button>
+                 
                 )}
+                */}
                 <div style={{ height: '3.5rem', width: '100%' }} aria-hidden="true"></div>
               </div>
             </div>
