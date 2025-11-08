@@ -1,4 +1,21 @@
+.docucast-tm-wrap {
+  display: inline-block;
+  position: relative;
 
+}
+
+
+.reg-mark {
+  display: inline-block;
+ 
+  font-size: 0.9em;
+  line-height: 1.7em;
+ 
+}
+
+
+
+  
 .accordion-header:hover .accordion-header-text,
 .accordion-header:focus .accordion-header-text {
   color: #1976d2;
@@ -13,7 +30,6 @@
 
 .accordion-header {
   width: 100%;
-  text-align: center;
   background: none;
   border: none;
   font-size: 2.2rem;
@@ -22,38 +38,57 @@
   padding: 10px 0 8px 0;
   cursor: pointer;
   outline: none;
-  color: #D2691E;
+  color: rgb(210, 105, 30);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Rubik';
+  gap: 0;
 }
 
 .accordion-header-text {
   font-weight: 700;
   font-style: italic;
-  color: #D2691E;
-  flex: 1;
+  color: rgb(210, 105, 30);
+  flex: none;
   text-align: center;
   opacity: 1 !important;
   background: none;
-  text-shadow:
-    2px 2px 8px #222,
-   -2px 2px 8px #222,
-    2px -2px 8px #222,
-   -2px -2px 8px #222;
+  font-family: 'Rubik';
   transition: color 0.2s;
   border-radius: 0;
   padding: 0;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  white-space: normal;
+  word-break: break-word;
+  max-width: 80vw;
 }
 
 .accordion-header-icon {
   font-size: 20px;
-  margin-left: 16px;
+  min-width: 0;
+  margin-left: 0;
+  text-align: right;
 }
 
+@media (max-width: 600px) {
+  .accordion-header {
+    font-size: 2rem;
+  }
+  .accordion-header-text {
+    max-width: 70vw;
+    font-size: 1em;
+  }
+  .accordion-header-icon {
+    font-size: 18px;
+    margin-left: 0;
+  }
+}
+
+
 .accordion-section {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #993e3e;
   margin-bottom: 2px;
   padding-bottom: 0;
 }

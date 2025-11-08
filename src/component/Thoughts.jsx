@@ -30,7 +30,7 @@ function Thoughts({ scrollTo }) {
       <div className="hit-it-page">
         <div className="hit-it-page-container" style={{ maxWidth: 700, margin: '0 auto', marginTop: 40 }}>
           {/* Accordion 1: Landscape */}
-          <div className={styles['accordion-section']}>
+          <div className={styles['accordion-section'] + ' ' + styles['docucast']}>
             <button onClick={() => toggle(0)} className={styles['accordion-header']}>
               <span className={styles['accordion-header-text']}>Landscape</span>
               <span className={styles['accordion-header-icon']}>{open[0] ? '▲' : '▼'}</span>
@@ -46,12 +46,12 @@ function Thoughts({ scrollTo }) {
           {/* Accordion 2: Introducing DocuCast® */}
           <div className={styles['accordion-section']}>
             <button onClick={() => toggle(1)} className={styles['accordion-header']}>
-              <span className={styles['accordion-header-text']}>Introducing DocuCast<span className="reg-mark">®</span></span>
+              <span className={styles['accordion-header-text']}>Introducing DocuCast<span className={styles['reg-mark']}>™</span></span>
               <span className={styles['accordion-header-icon']}>{open[1] ? '▲' : '▼'}</span>
             </button>
             {open[1] && (
               <div className={styles['accordion-content']}>
-                <span style={{ color: '#D2691E', fontWeight: '700' }}>Introducing DocuCast<span className="reg-mark">®</span></span> — Podcasts with Visual Enrichment.
+                <span style={{ color: '#D2691E', fontWeight: '700' }}>Introducing DocuCast<span className={styles['docucast-tm-wrap']}><span className={styles['reg-mark']}>™</span></span></span> — Podcasts with Visual Enrichment.
                 <br />A hybrid between a podcast and a documentary, each episode weaves interviews, archival footage, and cinematic visuals into a single narrative arc.<br />
                 It's storytelling that looks, sounds, and feels different — a documentary in podcast form.
               </div>

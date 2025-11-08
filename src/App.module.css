@@ -62,8 +62,7 @@
 .delay-3 { transition-delay: 0.04s; }
 .delay-4 { transition-delay: 0.05s; }
 
-  animation: none !important;
-  transform: none !important;
+ 
 
 .reg-mark {
   font-size: 0.7em;
@@ -503,7 +502,7 @@
   font-size: clamp(24px, 4.8vw, 64px);
   line-height: 1.1;
   letter-spacing: 0.2px;
-  color: orange;
+  color: rgb(210, 105, 30);
   text-align: left;
   font-family: 'Rubik';
 }

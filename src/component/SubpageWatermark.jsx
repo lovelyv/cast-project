@@ -7,7 +7,7 @@ import logo from '../assets/logo.png';
  */
 export default function SubpageWatermark({
   size = '45vw',
-  opacity = 0.23,
+  opacity = 0.17,
   position = 'center center',
   zIndex = 0,
 }) {
