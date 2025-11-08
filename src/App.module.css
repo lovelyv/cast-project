@@ -1,3 +1,21 @@
+.hit-it-page {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .hit-it-page {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+}
+@media (max-width: 900px) {
+  .hitit-main-container {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+    box-sizing: border-box !important;
+  }
+}
 .pulse:hover, .pulse:focus, .pulse:active {
   animation: none !important;
 }

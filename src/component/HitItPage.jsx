@@ -19,13 +19,25 @@ function HitItPage() {
 
   return (
     <>
-  <div className="App hititpage-padded" style={{ position: 'relative', minHeight: '100vh', color: '#222' }}>
+  <div className="App hititpage-padded hitit-main-container" style={{ position: 'relative', minHeight: '100vh', color: '#222' }}>
       {/* Background watermark */}
       <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
 
-      <Navbar />
+      <div style={{ marginBottom: '2.5rem' }}>
+        <Navbar />
+      </div>
 
-      <div className="hit-it-page">
+      <div
+        className="hit-it-page"
+        id="hititpage-padded"
+        style={{
+          paddingTop: '3.5rem',
+          paddingBottom: '1.5rem',
+          borderTop: '3.5rem solid transparent',
+          borderBottom: '1.5rem solid transparent',
+          boxSizing: 'border-box',
+        }}
+      >
         <div className="hit-it-page-container">
           
           <p>
