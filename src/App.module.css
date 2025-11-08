@@ -18,10 +18,10 @@
   opacity: 1;
   transform: none;
 }
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.3s; }
-.delay-3 { transition-delay: 0.5s; }
-.delay-4 { transition-delay: 0.7s; }
+.delay-1 { transition-delay: 0.01s; }
+.delay-2 { transition-delay: 0.03s; }
+.delay-3 { transition-delay: 0.04s; }
+.delay-4 { transition-delay: 0.05s; }
 .share-button.popout-hitit-button:hover, .share-button.popout-hitit-button:active, .share-button.popout-hitit-button:focus {
   animation: none !important;
   transform: none !important;
@@ -63,6 +63,7 @@
     margin-right: 0 !important;
     display: block !important;
     text-align: center !important;
+    font-family: 'Rubik', 'Arial', sans-serif !important;
   }
   .hero-subcopy {
     width: 100vw !important;
@@ -473,7 +474,7 @@
   letter-spacing: 0.2px;
   color: orange;
   text-align: left;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Rubik';
 }
 
 .hero-subcopy {
