@@ -1,9 +1,8 @@
-.navbar {
+ .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  /* match page background (use top gradient color) */
   background: var(--bg1);
   padding: 1rem 0 0 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);

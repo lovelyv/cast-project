@@ -1,3 +1,24 @@
+/* Vertically center .all-page-container in viewport, but allow scrolling if content overflows */
+@media (min-width: 601px) {
+  .all-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .all-page-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+  }
+}
+@media (min-width: 751px) {
+  .all-page, .all-page-container {
+    padding-top: 80px; /* Adjust to match navbar height */
+  }
+}
 :root {
   font-family: 'Inter', Roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   line-height: 1.5;
@@ -635,8 +656,8 @@ button:focus-visible {
   min-height: 100vh;
   box-sizing: border-box;      /* include padding inside the box */
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   overflow-x: hidden;          /* avoid horizontal scroll */
   overflow-y: auto;            /* allow vertical scrolling when content exceeds */
   background-color: #B8D4E8;   /* pastel blue background for subpages */
@@ -647,9 +668,9 @@ button:focus-visible {
   width: 100%;
   margin: 0 auto;               /* center the container horizontally */
   text-align: center;           /* center text content */
-  display: flex;                /* center child elements */
+  display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;          /* center children horizontally */
   animation: fadeInUp 0.6s ease-out;
 }
 
