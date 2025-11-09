@@ -1,3 +1,4 @@
+
 /* Vertically center .all-page-container in viewport, but allow scrolling if content overflows */
 @media (min-width: 601px) {
   .all-page {
@@ -20,9 +21,10 @@
   }
 }
 :root {
-  font-family: 'Inter', Roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-family: 'Arial';
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 200;
+  
 
   /* Dark theme */
   color-scheme: dark;
@@ -705,11 +707,13 @@ button:focus-visible {
   padding-inline: clamp(16px, 4vw, 40px);
 }
 
-.all-page-container p {
+/* Apply same style to p and div for consistent copy */
+.all-page-container p,
+.all-page-container div {
   color: #0d2d44;  /* dark blue-grey for body text readability */
-  font-size: clamp(20px, 2.6vw, 24px); /* larger, responsive body text */
+  font-size: 1.5rem;
   line-height: 1.75; /* more comfortable reading */
-  font-weight: 600;  /* bolder copy */
+  font-weight: 200;
   margin: 0 0 20px 0;
   text-align: center;
 }
