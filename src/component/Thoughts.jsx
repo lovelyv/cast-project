@@ -32,7 +32,7 @@ function Thoughts({ scrollTo }) {
           {/* Accordion 1: Landscape */}
           <div className={styles['accordion-section'] + ' ' + styles['docucast']}>
             <button onClick={() => toggle(0)} className={styles['accordion-header']}>
-              <span className={styles['accordion-header-text']}>Landscape</span>
+              <span className={styles['accordion-title']}>Landscape</span>
               <span className={styles['accordion-header-icon']}>{open[0] ? '▲' : '▼'}</span>
             </button>
             {open[0] && (
@@ -46,7 +46,7 @@ function Thoughts({ scrollTo }) {
           {/* Accordion 2: Introducing DocuCast® */}
           <div className={styles['accordion-section']}>
             <button onClick={() => toggle(1)} className={styles['accordion-header']}>
-              <span className={styles['accordion-header-text']}>Introducing DocuCast<span className={styles['reg-mark']}>™</span></span>
+              <span className={styles['accordion-title']}>Introducing DocuCast&trade;</span>
               <span className={styles['accordion-header-icon']}>{open[1] ? '▲' : '▼'}</span>
             </button>
             {open[1] && (
@@ -60,7 +60,7 @@ function Thoughts({ scrollTo }) {
           {/* Accordion 3: The Experience */}
           <div className={styles['accordion-section']}>
             <button onClick={() => toggle(2)} className={styles['accordion-header']}>
-              <span className={styles['accordion-header-text']}>The Experience</span>
+              <span className={styles['accordion-title']}>The Experience</span>
               <span className={styles['accordion-header-icon']}>{open[2] ? '▲' : '▼'}</span>
             </button>
             {open[2] && (
@@ -74,7 +74,7 @@ function Thoughts({ scrollTo }) {
           {/* Accordion 4: The Viewing */}
           <div className={styles['accordion-section']}>
             <button onClick={() => toggle(3)} className={styles['accordion-header']}>
-              <span className={styles['accordion-header-text']}>The Viewing</span>
+              <span className={styles['accordion-title']}>The Viewing</span>
               <span className={styles['accordion-header-icon']}>{open[3] ? '▲' : '▼'}</span>
             </button>
             {open[3] && (
