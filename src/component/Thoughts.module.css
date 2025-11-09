@@ -32,6 +32,7 @@
   color: rgb(210, 105, 30);
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
   font-family: 'Rubik';
   gap: 0;
@@ -58,21 +59,19 @@
   opacity: 1 !important;
   text-align: center;
   margin: 0 auto;
-  display: block;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 600px) {
   .accordion-header {
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
   .accordion-title {
     font-size: 1.8rem; /* 16px on small screens */
-    flex: 1;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
   }
   .accordion-header-icon {
     margin-left: auto;
@@ -85,7 +84,7 @@
     font-size: 2.2rem; /* ~22px on medium screens */
   }
   .accordion-header {
-    justify-content: flex-start;
+    justify-content: center;
   }
   .accordion-header-icon {
     margin-left: auto;
@@ -99,7 +98,7 @@
     font-size: 2rem; /* ~22px on large screens */
   }
   .accordion-header {
-    justify-content: flex-start;
+    justify-content: center;
   }
   .accordion-header-icon {
     margin-left: auto;
