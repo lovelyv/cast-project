@@ -114,6 +114,7 @@
   color: rgb(210, 105, 30);
   align-self: flex-start;
   vertical-align: super;
+  font-style: normal;
 }
 @media (max-width: 600px) {
   .accordion-header-icon {
