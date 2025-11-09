@@ -14,17 +14,20 @@
   --spot2: #1e3a5f26; /* lighter cool glow */
   --spot3: #14253d1f; /* subtle highlight */
   background:
-  /* soft glows */
-  radial-gradient(1200px 800px at 12% 12%, var(--spot1) 0%, transparent 55%),
-  radial-gradient(1000px 700px at 88% 88%, var(--spot2) 0%, transparent 55%);
+    radial-gradient(1200px 800px at 12% 12%, var(--spot1) 0%, transparent 55%),
+    radial-gradient(1000px 700px at 88% 88%, var(--spot2) 0%, transparent 55%);
+  background-size: cover;
+  background-attachment: fixed;
 }
+
 
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden; /* prevent horizontal scroll on small screens */
-}
+  min-height: 100vh;
+} 
 
 body {
   margin: 0;
@@ -629,9 +632,8 @@ button:focus-visible {
 
 /* HitIt Page Styles */
 .all-page {
-  min-height: 100svh;          /* allow page to grow taller than viewport */
+  min-height: 100vh;
   box-sizing: border-box;      /* include padding inside the box */
-  padding: 120px 20px 60px;
   display: flex;
   align-items: center;
   justify-content: center;
