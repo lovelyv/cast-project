@@ -37,9 +37,20 @@ function Thoughts({ scrollTo }) {
             </button>
             {open[0] && (
               <div className={styles['accordion-content']}>
-                Over 6.5 million podcasts exist worldwide — yet most fade after a few episodes.<br />
-                Traditional podcasts rely heavily on talk-based formats: two cameras, one composite shot, minimal narrative structure.<br />
-                The ones that thrive do so through storytelling craft — not technology — by holding audience attention through cinematic pacing, emotional truth, and immersive presentation.
+                The Podcast world is overcrowded.<br />
+                Over 6.5 million podcasts exist worldwide.<br />
+                yet...<br /> 
+                most fade away<br />
+                after just a few episodes.<br /><br />
+                Traditional podcasts<br />
+                rely heavily on talk-based formats<br />
+                Two cameras, one composite shot.<br />
+                Minimal narrative structure.<br /><br />
+                The ones that thrive<br />
+                do so through storytelling craft.<br /><br />
+                Byholding viewer attention<br />
+                through cinematic pacing,<br />
+                emotional truth, <i>and</i> immersive presentation.
               </div>
             )}
           </div>
@@ -51,9 +62,13 @@ function Thoughts({ scrollTo }) {
             </button>
             {open[1] && (
               <div className={styles['accordion-content']}>
-                <span style={{ color: '#D2691E', fontWeight: '700' }}>Introducing DocuCast<span className={styles['docucast-tm-wrap']}><span className={styles['reg-mark']}>™</span></span></span> — Podcasts with Visual Enrichment.
-                <br />A hybrid between a podcast and a documentary, each episode weaves interviews, archival footage, and cinematic visuals into a single narrative arc.<br />
-                It's storytelling that looks, sounds, and feels different — a documentary in podcast form.
+                We have coined it as DocuCast&trade;.<br /><br />
+                A hybrid<br />
+                Between a podcast <i>and</i> a documentary.<br /><br />
+                Each episode has interviews, archival footage <i>and</i> cinematic visuals.<br />
+                Woven into a single narrative arc.<br /><br />
+                The storytelling that looks, sounds, and feels different.<br />
+                A documentary style podcast - with visual enrichment.
               </div>
             )}
           </div>
@@ -65,9 +80,12 @@ function Thoughts({ scrollTo }) {
             </button>
             {open[2] && (
               <div className={styles['accordion-content']}>
-                High-production, multi-camera, documentary-style storytelling.<br />
-                Designed for digital audiences who crave emotional depth and visual substance.<br />
-                A platform where the NRI voice is heard, seen, and preserved.
+                Multicam setup<br />
+                High on content<br /><br />
+                Designed for digital audiences.<br />
+                Who crave for <br />
+                emotional depth and visual substance.<br /><br />
+                A platform<br />where your voice is<br />heard, seen, preserved and immortalized.
               </div>
             )}
           </div>
