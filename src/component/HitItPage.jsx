@@ -28,7 +28,7 @@ function HitItPage() {
       </div>
 
       <div
-        className="hit-it-page"
+        className="all-page"
         id="hititpage-padded"
         style={{
           paddingTop: '3.5rem',
@@ -38,7 +38,7 @@ function HitItPage() {
           boxSizing: 'border-box',
         }}
       >
-        <div className="hit-it-page-container">
+        <div className="all-page-container">
           
           <p>
             Its all about real stories.<br></br>Told without filters, judgment, or embellishment.<br></br><br></br>Every story explores<br></br>the lived experiences of Non-Resident Indians.<br></br>People of Indian heritage<br></br><br></br>

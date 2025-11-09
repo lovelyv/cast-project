@@ -628,7 +628,7 @@ button:focus-visible {
 }
 
 /* HitIt Page Styles */
-.hit-it-page {
+.all-page {
   min-height: 100svh;          /* allow page to grow taller than viewport */
   box-sizing: border-box;      /* include padding inside the box */
   padding: 120px 20px 60px;
@@ -640,7 +640,7 @@ button:focus-visible {
   background-color: #B8D4E8;   /* pastel blue background for subpages */
 }
 
-.hit-it-page-container {
+.all-page-container {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;               /* center the container horizontally */
@@ -662,7 +662,7 @@ button:focus-visible {
   }
 }
 
-.hit-it-page-container h1 {
+.all-page-container h1 {
   color: #1a3a52;  /* dark blue for readability on pastel background */
   font-size: clamp(32px, 6vw, 56px);
   font-weight: 800;
@@ -672,7 +672,7 @@ button:focus-visible {
   padding-inline: clamp(16px, 4vw, 40px); /* increased breathing room around headlines */
 }
 
-.hit-it-page-container h2 {
+.all-page-container h2 {
   color: #1a3a52;  /* same dark blue as h1 */
   font-size: clamp(24px, 4.5vw, 42px);
   font-weight: 700;
@@ -682,7 +682,7 @@ button:focus-visible {
   padding-inline: clamp(16px, 4vw, 40px);
 }
 
-.hit-it-page-container p {
+.all-page-container p {
   color: #0d2d44;  /* dark blue-grey for body text readability */
   font-size: clamp(20px, 2.6vw, 24px); /* larger, responsive body text */
   line-height: 1.75; /* more comfortable reading */
@@ -730,7 +730,7 @@ button:focus-visible {
 }
 
 @media (max-width: 768px) {
-  .hit-it-page {
+  .all-page {
     padding: 88px 16px 28px 16px;  /* balanced padding on small screens */
   }
   

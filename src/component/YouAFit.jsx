@@ -10,8 +10,8 @@ function YouAFit() {
 
       <Navbar />
 
-      <div className="hit-it-page">
-        <div className="hit-it-page-container">
+      <div className="all-page">
+        <div className="all-page-container">
           <h1 style={{ marginTop: '60px' }}>You a Fit?</h1>
           <p>
             NRI Stories<span className="reg-mark">®</span> – <span style={{ color: '#D2691E', fontWeight: '700' }}>A compelling podcast</span> – with a difference

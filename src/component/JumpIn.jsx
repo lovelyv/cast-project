@@ -50,8 +50,8 @@ function JumpIn() {
 
       <Navbar />
 
-      <div className="hit-it-page">
-        <div className="hit-it-page-container">
+      <div className="all-page">
+        <div className="all-page-container">
           <h1 style={{ marginTop: '60px' }}>Jump In</h1>
           
           <p>
