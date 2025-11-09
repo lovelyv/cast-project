@@ -28,7 +28,7 @@ function Thoughts({ scrollTo }) {
       <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
       <Navbar />
       <div className="all-page">
-        <div className="all-page-container" style={{ maxWidth: 700, margin: '0 auto', marginTop: 40 }}>
+        <div className="all-page-container">
           {/* Accordion 1: Landscape */}
           <div className={styles['accordion-section'] + ' ' + styles['docucast']}>
             <button onClick={() => toggle(0)} className={styles['accordion-header']}>
