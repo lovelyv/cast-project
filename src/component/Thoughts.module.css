@@ -41,10 +41,19 @@
   color: rgb(210, 105, 30);
   display: flex;
   align-items: center;
-  justify-content: center;
+  position: relative;
   font-family: 'Rubik';
   gap: 0;
 }
+
+.accordion-header:focus,
+.accordion-header:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+
 
 
 
@@ -57,27 +66,53 @@
   font-family: 'Rubik';
   opacity: 1 !important;
   text-align: center;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap; /* keep icon aligned */
-  gap: 3rem;       /* space between text & icon */
+  margin: 0 auto;
+  display: block;
 }
 
 @media (max-width: 600px) {
+  .accordion-header {
+    justify-content: space-between;
+    align-items: center;
+  }
   .accordion-title {
     font-size: 1.8rem; /* 16px on small screens */
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .accordion-header-icon {
+    margin-left: auto;
+    margin-right: 0;
+    align-self: flex-end;
   }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
   .accordion-title {
     font-size: 2.2rem; /* ~22px on medium screens */
   }
+  .accordion-header {
+    justify-content: flex-start;
+  }
+  .accordion-header-icon {
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
 
 
 @media (min-width: 1025px) {
   .accordion-title {
-    font-size: 3rem; /* ~22px on large screens */
+    font-size: 2rem; /* ~22px on large screens */
+  }
+  .accordion-header {
+    justify-content: flex-start;
+  }
+  .accordion-header-icon {
+    margin-left: auto;
+    margin-right: 0;
   }
 }
 
@@ -85,17 +120,16 @@
 
 
 .accordion-header-icon {
-color: rgb(210, 105, 30);
-margin-left: 0.25rem;  
-vertical-align: super;
-  
+  color: rgb(210, 105, 30);
+  align-self: flex-start;
+  vertical-align: super;
 }
 @media (max-width: 600px) {
   .accordion-header-icon {
     font-size: 1rem; /* 16px on small screens */
   }
 }
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (min-width: 601px)  {
   .accordion-header-icon {
     font-size: 1.5rem; /* ~22px on medium screens */
   }
@@ -107,6 +141,7 @@ vertical-align: super;
   border-bottom: 1px solid #993e3e;
   margin-bottom: 2px;
   padding-bottom: 0;
+  width: 100%;
 }
 
 @media (max-width: 600px) {
