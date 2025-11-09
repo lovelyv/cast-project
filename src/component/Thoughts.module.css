@@ -16,15 +16,6 @@
 
 
   
-.accordion-header:hover .accordion-header-text,
-.accordion-header:focus .accordion-header-text {
-  color: #1976d2;
-}
-
-.accordion-header:hover .accordion-header-icon,
-.accordion-header:focus .accordion-header-icon {
-  color: #1976d2;
-}
 
 
 
