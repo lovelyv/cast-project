@@ -212,6 +212,12 @@
   }
 }
 
+@media (max-width: 600px) {
+  .accordion-section {
+    width: 80%;
+  }
+}
+
  .accordion-content {
   padding: 0 0 18px 0;
   color: #444;
