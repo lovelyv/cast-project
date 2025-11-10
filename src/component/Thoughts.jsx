@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from './Thoughts.module.css';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
+import visualStory from '../assets/visualstory.jpeg';
+import soundfeel from '../assets/soundfeel.jpeg';
 
 function Thoughts({ scrollTo }) {
   useEffect(() => {
@@ -116,18 +118,47 @@ function Thoughts({ scrollTo }) {
             {open[3] && (
               <div className={styles['accordion-content']}>
                 <div className="info-boxes">
-                  <div className="info-box">
+                  <div className={styles.container}>
+                  <div className={styles['left-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                     <h3>Visual Storytelling</h3>
                     <p>Cinematic B-roll, archival images, and on-location frames add context and depth.</p>
                   </div>
-                  <div className="info-box">
-                    <h3>Sound you can feel</h3>
+                  <div className={styles['right-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <img
+                      src={visualStory}
+                      alt="Visual Story"
+                    />
+                  </div>
+                </div>
+                 
+                  
+                </div>
+                <div className="info-boxes">
+                  <div className={styles.container}>
+                  <div className={styles['left-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <h3>Sound you can</h3>
                     <p>Voice first, layered sound design and a score that supports the emotion - never distracts.</p>
                   </div>
-                  <div className="info-box">
+                  <div className={styles['right-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <img
+                      src={soundfeel}
+                      alt="Sound Feel"
+                    />
+                  </div>
+                </div>
+                 
+                  
+                </div>
+                <div className="info-boxes">
+                  <div className={styles.container}>
+                  <div className={styles['left-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                     <h3>Editorial arcs</h3>
                     <p>Each episode is structured for momentum - opening hook, rising stakes, resolution, and reflection.</p>
                   </div>
+                  
+                </div>
+                 
+                  
                 </div>
               </div>
             )}
