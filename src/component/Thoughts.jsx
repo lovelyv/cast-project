@@ -149,6 +149,17 @@ function Thoughts({ scrollTo }) {
                  
                   
                 </div>
+                <div className="info-boxes">
+                  <div className={styles.container}>
+                  <div className={styles['left-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <h3>Editorial arcs</h3>
+                    <p>Each episode is structured for momentum - opening hook, rising stakes, resolution, and reflection.</p>
+                  </div>
+                  
+                </div>
+                 
+                  
+                </div>
               </div>
             )}
           </div>
