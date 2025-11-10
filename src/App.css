@@ -11,21 +11,7 @@
     padding-top: 0;
   }
 }
-.thethought-arrow-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  background: rgba(255,255,255,0.85);
-  border-radius: 2em;
-  padding: 0.5em 1.2em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  text-decoration: none;
-  color: #222;
-  font-weight: 500;
-  font-size: 1.1em;
-  z-index: 1000;
-  transition: background 0.2s, color 0.2s;
-}
+
 .thethought-arrow-link:hover {
   background: #222 !important;
   color: #fff !important;

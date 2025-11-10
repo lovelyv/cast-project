@@ -13,13 +13,8 @@ import styles from "./App.module.css";
 const SUBPAGE_WATERMARK_OPACITY = 0.17;
 
 function App() {
-  // Remove slide-in animation for button; show immediately
   const heroRef = useRef(null);
   const subcopyRef = useRef(null);
-  // Slide-in effect removed; button will show immediately
-
-  // Slide-in effect removed; button will show immediately
-  // simple hash-based router
   const [route, setRoute] = useState(() => (window.location.hash || '').replace('#',''));
   useEffect(() => {
     const onHash = () => setRoute((window.location.hash || '').replace('#',''));

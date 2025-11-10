@@ -8,6 +8,7 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   z-index: 1000;
   box-sizing: border-box;
+  background-color: black;
 }
 
 .navContent {
@@ -64,6 +65,8 @@
   color: #FFFFAA; /* slightly darker pastel yellow - matches H1 */
   position: relative;
   transition: color 0.2s ease, transform 0.2s ease;
+  font-family:  'Arial', sans-serif;
+  font-size: 1.2rem;
 }
 
 .navLink:hover {
@@ -146,6 +149,8 @@
   margin: 0;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   color: #FFFFAA; /* slightly darker pastel yellow - matches H1 */
+  font-family:  'Arial', sans-serif;
+
 }
 
 .regMark {

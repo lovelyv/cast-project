@@ -33,11 +33,24 @@ function Thoughts({ scrollTo }) {
       // Only scroll if opening (not closing)
       setTimeout(() => {
         if (newOpen[idx] && headerRefs[idx].current) {
-          const nav = document.querySelector('nav');
-          const navHeight = nav ? nav.offsetHeight : 0;
-          const rect = headerRefs[idx].current.getBoundingClientRect();
-          const scrollY = window.scrollY + rect.top - navHeight - 16; // 16px breathing room
-          window.scrollTo({ top: scrollY, behavior: 'smooth' });
+          // For the first accordion, scroll header into view, then scroll up by navbar height + extra
+          if (idx === 0) {
+            headerRefs[idx].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => {
+              const nav = document.querySelector('nav');
+              const navHeight = nav ? nav.offsetHeight : 0;
+              // Use a smaller offset for small screens
+              const isSmall = window.innerWidth <= 600;
+              const extra = isSmall ? 8 : 40;
+              window.scrollBy({ top: -navHeight - extra, behavior: 'smooth' });
+            }, 400);
+          } else {
+            const nav = document.querySelector('nav');
+            const navHeight = nav ? nav.offsetHeight : 0;
+            const rect = headerRefs[idx].current.getBoundingClientRect();
+            const scrollY = window.scrollY + rect.top - navHeight - 16;
+            window.scrollTo({ top: scrollY, behavior: 'smooth' });
+          }
         }
       }, 50);
       return newOpen;
@@ -45,12 +58,12 @@ function Thoughts({ scrollTo }) {
   };
 
   return (
-    <div className="App">
-      {/* Background watermark */}
-      <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
-      <Navbar />
-      <div className="all-page">
-        <div className="all-page-container">
+    <div>
+        <Navbar />
+      
+  <div className={styles['all-page-thoughts']}> 
+    <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
+         <div className={styles['thoughts-content-bg']}>
           {/* Accordion 1: Landscape */}
           <div className={styles['accordion-section'] + ' ' + styles['docucast']}>
             <button ref={headerRefs[0]} onClick={() => toggle(0)} className={styles['accordion-header']}>
@@ -59,7 +72,7 @@ function Thoughts({ scrollTo }) {
             </button>
             {open[0] && (
               <div className={styles['accordion-content']}>
-                The Podcast world is overcrowded.<br />
+                <span className={styles.overcrowded}>The Podcast world is overcrowded.</span><br />
                 Over 6.5 million podcasts exist worldwide.<br />
                 yet...<br /> 
                 most fade away<br />
@@ -70,7 +83,7 @@ function Thoughts({ scrollTo }) {
                 Minimal narrative structure.<br /><br />
                 The ones that thrive<br />
                 do so through storytelling craft.<br /><br />
-                Byholding viewer attention<br />
+                By holding viewer attention<br />
                 through cinematic pacing,<br />
                 emotional truth, <i>and</i> immersive presentation.
               </div>
@@ -117,55 +130,49 @@ function Thoughts({ scrollTo }) {
             </button>
             {open[3] && (
               <div className={styles['accordion-content']}>
-                <div className="info-boxes">
+               
                   <div className={styles.container}>
-                  <div className={styles['left-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <div className={styles['left-box']}>
                     <h3>Visual Storytelling</h3>
                     <p>Cinematic B-roll, archival images, and on-location frames add context and depth.</p>
                   </div>
-                  <div className={styles['right-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <div className={styles['right-box']}>
                     <img
                       src={visualStory}
                       alt="Visual Story"
                     />
                   </div>
-                </div>
-                 
-                  
-                </div>
-                <div className="info-boxes">
+                  </div>
+                
+                
                   <div className={styles.container}>
-                  <div className={styles['left-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <div className={styles['left-box']}>
                     <h3>Sound you can</h3>
                     <p>Voice first, layered sound design and a score that supports the emotion - never distracts.</p>
                   </div>
-                  <div className={styles['right-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <div className={styles['right-box']}>
                     <img
                       src={soundfeel}
                       alt="Sound Feel"
                     />
                   </div>
-                </div>
-                 
-                  
-                </div>
-                <div className="info-boxes">
+                  </div>
+                
+               
                   <div className={styles.container}>
-                  <div className={styles['left-box']} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <div className={styles['left-box']}>
                     <h3>Editorial arcs</h3>
                     <p>Each episode is structured for momentum - opening hook, rising stakes, resolution, and reflection.</p>
                   </div>
                   
-                </div>
-                 
-                  
-                </div>
+                  </div>
+                
               </div>
             )}
           </div>
         </div>
       </div>
-    </div>
+      </div>
   );
 }
 

@@ -1,8 +1,20 @@
-.hit-it-page {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw !important;
+  min-height: 100vh !important;
+  box-sizing: border-box !important;
+  /* background: transparent !important; */
 }
 
+.App {
+  width: 100vw !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  background: linear-gradient(135deg, #000 0%, #222 100%) !important;
+}
 @media (max-width: 900px) {
   .hit-it-page {
     padding-top: 3.5rem !important;
@@ -308,6 +320,7 @@
   margin: 0;
   position: relative;
   overflow-x: hidden;
+  background-color: black;
 }
 
 .hero-container {
@@ -480,13 +493,7 @@
   .headline {
     text-align: center !important;
   }
-  .hero-subcopy {
-    text-align: center !important;
-    margin-left: auto !important;
-    display: inline-block !important;
-    margin-right: auto !important;
-    text-align: center !important;
-  }
+  
   /* Removed invalid nested selectors. If you need .hero-left or .hero-image styles, define them at the top level. */
   .hero-image {
     display: block !important;
@@ -515,6 +522,8 @@
   max-width: 700px;
   width: 90%;
   font-size: clamp(18px, 3vw, 24px);
+  color: white;
+  font-family: 'Rubik', 'Arial', sans-serif;
 }
 
  
