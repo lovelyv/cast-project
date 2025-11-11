@@ -284,15 +284,16 @@ function JumpIn() {
             </a>
           </div>
 
-        <a href="#youafit" className={`${styles['jump-link']} ${styles['thoughts-link']}`}>
-        <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&larr;</span>
-        <span>You a fit?</span>
-        </a>
-
-        <a href="#showcase" className={styles['showcase-link']}>
-        <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&rarr;</span>
-        <span>Our Showcase</span>
-        </a> 
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5em' }}>
+          <a href="#youafit" className={`${styles['jump-link']} ${styles['thoughts-link']}`} style={{ marginLeft: '2vw' }}>
+            <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&larr;</span>
+            <span>You a fit?</span>
+          </a>
+          <a href="#showcase" className={styles['showcase-link']} style={{ marginRight: '2vw' }}>
+            <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&rarr;</span>
+            <span>Our Showcase</span>
+          </a>
+        </div>
         </div>
       </div>
 

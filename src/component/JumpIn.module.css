@@ -173,9 +173,6 @@ input.opaqueField, textarea.opaqueField {
   z-index: 1000;
   transition: background 0.2s, color 0.2s;
   width: fit-content;
-  position: fixed;
-  left: 2vw;
-  bottom: 2vw;
 }
 
 .thoughts-link:hover {
@@ -185,6 +182,7 @@ input.opaqueField, textarea.opaqueField {
   text-decoration: none;
 }
 
+/* Bottom anchor links: ensure not overlapping content on small screens */
 .showcase-link {
   font-family: 'Rubik', 'Arial', sans-serif;
   display: flex;
@@ -200,9 +198,22 @@ input.opaqueField, textarea.opaqueField {
   z-index: 1000;
   transition: background 0.2s, color 0.2s;
   width: fit-content;
-  position: fixed;
-  right: 2vw;
-  bottom: 2vw;
+}
+
+@media (max-width: 600px) {
+  .showcase-link {
+    bottom: 12vw;
+  }
+  .thoughts-link {
+    bottom: 12vw;
+  }
+}
+
+/* Add extra bottom padding to container on small screens */
+@media (max-width: 600px) {
+  .jumpin-container {
+    padding-bottom: 16vw;
+  }
 }
 
 .showcase-link:hover {

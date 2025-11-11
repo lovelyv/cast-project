@@ -79,8 +79,20 @@
   position: absolute;
   right: 2vw;
   bottom: 2vw;
-   font-family: 'Rubik', 'Arial', sans-serif;
 }
+
+@media (max-width: 600px) {
+  .thethought-arrow-link {
+    bottom: 12vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .all-page-hitit {
+    padding-bottom: 16vw;
+  }
+}
+
 
 .thethought-arrow-link:hover {
   background: #222;

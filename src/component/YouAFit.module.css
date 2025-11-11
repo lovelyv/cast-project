@@ -1,3 +1,16 @@
+@media (max-width: 600px) {
+  .jumpin-link,
+  .thoughts-link {
+    font-size: 0.95rem;
+    padding: 0.35em 0.8em;
+  }
+  .jumpin-link {
+    margin-right: 3vw;
+  }
+  .thoughts-link {
+    margin-left: 3vw;
+  }
+}
 /* Add line spacing between each 'stories-of' line */
 .stories-of {
   display: inline-block;
@@ -100,9 +113,21 @@
   z-index: 1000;
   transition: background 0.2s, color 0.2s;
   width: fit-content;
-  position: fixed;
-  right: 2vw;
-  bottom: 2vw;
+}
+
+@media (max-width: 600px) {
+  .jumpin-link {
+    bottom: 12vw;
+  }
+  .thoughts-link {
+    bottom: 12vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .youafit-page {
+    padding-bottom: 16vw;
+  }
 }
 
 .jumpin-link:hover {
@@ -127,9 +152,6 @@
   z-index: 1000;
   transition: background 0.2s, color 0.2s;
   width: fit-content;
-  position: fixed;
-  left: 2vw;
-  bottom: 2vw;
 }
 
 .thoughts-link:hover {
