@@ -1,85 +1,66 @@
+
 import React from 'react';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
+import styles from './YouAFit.module.css';
 
 function YouAFit() {
   return (
-    <div className="App">
-      {/* Background watermark */}
-      <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
-
+    <div className={styles['youafit-page']}>
       <Navbar />
+      <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
+      
+      <div className={styles['youafit-content-bg']}>
+        
+          <span style={{ whiteSpace: 'nowrap', fontWeight: 700 }}>
+            NRI stories
+            <span className="reg-mark" style={{ verticalAlign: 'super' }}>®</span>
+          </span>
+          is looking forward to showcase you.
+        
+        <p>
+          Reach out to us<br/>if you or someone you know<br/>has a story to tell<br />
+          that fits any of these criteria.<br />
+        </p>
 
-      <div className="all-page">
-        <div className="all-page-container">
-          <h1 style={{ marginTop: '60px' }}>You a Fit?</h1>
-          <p>
-            NRI Stories<span className="reg-mark">®</span> – <span style={{ color: '#D2691E', fontWeight: '700' }}>A compelling podcast</span> – with a difference
-          </p>
-          
-          <p>
-            It will not be opinionated or judgemental.<br/>
-            We will tell stories that are true to life.<br/>
-            We will tell stories that are un-hyphenated.<br/>
-            We will tell stories that are straight from the heart.
-          </p>
 
-          <p style={{ fontWeight: '400', fontFamily: 'Times New Roman, serif' }}>
-            <span className="stories-of">Stories of</span> success.<br/>
-            <span className="stories-of">Stories of</span> sacrifices.<br/>
-            <span className="stories-of">Stories of</span> raw emotions.<br/>
-            <span className="stories-of">Stories of</span> overriding ambition.<br/>
-            <span className="stories-of">Stories of</span> guts, valour and hard work.
-          </p>
-
-          <p style={{ fontWeight: '400', fontFamily: 'Times New Roman, serif' }}>
-            <span className="stories-of">Stories of</span> facing hurdles.<br/>
-            <span className="stories-of">Stories of</span> motivational value.<br/>
-            <span className="stories-of">Stories of</span> steely determination.<br/>
-            <span className="stories-of">Stories of</span> a never-say-die approach.<br/>
-            <span className="stories-of">Stories of</span> attaining freedom & security.<br/>
-            <span className="stories-of">Stories of</span> exemplary grit & perseverance.<br/>
-            <span className="stories-of">Stories of</span> insulating family from insecurities.<br/>
-            <span className="stories-of">Stories of</span> protracted separation from loved ones.<br/>
-            <span className="stories-of">Stories of</span> consistent, persistent and steadfast focus.
-          </p>
-
-          <p style={{ fontWeight: '400', fontFamily: 'Times New Roman, serif' }}>
-           
-            <span className="stories-of">Stories of</span> students.<br/>
-            <span className="stories-of">Stories of</span> asylum seekers.<br/>
-            <span className="stories-of">Stories of</span> undocumented aliens.<br/>
-            <span className="stories-of">Stories of</span> being emulation worthy.<br/>
-            <span className="stories-of">Stories of</span> families – wives, kids, parents.
-          </p>
-
-          <p style={{ fontWeight: '400', fontFamily: 'Times New Roman, serif' }}>
-            <span className="stories-of">Stories of</span> the rich and powerful.<br/>
-            <span className="stories-of">Stories of</span> startups.<br/>
-            <span className="stories-of">Stories of</span> market leaders.<br/>
-            <span className="stories-of">Stories of</span> business acumen.<br/>
-            <span className="stories-of">Stories of</span> creating employment.<br/>
-            <span className="stories-of">Stories of</span> helming organisations.<br/>
-            <span className="stories-of">Stories of</span> trend setters and influencers.
-          </p>
-
-          <p style={{ color: '#D2691E', fontWeight: '700' }}>
-            NRI Stories<span className="reg-mark">®</span> is looking forward to showcase U.
-          </p>
-
-          <p>
-            If you or someone you know has a&nbsp;story to&nbsp;tell<br/>
-            that fits any of these criteria,<br/>
-            and also provide some collaborative value addition,<br/>
-            do get in touch with us via <span style={{ color: '#D2691E', fontWeight: '700' }}>text</span> or <span style={{ color: '#D2691E', fontWeight: '700' }}>email</span> with your details.
-          </p>
-
-          <p>
-            Someone from our team will reach out 2U<br/>
-            to see if you are a good fit and can prove to be a&nbsp;compelling story to&nbsp;tell.<br/>
-            In the process, showcasing and immortalizing you in the digital landscape.
-          </p>
+        
+          <h2 className={styles['youafit-h2']}>Stories of</h2>
+          <div className={styles['stories-of']}>
+          Success.<br />Sacrifices.<br />Raw emotions.<br/>Overriding ambition.<br />
+          Guts, valour and hard work.<br /><br />
+          </div>
+          <h2 className={styles['youafit-h2']}>Stories of</h2>
+          <div className={styles['stories-of']}>        
+          Facing hurdles.<br />Motivational value.<br />Steely determination.<br />
+          A never-say-die approach.<br />Attaining freedom & security.<br />
+          Exemplary grit & perseverance.<br />Insulating family from insecurities.<br />
+          Protracted separation from loved ones.<br />Consistent, persistent and steadfast focus.<br /><br />
+            </div>          
+          <h2 className={styles['youafit-h2']}>Stories of</h2>
+          <div className={styles['stories-of']}>    
+          Students.<br />Asylum seekers.<br />
+          Undocumented aliens.<br />
+          Being emulation worthy.<br />
+          Families – wives, kids, parents.<br /><br />
+            </div>
+          <h2 className={styles['youafit-h2']}>Stories of</h2>
+          <div className={styles['stories-of']}>
+          The rich and powerful.<br />
+          Startups.<br />
+          Market leaders.<br />
+          Business acumen.<br />
+          Creating employment.<br />
+          Helming organisations.<br />
+          Trend setters and influencers.
         </div>
+        <p>
+          Text, mail or call us.<br/> we will reach out to you. 
+        </p>
+        <a href="#jumpin" className={styles['jumpin-link']}>
+                  <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
+                  <span>Jump In</span>
+                </a>  
       </div>
     </div>
   );

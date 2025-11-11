@@ -171,8 +171,12 @@ function Thoughts({ scrollTo }) {
             )}
           </div>
         </div>
+        <a href="#youafit" className={styles['youafit-arrow-link']}>
+          <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
+          <span>You a Fit?</span>
+        </a>  
       </div>
-      </div>
+    </div>
   );
 }
 

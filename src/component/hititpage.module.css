@@ -79,6 +79,7 @@
   position: absolute;
   right: 2vw;
   bottom: 2vw;
+   font-family: 'Rubik', 'Arial', sans-serif;
 }
 
 .thethought-arrow-link:hover {
@@ -86,4 +87,5 @@
   color: #fff;
   box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   text-decoration: none;
+  font-family: 'Rubik', 'Arial', sans-serif;
 }

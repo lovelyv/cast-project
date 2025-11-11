@@ -252,7 +252,7 @@
     width: 100%;
     max-height: 0;
     overflow: hidden;
-    background: var(--bg1); /* match page background */
+    background: #000 !important; /* force black background for mobile nav */
     flex-direction: column;
     gap: 0;
     padding: 0;

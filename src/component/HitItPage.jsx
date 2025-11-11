@@ -22,9 +22,9 @@ function HitItPage() {
   return (
     <>
   <div>
-      <div>
+    
         <Navbar />
-      </div>
+      
 
       <div className={styles['all-page-hitit']}>
         {/* Background watermark (moved inside for stacking context) */}
@@ -36,10 +36,11 @@ function HitItPage() {
           </p>
           <img src={hindilogo} alt="Hindi Logo" className={styles['hitit-img']} />
         </div>
-        <a href="#thoughts"className={styles['thethought-arrow-link']}>
-      <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
-      <span>The Thought</span>
-    </a> 
+        <a href="#thoughts" className={styles['thethought-arrow-link']}>
+          <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
+          <span>The Thought</span>
+        </a>
+        
       </div>
       </div>
     
