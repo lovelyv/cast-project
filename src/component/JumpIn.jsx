@@ -283,8 +283,20 @@ function JumpIn() {
               </svg>
             </a>
           </div>
+
+        <a href="#thoughts" className={`${styles['jump-link']} ${styles['thoughts-link']}`}>
+        <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&larr;</span>
+        <span>The Thought</span>
+        </a>
+
+        <a href="#showcase" className={styles['showcase-link']}>
+        <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&rarr;</span>
+        <span>Our Showcase</span>
+        </a> 
         </div>
       </div>
+
+     
     </div>
   );
 }

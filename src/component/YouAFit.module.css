@@ -112,3 +112,30 @@
   text-decoration: none;
 }
 
+.thoughts-link {
+  font-family: 'Rubik', 'Arial', sans-serif;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 2em;
+  padding: 0.5em 1.2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  font-size: 1rem;
+  z-index: 1000;
+  transition: background 0.2s, color 0.2s;
+  width: fit-content;
+  position: fixed;
+  left: 2vw;
+  bottom: 2vw;
+}
+
+.thoughts-link:hover {
+  background: #222;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  text-decoration: none;
+}
+

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
@@ -59,6 +58,11 @@ function YouAFit() {
         </p>
         {/* Info boxes removed as requested */}
 
+        {/* Fixed-position link to Thoughts page (extreme left, vertically centered) */}
+        <a href="#thoughts" className={styles['thoughts-link']}>
+          The Thoughts
+        </a>
+
           <p>
             <strong>Email:</strong> <a style={{ color: '#D2691E', textDecoration: 'underline' }}>stories@nristories.com</a>
           </p>
@@ -66,8 +70,12 @@ function YouAFit() {
           <p>
             <strong>Text:</strong> <a  style={{ color: '#D2691E', textDecoration: 'underline' }}>+1 (234) 567-890</a>
           </p>
+           <a href="#thoughts" className={`${styles['jump-link']} ${styles['thoughts-link']}`}>
+                     <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&larr;</span>
+                     <span>The Thought</span>
+                   </a>
         <a href="#jumpin" className={styles['jumpin-link']}>
-                  <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
+                  <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&rarr;</span>
                   <span>Jump In</span>
                 </a>  
       </div>

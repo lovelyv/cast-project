@@ -36,7 +36,8 @@
 }
 
 .youafit-arrow-link {
-    display: flex;
+   
+  display: flex;
   align-items: center;
   background-color: white;
   border-radius: 2em;
@@ -53,7 +54,6 @@
   right: 2vw;
   bottom: 2vw;
    font-family: 'Rubik', 'Arial', sans-serif;
-   font-size: clamp(18px, 3vw, 22px)
 }
 .youafit-arrow-link:hover {
    background: #222;
