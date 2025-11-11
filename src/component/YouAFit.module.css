@@ -68,6 +68,7 @@
   font-family: 'Rubik', 'Arial', sans-serif;
   font-size: 1.125rem;
   color: #181818;
+  font-size: clamp(18px, 3vw, 22px)
 }
 
 @media (max-width: 600px) {

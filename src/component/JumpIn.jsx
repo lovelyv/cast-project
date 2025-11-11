@@ -44,41 +44,39 @@ function JumpIn() {
   };
 
   return (
-    <div className="App">
+    <div>
       {/* Background watermark */}
-      <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
+      
 
       <Navbar />
 
       <div className="all-page">
-        <div className="all-page-container">
-          <h1 style={{ marginTop: '60px' }}>Jump In</h1>
-          
-          <p>
-            Ready to share your story with the world?
-          </p>
-          
-          <p>
-            Whether you're an entrepreneur, a student, a working professional, or someone navigating dual cultures — if you have a compelling NRI story to tell, we want to hear from you.
-          </p>
+        <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
+        <div className={styles["jumpin-container"]}>
 
-          <h2>Get Started</h2>
-          
-          <p>
-            If you or someone you know has a story that fits, we want to hear it. Share a few details and we will reach out
-          </p>
+          <h2 className={styles["jumpin-h2"]}>
+           We want to hear from you.
+          </h2>
 
+         If your story resonates<br/>Or you know someone<br/>whose journey deserves to be seen.
+
+
+ <h2 className={styles["jumpin-h2"]}>
+           PRESERVE your JOURNEY, INSPIRE the NEXT ONE.
+          </h2>
+           Share a few details<br/>Our team will connect<br/>to explore<br/>fit,filming and collaborate.<br/><br/> 
+           In the process,<br/>showcasing and immortalizing you<br/> across the entire digital landscape.<br/><br/><br/><br/>
           <form onSubmit={handleSubmit} noValidate className={styles.form} style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '20px'
           }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <label htmlFor="fullName" style={{ color: '#1a3a52', fontWeight: 'bold' }}>
+            <div className={styles['form-row']}>
+              <label htmlFor="fullName" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>
                 Full Name <span aria-hidden="true" style={{ color: '#b00020' }}>*</span>
               </label>
-                <input
-                  className={`${styles.opaqueField} ${styles.input40} ${errors.fullName ? styles.invalid : ''}`}
+              <input
+                className={`${styles.opaqueField} ${styles.input40} ${errors.fullName ? styles.invalid : ''}`}
                 type="text"
                 id="fullName"
                 name="fullName"
@@ -104,12 +102,12 @@ function JumpIn() {
               )}
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <label htmlFor="email" style={{ color: '#1a3a52', fontWeight: 'bold' }}>
+            <div className={styles['form-row']}>
+              <label htmlFor="email" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>
                 Email <span aria-hidden="true" style={{ color: '#b00020' }}>*</span>
               </label>
-                <input
-                  className={`${styles.opaqueField} ${styles.input40} ${errors.email ? styles.invalid : ''}`}
+              <input
+                className={`${styles.opaqueField} ${styles.input40} ${errors.email ? styles.invalid : ''}`}
                 type="email"
                 id="email"
                 name="email"
@@ -135,10 +133,10 @@ function JumpIn() {
               )}
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <label htmlFor="storySummary" style={{ color: '#1a3a52', fontWeight: 'bold' }}>Story Summary</label>
-                <textarea
-                  className={`${styles.opaqueField} ${styles.field50}`}
+            <div className={styles['form-row']}>
+              <label htmlFor="storySummary" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>Story Summary</label>
+              <textarea
+                className={`${styles.opaqueField} ${styles.field50}`}
                 id="storySummary"
                 name="storySummary"
                 value={formData.storySummary}
@@ -189,15 +187,7 @@ function JumpIn() {
             {/* Removed alternate contact line per request */}
           </form>
 
-          {/* Info boxes removed as requested */}
-
-          <p>
-            <strong>Email:</strong> <a href="mailto:stories@nristories.com" style={{ color: '#D2691E', textDecoration: 'underline' }}>stories@nristories.com</a>
-          </p>
-
-          <p>
-            <strong>Text:</strong> <a href="sms:+1234567890" style={{ color: '#D2691E', textDecoration: 'underline' }}>+1 (234) 567-890</a>
-          </p>
+          
 
           <h2 style={{ marginTop: '60px' }}>Follow Us</h2>
           

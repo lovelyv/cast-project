@@ -57,6 +57,15 @@ function YouAFit() {
         <p>
           Text, mail or call us.<br/> we will reach out to you. 
         </p>
+        {/* Info boxes removed as requested */}
+
+          <p>
+            <strong>Email:</strong> <a style={{ color: '#D2691E', textDecoration: 'underline' }}>stories@nristories.com</a>
+          </p>
+
+          <p>
+            <strong>Text:</strong> <a  style={{ color: '#D2691E', textDecoration: 'underline' }}>+1 (234) 567-890</a>
+          </p>
         <a href="#jumpin" className={styles['jumpin-link']}>
                   <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
                   <span>Jump In</span>
