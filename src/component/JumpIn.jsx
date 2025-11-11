@@ -284,9 +284,9 @@ function JumpIn() {
             </a>
           </div>
 
-        <a href="#thoughts" className={`${styles['jump-link']} ${styles['thoughts-link']}`}>
+        <a href="#youafit" className={`${styles['jump-link']} ${styles['thoughts-link']}`}>
         <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&larr;</span>
-        <span>The Thought</span>
+        <span>You a fit?</span>
         </a>
 
         <a href="#showcase" className={styles['showcase-link']}>
