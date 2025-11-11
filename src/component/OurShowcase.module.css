@@ -29,8 +29,8 @@ p.contrastText {
   display: flex;
   flex-direction: column;
   align-items: center;          /* center children horizontally */
-  justify-content: center;      /* center children vertically */
-  min-height: 100vh;            /* take full viewport height */
+  /* No vertical centering to avoid cropping */
+  min-height: 100vh;
   width: 100%;
   margin: 0 auto;               /* center the container horizontally */
   text-align: center;           /* center text content */
@@ -40,6 +40,16 @@ p.contrastText {
   position: relative; /* Needed for absolute positioning of the link */
   padding-left: 0;
   padding-right: 0;
+  padding-top: 80px;
+}
+
+@media (max-height: 600px) {
+  .all-page-showcase {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }
 
 @media (max-width: 600px) {
