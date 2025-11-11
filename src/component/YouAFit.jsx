@@ -60,11 +60,21 @@ function YouAFit() {
       </div>
       {/* Stackable links below last element */}
       <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5em' }}>
-        <a href="#thoughts" className={styles['thoughts-link']} style={{ marginLeft: '2vw' }}>
+        <a
+          href="#thoughts"
+          className={styles['thoughts-link']}
+          style={{ marginLeft: '2vw' }}
+          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+        >
           <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&larr;</span>
           <span>The Thoughts</span>
         </a>
-        <a href="#jumpin" className={styles['jumpin-link']} style={{ marginRight: '2vw' }}>
+        <a
+          href="#jumpin"
+          className={styles['jumpin-link']}
+          style={{ marginRight: '2vw' }}
+          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+        >
           <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&rarr;</span>
           <span>Jump In</span>
         </a>

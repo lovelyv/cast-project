@@ -36,7 +36,11 @@ function HitItPage() {
           </p>
           <img src={hindilogo} alt="Hindi Logo" className={styles['hitit-img']} />
         </div>
-        <a href="#thoughts" className={styles['thethought-arrow-link']}>
+        <a
+          href="#thoughts"
+          className={styles['thethought-arrow-link']}
+          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+        >
           <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
           <span>The Thought</span>
         </a>

@@ -1,14 +1,3 @@
-.youafit-arrow-link {
-  /* ...existing styles... */
-}
-
-@media (max-width: 600px) {
-  .youafit-arrow-link {
-    font-size: 0.95rem;
-    padding: 0.35em 0.8em;
-    margin-right: 3vw;
-  }
-}
 .thoughts-content-bg {
   position: relative;
   display: flex;
@@ -48,6 +37,7 @@
 
 /* Default: stackable, not fixed */
 .youafit-arrow-link {
+  font-family: 'Rubik', 'Arial', sans-serif;
   display: flex;
   align-items: center;
   background-color: white;
@@ -61,8 +51,8 @@
   z-index: 1000;
   transition: background 0.2s, color 0.2s;
   width: fit-content;
-  margin-right: 2vw;
-  margin-left: auto;
+  margin-right: 1.2em;
+  margin-bottom: 1.2em;
 }
 
 

@@ -173,7 +173,12 @@ function Thoughts({ scrollTo }) {
         </div>
         {/* Right-aligned You a Fit link below all content */}
         <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', marginTop: '2.5em' }}>
-          <a href="#youafit" className={styles['youafit-arrow-link']} style={{ position: 'static', right: 'unset', bottom: 'unset' }}>
+          <a
+            href="#youafit"
+            className={styles['youafit-arrow-link']}
+            style={{ position: 'static', right: 'unset', bottom: 'unset' }}
+            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+          >
             <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
             <span>You a Fit?</span>
           </a>

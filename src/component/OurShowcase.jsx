@@ -27,7 +27,12 @@ function OurShowcase() {
           
         </div>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '2.5em' }}>
-          <a href="#jumpin" className={styles['jumpin-link']} style={{ marginRight: '2vw' }}>
+          <a
+            href="#jumpin"
+            className={styles['jumpin-link']}
+            style={{ marginRight: '2vw' }}
+            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+          >
             <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&rarr;</span>
             <span>Jump In</span>
           </a>
