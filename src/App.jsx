@@ -114,7 +114,7 @@ function App() {
                  
                 )}
                 */}
-                <div style={{ height: '3.5rem', width: '100%' }} aria-hidden="true"></div>
+                <div className={styles['bottom-spacer']} aria-hidden="true"></div>
               </div>
             </div>
           </section>

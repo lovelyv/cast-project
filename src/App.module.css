@@ -1,3 +1,14 @@
+@media (max-width: 600px) {
+  .bottom-spacer {
+    height: 20vh;
+    width: 100%;
+  }
+}
+
+.bottom-spacer {
+  height: 3.5rem;
+  width: 100%;
+}
 
 /* Pyramid headline styles */
 .headline-people {
