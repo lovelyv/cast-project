@@ -38,11 +38,10 @@ function HitItPage() {
         </div>
         <a
           href="#thoughts"
-          className={styles['thethought-arrow-link']}
+          className={styles['thought-btn']}
           onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
         >
-          <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
-          <span>The Thought</span>
+          The Thought
         </a>
         
       </div>
