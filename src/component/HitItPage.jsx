@@ -31,8 +31,8 @@ function HitItPage() {
         <SubpageWatermark size="60vmin" position="center center" zIndex={1} />
         <div className={styles['hitit-content-bg']}>
           <p>
-            Its all about real stories.<br />Told without filters, judgment, or embellishment.<br /><br />Every story explores<br />the lived experiences of Non-Resident Indians.<br />People of Indian heritage<br /><br />
-            Their journeys across continents.<br />Sacrifices, ambitions, and triumphs.<br /><br />We firmly believe that <br />authentic emotion, not opinion<br />drives connection.
+            Its all about real stories.<br />Told without filters, judgment,<br/>or embellishment.<br /><br />Every story explores<br />the real life experiences<br/>of Non-Resident Indians,<br />people of Indian heritage<br /><br />
+            Their journeys across continents.<br />Sacrifices, ambitions and triumphs.<br /><br />We firmly believe that <br />authentic emotions<br/>matter more than opinion.<br />
           </p>
           <img src={hindilogo} alt="Hindi Logo" className={styles['hitit-img']} />
         </div>
