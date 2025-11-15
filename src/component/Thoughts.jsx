@@ -92,12 +92,12 @@ function Thoughts({ scrollTo }) {
           {/* Accordion 2: Introducing DocuCast® */}
           <div className={styles['accordion-section']}>
             <button ref={headerRefs[1]} onClick={() => toggle(1)} className={styles['accordion-header']}>
-              <span className={styles['accordion-title']}>Introducing DocuCast&trade;</span>
+              <span className={styles['accordion-title']}><span className="docucast-big">D</span>OCU<span className="docucast-big">C</span>AST&trade;</span>
               <span className={styles['accordion-header-icon']}>{open[1] ? '▲' : '▼'}</span>
             </button>
             {open[1] && (
               <div className={styles['accordion-content']}>
-                We have coined it as DocuCast&trade;.<br /><br />
+                We have coined it as <span className="docucast-big">D</span>OCU<span className="docucast-big">C</span>AST&trade;.<br /><br />
                 A hybrid<br />
                 Between a podcast <i>and</i> a documentary.<br /><br />
                 Each episode has interviews, archival footage <i>and</i> cinematic visuals.<br />
@@ -147,7 +147,7 @@ function Thoughts({ scrollTo }) {
                 
                   <div className={styles.container}>
                   <div className={styles['left-box']}>
-                    <h3>Sound you can</h3>
+                    <h3>Sound you can feel</h3>
                     <p>Voice first, layered sound design and a score that supports the emotion - never distracts.</p>
                   </div>
                   <div className={styles['right-box']}>

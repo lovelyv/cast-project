@@ -75,10 +75,12 @@ function App() {
                 {/* Top links removed */}
                 {/* Tagline above the main headline */}
                
-                <p ref={subcopyRef} className={`${styles["hero-subcopy"]}`}>
-                  <span className={styles.embossed}><span className={styles.nowrap}>NRI Stories&nbsp;<span className={styles['reg-mark']}>®</span></span></span><br></br> is a next-generation storytelling platform.<br></br><br></br>Authentic stories<br></br>from the global Indian diaspora.<br></br><br></br>
+                <p ref={subcopyRef} className={`${styles["hero-subcopy"]}`}> 
+                  <span className={styles.embossed}><span className={styles.nowrap}>NRI Stories<span className={styles['reg-mark']}>®</span></span></span><br></br> 
+                  is a next generation<br/>storytelling podcast.<br></br><br></br>Authentic stories<br></br>from the global Indian diaspora.<br></br><br></br>
                   Told straight from the heart.<br/> 
-                  In a visually immersive, <span className={styles.nowrap}>documentary-style</span>.
+                  In a visually immersive, <span className={styles.nowrap}>documentary style format.</span><br/>
+                  We have coined it as DOCUCAST™.
                 </p>
                 <h1 className={styles["headline"]}>
                   <span className={styles["headline-spaced"]}>Real People.</span>

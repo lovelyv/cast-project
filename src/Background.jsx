@@ -52,12 +52,14 @@ function Background({ hideDocuCast = false }) {
               borderTop: '1px solid rgba(31,40,51,0.06)',
               fontSize: '0.85rem'
             }}>
-              <div style={{
+              <div className="docucast-logo-text" style={{
                 fontWeight: 700,
                 color: '#1f2833',
                 letterSpacing: '0.2px',
                 marginBottom: '2px'
-              }}>DocuCast</div>
+              }}>
+                <span className="docucast-big">D</span>OCU<span className="docucast-big">C</span>AST
+              </div>
               <div style={{
                 fontSize: '0.8rem',
                 opacity: 0.85
