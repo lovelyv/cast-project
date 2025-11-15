@@ -79,7 +79,7 @@ function App() {
                   <span className={styles.embossed}><span className={styles.nowrap}>NRI Stories<span className={styles['reg-mark']}>®</span></span></span><br></br> 
                   is a next generation<br/>storytelling podcast.<br></br><br></br>Authentic stories<br></br>from the global Indian diaspora.<br></br><br></br>
                   Told straight from the heart.<br/> 
-                  In a visually immersive, <span className={styles.nowrap}>documentary style format.</span><br/>
+                  In a visually immersive,<br/> <span className={styles.nowrap}>documentary style format.</span><br/>
                   We have coined it as D<span style={{fontSize: '0.7em'}}>OCU</span>C<span style={{fontSize: '0.7em'}}>AST</span>™.
                 </p>
                 <h1 className={styles["headline"]} style={{textAlign: 'center', lineHeight: 1.1}}>
