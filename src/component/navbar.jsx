@@ -49,11 +49,12 @@ function Navbar() {
     return (
         <nav className={styles.navbar} ref={navRef}>
             <div className={styles.navContent}>
-                <div className={styles.logoContainer}>
+                <div className={styles.logoCol}>
                     <div className={styles.logoWrapper}>
-                        {/* Removed registered mark */}
                         <img src={logo} alt="Logo" className={styles.logoImage} />
                     </div>
+                </div>
+                <div className={styles.titleCol}>
                     <a href={base} className={styles.logoLink} aria-label="Go to homepage">
                         <h1 className={styles.logo}>
                             NRI stories
@@ -61,15 +62,16 @@ function Navbar() {
                         </h1>
                     </a>
                 </div>
-                <div className={styles.separator} aria-hidden="true" />
-                <button 
-                    className={styles.hamburger} 
-                    onClick={toggleMenu}
-                    aria-label="Toggle menu"
-                >
-                    <span className={styles.hamburgerLine}></span>
-                    <span className={styles.hamburgerLine}></span>
-                </button>
+                <div className={styles.hamburgerCol}>
+                    <button 
+                        className={styles.hamburger} 
+                        onClick={toggleMenu}
+                        aria-label="Toggle menu"
+                    >
+                        <span className={styles.hamburgerLine}></span>
+                        <span className={styles.hamburgerLine}></span>
+                    </button>
+                </div>
                 <ul className={`${styles.navList} ${isMenuOpen ? styles.navListOpen : ''}`}>
                     <li>
                         <a 
@@ -106,7 +108,7 @@ function Navbar() {
                 </ul>
             </div>
         </nav>
-        );
+    );
 }
 
 export default Navbar;
