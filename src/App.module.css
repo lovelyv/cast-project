@@ -1,3 +1,4 @@
+
 /* Pyramid headline styles */
 .headline-people {
   display: inline-block;
@@ -25,6 +26,24 @@
   max-width: 22ch;
   white-space: nowrap;
 }
+
+@media (max-width: 600px) {
+  .headline-people {
+    font-size: 1.5rem;
+    max-width: 10ch;
+  }
+  .headline-journeys {
+    font-size: 1.8rem;
+    max-width: 12ch;
+    white-space: nowrap;
+  }
+  .headline-emotions {
+    font-size: 2.4rem;
+    max-width: 14ch;
+
+  }
+}
+
 .docucast-small {
   font-size: 0.3rem !important;
   vertical-align: 0.15em;
