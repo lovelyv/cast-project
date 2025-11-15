@@ -18,7 +18,16 @@ function YouAFit() {
           Reach out to us<br />if you or someone you know<br />has a story to tell<br />
           that fits any of these criteria.<br />
         </p>
-        <h2 className={styles['youafit-h2']}>Stories of</h2>
+        <p>
+          <strong>Text:</strong>{' '}
+          <a
+            href="tel:+1234567890"
+            style={{ color: '#D2691E', textDecoration: 'underline' }}
+            className="mobile-tel-link"
+          >
+            +1 (234) 567-890
+          </a>
+        </p>
         <div className={styles['stories-of']}>
           Success.<br />Sacrifices.<br />Raw emotions.<br />Overriding ambition.<br />
           Guts, valour and hard work.<br /><br />
@@ -55,7 +64,7 @@ function YouAFit() {
           <strong>Email:</strong> <a style={{ color: '#D2691E', textDecoration: 'underline' }}>stories@nristories.com</a>
         </p>
         <p>
-          <strong>Text:</strong> <a style={{ color: '#D2691E', textDecoration: 'underline' }}>+1 (234) 567-890</a>
+          <strong>Text:</strong> <a onclick="window.location.href='sms:1234567890?body=Hi there!'" style={{ color: '#D2691E', textDecoration: 'underline' }}>+1 (234) 567-890</a>
         </p>
       </div>
       {/* Stackable links below last element */}

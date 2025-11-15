@@ -1,3 +1,11 @@
+@media (min-width: 601px) {
+  .mobile-tel-link {
+    pointer-events: none;
+    color: #D2691E !important;
+    text-decoration: underline !important;
+    cursor: default !important;
+  }
+}
 @media (max-width: 600px) {
   .jumpin-link,
   .thoughts-link {
