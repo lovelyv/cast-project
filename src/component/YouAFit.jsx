@@ -18,16 +18,7 @@ function YouAFit() {
           Reach out to us<br />if you or someone you know<br />has a story to tell<br />
           that fits any of these criteria.<br />
         </p>
-        <p>
-          <strong>Text:</strong>{' '}
-          <a
-            href="tel:+1234567890"
-            style={{ color: '#D2691E', textDecoration: 'underline' }}
-            className="mobile-tel-link"
-          >
-            +1 (234) 567-890
-          </a>
-        </p>
+       <h2 className={styles['youafit-h2']}>Stories of</h2>
         <div className={styles['stories-of']}>
           Success.<br />Sacrifices.<br />Raw emotions.<br />Overriding ambition.<br />
           Guts, valour and hard work.<br /><br />
@@ -39,21 +30,16 @@ function YouAFit() {
           Exemplary grit & perseverance.<br />Insulating family from insecurities.<br />
           Protracted separation from loved ones.<br />Consistent, persistent and steadfast focus.<br /><br />
         </div>
+        
         <h2 className={styles['youafit-h2']}>Stories of</h2>
         <div className={styles['stories-of']}>
-          Students.<br />Asylum seekers.<br />
-          Undocumented aliens.<br />
-          Being emulation worthy.<br />
-          Families – wives, kids, parents.<br /><br />
-        </div>
-        <h2 className={styles['youafit-h2']}>Stories of</h2>
-        <div className={styles['stories-of']}>
-          The rich and powerful.<br />
+          
           Startups.<br />
           Market leaders.<br />
           Business acumen.<br />
           Creating employment.<br />
-          Helming organisations.<br />
+          The rich and powerful.<br />
+          Being emulation worthy.<br />
           Trend setters and influencers.
         </div>
         <p>
@@ -64,7 +50,23 @@ function YouAFit() {
           <strong>Email:</strong> <a style={{ color: '#D2691E', textDecoration: 'underline' }}>stories@nristories.com</a>
         </p>
         <p>
-          <strong>Text:</strong> <a onclick="window.location.href='sms:1234567890?body=Hi there!'" style={{ color: '#D2691E', textDecoration: 'underline' }}>+1 (234) 567-890</a>
+          <strong>Text:</strong>{' '}
+          {(() => {
+            const isMobile = typeof navigator !== 'undefined' && /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+            if (isMobile) {
+              return (
+                <a
+                  href="sms:+1234567890"
+                  style={{ color: '#D2691E', textDecoration: 'underline' }}
+                  className="mobile-tel-link"
+                >
+                  +1 (234) 567-890
+                </a>
+              );
+            } else {
+              return <span style={{ color: '#D2691E', textDecoration: 'underline' }}>+1 (234) 567-890</span>;
+            }
+          })()}
         </p>
       </div>
       {/* Stackable links below last element */}
