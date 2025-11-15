@@ -1,4 +1,5 @@
 import React from 'react';
+import { CONTACT } from '../config';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import styles from './YouAFit.module.css';
@@ -46,25 +47,41 @@ function YouAFit() {
           Text, mail or call us.<br /> we will reach out to you.
         </p>
         {/* Info boxes removed as requested */}
-        <p>
-          <strong>Email:</strong> <a style={{ color: '#D2691E', textDecoration: 'underline' }}>stories@nristories.com</a>
+        {/* Email contact above, removed duplicate */}
+
+         <p>
+          <strong>Email:</strong>{' '}
+          <a
+            href={`mailto:${CONTACT.EMAIL}`}
+            style={{ color: '#D2691E', textDecoration: 'underline' }}
+          >
+            {CONTACT.EMAIL}
+          </a>
         </p>
+
         <p>
           <strong>Text:</strong>{' '}
           {(() => {
             const isMobile = typeof navigator !== 'undefined' && /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+            // Format the SMS number for display (e.g., +1234567890 -> +1 (234) 567-890)
+            const raw = CONTACT.SMS_NUMBER;
+            let displayNumber = raw;
+            const match = raw.match(/^\+(\d)(\d{3})(\d{3})(\d{4})$/);
+            if (match) {
+              displayNumber = `+${match[1]} (${match[2]}) ${match[3]}-${match[4]}`;
+            }
             if (isMobile) {
               return (
                 <a
-                  href="sms:+1234567890"
+                  href={`sms:${CONTACT.SMS_NUMBER}`}
                   style={{ color: '#D2691E', textDecoration: 'underline' }}
                   className="mobile-tel-link"
                 >
-                  +1 (234) 567-890
+                  {displayNumber}
                 </a>
               );
             } else {
-              return <span style={{ color: '#D2691E', textDecoration: 'underline' }}>+1 (234) 567-890</span>;
+              return <span style={{ color: '#D2691E', textDecoration: 'underline' }}>{displayNumber}</span>;
             }
           })()}
         </p>
