@@ -19,22 +19,14 @@ function YouAFit() {
           Reach out to us<br />if you or someone you know<br />has a story to tell<br />
           that fits any of these criteria.<br />
         </p>
-       <h2 className={styles['youafit-h2']}>Stories of</h2>
+        <h2 className={styles['youafit-h2']}>Stories of</h2>
         <div className={styles['stories-of']}>
           Success.<br />Sacrifices.<br />Raw emotions.<br />Overriding ambition.<br />
           Guts, valour and hard work.<br /><br />
-        </div>
-        <h2 className={styles['youafit-h2']}>Stories of</h2>
-        <div className={styles['stories-of']}>
           Facing hurdles.<br />Motivational value.<br />Steely determination.<br />
           A never-say-die approach.<br />Attaining freedom & security.<br />
           Exemplary grit & perseverance.<br />Insulating family from insecurities.<br />
           Protracted separation from loved ones.<br />Consistent, persistent and steadfast focus.<br /><br />
-        </div>
-        
-        <h2 className={styles['youafit-h2']}>Stories of</h2>
-        <div className={styles['stories-of']}>
-          
           Startups.<br />
           Market leaders.<br />
           Business acumen.<br />
