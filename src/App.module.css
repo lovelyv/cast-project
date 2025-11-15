@@ -1,3 +1,8 @@
+.docucast-small {
+  font-size: 0.3rem !important;
+  vertical-align: 0.15em;
+  font-family: inherit;
+}
 /* DocuCast logo styling */
 .docucast-logo-text {
   font-family: 'Rubik', 'Arial', sans-serif;
@@ -7,8 +12,8 @@
   text-transform: uppercase;
 }
 .docucast-big {
-  font-size: 1.5em;
-  vertical-align: -0.1em;
+  font-size: 3rem !important;
+  vertical-align: -0.15em;
   letter-spacing: 0.02em;
   font-family: inherit;
 }

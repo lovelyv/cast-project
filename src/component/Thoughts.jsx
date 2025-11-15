@@ -92,12 +92,12 @@ function Thoughts({ scrollTo }) {
           {/* Accordion 2: Introducing DocuCast® */}
           <div className={styles['accordion-section']}>
             <button ref={headerRefs[1]} onClick={() => toggle(1)} className={styles['accordion-header']}>
-              <span className={styles['accordion-title']}><span className="docucast-big">D</span>OCU<span className="docucast-big">C</span>AST&trade;</span>
+              <span className={styles['accordion-title']}>D<span style={{fontSize: '0.7em'}}>OCU</span>C<span style={{fontSize: '0.7em'}}>AST</span>&trade;</span>
               <span className={styles['accordion-header-icon']}>{open[1] ? '▲' : '▼'}</span>
             </button>
             {open[1] && (
               <div className={styles['accordion-content']}>
-                We have coined it as <span className="docucast-big">D</span>OCU<span className="docucast-big">C</span>AST&trade;.<br /><br />
+                We have coined it as D<span style={{fontSize: '0.7em'}}>OCU</span>C<span style={{fontSize: '0.7em'}}>AST</span>&trade;.<br /><br />
                 A hybrid<br />
                 Between a podcast <i>and</i> a documentary.<br /><br />
                 Each episode has interviews, archival footage <i>and</i> cinematic visuals.<br />
