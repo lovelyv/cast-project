@@ -19,14 +19,23 @@ function YouAFit() {
           Reach out to us<br />if you or someone you know<br />has a story to tell<br />
           that fits any of these criteria.<br />
         </p>
-        <h2 className={styles['youafit-h2']}>Stories of</h2>
+       <h2 className={styles['youafit-h2']}>Stories of</h2>
         <div className={styles['stories-of']}>
           Success.<br />Sacrifices.<br />Raw emotions.<br />Overriding ambition.<br />
           Guts, valour and hard work.<br /><br />
+        </div>
+        
+        <h2 className={styles['youafit-h2']}>Stories of</h2>
+        <div className={styles['stories-of']}>
           Facing hurdles.<br />Motivational value.<br />Steely determination.<br />
           A never-say-die approach.<br />Attaining freedom & security.<br />
           Exemplary grit & perseverance.<br />Insulating family from insecurities.<br />
           Protracted separation from loved ones.<br />Consistent, persistent and steadfast focus.<br /><br />
+        </div>
+        
+        <h2 className={styles['youafit-h2']}>Stories of</h2>
+        <div className={styles['stories-of']}>
+          
           Startups.<br />
           Market leaders.<br />
           Business acumen.<br />
@@ -77,28 +86,19 @@ function YouAFit() {
             }
           })()}
         </p>
-      </div>
-      {/* Stackable links below last element */}
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5em' }}>
-        <a
-          href="#thoughts"
-          className={styles['thoughts-link']}
-          style={{ marginLeft: '2vw' }}
-          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
-        >
-          <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&larr;</span>
-          <span>The Thoughts</span>
-        </a>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '2.5em' }}>
         <a
           href="#jumpin"
-          className={styles['jumpin-link']}
-          style={{ marginRight: '2vw' }}
+          className={styles['jumpin-btn']}
+          style={{ margin: '0 auto' }}
           onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
         >
-          <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&rarr;</span>
           <span>Jump In</span>
         </a>
       </div>
+      </div>
+      {/* Only Jump In button below last element */}
+      
     </div>
   );
 }

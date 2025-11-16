@@ -223,3 +223,15 @@ input.opaqueField, textarea.opaqueField {
   text-decoration: none;
 }
 
+.pointer-icon {  
+  animation: wiggle 0.9s infinite;  
+}  
+@keyframes wiggle {  
+  0% { transform: rotate(-10deg); }  
+  50% { transform: rotate(10deg); }  
+  100% { transform: rotate(-10deg); }  
+}
+
+.hand-to-user {
+  transform: rotate(-180deg);
+}

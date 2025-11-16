@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import AudioRecorder from './Audiorecorder';
 import Navbar from './navbar';
 import styles from './JumpIn.module.css';
 import SubpageWatermark from './SubpageWatermark';
+import handpointer from '../assets/handpointer.png';
 
 function JumpIn() {
+  const [showRecorder, setShowRecorder] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
+    phone: '',
     storySummary: ''
   });
 
@@ -17,6 +21,7 @@ function JumpIn() {
     if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required.';
     if (!formData.email.trim()) newErrors.email = 'Email is required.';
     else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Enter a valid email address.';
+    if (formData.phone && !/^\+?[0-9\s\-()]{7,20}$/.test(formData.phone)) newErrors.phone = 'Enter a valid phone number.';
     return newErrors;
   };
 
@@ -54,18 +59,24 @@ function JumpIn() {
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
         <div className={styles["jumpin-container"]}>
 
-          <h2 className={styles["jumpin-h2"]}>
-           We want to hear from you.
+          <h2 className={styles["jumpin-h2"]} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
+            <span>We want<br/>to hear from you
+                <img src={handpointer} alt="Hand pointer" style={{ width: 38, height: 'auto', marginLeft: 4, verticalAlign: 'middle', display: 'inline-block' }} />
+            
+            </span>
           </h2>
-
-         If your story resonates<br/>Or you know someone<br/>whose journey deserves to be seen.
+           
+             IF <br/>Your story resonates<br/> or you know someone<br/>whose journey
+deserves to be showcased.
 
 
  <h2 className={styles["jumpin-h2"]}>
-           PRESERVE your JOURNEY, INSPIRE the NEXT ONE.
+           PRESERVE your JOURNEY,<br/>INSPIRE the NEXT ONE.
           </h2>
-           Share a few details<br/>Our team will connect<br/>to explore<br/>fit,filming and collaborate.<br/><br/> 
-           In the process,<br/>showcasing and immortalizing you<br/> across the entire digital landscape.<br/><br/><br/><br/>
+           Share a few details.<br/>Our team<br/>will  connect to explore<br/>fit, filming and collaboration.<br/><br/>
+In the process,<br/>
+showcasing and immortalizing you<br/>
+across the entire digital landscape.<br/><br/>
           <form onSubmit={handleSubmit} noValidate className={styles.form} style={{
             display: 'flex',
             flexDirection: 'column',
@@ -132,16 +143,69 @@ function JumpIn() {
                 <span id="email-error" role="alert" className={styles.errorText}>{errors.email}</span>
               )}
             </div>
+            
+
 
             <div className={styles['form-row']}>
-              <label htmlFor="storySummary" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>Story Summary</label>
+              <label htmlFor="phone" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>
+                Phone
+              </label>
+              <input
+                className={`${styles.opaqueField} ${styles.input40} ${errors.phone ? styles.invalid : ''}`}
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Your phone number (optional)"
+                aria-invalid={errors.phone ? 'true' : 'false'}
+                aria-describedby={errors.phone ? 'phone-error' : undefined}
+                autoComplete="tel"
+                style={{
+                  padding: '12px',
+                  borderRadius: '6px',
+                  border: '1px solid #ccc',
+                  fontSize: '16px',
+                  color: '#0d2d44',
+                  backgroundColor: '#ffffff'
+                }}
+              />
+              {errors.phone && (
+                <span id="phone-error" role="alert" className={styles.errorText}>{errors.phone}</span>
+              )}
+            </div>
+
+            <div className={styles['form-row']}>
+              <label htmlFor="storySummary" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', textAlign: 'center', width: '100%' }}>
+                Story Summary
+                <button type="button" aria-label="Record story summary" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setShowRecorder(true)}>
+      {showRecorder && (
+        <div 
+          style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.32)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
+          <div 
+            style={{ background: '#fff', borderRadius: 12, boxShadow: '0 4px 24px rgba(0,0,0,0.18)', padding: 32, minWidth: 320, maxWidth: '90vw', position: 'relative' }}
+            onClick={e => e.stopPropagation()}
+          >
+            <button 
+              onClick={e => { e.stopPropagation(); setShowRecorder(false); }} 
+              style={{ position: 'absolute', top: 8, right: 12, background: 'none', border: 'none', fontSize: 24, cursor: 'pointer', color: '#D2691E', zIndex: 10001 }} 
+              aria-label="Close recorder"
+            >&times;</button>
+            <AudioRecorder onTranscriptReady={t => setFormData(prev => ({ ...prev, storySummary: t }))} />
+          </div>
+        </div>
+      )}
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D2691E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="12" rx="3" fill="#FFD700" stroke="#D2691E"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+                </button>
+              </label>
               <textarea
-                className={`${styles.opaqueField} ${styles.field50}`}
+                className={`${styles.opaqueField} ${styles.input40}`}
                 id="storySummary"
                 name="storySummary"
                 value={formData.storySummary}
                 onChange={handleChange}
-                placeholder="Two to three sentences about your journey"
+                placeholder="Two to three sentences about your journey (optional)"
                 required
                 rows="4"
                 style={{
@@ -152,7 +216,8 @@ function JumpIn() {
                   color: '#0d2d44',
                   backgroundColor: '#ffffff',
                   fontFamily: 'inherit',
-                  resize: 'vertical'
+                  resize: 'vertical',
+                  width: '100%'
                 }}
               />
             </div>

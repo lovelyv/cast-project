@@ -13,7 +13,7 @@ export default function SubpageWatermark() {
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '45vw auto',
-    opacity: 0.23,
+    opacity: 0.19,
     pointerEvents: 'none',
     zIndex: 0,
   };
