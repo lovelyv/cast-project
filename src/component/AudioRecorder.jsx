@@ -11,6 +11,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
   const recognitionRef = useRef(null);
   const currentSegmentRef = useRef("");
   const transcriptRef = useRef("");
+  
 
   // 1. Start Recording
   const startRecording = async () => {
@@ -84,48 +85,52 @@ const AudioRecorder = ({ onTranscriptReady }) => {
     }
 
     const recognition = new SpeechRecognition();
-    recognitionRef.current = recognition;
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = "en-US";
+  recognitionRef.current = recognition;
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = "en-US";
 
+  recognition.onresult = (event) => {
+    let segment = "";
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      segment += event.results[i][0].transcript;
+    }
 
-    recognition.onresult = (event) => {
-      let segment = "";
-      for (let i = event.resultIndex; i < event.results.length; ++i) {
-        segment += event.results[i][0].transcript;
-      }
-      // If the result is final, append to transcript
-      if (event.results[event.results.length - 1].isFinal) {
-        setTranscript(prev => {
-          let full = (prev + ' ' + segment).replace(/\s+/g, ' ').trim();
-          // Add a period if not already present
-          if (full && !full.endsWith('.')) full += '.';
-          transcriptRef.current = full;
-          return full;
-        });
-        setLiveSegment("");
-        currentSegmentRef.current = "";
-      } else {
-        // Otherwise, just update the live segment
-        currentSegmentRef.current = segment;
-        setLiveSegment(segment);
-      }
-    };
-
-    recognition.onend = () => {
-      // On end, just clear the live segment, do not touch transcript
-      setTimeout(() => setLiveSegment(""), 0);
-      currentSegmentRef.current = "";
-      // If still recording, restart recognition for continuous effect
-      if (recording) {
-        recognition.start();
-      }
-    };
-
-    recognition.start();
-  setTimeout(() => recognition.stop(), 60 * 1000); // stop after 1 min
+    if (event.results[event.results.length - 1].isFinal) {
+      setTranscript((prev) => {
+        let full = (prev + " " + segment).trim();
+        if (full && !/[.!?]$/.test(full)) full += ".";
+        transcriptRef.current = full;
+        return full;
+      });
+      setLiveSegment("");
+    } else {
+      setLiveSegment(segment);
+    }
   };
+
+  recognition.onerror = (e) => {
+    console.log("Speech recognition error:", e);
+    // Optional: restart automatically on certain errors
+    if (recording && e.error !== "not-allowed") {
+      setTimeout(() => recognition.start(), 300);
+    }
+  };
+
+  recognition.onend = () => {
+    // Restart recognition only if recording is ongoing
+    if (recording) {
+      try {
+        recognition.start();
+      } catch (err) {
+        console.log("Recognition restart failed:", err);
+      }
+    }
+  };
+
+  // Start recognition immediately in the same user gesture
+  recognition.start();
+};
 
   // Format timer as MM:SS
   const formatTime = (seconds) => {
