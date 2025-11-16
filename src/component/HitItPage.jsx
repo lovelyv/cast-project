@@ -28,21 +28,22 @@ function HitItPage() {
 
       <div className={styles['all-page-hitit']}>
         {/* Background watermark (moved inside for stacking context) */}
-        <SubpageWatermark size="60vmin" position="center center" zIndex={1} />
+  <SubpageWatermark />
         <div className={styles['hitit-content-bg']}>
           <p>
             Its all about real stories.<br />Told without filters, judgment,<br/>or embellishment.<br /><br />Every story explores<br />the real life experiences<br/>of Non-Resident Indians,<br />people of Indian heritage<br /><br />
             Their journeys across continents.<br />Sacrifices, ambitions and triumphs.<br /><br />We firmly believe that <br />authentic emotions<br/>matter more than opinion.<br />
           </p>
           <img src={hindilogo} alt="Hindi Logo" className={styles['hitit-img']} />
-        </div>
-        <a
+          <a
           href="#thoughts"
           className={styles['thought-btn']}
           onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
         >
           The Thought
         </a>
+        </div>
+        
         
       </div>
       </div>
