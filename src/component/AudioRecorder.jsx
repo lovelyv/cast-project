@@ -1,4 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
+// Helper to detect Android device
+function isAndroid() {
+  return /Android/i.test(navigator.userAgent);
+}
 
 const AudioRecorder = ({ onTranscriptReady }) => {
   const [recording, setRecording] = useState(false);
@@ -174,6 +178,17 @@ const AudioRecorder = ({ onTranscriptReady }) => {
   useEffect(() => {
     return () => clearInterval(timerRef.current);
   }, []);
+
+  // Android + SpeechRecognition not available
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (isAndroid() && !SpeechRecognition) {
+    return (
+      <div style={{ padding: "20px", color: "#b00020", fontWeight: "bold" }}>
+        <h2>Audio Recorder</h2>
+        <p>Speech recognition is not supported on Android browsers. Please use a desktop browser for transcription.</p>
+      </div>
+    );
+  }
 
   return (
     <div style={{ padding: "20px" }}>
