@@ -141,10 +141,10 @@ const AudioRecorder = ({ onTranscriptReady }) => {
   return (
     <div style={{ padding: "20px" }}>
       <h2>Audio Recorder + Transcription</h2>
-      <button onClick={startRecording} disabled={recording}>
+      <button type="button" onClick={startRecording} disabled={recording}>
         Start Recording
       </button>
-      <button onClick={stopRecording} disabled={!recording}>
+      <button type="button" onClick={stopRecording} disabled={!recording}>
         Stop Recording
       </button>
       {recording && (
@@ -153,7 +153,9 @@ const AudioRecorder = ({ onTranscriptReady }) => {
         </div>
       )}
   <h3>Transcript:</h3>
-  <p>{transcript}{liveSegment && (transcript ? ' ' : '')}{liveSegment}</p>
+      <div style={{ border: '1px solid #ccc', padding: '10px', minHeight: '100px', maxHeight: '180px', width: '340px', overflowY: 'auto', overflowX: 'hidden', background: '#fafbfc', borderRadius: '6px' }}>
+        <p style={{ margin: 0, wordBreak: 'break-word' }}>{transcript}{liveSegment && (transcript ? ' ' : '')}{liveSegment}</p>
+      </div>
     </div>
   );
 };
