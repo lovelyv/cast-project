@@ -6,6 +6,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
   const [liveSegment, setLiveSegment] = useState(""); // current segment being spoken
   const [timer, setTimer] = useState(60); // 1 minute in seconds
   const [showUnsupported, setShowUnsupported] = useState(false);
+  const transcriptStartedRef = useRef(false);
   const timerRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const chunksRef = useRef([]);
@@ -35,7 +36,8 @@ const AudioRecorder = ({ onTranscriptReady }) => {
 
     mediaRecorderRef.current.start();
     setRecording(true);
-    setShowUnsupported(false);
+  setShowUnsupported(false);
+  transcriptStartedRef.current = false;
 
     // Start transcription automatically
     startTranscription();
@@ -52,12 +54,23 @@ const AudioRecorder = ({ onTranscriptReady }) => {
       });
     }, 1000);
 
-    // If no transcript after 2 seconds, show unsupported message
-    setTimeout(() => {
-      if (recording && transcript.trim() === "" && liveSegment.trim() === "") {
-        setShowUnsupported(true);
+    // If no transcript after 2 seconds, show unsupported message (effect below will handle)
+  // Effect: Watch transcript and liveSegment during recording
+  useEffect(() => {
+    if (recording) {
+      if ((transcript && transcript.trim() !== "") || (liveSegment && liveSegment.trim() !== "")) {
+        transcriptStartedRef.current = true;
+        setShowUnsupported(false);
       }
-    }, 2000);
+      // After 2 seconds, if still nothing, show unsupported
+      const timeout = setTimeout(() => {
+        if (!transcriptStartedRef.current) {
+          setShowUnsupported(true);
+        }
+      }, 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [recording, transcript, liveSegment]);
   };
 
   // 2. Stop Recording
