@@ -14,6 +14,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
   const chunksRef = useRef([]);
   const recognitionRef = useRef(null);
   const transcriptRef = useRef("");
+  
 
   // --- Smart punctuation helpers ---
   const addPeriodIfNeeded = (text) => {
@@ -114,10 +115,10 @@ const AudioRecorder = ({ onTranscriptReady }) => {
     }
 
     const recognition = new SpeechRecognition();
-    recognitionRef.current = recognition;
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = "en-US";
+  recognitionRef.current = recognition;
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = "en-US";
 
     recognition.onresult = (event) => {
       let segment = "";
@@ -140,7 +141,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
 
     recognition.onerror = (e) => {
       console.log("Speech recognition error:", e);
-      // Restart on recoverable errors
+      // Optional: restart automatically on certain errors
       if (recording && e.error !== "not-allowed") {
         setTimeout(() => {
           try {
@@ -167,6 +168,49 @@ const AudioRecorder = ({ onTranscriptReady }) => {
   };
 
   // --- Timer formatting ---
+  recognition.onresult = (event) => {
+    let segment = "";
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      segment += event.results[i][0].transcript;
+    }
+
+    if (event.results[event.results.length - 1].isFinal) {
+      setTranscript((prev) => {
+        let full = (prev + " " + segment).trim();
+        if (full && !/[.!?]$/.test(full)) full += ".";
+        transcriptRef.current = full;
+        return full;
+      });
+      setLiveSegment("");
+    } else {
+      setLiveSegment(segment);
+    }
+  };
+
+  recognition.onerror = (e) => {
+    console.log("Speech recognition error:", e);
+    // Optional: restart automatically on certain errors
+    if (recording && e.error !== "not-allowed") {
+      setTimeout(() => recognition.start(), 300);
+    }
+  };
+
+  recognition.onend = () => {
+    // Restart recognition only if recording is ongoing
+    if (recording) {
+      try {
+        recognition.start();
+      } catch (err) {
+        console.log("Recognition restart failed:", err);
+      }
+    }
+  };
+
+  // Start recognition immediately in the same user gesture
+  recognition.start();
+// ...existing code...
+
+  // Format timer as MM:SS
   const formatTime = (seconds) => {
     const m = Math.floor(seconds / 60)
       .toString()
