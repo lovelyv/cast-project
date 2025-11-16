@@ -5,6 +5,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
   const [transcript, setTranscript] = useState(""); // committed transcript
   const [liveSegment, setLiveSegment] = useState(""); // current segment being spoken
   const [timer, setTimer] = useState(60); // 1 minute in seconds
+  const [showUnsupported, setShowUnsupported] = useState(false);
   const timerRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const chunksRef = useRef([]);
@@ -34,6 +35,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
 
     mediaRecorderRef.current.start();
     setRecording(true);
+    setShowUnsupported(false);
 
     // Start transcription automatically
     startTranscription();
@@ -49,6 +51,13 @@ const AudioRecorder = ({ onTranscriptReady }) => {
         return prev - 1;
       });
     }, 1000);
+
+    // If no transcript after 2 seconds, show unsupported message
+    setTimeout(() => {
+      if (recording && transcript.trim() === "" && liveSegment.trim() === "") {
+        setShowUnsupported(true);
+      }
+    }, 2000);
   };
 
   // 2. Stop Recording
@@ -138,20 +147,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
     return () => clearInterval(timerRef.current);
   }, []);
 
-  // Check for browser support
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    return (
-      <div style={{ padding: "20px", color: "#b00020", fontWeight: "bold" }}>
-        <h2>Audio Recorder</h2>
-        <p>Speech recognition is <b>not supported</b> in this browser.<br />
-        Please use the latest version of Chrome, Edge, or Safari on a desktop computer for transcription features.</p>
-        <p style={{ color: '#333', fontWeight: 'normal', fontSize: '0.95em' }}>
-          <b>Note:</b> Most Android and iOS browsers do not support live speech-to-text. This feature works best on desktop browsers.
-        </p>
-      </div>
-    );
-  }
+
 
   return (
     <div style={{ padding: "20px" }}>
@@ -165,6 +161,15 @@ const AudioRecorder = ({ onTranscriptReady }) => {
       {recording && (
         <div style={{ margin: '12px 0', fontWeight: 'bold', color: timer <= 10 ? '#b00020' : '#1a3a52' }}>
           Timer: {formatTime(timer)}
+        </div>
+      )}
+      {showUnsupported && (
+        <div style={{ color: '#b00020', fontWeight: 'bold', marginTop: 16 }}>
+          <p>Speech recognition is <b>not supported</b> in this browser or device.<br />
+          Please use the latest version of Chrome, Edge, or Safari on a desktop computer for transcription features.</p>
+          <p style={{ color: '#333', fontWeight: 'normal', fontSize: '0.95em' }}>
+            <b>Note:</b> Most Android and iOS browsers do not support live speech-to-text. This feature works best on desktop browsers.
+          </p>
         </div>
       )}
       <h3>Transcript:</h3>
