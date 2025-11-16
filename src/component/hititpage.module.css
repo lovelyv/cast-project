@@ -26,8 +26,9 @@
   background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%);
   color: #3a2600;
   border: none;
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: 'Rubik', 'Arial', sans-serif !important;
+  font-size: clamp(18px, 3vw, 22px);
   border-radius: 2.2rem;
   box-shadow: 0 2px 12px 0 rgba(255,140,0,0.10);
   cursor: pointer;
