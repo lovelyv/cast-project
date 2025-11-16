@@ -152,7 +152,8 @@ const AudioRecorder = ({ onTranscriptReady }) => {
           Timer: {formatTime(timer)}
         </div>
       )}
-  {/* Transcript is hidden as per request */}
+  <h3>Transcript:</h3>
+  <p>{transcript}{liveSegment && (transcript ? ' ' : '')}{liveSegment}</p>
     </div>
   );
 };
