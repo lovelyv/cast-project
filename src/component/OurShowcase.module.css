@@ -12,10 +12,17 @@ p.contrastText {
   color: #D2691E; /* chocolate brown */
 }
 .showcase-content-bg {
- 
-
   font-family: 'Rubik', 'Arial', sans-serif;
   font-size: clamp(18px, 3vw, 22px);
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+}
+
+@media (max-width: 600px) {
+  .showcase-content-bg {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
 }
 
 .all-page-showcase {
@@ -55,8 +62,7 @@ p.contrastText {
   opacity: 1 !important;
   text-align: center;
   margin: 1.5em auto 0.7em auto;
-  display: flex;
-  flex: 1;
+  display: block;
   font-style: normal;
   padding: 0.5em 0.5em 0.5em 0.5em;
 }

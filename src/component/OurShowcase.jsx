@@ -10,8 +10,9 @@ function OurShowcase() {
       <Navbar />
       <div className={styles['all-page-showcase']} style={{ flex: 1 }}>
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
+           <h1 className={styles["showcase-h2"]}>The Stories We Tell</h1>
         <div className={styles['showcase-content-bg']}>
-          <h1 className={styles["showcase-h2"]}>The Stories We Tell</h1>
+       
           <span><strong>Resilience</strong>:&nbsp;from student visas to citizenships; the grit behind every milestone.</span><br/>
           <span><strong>Sacrifice</strong>:&nbsp;separation, cultural displacement, and emotional endurance.</span><br/>
           <span><strong>Ambition</strong>:&nbsp;entrepreneurs, innovators, and creators shaping industries worldwide.</span><br/>

@@ -50,9 +50,11 @@ function Navbar() {
         <nav className={styles.navbar} ref={navRef}>
             <div className={styles.navContent}>
                 <div className={styles.logoCol}>
-                    <div className={styles.logoWrapper}>
-                        <img src={logo} alt="Logo" className={styles.logoImage} />
-                    </div>
+                    <a href={base} className={styles.logoLink} aria-label="Go to homepage">
+                        <div className={styles.logoWrapper}>
+                            <img src={logo} alt="Logo" className={styles.logoImage} />
+                        </div>
+                    </a>
                 </div>
                 <div className={styles.titleCol}>
                     <a href={base} className={styles.logoLink} aria-label="Go to homepage">

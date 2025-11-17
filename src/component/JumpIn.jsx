@@ -4,9 +4,10 @@ import Navbar from './navbar';
 import styles from './JumpIn.module.css';
 import SubpageWatermark from './SubpageWatermark';
 import handpointer from '../assets/handpointer.png';
-import Footer from './Footer';
 
 function JumpIn() {
+  // Detect Android device
+  const isAndroid = typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent);
   const [showRecorder, setShowRecorder] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -179,26 +180,28 @@ across the entire digital landscape.<br/><br/>
             <div className={styles['form-row']}>
               <label htmlFor="storySummary" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
                 Story Summary
-                <button type="button" aria-label="Record story summary" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setShowRecorder(true)}>
-      {showRecorder && (
-        <div 
-          style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.32)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
-          <div 
-            style={{ background: '#fff', borderRadius: 12, boxShadow: '0 4px 24px rgba(0,0,0,0.18)', padding: 32, minWidth: 320, maxWidth: '90vw', position: 'relative' }}
-            onClick={e => e.stopPropagation()}
-          >
-            <button 
-              onClick={e => { e.stopPropagation(); setShowRecorder(false); }} 
-              style={{ position: 'absolute', top: 8, right: 12, background: 'none', border: 'none', fontSize: 24, cursor: 'pointer', color: '#D2691E', zIndex: 10001 }} 
-              aria-label="Close recorder"
-            >&times;</button>
-            <AudioRecorder onTranscriptReady={t => setFormData(prev => ({ ...prev, storySummary: t }))} />
-          </div>
-        </div>
-      )}
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D2691E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="12" rx="3" fill="#FFD700" stroke="#D2691E"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
-                </button>
+                {!isAndroid && (
+                  <button type="button" aria-label="Record story summary" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setShowRecorder(true)}>
+                    {showRecorder && (
+                      <div 
+                        style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.32)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                      >
+                        <div 
+                          style={{ background: '#fff', borderRadius: 12, boxShadow: '0 4px 24px rgba(0,0,0,0.18)', padding: 32, minWidth: 320, maxWidth: '90vw', position: 'relative' }}
+                          onClick={e => e.stopPropagation()}
+                        >
+                          <button 
+                            onClick={e => { e.stopPropagation(); setShowRecorder(false); }} 
+                            style={{ position: 'absolute', top: 8, right: 12, background: 'none', border: 'none', fontSize: 24, cursor: 'pointer', color: '#D2691E', zIndex: 10001 }} 
+                            aria-label="Close recorder"
+                          >&times;</button>
+                          <AudioRecorder onTranscriptReady={t => setFormData(prev => ({ ...prev, storySummary: t }))} />
+                        </div>
+                      </div>
+                    )}
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D2691E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="12" rx="3" fill="#FFD700" stroke="#D2691E"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+                  </button>
+                )}
               </label>
               <textarea
                 className={`${styles.opaqueField} ${styles.input40}`}
@@ -354,7 +357,8 @@ across the entire digital landscape.<br/><br/>
           </div>
         </div>
       </div>
-      <Footer />
+
+     
     </div>
   );
 }
