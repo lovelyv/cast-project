@@ -12,52 +12,39 @@ p.contrastText {
   color: #D2691E; /* chocolate brown */
 }
 .showcase-content-bg {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+ 
+
   font-family: 'Rubik', 'Arial', sans-serif;
   font-size: clamp(18px, 3vw, 22px);
 }
 
 .all-page-showcase {
-  background-color: #b8d4e8;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;          /* center children horizontally */
-  /* No vertical centering to avoid cropping */
-  min-height: 100vh;
+  background-color:#b8d4e8;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: #B8D4E8;
   width: 100%;
   margin: 0 auto;               /* center the container horizontally */
   text-align: center;           /* center text content */
-  overflow: visible;
-  max-height: none;
+  flex-direction: column;
+  align-items: center;          /* center children horizontally */
   animation: fadeInUp 0.6s ease-out;
   position: relative; /* Needed for absolute positioning of the link */
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 80px;
+  flex: 1 0 auto; /* Fill available vertical space to push footer down */
+  justify-content: center; /* Center content vertically */
 }
 
-@media (max-height: 600px) {
+@media (min-width: 601px) {
   .all-page-showcase {
-    padding-top: 120px;
-    padding-bottom: 40px;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    padding-top: calc(clamp(68px, 9vw, 96px) + 12px); /* Match navbar height + extra space */
+    padding-bottom: 0;
   }
 }
 
-@media (max-width: 600px) {
-  .all-page-showcase {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
+
 
 .showcase-h2 {
   font-weight: 600;
