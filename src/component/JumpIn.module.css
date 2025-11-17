@@ -1,3 +1,18 @@
+label[for="storySummary"] {
+  text-align: center;
+  width: 100%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+textarea.opaqueField.input40 {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  justify-self: center;
+  align-self: center;
+}
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -87,6 +102,11 @@
   animation: pulse 1.1s cubic-bezier(0.4,0,0.6,1) infinite !important;
 }
 @media (max-width: 600px) {
+  textarea.opaqueField.field50 {
+    min-width: 320px;
+    max-width: 600px;
+    width: 100%;
+  }
   .submit-btn {
     font-size: 0.95rem;
     padding: 0.6em 1.3em;
