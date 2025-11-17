@@ -4,6 +4,8 @@ import Navbar from './navbar';
 import styles from './JumpIn.module.css';
 import SubpageWatermark from './SubpageWatermark';
 import handpointer from '../assets/handpointer.png';
+import Footer from './Footer';
+import { SOCIAL_LINKS } from '../config';
 
 function JumpIn() {
   // Detect Android device
@@ -252,7 +254,7 @@ across the entire digital landscape.<br/><br/>
             position: 'relative'
           }}>
             <a 
-              href="https://facebook.com/nristories" 
+              href={SOCIAL_LINKS.facebook}
               target="_blank" 
               rel="noopener noreferrer"
               style={{ color: '#D2691E', fontSize: '32px', transition: 'transform 0.2s' }}
@@ -266,7 +268,7 @@ across the entire digital landscape.<br/><br/>
             </a>
 
             <a 
-              href="https://twitter.com/nristories" 
+              href={SOCIAL_LINKS.twitter}
               target="_blank" 
               rel="noopener noreferrer"
               style={{ color: '#D2691E', fontSize: '32px', transition: 'transform 0.2s' }}
@@ -280,7 +282,7 @@ across the entire digital landscape.<br/><br/>
             </a>
 
             <a 
-              href="https://instagram.com/nristories" 
+              href={SOCIAL_LINKS.instagram}
               target="_blank" 
               rel="noopener noreferrer"
               style={{ color: '#D2691E', fontSize: '32px', transition: 'transform 0.2s' }}
@@ -294,7 +296,7 @@ across the entire digital landscape.<br/><br/>
             </a>
 
             <a 
-              href="https://youtube.com/@nristories" 
+              href={SOCIAL_LINKS.youtube}
               target="_blank" 
               rel="noopener noreferrer"
               style={{ color: '#D2691E', fontSize: '32px', transition: 'transform 0.2s' }}
@@ -308,7 +310,7 @@ across the entire digital landscape.<br/><br/>
             </a>
 
             <a 
-              href="https://linkedin.com/company/nristories" 
+              href={SOCIAL_LINKS.linkedin}
               target="_blank" 
               rel="noopener noreferrer"
               style={{ color: '#D2691E', fontSize: '32px', transition: 'transform 0.2s' }}
@@ -322,7 +324,7 @@ across the entire digital landscape.<br/><br/>
             </a>
 
             <a 
-              href="https://tiktok.com/@nristories" 
+              href={SOCIAL_LINKS.tiktok}
               target="_blank" 
               rel="noopener noreferrer"
               style={{ color: '#D2691E', fontSize: '32px', transition: 'transform 0.2s' }}
@@ -358,8 +360,10 @@ across the entire digital landscape.<br/><br/>
         </div>
       </div>
 
-     
+      <Footer />
+
     </div>
+   
   );
 }
 
