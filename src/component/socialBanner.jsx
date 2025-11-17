@@ -14,17 +14,20 @@ export default function SocialBanner({ position = "top-right", size = "md", link
     youtube: links?.youtube || "https://youtube.com/",
   };
 
-  // Container positioned at top corner; dropdown appears on hover
-  const containerStyle = {
-    position: "fixed",
-    top: "12px",
-    left: position === "top-center" ? "50%" : position === "top-left" ? "12px" : "auto",
-    right: position === "top-right" ? "12px" : "auto",
-    transform: position === "top-center" ? "translateX(-50%)" : "none",
-    zIndex: 20,
-    width,
-    pointerEvents: "auto",
-  };
+  // Use static positioning for footer, fixed for floating
+  const isStatic = position === "static";
+  const containerStyle = isStatic
+    ? { width, position: "static", display: "flex", justifyContent: "center", alignItems: "center" }
+    : {
+        position: "fixed",
+        top: "12px",
+        left: position === "top-center" ? "50%" : position === "top-left" ? "12px" : "auto",
+        right: position === "top-right" ? "12px" : "auto",
+        transform: position === "top-center" ? "translateX(-50%)" : "none",
+        zIndex: 20,
+        width,
+        pointerEvents: "auto",
+      };
 
   return (
     <div

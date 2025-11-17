@@ -1,9 +1,38 @@
+.footerRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5em;
+}
+
+.showcaseRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 0;
+}
+
+.showcaseLink {
+  color: #FFFFAA;
+  font-weight: normal;
+  font-size: 0.95em;
+  text-decoration: none;
+  font-family: inherit;
+  transition: color 0.2s;
+  margin-top: 1.2em;
+}
+.showcaseLink:hover {
+  color: #fffbe0;
+  text-decoration: underline;
+}
 .footer {
   flex-shrink: 0;
   width: 100%;
   background: #1a3a52;
-  color: #fff;
-  padding: 1.2em 0 0 0;
+  color: #FFFFAA;
+  padding: 1.2em 0 1.2em 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,32 +40,55 @@
   padding-top: 0 !important;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
-  padding-bottom: 0 !important;
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
 }
 
 .footerContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.7em;
+  margin-left: 0;
+}
+
+@media (min-width: 600px) {
+  .footerContent {
+    align-items: flex-start;
+    margin-left: 40px; /* Match the left offset of the Full Name label */
+  }
 }
 
 .contactTitle {
-  font-size: 1.2em;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 1em;
+  font-weight: bold;
+    color: #FFFFAA;
+  letter-spacing: 0.01em;
   margin-bottom: 0.2em;
+  margin-top: 1em;
+  font-family: inherit;
 }
 
 .contactDetails {
   display: flex;
   flex-direction: column;
-  gap: 0.2em;
-  font-size: 1em;
+  gap: 0.7em;
+  font-size: 0.95em;
+  color: #FFFFAA;
+  font-weight: normal;
+  font-family: inherit;
+}
+
+.contactDetails span:last-child {
+  margin-bottom: 1em;
 }
 
 .contactDetails a {
-  color: #FFD700;
+  color: #FFFFAA;
+  text-decoration: none;
+  transition: text-decoration 0.2s;
+}
+.contactDetails a:hover {
   text-decoration: underline;
 }
 
