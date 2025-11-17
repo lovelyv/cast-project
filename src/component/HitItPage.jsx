@@ -6,6 +6,7 @@ import styles from './hititpage.module.css';
 
 
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 
 function HitItPage() {
@@ -20,16 +21,12 @@ function HitItPage() {
   }, []);
 
   return (
-    <>
-  <div>
-    
-        <Navbar />
-      
-
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Navbar />
       <div className={styles['all-page-hitit']}>
         {/* Background watermark (moved inside for stacking context) */}
-  <SubpageWatermark />
-        <div className={styles['hitit-content-bg']}>
+        <SubpageWatermark />
+        <div>
           <p>
             Its all about real stories.<br />Told without filters, judgment,<br/>or embellishment.<br /><br />Every story explores<br />the real life experiences<br/>of Non-Resident Indians,<br />people of Indian heritage<br /><br />
             Their journeys across continents.<br />Sacrifices, ambitions and triumphs.<br /><br />
@@ -37,19 +34,16 @@ function HitItPage() {
           </p>
           <img src={hindilogo} alt="Hindi Logo" className={styles['hitit-img']} />
           <a
-          href="#thoughts"
-          className={styles['thought-btn']}
-          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
-        >
-          The Thought
-        </a>
+            href="#thoughts"
+            className={styles['thought-btn']}
+            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+          >
+            The Thought
+          </a>
         </div>
-        
-        
       </div>
-      </div>
-    
-    </>
+      <Footer />
+    </div>
   );
 }
 

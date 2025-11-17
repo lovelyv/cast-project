@@ -4,6 +4,7 @@ import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import visualStory from '../assets/visualstory.jpeg';
 import soundfeel from '../assets/soundfeel.jpeg';
+import Footer from './Footer';
 
 function Thoughts({ scrollTo }) {
   useEffect(() => {
@@ -35,25 +36,22 @@ function Thoughts({ scrollTo }) {
         if (newOpen[idx] && headerRefs[idx].current) {
           const nav = document.querySelector('nav');
           const navHeight = nav ? nav.offsetHeight : 0;
-          // Always leave enough space for the title to clear the navbar
-          const extra = (window.innerWidth <= 600 ? 16 : 36);
-          const buttonRect = headerRefs[idx].current.getBoundingClientRect();
-          const scrollY = window.scrollY + buttonRect.top - navHeight - extra;
+          const extra = window.innerWidth <= 600 ? 8 : 32; // leave more space above
+          const rect = headerRefs[idx].current.getBoundingClientRect();
+          const scrollY = window.scrollY + rect.top - navHeight - extra;
           window.scrollTo({ top: scrollY, behavior: 'smooth' });
         }
-      }, 100);
+      }, 50);
       return newOpen;
     });
   };
 
   return (
-    <div>
-        <Navbar />
-      
-  <div className={styles['all-page-thoughts']}> 
-    <SubpageWatermark/>
-    
-         <div className={styles['thoughts-content-bg']}>
+   <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Navbar />
+       <div className={styles['all-page-thoughts']}>
+      <SubpageWatermark />
+      <div className={styles['thoughts-content-bg']}>
   <span className={styles['accordion-content']} style={{ whiteSpace: 'nowrap', fontWeight: 700 }}>The DOCUCAST&trade;</span>
   <p className={styles['accordion-content']}>
     will feature stories<br/>
@@ -176,6 +174,7 @@ function Thoughts({ scrollTo }) {
           
         </div>
       </div>
+        <Footer />  
     </div>
   );
 }

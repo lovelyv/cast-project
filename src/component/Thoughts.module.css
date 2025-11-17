@@ -7,7 +7,7 @@
   font-family: 'Rubik', 'Arial', sans-serif;
   opacity: 1 !important;
   text-align: center;
-  margin: 1em auto 0em auto;
+  margin: 0.3em auto 0em auto;
   display: flex;
   flex: 1;
   font-style: normal;
@@ -106,24 +106,21 @@
 }
 
 .all-page-thoughts {
- background-color:#b8d4e8;
+ display: flex;
+  flex-direction: column;
+  background-color:#b8d4e8;
   box-sizing: border-box;
-  justify-content: center;
-  overflow: visible;
-  max-height: none;
-
-  
-  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #B8D4E8;
   width: 100%;
   margin: 0 auto;               /* center the container horizontally */
   text-align: center;           /* center text content */
-  display: flex;
   flex-direction: column;
   align-items: center;          /* center children horizontally */
   animation: fadeInUp 0.6s ease-out;
-
   position: relative; /* Needed for absolute positioning of the link */
-
+  flex: 1 0 auto; /* Fill available vertical space to push footer down */
+  justify-content: center; /* Center content vertically */
 }
 
 /* Default: stackable, not fixed */
