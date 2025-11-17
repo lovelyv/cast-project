@@ -6,8 +6,9 @@ import styles from './OurShowcase.module.css';
 
 function OurShowcase() {
   return (
-      <div className={styles['all-page-showcase']}> 
-      <Navbar />    
+       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Navbar />   
+        <div className={styles['all-page-showcase']}>
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
              <div className={styles['showcase-content-bg']}>
           <h1 className={styles["showcase-h2"]}>
@@ -26,6 +27,7 @@ function OurShowcase() {
           
           <p className={styles.contrastText}>Immortalizing across digital platforms for all times to come</p>
           
+        </div>
         </div>
       <Footer />
       </div>

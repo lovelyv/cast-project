@@ -3,11 +3,13 @@ import { CONTACT } from '../config';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import styles from './YouAFit.module.css';
+import Footer from './Footer';
 
 function YouAFit() {
   return (
-    <div className={styles['youafit-page']}>
+   <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
+      <div className={styles['youafit-page']}>
       <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
       <div className={styles['youafit-content-bg']}>
         <span style={{ whiteSpace: 'nowrap', fontWeight: 700 }}>
@@ -95,8 +97,9 @@ function YouAFit() {
         </a>
       </div>
       </div>
+       </div>
       {/* Only Jump In button below last element */}
-      
+         <Footer />
     </div>
   );
 }
