@@ -257,6 +257,13 @@
   flex: 1;
   align-items: center;
   justify-content: center;
+ }
+
+/* Reduce bottom spacing for OCU in DocuCast button */
+.accordion-title span[style*='font-size: 0.7em'] {
+  line-height: 1;
+  vertical-align: baseline;
+  margin-bottom: -0.18em;
 }
 
 @media (max-width: 600px) {
@@ -328,8 +335,16 @@
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
+/* Only for the DocuCast section: bottom align the button */
+.docucast {
+  min-height: 180px; /* Adjust as needed for visual balance */
+  justify-content: flex-end;
+}
 .accordion-section:first-of-type {
   padding-top: 0%; /* Match or slightly exceed navbar height */
 }
