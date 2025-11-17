@@ -39,13 +39,11 @@ function YouAFit() {
           Startups.<br />
           Market leaders.<br />
           Business acumen.<br />
-          Creating employment.<br />
-          The rich and powerful.<br />
           Being emulation worthy.<br />
           Trend setters and influencers.
         </div>
         <p>
-          Text, mail or call us.<br /> we will reach out to you.
+          Text, mail or call us.<br />We will reach out to you.
         </p>
         {/* Info boxes removed as requested */}
         {/* Email contact above, removed duplicate */}

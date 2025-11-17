@@ -73,7 +73,7 @@ deserves to be showcased.
  <h2 className={styles["jumpin-h2"]}>
            PRESERVE your JOURNEY,<br/>INSPIRE the NEXT ONE.
           </h2>
-           Share a few details.<br/>Our team<br/>will  connect to explore<br/>fit, filming and collaboration.<br/><br/>
+           Share a few details.<br/>Our team<br/>will connect to explore<br/>fit, filming and collaboration.<br/><br/>
 In the process,<br/>
 showcasing and immortalizing you<br/>
 across the entire digital landscape.<br/><br/>
@@ -176,7 +176,7 @@ across the entire digital landscape.<br/><br/>
             </div>
 
             <div className={styles['form-row']}>
-              <label htmlFor="storySummary" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', textAlign: 'center', width: '100%' }}>
+              <label htmlFor="storySummary" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
                 Story Summary
                 <button type="button" aria-label="Record story summary" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setShowRecorder(true)}>
       {showRecorder && (
@@ -216,8 +216,7 @@ across the entire digital landscape.<br/><br/>
                   color: '#0d2d44',
                   backgroundColor: '#ffffff',
                   fontFamily: 'inherit',
-                  resize: 'vertical',
-                  width: '100%'
+                  resize: 'vertical'
                 }}
               />
             </div>
@@ -226,25 +225,7 @@ across the entire digital landscape.<br/><br/>
 
             <button
               type="submit"
-              style={{
-                padding: '14px 32px',
-                backgroundColor: '#D2691E',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '6px',
-                fontSize: '18px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                transition: 'background-color 0.3s',
-                marginTop: '10px',
-                opacity: 1,
-                backgroundImage: 'none',
-                backdropFilter: 'none',
-                boxShadow: 'none',
-                filter: 'none'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#B8571A'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#D2691E'}
+              className={styles['submit-btn']}
             >
               Submit Your Story
             </button>
@@ -349,16 +330,7 @@ across the entire digital landscape.<br/><br/>
             </a>
           </div>
 
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5em' }}>
-          <a
-            href="#youafit"
-            className={`${styles['jump-link']} ${styles['thoughts-link']}`}
-            style={{ marginLeft: '2vw' }}
-            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
-          >
-            <span style={{ fontSize: '1.5em', lineHeight: 1, display: 'inline-block', transform: 'translateY(1px)' }}>&larr;</span>
-            <span>You a fit?</span>
-          </a>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '2.5em' }}>
           <a
             href="#showcase"
             className={styles['showcase-link']}

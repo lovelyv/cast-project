@@ -33,24 +33,15 @@ function Thoughts({ scrollTo }) {
       const newOpen = o.map((_, i) => i === idx ? isOpening : false);
       setTimeout(() => {
         if (newOpen[idx] && headerRefs[idx].current) {
-          if (idx === 0) {
-            headerRefs[idx].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            setTimeout(() => {
-              const nav = document.querySelector('nav');
-              const navHeight = nav ? nav.offsetHeight : 0;
-              const isSmall = window.innerWidth <= 600;
-              const extra = isSmall ? 8 : 40;
-              window.scrollBy({ top: -navHeight - extra, behavior: 'smooth' });
-            }, 400);
-          } else {
-            const nav = document.querySelector('nav');
-            const navHeight = nav ? nav.offsetHeight : 0;
-            const rect = headerRefs[idx].current.getBoundingClientRect();
-            const scrollY = window.scrollY + rect.top - navHeight - 16;
-            window.scrollTo({ top: scrollY, behavior: 'smooth' });
-          }
+          const nav = document.querySelector('nav');
+          const navHeight = nav ? nav.offsetHeight : 0;
+          // Always leave enough space for the title to clear the navbar
+          const extra = (window.innerWidth <= 600 ? 16 : 36);
+          const buttonRect = headerRefs[idx].current.getBoundingClientRect();
+          const scrollY = window.scrollY + buttonRect.top - navHeight - extra;
+          window.scrollTo({ top: scrollY, behavior: 'smooth' });
         }
-      }, 50);
+      }, 100);
       return newOpen;
     });
   };
@@ -61,7 +52,14 @@ function Thoughts({ scrollTo }) {
       
   <div className={styles['all-page-thoughts']}> 
     <SubpageWatermark/>
+    
          <div className={styles['thoughts-content-bg']}>
+  <span className={styles['accordion-content']} style={{ whiteSpace: 'nowrap', fontWeight: 700 }}>The DOCUCAST&trade;</span>
+  <p className={styles['accordion-content']}>
+    will feature stories<br/>
+    that speak about<br/>
+    Resilience<br/>
+    Sacrifice<br/>Ambition<br/>Identity<br/>Inspiration<br/></p>      
           {/* Accordion 1: Landscape */}
           <div className={styles['accordion-section'] + ' ' + styles['docucast']}>
             <button ref={headerRefs[0]} onClick={() => toggle(0)} className={styles['accordion-header']}>
@@ -72,7 +70,7 @@ function Thoughts({ scrollTo }) {
               <div className={styles['accordion-content']}>
                 <span className={styles.overcrowded}>The Podcast world<br/> is overcrowded.</span><br />
                 Over 6.5 million podcasts<br/>exist worldwide.<br />
-                Yet...<br /> 
+                <b>Yet...</b><br /> 
                 most fade away<br />
                 after just a few episodes.<br /><br />
                 Traditional podcasts<br />
