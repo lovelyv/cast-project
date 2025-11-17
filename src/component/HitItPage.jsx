@@ -32,7 +32,8 @@ function HitItPage() {
         <div className={styles['hitit-content-bg']}>
           <p>
             Its all about real stories.<br />Told without filters, judgment,<br/>or embellishment.<br /><br />Every story explores<br />the real life experiences<br/>of Non-Resident Indians,<br />people of Indian heritage<br /><br />
-            Their journeys across continents.<br />Sacrifices, ambitions and triumphs.<br /><br />We firmly believe that <br />authentic emotions<br/>matter more than opinion.<br />
+            Their journeys across continents.<br />Sacrifices, ambitions and triumphs.<br /><br />
+            Their authentic emotions matter.<br />
           </p>
           <img src={hindilogo} alt="Hindi Logo" className={styles['hitit-img']} />
           <a

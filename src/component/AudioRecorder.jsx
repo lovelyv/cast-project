@@ -18,7 +18,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
   const startRecording = async () => {
     // Do not clear transcript or liveSegment to allow accumulation
     chunksRef.current = [];
-  setTimer(60);
+    setTimer(60);
 
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     mediaRecorderRef.current = new MediaRecorder(stream);
@@ -36,8 +36,8 @@ const AudioRecorder = ({ onTranscriptReady }) => {
 
     mediaRecorderRef.current.start();
     setRecording(true);
-  setShowUnsupported(false);
-  transcriptStartedRef.current = false;
+    setShowUnsupported(false);
+    transcriptStartedRef.current = false;
 
     // Start transcription automatically
     startTranscription();
@@ -53,8 +53,8 @@ const AudioRecorder = ({ onTranscriptReady }) => {
         return prev - 1;
       });
     }, 1000);
+  };
 
-    // If no transcript after 2 seconds, show unsupported message (effect below will handle)
   // Effect: Watch transcript and liveSegment during recording
   useEffect(() => {
     if (recording) {
@@ -71,7 +71,6 @@ const AudioRecorder = ({ onTranscriptReady }) => {
       return () => clearTimeout(timeout);
     }
   }, [recording, transcript, liveSegment]);
-  };
 
   // 2. Stop Recording
   const stopRecording = () => {

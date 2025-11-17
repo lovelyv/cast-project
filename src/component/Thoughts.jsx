@@ -81,7 +81,9 @@ function Thoughts({ scrollTo }) {
                 Minimal narrative structure.<br /><br />
                 The ones that thrive<br />
                 do so through storytelling craft.<br /><br />
-                
+                By holding viewer attention<br />
+                through cinematic pacing,<br />
+                emotional truth<br/> and immersive presentation.<br />
               </div>
             )}
           </div>
@@ -103,11 +105,9 @@ function Thoughts({ scrollTo }) {
                 between a podcast<br/>and a documentary.<br /><br />
                 Each episode has interviews,<br/>archival footage<br/>and cinematic visuals.<br />
                 Woven into a single narrative arc.<br /><br />
-                A storytelling<br/>that looks,<br/>sounds, and feels different.<br />
+                Storytelling that looks,<br/>sounds, and feels different.<br />
                 A documentary style podcast<br/>with visual enrichment.<br/>
-                By holding viewer attention<br />
-                through cinematic pacing,<br />
-                emotional truth<br/> and immersive presentation.<br />
+                
                 
               </div>
             )}
@@ -120,14 +120,11 @@ function Thoughts({ scrollTo }) {
             </button>
             {open[2] && (
               <div className={styles['accordion-content']}>
-                Multicam setup<br />
-                High on content<br /><br />
-                Designed for digital audiences<br />who crave emotional depth and visual substance.<br />
-                A platform where the NRI voice is<br/>heard, seen, and preserved.
+                
                 <div className={styles.container}>
                   <div className={styles['left-box']}>
                     <h3>Visual Storytelling</h3>
-                    <p>Cinematic B-roll, archival images, and on-location frames add context and depth.</p>
+                    <p>Cinematic B-roll.<br/>Archival images.<br/>On-location frames<br/><br/>All of these<br/>add context and depth.</p>
                   </div>
                   <div className={styles['right-box']}>
                     <img
@@ -139,7 +136,8 @@ function Thoughts({ scrollTo }) {
                 <div className={styles.container}>
                   <div className={styles['left-box']}>
                     <h3>Sound you can feel</h3>
-                    <p>Voice first, layered sound design and a score that supports the emotion - never distracts.</p>
+                    <p>Voice first<br />layered sound design<br /><br />A score<br />that supports
+                     the emotion<br />Sound that never distracts.</p>
                   </div>
                   <div className={styles['right-box']}>
                     <img
@@ -148,12 +146,21 @@ function Thoughts({ scrollTo }) {
                     />
                   </div>
                 </div>
+
                 <div className={styles.container}>
                   <div className={styles['left-box']}>
-                    <h3>Editorial arcs</h3>
-                    <p>Each episode is structured for momentum - opening hook, rising stakes, resolution, and reflection.</p>
-                  </div>
+                      <h3>Editorial arcs</h3>
+                      <p>Each episode is <br/>structured for momentum.<br/>Opening hook.<br/>Rising stakes. <br/>Resolution and reflection.<br/></p>
+                    </div>
+                   <div className={styles['left-box']}>
+                      <h3>The Result</h3>
+                      <p>Good production standards.<br/><br/>High on content.<br/>
+                      Designed for digital audiences<br/>
+                      who crave emotional depth and<br/>visual substance<br/>
+                      A platform where the NRI voice<br/>is heard, seen and preserved.</p>
+                    </div>
                 </div>
+
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', marginTop: '2.5em' }}>
                   <a
                     href="#youafit"

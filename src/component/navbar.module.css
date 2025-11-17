@@ -185,6 +185,8 @@
   color: #FFFFAA; /* slightly darker pastel yellow - matches H1 */
   font-family:  'Arial', sans-serif;
 
+  white-space: nowrap;
+
 }
 
 .regMark {
