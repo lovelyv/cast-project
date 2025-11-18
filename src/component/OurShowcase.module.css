@@ -1,3 +1,9 @@
+
+@media (max-width: 600px), (max-height: 600px) {
+  .all-page-showcase {
+    padding-top: 108px !important; /* Large enough for fixed navbar on mobile/short screens */
+  }
+}
 /* OurShowcase page-scoped styles */
 
 /* Typography matching "Stories of" (Garamond italic, bold) */
@@ -41,6 +47,7 @@ p.contrastText {
   position: relative; /* Needed for absolute positioning of the link */
   flex: 1 0 auto; /* Fill available vertical space to push footer down */
   justify-content: center; /* Center content vertically */
+   color: rgb(0, 0, 8) !important;
 }
 
 @media (min-width: 601px) {
@@ -50,6 +57,7 @@ p.contrastText {
     padding-bottom: 0;
   }
 }
+
 
 
 

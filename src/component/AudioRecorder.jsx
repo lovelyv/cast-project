@@ -170,14 +170,16 @@ const AudioRecorder = ({ onTranscriptReady, onClose }) => {
 
 
   return (
-    <div style={{ padding: "20px", opacity: 1 }}>
-      <h2>Audio Recorder + Transcription</h2>
-      <button type="button" onClick={startRecording} disabled={recording}>
+  <div style={{ padding: "20px", opacity: 1, background: "#fff", minHeight: "auto", position: "relative", zIndex: 1000, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+    <h2>Audio Recorder + Transcription</h2>
+  <div style={{ display: 'flex', gap: '12px', marginBottom: '12px', justifyContent: 'center' }}>
+      <button type="button" onClick={startRecording} disabled={recording} style={{ width: 'fit-content', minWidth: 0 }}>
         Start Recording
       </button>
-      <button type="button" onClick={stopRecording} disabled={!recording}>
+      <button type="button" onClick={stopRecording} disabled={!recording} style={{ width: 'fit-content', minWidth: 0 }}>
         Stop Recording
       </button>
+    </div>
       {recording && (
         <div style={{ margin: '12px 0', fontWeight: 'bold', color: timer <= 10 ? '#b00020' : '#1a3a52' }}>
           Timer: {formatTime(timer)}
@@ -185,7 +187,24 @@ const AudioRecorder = ({ onTranscriptReady, onClose }) => {
       )}
       
       <h3>Transcript:</h3>
-      <p>{transcript}{liveSegment && (transcript ? ' ' : '')}{liveSegment}</p>
+      <div style={{ maxHeight: '120px', minHeight: '48px', overflowY: 'auto', background: '#f7f7fa', borderRadius: '8px', padding: '10px', margin: '0 auto 12px auto', width: '100%', boxSizing: 'border-box' }}>
+        <div style={{
+          width: '320px',
+          height: '120px',
+          overflowY: 'auto',
+          overflowX: 'hidden',
+          background: '#f7f7fa',
+          borderRadius: '8px',
+          padding: '10px',
+          margin: '0 auto',
+          boxSizing: 'border-box',
+          border: '1px solid #e0e0e0',
+          display: 'flex',
+          alignItems: 'flex-start',
+        }}>
+          <p style={{ margin: 0, wordBreak: 'break-word', width: '100%' }}>{transcript}{liveSegment && (transcript ? ' ' : '')}{liveSegment}</p>
+        </div>
+      </div>
     </div>
   );
 };
