@@ -88,15 +88,7 @@ function Navbar() {
                             className={`${styles.navLink} ${activeHash === '#youafit' ? styles.navLinkActive : ''}`} 
                             href="#youafit"
                         >
-                            You a fit?
-                        </a>
-                    </li>
-                    <li>
-                        <a 
-                            className={`${styles.navLink} ${activeHash === '#showcase' ? styles.navLinkActive : ''}`} 
-                            href="#showcase"
-                        >
-                            Our Showcase
+                            You a Fit?
                         </a>
                     </li>
                     <li>
@@ -105,6 +97,14 @@ function Navbar() {
                             href="#jumpin"
                         >
                             Jump In
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            className={`${styles.navLink} ${activeHash === '#showcase' ? styles.navLinkActive : ''}`} 
+                            href="#showcase"
+                        >
+                            Our Showcase
                         </a>
                     </li>
                 </ul>

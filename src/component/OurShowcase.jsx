@@ -2,7 +2,9 @@ import React from 'react';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import Footer from './Footer';
+
 import styles from './OurShowcase.module.css';
+import youaFitStyles from './YouAFit.module.css';
 
 function OurShowcase() {
   return (
