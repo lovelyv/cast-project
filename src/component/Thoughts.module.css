@@ -512,11 +512,13 @@ button.accordion-header:hover,
 .accordion-header:focus {
   color: #000 !important;
   border-color: #e0c68a !important;
+  background: linear-gradient(90deg, #FFF9C4 0%, #FFFDE7 100%) !important;
 }
 
 
-button.accordion-header:hover *,
+button.accordion-header:hover *,  
 .accordion-header:hover *,
 .accordion-header:focus * {
   color: #000 !important;
+  background: linear-gradient(90deg, #FFF9C4 0%, #FFFDE7 100%) !important;
 }

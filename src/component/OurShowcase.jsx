@@ -21,7 +21,88 @@ function OurShowcase() {
           <span><strong>Inspiration:</strong>: ordinary lives with<br/>extraordinary spirit.</span>
           <p className={styles.contrastText}>Immortalizing across digital platforms<br/> for all times to come</p>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', margin: '2em 0 0 0' }}>
+
+        {/* Ticker Thumbnails Row */}
+        <div style={{
+          display: 'flex',
+          gap: '1em',
+          justifyContent: 'center',
+          margin: '2em 0 1em 0',
+        }}>
+          {[1,2,3,4,5].map((n) => (
+            <a
+              key={n}
+              href={`https://www.example.com/ticker${n}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'block',
+                width: 64,
+                height: 64,
+                borderRadius: '0.5em',
+                background: `#222 url(https://img.youtube.com/vi/dQw4w9WgXcQ/${n}.jpg) center/cover no-repeat`,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
+                border: '2px solid #fff',
+                transition: 'transform 0.15s',
+                overflow: 'hidden',
+              }}
+              tabIndex={0}
+              title={`Dummy Ticker ${n}`}
+            >
+            </a>
+          ))}
+        </div>
+
+        {/* Video Tickers Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '1.5em',
+          margin: '2em auto 0 auto',
+          maxWidth: 700,
+        }}>
+          {[1,2,3,4,5,6].map((n) => (
+            <a
+              key={n}
+              href={`https://www.example.com/video${n}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'block',
+                aspectRatio: '16/9',
+                background: '#222 url(https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg) center/cover no-repeat',
+                borderRadius: '1em',
+                position: 'relative',
+                boxShadow: '0 2px 12px 0 rgba(0,0,0,0.10)',
+                overflow: 'hidden',
+                transition: 'transform 0.18s',
+              }}
+              tabIndex={0}
+            >
+              <span style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                color: '#fff',
+                fontSize: '2.5em',
+                background: 'rgba(0,0,0,0.4)',
+                borderRadius: '50%',
+                width: 56,
+                height: 56,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
+              }}>
+                ▶
+              </span>
+            </a>
+          ))}
+        </div>
+
+        {/* Jump In Button - now directly below the grid */}
+  <div style={{ display: 'flex', justifyContent: 'center', margin: '0 0 2.5em 0' }}>
           <a
             href="#jumpin"
             className={youaFitStyles['jumpin-btn']}

@@ -161,7 +161,7 @@ function Thoughts({ scrollTo }) {
                   <a
                     href="#youafit"
                    className={styles['youafit-btn']}
-                   style={{ position: 'static', right: 'unset', bottom: 'unset' }}
+                   style={{ position: 'static', right: 'unset', bottom: 'unset', marginBottom: '2.5em' }}
                     onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
                   >
                     <span>You a Fit?</span>

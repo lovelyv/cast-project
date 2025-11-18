@@ -90,7 +90,7 @@ function YouAFit() {
         <a
           href="#jumpin"
           className={styles['jumpin-btn']}
-          style={{ margin: '0 auto' }}
+          style={{ margin: '0 auto 2.5em auto' }}
           onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
         >
           <span>Jump In</span>
@@ -99,7 +99,9 @@ function YouAFit() {
       </div>
        </div>
       {/* Only Jump In button below last element */}
-         <Footer />
+      <div style={{ marginTop: '2.5em' }}>
+        <Footer />
+      </div>
     </div>
   );
 }

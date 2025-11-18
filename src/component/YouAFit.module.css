@@ -23,7 +23,7 @@
   border-radius: 2.2rem;
   box-shadow: 0 2px 12px 0 rgba(255,140,0,0.10);
   cursor: pointer;
-  margin: 2.2rem auto 0 auto;
+  margin: 0 auto 0 auto !important;
   display: flex;
   align-items: center;
   gap: 0.5em;
