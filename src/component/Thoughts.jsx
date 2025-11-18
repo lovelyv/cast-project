@@ -52,7 +52,7 @@ function Thoughts({ scrollTo }) {
        <div className={styles['all-page-thoughts']}>
       <SubpageWatermark />
       <div className={styles['thoughts-content-bg']}>
-  <span className={styles['accordion-content']} style={{ whiteSpace: 'nowrap', fontWeight: 700 }}>The DOCUCAST&trade;</span>
+  <span className={styles['accordion-content']} style={{ whiteSpace: 'nowrap', fontWeight: 700 }}>Our<br/>DOCUCAST&trade;</span>
   <p className={styles['accordion-content']}>
     will feature stories<br/>
     that speak about<br/>
@@ -72,8 +72,8 @@ function Thoughts({ scrollTo }) {
                 most fade away<br />
                 after just a few episodes.<br /><br />
                 Traditional podcasts<br />
-                rely heavily on talk-based formats.<br />
-                Two cameras, one composite shot.<br />
+                rely heavily<br/>on talk-based formats.<br /><br/>
+                Two cameras.<br/>One composite shot.<br />
                 Minimal narrative structure.<br /><br />
                 The ones that thrive<br />
                 do so through storytelling craft.<br /><br />
@@ -96,7 +96,7 @@ function Thoughts({ scrollTo }) {
             </button>
             {open[1] && (
               <div className={styles['accordion-content']}>
-                We have coined it as D<span style={{fontSize: '0.7em'}}>OCU</span>C<span style={{fontSize: '0.7em'}}>AST</span>&trade;.<br /><br />
+                We have coined it as <b>D<span style={{fontSize: '0.7em'}}>OCU</span>C<span style={{fontSize: '0.7em'}}>AST</span>&trade;</b>.<br /><br />
                 A hybrid<br />
                 between a podcast<br/>and a documentary.<br /><br />
                 Each episode has interviews,<br/>archival footage<br/>and cinematic visuals.<br />
@@ -120,7 +120,7 @@ function Thoughts({ scrollTo }) {
                 <div className={styles.container}>
                   <div className={styles['left-box']}>
                     <h3>Visual Storytelling</h3>
-                    <p>Cinematic B-roll.<br/>Archival images.<br/>On-location frames<br/><br/>All of these<br/>add context and depth.</p>
+                    <p>Cinematic B-roll.<br/>Archival images.<br/>On-location frames.<br/><br/>All of these<br/>add context and depth.</p>
                   </div>
                   <div className={styles['right-box']}>
                     <img
@@ -131,9 +131,9 @@ function Thoughts({ scrollTo }) {
                 </div>
                 <div className={styles.container}>
                   <div className={styles['left-box']}>
-                    <h3>Sound you can feel</h3>
-                    <p>Voice first<br />layered sound design<br /><br />A score<br />that supports
-                     the emotion<br />Sound that never distracts.</p>
+                    <h3>Sound<br/>you can feel</h3>
+                    <p>Layered sound design.<br /><br />A score<br />that supports
+                     the emotion.<br />Sound that never distracts.</p>
                   </div>
                   <div className={styles['right-box']}>
                     <img
@@ -146,14 +146,14 @@ function Thoughts({ scrollTo }) {
                 <div className={styles.container}>
                   <div className={styles['left-box']}>
                       <h3>Editorial arcs</h3>
-                      <p>Each episode is <br/>structured for momentum.<br/>Opening hook.<br/>Rising stakes. <br/>Resolution and reflection.<br/></p>
+                      <p>Each episode is <br/>structured for momentum.<br/><br/>Opening hook.<br/>Rising stakes. <br/>Resolution and reflection.<br/></p>
                     </div>
                    <div className={styles['left-box']}>
                       <h3>The Result</h3>
-                      <p>Good production standards.<br/><br/>High on content.<br/>
-                      Designed for digital audiences<br/>
-                      who crave emotional depth and<br/>visual substance<br/>
-                      A platform where the NRI voice<br/>is heard, seen and preserved.</p>
+                      <p>Good production value.<br/>High on content.<br/><br/>
+                      Designed for<br/>digital audiences<br/>
+                      who crave emotional depth and visual substance.<br/><br/>
+                      A platform<br/>where the NRI voice<br/>is heard, seen and preserved.</p>
                     </div>
                 </div>
 
