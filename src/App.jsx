@@ -80,14 +80,14 @@ function App() {
                
                 <p ref={subcopyRef} className={`${styles["hero-subcopy"]}`}> 
                   <span className={styles.embossed}><span className={styles.nowrap}>NRI stories<span className={styles['reg-mark']}>®</span></span></span><br></br> 
-                  is a next generation<br/>storytelling podcast.<br></br><br></br>Authentic stories<br></br>from the global Indian diaspora.<br></br><br></br>
+                  is<br/>a next generation<br/>storytelling podcast.<br></br><br></br>Authentic stories<br></br>from the global Indian diaspora.<br></br><br></br>
                   Told straight from the heart.<br/> 
                   In a visually immersive,<br/> <span className={styles.nowrap}>documentary style format.</span><br/>
-                  We have coined it as D<span style={{fontSize: '0.7em'}}>OCU</span>C<span style={{fontSize: '0.7em'}}>AST</span>™.
+                  We have coined it as <b>D<span style={{fontSize: '0.7em'}}>OCU</span>C<span style={{fontSize: '0.7em'}}>AST</span>™.</b>
                 </p>
                 <h1 className={styles["headline"]} style={{textAlign: 'center', lineHeight: 1.1}}>
-                  <span className={styles["headline-people"]}>REAL PEOPLE.</span><br/>
-                  <span className={styles["headline-journeys"]}>REAL JOURNEYS.</span>
+                  <span className={styles["headline-people"]}>REAL  PEOPLE.</span><br/>
+                  <span className={styles["headline-journeys"]}>REAL  JOURNEYS.</span>
                   <span className={styles["headline-emotions"]}>REAL EMOTIONS.</span>
                 </h1>
                 <div style={{ marginTop: '2.2rem' }}></div>
@@ -123,8 +123,7 @@ function App() {
           </section>
         )}
       </div>
-      {/* Only show Footer if not on audiorecorder page */}
-      {route !== 'audiorecorder' && <Footer />}
+      
     </div>
   );
 }
