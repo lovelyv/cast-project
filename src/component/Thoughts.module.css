@@ -506,19 +506,17 @@
 
 }
 
+
 button.accordion-header:hover,
 .accordion-header:hover,
 .accordion-header:focus {
-  color: #7e5050 !important;
+  color: #000 !important;
   border-color: #e0c68a !important;
-  background: linear-gradient(90deg, #FFF9C4 0%, #FFFDE7 100%) !important;
 }
+
 
 button.accordion-header:hover *,
 .accordion-header:hover *,
 .accordion-header:focus * {
- color: #7e5050 !important;
-  border-color: #e0c68a !important;
-  background: linear-gradient(90deg, #FFF9C4 0%, #FFFDE7 100%) !important;
-  
+  color: #000 !important;
 }

@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import Navbar from "./component/navbar";
 import SocialBanner from "./component/socialBanner";
 import HitItPage from "./component/HitItPage";
+import AudioRecorder from "./component/Audiorecorder";
+import Footer from "./component/Footer";
 import SubpageWatermark from "./component/SubpageWatermark";
 import Thoughts from "./component/Thoughts";
 import YouAFit from "./component/YouAFit";
@@ -40,6 +42,7 @@ function App() {
   if (route === 'youafit') return <YouAFit />;
   if (route === 'showcase') return <OurShowcase />;
   if (route === 'jumpin') return <JumpIn />;
+  if (route === 'audiorecorder') return <AudioRecorder />;
 
   return (
     <div className="App">
@@ -120,6 +123,8 @@ function App() {
           </section>
         )}
       </div>
+      {/* Only show Footer if not on audiorecorder page */}
+      {route !== 'audiorecorder' && <Footer />}
     </div>
   );
 }

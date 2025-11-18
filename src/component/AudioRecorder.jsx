@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const AudioRecorder = ({ onTranscriptReady }) => {
+const AudioRecorder = ({ onTranscriptReady, onClose }) => {
   const [recording, setRecording] = useState(false);
   const [transcript, setTranscript] = useState(""); // committed transcript
   const [liveSegment, setLiveSegment] = useState(""); // current segment being spoken
@@ -13,6 +13,14 @@ const AudioRecorder = ({ onTranscriptReady }) => {
   const recognitionRef = useRef(null);
   const currentSegmentRef = useRef("");
   const transcriptRef = useRef("");
+
+  // Prevent background scroll when AudioRecorder is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   // 1. Start Recording
   const startRecording = async () => {
@@ -162,7 +170,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
 
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px", opacity: 1 }}>
       <h2>Audio Recorder + Transcription</h2>
       <button type="button" onClick={startRecording} disabled={recording}>
         Start Recording
@@ -175,15 +183,7 @@ const AudioRecorder = ({ onTranscriptReady }) => {
           Timer: {formatTime(timer)}
         </div>
       )}
-      {showUnsupported && (
-        <div style={{ color: '#b00020', fontWeight: 'bold', marginTop: 16 }}>
-          <p>Speech recognition is <b>not supported</b> in this browser or device.<br />
-          Please use the latest version of Chrome, Edge, or Safari on a desktop computer for transcription features.</p>
-          <p style={{ color: '#333', fontWeight: 'normal', fontSize: '0.95em' }}>
-            <b>Note:</b> Most Android and iOS browsers do not support live speech-to-text. This feature works best on desktop browsers.
-          </p>
-        </div>
-      )}
+      
       <h3>Transcript:</h3>
       <p>{transcript}{liveSegment && (transcript ? ' ' : '')}{liveSegment}</p>
     </div>
