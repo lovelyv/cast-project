@@ -52,9 +52,9 @@
 }
 @media (max-width: 600px) {
   .hitit-img {
-    width: 55vw;
-    max-width: 340px;
-    min-width: 100px;
+    width: 75vw;
+    max-width: 370px;
+    min-width: 110px;
   }
 }
 

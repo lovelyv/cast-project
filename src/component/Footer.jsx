@@ -8,10 +8,10 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerRow}>
         <div className={styles.footerContent}>
-          <span className={styles.contactTitle}>Contact Us</span>
+        
           <div className={styles.contactDetails}>
-            <span>Email: <a href={`mailto:${CONTACT.EMAIL}`}>{CONTACT.EMAIL}</a></span>
-            <span>Phone: <a href={`tel:${CONTACT.SMS_NUMBER}`}>{CONTACT.SMS_NUMBER}</a></span>
+            <span><a href={`mailto:${CONTACT.EMAIL}`}>{CONTACT.EMAIL}</a></span>
+            <span><a href={`tel:${CONTACT.SMS_NUMBER}`}>{CONTACT.SMS_NUMBER}</a></span>
           </div>
         </div>
         <div className={styles.showcaseRight}>
