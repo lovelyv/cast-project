@@ -88,11 +88,11 @@
   font-family: 'Rubik', 'Arial', sans-serif;
 }
 
-@media (max-height: 600px) {
+@media (max-height: 600px), (max-width: 600px) {
   .all-page-hitit {
     justify-content: flex-start;
     align-items: center;
-  padding-top: calc(56px + 8px); /* Slightly smaller navbar on mobile + extra space */
+    padding-top: calc(68px + 32px); /* More space for fixed navbar overlap on short/mobile screens */
   }
 }
 
