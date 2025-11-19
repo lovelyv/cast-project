@@ -85,24 +85,19 @@ function JumpIn() {
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
         <div className={styles["jumpin-container"]}>
 
-          <h2 className={styles["jumpin-h2"]} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
-            <span>We want<br/>to hear from you
-                <img src={handpointer} alt="Hand pointer" style={{ width: 38, height: 'auto', marginLeft: 4, verticalAlign: 'middle', display: 'inline-block' }} />
-            
-            </span>
-          </h2>
-           
-             IF <br/>Your story resonates<br/> or you know someone<br/>whose journey
-deserves to be showcased.
-
-
- <h2 className={styles["jumpin-h2"]}>
-           PRESERVE your JOURNEY,<br/>INSPIRE the NEXT ONE.
-          </h2>
-           Share a few details.<br/>Our team<br/>will connect to explore<br/>fit, filming and collaboration.<br/><br/>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
+            <h2 className={styles["jumpin-h2"]} style={{ marginBottom: 0 }}>
+              <span>We want<br/>to hear from you</span>
+            </h2>
+            <div style={{ display: 'flex', justifyContent: 'center', margin: '0 0 1.5em 0', marginTop: 0 }}>
+              <img src={handpointer} alt="Hand pointer" style={{ width: 38, height: 'auto', display: 'block' }} />
+            </div>
+          </div>
+          <b>IF</b>Your story resonates<br/> or you know someone<br/>whose journey<br/>
+deserves to be showcased.<br/><br/>Share a few details.<br/>Our team<br/>will connect to explore<br/>fit, filming and collaboration.<br/><br/>
 In the process,<br/>
 showcasing and immortalizing you<br/>
-across the entire digital landscape.<br/><br/>
+across the entire digital landscape.<br/><br/><br/>
           <form onSubmit={handleSubmit} noValidate className={styles.form} style={{
             display: 'flex',
             flexDirection: 'column',
@@ -263,29 +258,7 @@ across the entire digital landscape.<br/><br/>
 
           
 
-          <h2 style={{ marginTop: '60px' }}>Follow Us</h2>
-          <div className={styles.socialShowcaseRow}>
-            <SocialLinksBar size="sm" className="noMarginBottom" />
-            <a
-              href="#showcase"
-              className={styles['showcase-link']}
-              style={{
-                color: '#D2691E',
-                fontSize: '1.1em',
-                fontWeight: 600,
-                textDecoration: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                transition: 'color 0.2s',
-                position: 'relative',
-                top: 2,
-                marginBottom: '1em'
-              }}
-              onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
-            >
-              <span>Our Showcase</span>
-            </a>
-          </div>
+         
         </div>
       </div>
 

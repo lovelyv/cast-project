@@ -27,7 +27,7 @@ function YouAFit() {
           Guts, valour and hard work.<br /><br />
         </div>
         
-        <h2 className={styles['youafit-h2']}>Stories of</h2>
+        
         <div className={styles['stories-of']}>
           Facing hurdles.<br />Motivational value.<br />Steely determination.<br />
           A never-say-die approach.<br />Attaining freedom & security.<br />
@@ -35,7 +35,7 @@ function YouAFit() {
           Protracted separation from loved ones.<br />Consistent, persistent and steadfast focus.<br /><br />
         </div>
         
-        <h2 className={styles['youafit-h2']}>Stories of</h2>
+        
         <div className={styles['stories-of']}>
           
           Startups.<br />
@@ -45,47 +45,11 @@ function YouAFit() {
           Trend setters and influencers.
         </div>
         <p>
-          Text, mail or call us.<br />We will reach out to you.
+          <span style={{ fontWeight: 500 }}>Text, mail or call us.<br />We will reach out to you.</span>
         </p>
-        {/* Info boxes removed as requested */}
-        {/* Email contact above, removed duplicate */}
+        
 
-         <p>
-          <strong>Email:</strong>{' '}
-          <a
-            href={`mailto:${CONTACT.EMAIL}`}
-            style={{ color: '#D2691E', textDecoration: 'underline' }}
-          >
-            {CONTACT.EMAIL}
-          </a>
-        </p>
-
-        <p>
-          <strong>Text:</strong>{' '}
-          {(() => {
-            const isMobile = typeof navigator !== 'undefined' && /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-            // Format the SMS number for display (e.g., +1234567890 -> +1 (234) 567-890)
-            const raw = CONTACT.SMS_NUMBER;
-            let displayNumber = raw;
-            const match = raw.match(/^\+(\d)(\d{3})(\d{3})(\d{4})$/);
-            if (match) {
-              displayNumber = `+${match[1]} (${match[2]}) ${match[3]}-${match[4]}`;
-            }
-            if (isMobile) {
-              return (
-                <a
-                  href={`sms:${CONTACT.SMS_NUMBER}`}
-                  style={{ color: '#D2691E', textDecoration: 'underline' }}
-                  className="mobile-tel-link"
-                >
-                  {displayNumber}
-                </a>
-              );
-            } else {
-              return <span style={{ color: '#D2691E', textDecoration: 'underline' }}>{displayNumber}</span>;
-            }
-          })()}
-        </p>
+       
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '2.5em' }}>
         <a
           href="#jumpin"
@@ -99,9 +63,7 @@ function YouAFit() {
       </div>
        </div>
       {/* Only Jump In button below last element */}
-      <div style={{ marginTop: '2.5em' }}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,3 +1,36 @@
+/* Style for 'Follow Us' heading, matching showcase-h2 but black */
+.showcase-follow-h2 {
+  font-family: 'Rubik', 'Arial', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.01em;
+  margin: 2.5em 0 0.7em 0;
+  line-height: 1.18;
+  text-align: center;
+  opacity: 1 !important;
+  display: block;
+  font-style: normal;
+  padding: 0.3em 0.5em 0.3em 0.5em;
+}
+@media (max-width: 600px) {
+  .showcase-follow-h2 {
+    font-size: 1.5rem !important;
+    margin-top: 1.7em !important;
+    margin-bottom: 0.5em !important;
+    padding: 0.2em 0.2em 0.2em 0.2em !important;
+  }
+}
+@media (max-width: 600px) {
+  .showcase-h2 {
+    font-size: 1.5rem !important;
+    margin-top: 0.9em !important;
+    margin-bottom: 0.5em !important;
+    padding: 0.3em 0.2em 0.3em 0.2em !important;
+  }
+}
+/* Custom style for main h2 heading on OurShowcase page */
+
 
 @media (max-width: 600px), (max-height: 600px) {
   .all-page-showcase {
@@ -62,14 +95,15 @@ p.contrastText {
 
 
 .showcase-h2 {
-  font-weight: 600;
-  line-height: 1.3;
-  font-size: 2.2rem;
-  color: rgb(210, 105, 30);
   font-family: 'Rubik', 'Arial', sans-serif;
-  opacity: 1 !important;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: rgb(210, 105, 30);
+  letter-spacing: 0.01em;
+  margin: 1.2em 0 0.7em 0;
+  line-height: 1.18;
   text-align: center;
-  margin: 1.5em auto 0.7em auto;
+  opacity: 1 !important;
   display: block;
   font-style: normal;
   padding: 0.5em 0.5em 0.5em 0.5em;

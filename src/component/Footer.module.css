@@ -1,3 +1,28 @@
+@media (max-width: 600px) {
+  .footer {
+    margin-left: 0;
+    padding-left: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .footerContent .contactDetails span:first-child,
+  .footerContent .contactDetails span:last-child {
+    margin-left: -10px;
+  }
+}
+.footerContent .contactDetails span:first-child {
+  margin-top: 0.7em;
+  display: inline-block;
+}
+@media (max-width: 600px) {
+  .footerContent .contactDetails span:first-child {
+    margin-left: -10px;
+  }
+}
+.footerContent .contactDetails span:first-child {
+  margin-top: 0.7em;
+  display: inline-block;
+}
 .footerRow {
   width: 100%;
   display: flex;
@@ -33,6 +58,7 @@
   background: #1a3a52;
   color: #FFFFAA;
   padding: 1.2em 0 1.2em 0;
+  padding-left: 15px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -15,10 +15,7 @@ function Footer() {
           </div>
         </div>
         <div className={styles.showcaseRight}>
-          <a href="#showcase" className={styles.showcaseLink}>
-            Our Showcase
-          </a>
-          <SocialLinksBar size="xs" />
+          <SocialLinksBar size="xs" className="footer-social-icons" />
         </div>
       </div>
     </footer>

@@ -44,14 +44,14 @@
     max-width: 10ch;
   }
   .headline-journeys {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     max-width: 12ch;
     white-space: nowrap;
   }
   .headline-emotions {
-    font-size: 2.4rem;
+    font-size: 1.7rem;
     max-width: 14ch;
-
+    letter-spacing: 0.06em;
   }
 }
 

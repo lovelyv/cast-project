@@ -23,10 +23,10 @@ function HitItPage() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
-      <div className={styles['all-page-hitit']}>
+      <div className={styles['all-page-hitit']} style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         {/* Background watermark (moved inside for stacking context) */}
         <SubpageWatermark />
-        <div>
+        <div className={styles['hitit-centered-content']}>
           <p>
             Its all about real stories.<br />Told without filters, judgement<br/>or embellishment.<br /><br />Every story explores<br />the real life experiences<br/>of<br/>Non Resident Indians,<br />people of Indian lineage.<br /><br />
             Their journeys across continents.<br />

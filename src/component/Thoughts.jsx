@@ -52,7 +52,14 @@ function Thoughts({ scrollTo }) {
        <div className={styles['all-page-thoughts']}>
       <SubpageWatermark />
       <div className={styles['thoughts-content-bg']}>
-  <span className={styles['accordion-content']} style={{ whiteSpace: 'nowrap', fontWeight: 700 }}>Our<br/>DOCUCAST&trade;</span>
+  <span className={styles['accordion-content']}>
+    Our<br/>
+    <b>D</b>
+    <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>OCU</b>
+    <b>C</b>
+    <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>AST</b>™.
+  
+  </span>
   <p className={styles['accordion-content']}>
     will feature stories<br/>
     that speak about<br/>
@@ -85,18 +92,18 @@ function Thoughts({ scrollTo }) {
           </div>
           {/* Accordion 2: Introducing DocuCast® */}
           <div className={styles['accordion-section']}>
-            <button ref={headerRefs[1]} onClick={() => toggle(1)} className={styles['accordion-header']}>
+            <button ref={headerRefs[1]}  onClick={() => toggle(1)} className={styles['accordion-header']}>
               <span className={styles['accordion-title']} >
-                <span >D</span>
-                <span style={{fontSize: '0.7em'}}>OCU</span>
-                <span  >C</span>
-                <span style={{fontSize: '0.7em'}}>AST</span>&trade;
+                <b>D</b>
+                <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>OCU</b>
+                <b>C</b>
+                <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>AST</b>™
               </span>
 
             </button>
             {open[1] && (
               <div className={styles['accordion-content']}>
-                We have coined it as <b>D<span style={{fontSize: '0.7em'}}>OCU</span>C<span style={{fontSize: '0.7em'}}>AST</span>&trade;</b>.<br /><br />
+                We have coined it as <b>D<span style={{fontSize: '0.8em'}}>OCU</span>C<span style={{fontSize: '0.8em'}}>AST</span>&trade;</b>.<br /><br />
                 A hybrid<br />
                 between a podcast<br/>and a documentary.<br /><br />
                 Each episode has interviews,<br/>archival footage<br/>and cinematic visuals.<br />
@@ -152,7 +159,7 @@ function Thoughts({ scrollTo }) {
                       <h3>The Result</h3>
                       <p>Good production value.<br/>High on content.<br/><br/>
                       Designed for<br/>digital audiences<br/>
-                      who crave emotional depth and visual substance.<br/><br/>
+                      who crave emotional depth and<br/>visual substance.<br/><br/>
                       A platform<br/>where the NRI voice<br/>is heard, seen and preserved.</p>
                     </div>
                 </div>
