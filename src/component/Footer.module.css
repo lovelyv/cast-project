@@ -148,7 +148,8 @@
 }
 
 .contactDetails span:last-child {
-  margin-bottom: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 1.2em;
 }
 
 .contactDetails a {
