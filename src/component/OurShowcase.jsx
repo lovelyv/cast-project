@@ -1,4 +1,5 @@
 import React from 'react';
+import { TICKERS } from '../config';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import Footer from './Footer';
@@ -18,66 +19,32 @@ function OurShowcase() {
         PRESERVE your JOURNEY,<br/>INSPIRE the NEXT ONE.
       </h2>
 
-        {/* Ticker Thumbnails Row 1 */}
-        <div style={{
-          display: 'flex',
-          gap: '1em',
-          justifyContent: 'center',
-          margin: '2em 0 1em 0',
-        }}>
-          {[1,2,3,4].map((n) => (
+        {/* Ticker Thumbnails Grid */}
+        <div className={styles['ticker-thumbnails-row']}>
+          {TICKERS.map((ticker) => (
             <a
-              key={n}
-              href={`https://www.example.com/ticker${n}`}
+              key={ticker.id}
+              href={ticker.url}
               target="_blank"
               rel="noopener noreferrer"
               style={{
                 display: 'block',
-                width: 64,
-                height: 64,
-                borderRadius: '0.5em',
-                background: `#222 url(https://img.youtube.com/vi/dQw4w9WgXcQ/${n}.jpg) center/cover no-repeat`,
+                width: 84,
+                height: 84,
+                borderRadius: '0.7em',
+                background: `#222 url(${ticker.img}) center/cover no-repeat`,
                 boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
                 border: '2px solid #fff',
                 transition: 'transform 0.15s',
                 overflow: 'hidden',
               }}
               tabIndex={0}
-              title={`Dummy Ticker ${n}`}
+              title={ticker.title}
             >
             </a>
           ))}
         </div>
-        {/* Ticker Thumbnails Row 2 */}
-        <div style={{
-          display: 'flex',
-          gap: '1em',
-          justifyContent: 'center',
-          margin: '0 0 1.5em 0',
-        }}>
-          {[5,6,7,8].map((n) => (
-            <a
-              key={n}
-              href={`https://www.example.com/ticker${n}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                width: 64,
-                height: 64,
-                borderRadius: '0.5em',
-                background: `#222 url(https://img.youtube.com/vi/dQw4w9WgXcQ/${n}.jpg) center/cover no-repeat`,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
-                border: '2px solid #fff',
-                transition: 'transform 0.15s',
-                overflow: 'hidden',
-              }}
-              tabIndex={0}
-              title={`Dummy Ticker ${n}`}
-            >
-            </a>
-          ))}
-        </div>
+       
 
        
 

@@ -1,3 +1,19 @@
+/* Ticker Thumbnails Grid */
+.ticker-thumbnails-row {
+  display: grid;
+  grid-template-columns: repeat(4, 84px);
+  gap: 1.2em;
+  justify-content: center;
+  margin: 2em 0 1em 0;
+}
+
+@media (max-width: 600px) {
+  .ticker-thumbnails-row {
+    grid-template-columns: repeat(3, 84px);
+    margin: 1.2em 0 1em 0;
+    gap: 0.9em;
+  }
+}
 /* Style for 'Follow Us' heading, matching showcase-h2 but black */
 .showcase-follow-h2 {
   font-family: 'Rubik', 'Arial', sans-serif;
