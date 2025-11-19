@@ -1,22 +1,18 @@
-@media (max-width: 404px) {
+@media (max-width: 600px) {
   .showcaseRight .socialLinksBar,
   .footer .socialLinksBar {
     margin-top: 0 !important;
   }
-}
-@media (max-width: 404px) {
   .contactDetails span:last-child {
     margin-bottom: 0 !important;
   }
-}
-@media (max-width: 404px) {
   .footer {
     padding-top: 0.5em !important;
     padding-bottom: 0.5em !important;
     font-size: 0.92rem !important;
+    margin-left: 0;
+    padding-left: 10px;
   }
-}
-@media (max-width: 404px) {
   .footerRow {
     flex-direction: column !important;
     align-items: center !important;
@@ -33,10 +29,15 @@
   .footerContent {
     align-items: center !important;
     width: 100% !important;
+    font-size: 0.98em;
   }
   .contactDetails {
     align-items: center !important;
     width: 100% !important;
+  }
+  .footerContent .contactDetails span:first-child,
+  .footerContent .contactDetails span:last-child {
+    margin-left: -10px;
   }
 }
 @media (max-width: 600px) {

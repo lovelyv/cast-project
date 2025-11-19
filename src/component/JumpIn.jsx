@@ -90,7 +90,7 @@ function JumpIn() {
               <span>We want<br/>to hear from you</span>
             </h2>
             <div style={{ display: 'flex', justifyContent: 'center', margin: '0 0 1.5em 0', marginTop: 0 }}>
-              <img src={handpointer} alt="Hand pointer" style={{ width: 38, height: 'auto', display: 'block' }} />
+              <img src={handpointer} alt="Hand pointer" className={styles.handpointerImg} />
             </div>
           </div>
           <b>IF</b>Your story resonates<br/> or you know someone<br/>whose journey<br/>
@@ -246,6 +246,7 @@ across the entire digital landscape.<br/><br/><br/>
 
             
 
+
             <button
               type="submit"
               className={styles['submit-btn']}
@@ -253,19 +254,23 @@ across the entire digital landscape.<br/><br/><br/>
               Submit Your Story
             </button>
 
+            
+
             {/* Removed alternate contact line per request */}
           </form>
 
-          
+         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <a href="#showcase"className={styles.ourShowcaseLink} >
+                Our Showcase
+              </a>
+            </div>
 
-         
         </div>
       </div>
 
       <Footer />
 
     </div>
-   
   );
 }
 

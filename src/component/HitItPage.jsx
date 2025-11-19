@@ -28,7 +28,7 @@ function HitItPage() {
         <SubpageWatermark />
         <div className={styles['hitit-centered-content']}>
           <p>
-            Its all about real stories.<br />Told without filters, judgement<br/>or embellishment.<br /><br />Every story explores<br />the real life experiences<br/>of<br/>Non Resident Indians,<br />people of Indian lineage.<br /><br />
+            It's all about real stories.<br />Told without filters, judgement<br/>or embellishment.<br /><br />Every story explores<br />the real life experiences<br/>of<br/>Non Resident Indians,<br />people of Indian lineage.<br /><br />
             Their journeys across continents.<br />
             Sacrifices, ambitions and triumphs.<br /><br />
      

@@ -88,7 +88,7 @@ function Navbar() {
                             className={`${styles.navLink} ${activeHash === '#youafit' ? styles.navLinkActive : ''}`} 
                             href="#youafit"
                         >
-                            You a Fit?
+                            U a FIT ?
                         </a>
                     </li>
                     <li>

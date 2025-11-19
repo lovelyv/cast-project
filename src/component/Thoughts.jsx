@@ -158,8 +158,8 @@ function Thoughts({ scrollTo }) {
                       <h3>The Result</h3>
                       <p>Good production value.<br/>High on content.<br/><br/>
                       Designed for<br/>digital audiences<br/>
-                      who crave emotional depth and<br/>visual substance.<br/><br/>
-                      A platform<br/>where the NRI voice<br/>is heard, seen and preserved.</p>
+                      who crave emotional depth and visual substance.<br/><br/>
+                      A platform<br/>where the NRI voice<br/>is heard seen and preserved.</p>
                     </div>
                 </div>
 
@@ -178,7 +178,7 @@ function Thoughts({ scrollTo }) {
                       }
                     }}
                   >
-                    <span>You a Fit?</span>
+                    <span>U a FIT ?</span>
                   </a>
                 </div>
               </div>
