@@ -11,7 +11,15 @@ function Footer() {
         
           <div className={styles.contactDetails}>
             <span><a href={`mailto:${CONTACT.EMAIL}`}>{CONTACT.EMAIL}</a></span>
-            <span><a href={`tel:${CONTACT.SMS_NUMBER}`}>{CONTACT.SMS_NUMBER}</a></span>
+            <span>
+              <a
+                href={`https://wa.me/${CONTACT.SMS_NUMBER.replace(/[^\d]/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {CONTACT.SMS_NUMBER}
+              </a>
+            </span>
           </div>
         </div>
         <div className={styles.showcaseRight}>
