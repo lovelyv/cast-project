@@ -10,7 +10,7 @@ export const GOOGLE_SHEETS = {
 };
 // Configuration for contact details
 export const CONTACT = {
-  SMS_NUMBER: "+1234567890",
+  SMS_NUMBER: "+1-669-388-1453",
   EMAIL: "contact@nristories.com"
 };
 

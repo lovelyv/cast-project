@@ -168,7 +168,15 @@ function Thoughts({ scrollTo }) {
                     href="#youafit"
                    className={styles['youafit-btn']}
                    style={{ position: 'static', right: 'unset', bottom: 'unset', marginBottom: '2.5em' }}
-                    onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+                    onClick={e => {
+                      if (window.innerWidth <= 600) {
+                        e.preventDefault();
+                        window.location.href = '/hitit#top';
+                        setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), 10);
+                      } else {
+                        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+                      }
+                    }}
                   >
                     <span>You a Fit?</span>
                   </a>
