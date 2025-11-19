@@ -1,4 +1,6 @@
 import React from 'react';
+import whatsappIcon from '../assets/whatsapp-green.svg';
+import thoughtIcon from '../assets/thought-dots.svg';
 import styles from './Footer.module.css';
 import { CONTACT } from '../config';
 import SocialLinksBar from './SocialLinksBar';
@@ -11,20 +13,26 @@ function Footer() {
         
           <div className={styles.contactDetails}>
             <span><a href={`mailto:${CONTACT.EMAIL}`}>{CONTACT.EMAIL}</a></span>
-            <span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3em' }}>
+              <a
+                href={`tel:${CONTACT.SMS_NUMBER}`}
+                style={{ color: 'inherit', textDecoration: 'none', marginRight: '0.2em' }}
+              >
+                {CONTACT.SMS_NUMBER}
+              </a>
               <a
                 href={`https://wa.me/${CONTACT.SMS_NUMBER.replace(/[^\d]/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ marginRight: '0.5em' }}
+                style={{ display: 'inline-flex', alignItems: 'center' }}
               >
-                {CONTACT.SMS_NUMBER} (WhatsApp)
+                <img src={whatsappIcon} alt="WhatsApp" style={{ width: 18, height: 18, verticalAlign: 'middle' }} />
               </a>
               <a
                 href={`sms:${CONTACT.SMS_NUMBER}`}
-                style={{ fontSize: '0.95em', color: '#888' }}
+                style={{ display: 'inline-flex', alignItems: 'center' }}
               >
-                or Text us
+                <img src={thoughtIcon} alt="Text us" style={{ width: 20, height: 20, verticalAlign: 'middle' }} />
               </a>
             </span>
           </div>
