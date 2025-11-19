@@ -13,7 +13,7 @@ function Footer() {
         
           <div className={styles.contactDetails}>
             <span><a href={`mailto:${CONTACT.EMAIL}`}>{CONTACT.EMAIL}</a></span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3em' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.7em' }}>
               <a
                 href={`tel:${CONTACT.SMS_NUMBER}`}
                 style={{ color: 'inherit', textDecoration: 'none', marginRight: '0.2em' }}
@@ -26,13 +26,13 @@ function Footer() {
                 rel="noopener noreferrer"
                 style={{ display: 'inline-flex', alignItems: 'center' }}
               >
-                <img src={whatsappIcon} alt="WhatsApp" style={{ width: 18, height: 18, verticalAlign: 'middle' }} />
+                <img src={whatsappIcon} alt="WhatsApp" style={{ width: 24, height: 24, verticalAlign: 'middle' }} />
               </a>
               <a
                 href={`sms:${CONTACT.SMS_NUMBER}`}
                 style={{ display: 'inline-flex', alignItems: 'center' }}
               >
-                <img src={thoughtIcon} alt="Text us" style={{ width: 20, height: 20, verticalAlign: 'middle' }} />
+                <img src={thoughtIcon} alt="Text us" style={{ width: 26, height: 26, verticalAlign: 'middle' }} />
               </a>
             </span>
           </div>
