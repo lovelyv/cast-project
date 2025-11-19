@@ -171,7 +171,7 @@ function Thoughts({ scrollTo }) {
                     onClick={e => {
                       if (window.innerWidth <= 600) {
                         e.preventDefault();
-                        window.location.href = '/hitit#top';
+                        window.location.href = '#youafit';
                         setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), 10);
                       } else {
                         window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
