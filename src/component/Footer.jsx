@@ -16,8 +16,15 @@ function Footer() {
                 href={`https://wa.me/${CONTACT.SMS_NUMBER.replace(/[^\d]/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{ marginRight: '0.5em' }}
               >
-                {CONTACT.SMS_NUMBER}
+                {CONTACT.SMS_NUMBER} (WhatsApp)
+              </a>
+              <a
+                href={`sms:${CONTACT.SMS_NUMBER}`}
+                style={{ fontSize: '0.95em', color: '#888' }}
+              >
+                or Text us
               </a>
             </span>
           </div>
