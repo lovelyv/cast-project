@@ -1,3 +1,88 @@
+.accordion-content > :first-child {
+  font-weight: bold;
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .right-box img[alt="Visual Story"] {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+}
+@media (min-width: 1025px) {
+  .right-box img[alt="Visual Story"] {
+   
+ 
+    object-position: center top;
+    width: 100%;
+  
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    width: 80vw;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .left-box,
+  .right-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+    width: 80vw;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .left-box,
+  .right-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 1441px) {
+  .container {
+    width: 80vw;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .left-box,
+  .right-box {
+    width: 60%;
+    max-width: 60%;
+    flex-basis: 60%;
+    flex-grow: 0;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 601px) {
+  .container {
+    width: 80vw;
+    max-width: 100%;
+  }
+}
 @media (max-width: 600px) {
   /* Add extra space below the Sound Feel box (second container) */
   .container:nth-of-type(2) {
@@ -355,7 +440,7 @@
 .accordion-title {
   font-weight: 600;
   line-height: 1.3;
-  font-size: 1.125rem; /* 18px default */
+  font-size: 2.2rem; /* 18px default */
   color: rgb(210, 105, 30);
   font-family: 'Rubik';
   opacity: 1 !important;

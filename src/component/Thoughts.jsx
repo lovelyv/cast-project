@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from './Thoughts.module.css';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
-import visualStory from '../assets/visualstory.jpeg';
+import visualStory from '../assets/visualstory.png';
 import soundfeel from '../assets/soundfeel.jpeg';
 import Footer from './Footer';
 
@@ -53,12 +53,11 @@ function Thoughts({ scrollTo }) {
       <SubpageWatermark />
       <div className={styles['thoughts-content-bg']}>
   <span className={styles['accordion-content']}>
-    Our<br/>
+    <b>Our</b><br/>
     <b>D</b>
     <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>OCU</b>
     <b>C</b>
     <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>AST</b>™.
-  
   </span>
   <p className={styles['accordion-content']}>
     will feature stories<br/>
