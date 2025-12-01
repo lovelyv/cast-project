@@ -26,9 +26,21 @@ function HitItPage() {
       <div className={styles['all-page-hitit']} style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         {/* Background watermark (moved inside for stacking context) */}
         <SubpageWatermark />
-        <div className={styles['hitit-centered-content']}>
+       
+       <div className={styles['hitit-centered-content']}>
+         
           <p>
-            It's all about real stories.<br />Told without filters, judgement<br/>or embellishment.<br /><br />Every story explores<br />the real life experiences<br/>of<br/>Non Resident Indians,<br />people of Indian lineage.<br /><br />
+            <h1 className={styles["h1"]}>
+              REAL&nbsp;PEOPLE.
+            </h1>
+            It's all about real stories.<br />Told without filters, judgement<br/>or embellishment.<br /><br />
+             <h1 className={styles["h1"]}>
+              REAL&nbsp;&nbsp;EMOTIONS.
+             </h1>
+              Every story explores<br />the real life experiences<br/>of<br/>Non Resident Indians,<br />people of Indian lineage.<br /><br />
+             <h1 className={styles["h1"]}>
+              REAL&nbsp;JOURNEYS.
+             </h1>
             Their journeys across continents.<br />
             Sacrifices, ambitions and triumphs.<br /><br />
      

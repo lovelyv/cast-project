@@ -5,8 +5,8 @@ import styles from './JumpIn.module.css';
 import SubpageWatermark from './SubpageWatermark';
 import handpointer from '../assets/handpointer.png';
 import Footer from './Footer';
-import { GOOGLE_SHEETS } from '../config';
 import SocialLinksBar from './SocialLinksBar';
+import { data } from 'react-router-dom';
 
 function JumpIn() {
   // Detect Android device
@@ -27,6 +27,13 @@ function JumpIn() {
     if (!formData.email.trim()) newErrors.email = 'Email is required.';
     else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Enter a valid email address.';
     if (formData.phone && !/^\+?[0-9\s\-()]{7,20}$/.test(formData.phone)) newErrors.phone = 'Enter a valid phone number.';
+    // Story summary: 20 to 50 words
+    if (formData.storySummary) {
+      const wordCount = formData.storySummary.trim().split(/\s+/).filter(w => w.length > 0).length;
+      if (wordCount < 20 || wordCount > 50) {
+        newErrors.storySummary = 'Please enter between 20 to 50 words.';
+      }
+    }
     return newErrors;
   };
 
@@ -38,41 +45,39 @@ function JumpIn() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const [submitMessage, setSubmitMessage] = useState("");
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const v = validate();
-    if (Object.keys(v).length > 0) {
-      setErrors(v);
-      const first = Object.keys(v)[0];
-      const el = document.getElementById(first);
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      // Focus first error field
+      const firstError = Object.keys(validationErrors)[0];
+      const el = document.getElementById(firstError);
       if (el && typeof el.focus === 'function') el.focus();
       return;
     }
     setErrors({});
-
-    // Prepare data for Google Form
-    const formBody = new URLSearchParams();
-    Object.entries(GOOGLE_SHEETS.FIELD_MAP).forEach(([key, entryId]) => {
-      formBody.append(entryId, formData[key] || "");
-    });
-
-    try {
-      const response = await fetch(GOOGLE_SHEETS.FORM_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: formBody.toString()
+    const url = "https://script.google.com/macros/s/AKfycbyzuobWQ3GsPOkqObvOGlZFfFJHcruQoQzPidovWn11J_KsHxDkS-JWuzvmr3a1CH8a/exec";
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: (`fullName=${e.target.fullName.value}&email=${e.target.email.value}&phone=${e.target.phone.value}&storySummary=${e.target.storySummary.value}`)
+    })
+      .then(res => res.text())
+      .then(data => {
+  setSubmitMessage("Thank you!\nWe will be in touch soon.");
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          storySummary: ''
+        });
+      })
+      .catch(error => {
+        setSubmitMessage("There was an error submitting your story. Please try again.");
       });
-      // Google Forms always returns opaque response with no-cors
-      alert("Thank you! We will reach out soon.");
-      setFormData({ fullName: '', email: '', phone: '', storySummary: '' });
-    } catch (err) {
-      alert("There was an error saving your story. Please try again later.");
-      console.error(err);
-    }
-  };
+  }
 
   return (
     <div>
@@ -98,11 +103,19 @@ deserves to be showcased.<br/><br/>Share a few details.<br/>Our team<br/>will co
 In the process,<br/>
 showcasing and immortalizing you<br/>
 across the entire digital landscape.<br/><br/><br/>
-          <form onSubmit={handleSubmit} noValidate className={styles.form} style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px'
-          }}>
+
+
+
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className={styles.form}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px'
+            }}
+          >
             <div className={styles['form-row']}>
               <label htmlFor="fullName" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>
                 Full Name <span aria-hidden="true" style={{ color: '#b00020' }}>*</span>
@@ -242,6 +255,9 @@ across the entire digital landscape.<br/><br/><br/>
                   resize: 'vertical'
                 }}
               />
+              {errors.storySummary && (
+                <span id="storySummary-error" role="alert" className={styles.errorText}>{errors.storySummary}</span>
+              )}
             </div>
 
             
@@ -257,6 +273,11 @@ across the entire digital landscape.<br/><br/><br/>
             
 
             {/* Removed alternate contact line per request */}
+          {submitMessage && (
+            <div style={{ marginTop: '1em', color: '#1a3a52', fontWeight: 'bold', textAlign: 'center', whiteSpace: 'pre-line' }}>
+              {submitMessage}
+            </div>
+          )}
           </form>
 
          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

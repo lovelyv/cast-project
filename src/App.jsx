@@ -85,11 +85,7 @@ function App() {
                   In a visually immersive,<br/> <span className={styles.nowrap}>documentary style format.</span><br/>
                   We have coined it as <b>D<b style={{fontSize: '0.8em'}}>OCU</b>C<b style={{fontSize: '0.8em'}}>AST</b>™.</b>
                 </p>
-                <h1 className={styles["headline"]} style={{textAlign: 'center', lineHeight: 1.1}}>
-                  <span className={styles["headline-people"]}>REAL&nbsp;&nbsp;PEOPLE.</span><br/>
-                  <span className={styles["headline-journeys"]}>REAL&nbsp;&nbsp;JOURNEYS.</span>
-                  <span className={styles["headline-emotions"]}>&nbsp;&nbsp;REAL&nbsp;&nbsp;EMOTIONS.</span>
-                </h1>
+                
                 <div style={{ marginTop: '2.2rem' }}></div>
                 <button
                   className={styles.pulse}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CONTACT } from '../config';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
@@ -6,6 +6,9 @@ import styles from './YouAFit.module.css';
 import Footer from './Footer';
 
 function YouAFit() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
   return (
    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />

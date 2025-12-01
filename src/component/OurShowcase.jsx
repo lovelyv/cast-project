@@ -16,7 +16,7 @@ function OurShowcase() {
       <div className={styles['all-page-showcase']} style={{ flex: 1 }}>
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
       <h2 className={styles["showcase-h2"]}>
-        PRESERVE your JOURNEY,<br/>INSPIRE the NEXT ONE.
+        PRESERVE your JOURNEY.<br/>INSPIRE the NEXT ONE.
       </h2>
 
         {/* Ticker Thumbnails Grid */}
