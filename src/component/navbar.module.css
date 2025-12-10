@@ -38,7 +38,7 @@
   left: 0;
   width: 100%;
   background: var(--bg1);
-  padding: 1rem 0 0 0;
+  padding: 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   z-index: 1000;
   box-sizing: border-box;

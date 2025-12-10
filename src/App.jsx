@@ -6,6 +6,7 @@ import AudioRecorder from "./component/Audiorecorder";
 import Footer from "./component/Footer";
 import SubpageWatermark from "./component/SubpageWatermark";
 import Thoughts from "./component/Thoughts";
+import SupportUs from "./component/SupportUs";
 import YouAFit from "./component/YouAFit";
 import OurShowcase from "./component/OurShowcase";
 import JumpIn from "./component/JumpIn";
@@ -42,6 +43,7 @@ function App() {
   if (route === 'youafit') return <YouAFit />;
   if (route === 'showcase') return <OurShowcase />;
   if (route === 'jumpin') return <JumpIn />;
+  if (route === 'supportus') return <SupportUs />;
   if (route === 'audiorecorder') return <AudioRecorder />;
 
   return (

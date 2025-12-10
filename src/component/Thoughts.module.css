@@ -1,6 +1,3 @@
-.accordion-content > :first-child {
-  font-weight: bold;
-}
 @media (min-width: 1025px) and (max-width: 1440px) {
   .right-box img[alt="Visual Story"] {
     width: 100%;

@@ -46,6 +46,7 @@ function JumpIn() {
   };
 
   const [submitMessage, setSubmitMessage] = useState("");
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();

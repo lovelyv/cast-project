@@ -107,6 +107,14 @@ function Navbar() {
                             Our Showcase
                         </a>
                     </li>
+                    <li>
+                        <a 
+                            className={`${styles.navLink} ${activeHash === '#supportus' ? styles.navLinkActive : ''}`} 
+                            href="#supportus"
+                        >
+                            Support Us
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
