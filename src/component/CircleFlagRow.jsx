@@ -6,7 +6,7 @@ import logo from '../assets/logo.png';
 // 3D hexagon layout with upright, readable blocks
 export default function CircleFlagRow({ countries = [], duration = '12s', tilt = '0deg', blockSize = '110px', blockWidth = '140px', blockHeight = '110px', spacing = 20, radius: radiusProp }) {
   const size = 100;
-  const hexCount = 8;
+  const hexCount = 8; // show 8 at a time
   const angleStep = 360 / hexCount;
   const baseRadius = radiusProp != null ? Number(radiusProp) : 220;
   const [viewportWidth, setViewportWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
@@ -38,25 +38,13 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
     return 0;
   };
 
-  // Advance batch exactly at the end of each full rotation
   useEffect(() => {
     const totalMs = parseDurationMs(duration) || 0;
     if (!countries.length || !totalMs) return;
-    const stepMs = totalMs / hexCount;
-    let tick = 0;
     let rafId;
     let lastTs;
-    const speedDegPerSec = 360 / (totalMs / 1000);
-    const id = setInterval(() => {
-      tick += 1;
-      if (tick >= hexCount) {
-        tick = 0;
-        setStartIndex((prev) => {
-          const next = prev + hexCount;
-          return next >= countries.length ? 0 : next;
-        });
-      }
-    }, stepMs);
+    let rotAccum = 0; // degrees accumulated since last batch advance
+    const speedDegPerSec = -360 / (totalMs / 1000);
 
     const animate = (ts) => {
       if (draggingRef.current) {
@@ -67,18 +55,28 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
       if (lastTs == null) lastTs = ts;
       const dt = (ts - lastTs) / 1000; // seconds
       lastTs = ts;
-      setOffsetAngle((prev) => prev + speedDegPerSec * dt);
+      const delta = speedDegPerSec * dt;
+      rotAccum += Math.abs(delta);
+      setOffsetAngle((prev) => {
+        let next = prev + delta;
+        // keep angle bounded to avoid floating drift
+        if (next >= 360 || next <= -360) next = next % 360;
+        return next;
+      });
+      // Advance batch exactly when a full 360° rotation has accumulated
+      if (rotAccum >= 360) {
+        rotAccum = 0;
+        // After one full rotation, advance by 8 to show the next set
+        flushSync(() => {
+          setStartIndex((prev) => (prev + hexCount) % countries.length);
+          setOffsetAngle(0);
+        });
+      }
       rafId = requestAnimationFrame(animate);
     };
     rafId = requestAnimationFrame(animate);
-    return () => clearInterval(id);
-    // cleanup raf
-    // eslint-disable-next-line no-undef
-    return () => {
-      clearInterval(id);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, [countries.length, duration, hexCount]);
+    return () => { if (rafId) cancelAnimationFrame(rafId); };
+  }, [countries.length, duration]);
 
   const onPointerDown = (e) => {
     draggingRef.current = true;
@@ -140,6 +138,7 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
     if (!inertiaRafRef.current) inertiaRafRef.current = requestAnimationFrame(step);
   };
   useEffect(() => () => { if (inertiaRafRef.current) cancelAnimationFrame(inertiaRafRef.current); }, []);
+  // Batch helper to show exactly 8 items
   const getBatch = (arr, start, count) => {
     if (!arr.length) return [];
     const end = start + count;
@@ -148,14 +147,6 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
     const second = arr.slice(0, end % arr.length);
     return first.concat(second);
   };
-
-  const handleAnimationIteration = useCallback(() => {
-    if (!countries.length) return;
-    setStartIndex((prev) => {
-      const next = prev + hexCount;
-      return next >= countries.length ? 0 : next;
-    });
-  }, [countries.length]);
 
 
   return (
