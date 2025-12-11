@@ -25,6 +25,7 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
   const dragStartYRef = useRef(0);
   const lastOffsetRef = useRef(0);
   const lastTiltRef = useRef(0);
+  const startIndexRef = useRef(0);
   const velXRef = useRef(0); // degrees per second for rotation
   const velTiltRef = useRef(0); // degrees per second for tilt
   const lastMoveTsRef = useRef(0);
@@ -85,6 +86,7 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
     dragStartYRef.current = e.clientY;
     lastOffsetRef.current = offsetAngle;
     lastTiltRef.current = offsetTilt;
+    startIndexRef.current = startIndex;
     velXRef.current = 0;
     velTiltRef.current = 0;
     lastMoveTsRef.current = performance.now();
@@ -100,9 +102,17 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
     const degX = dx * 0.35; // slightly less sensitive for smoother control
     const degTilt = dy * -0.18; // slightly less sensitive
     const nextTilt = Math.max(-25, Math.min(25, lastTiltRef.current + degTilt));
+    // Folding rotation into index steps so visible countries update while dragging
+    const stepSize = angleStep;
+    const totalAngle = lastOffsetRef.current + degX;
+  const steps = Math.trunc(totalAngle / stepSize);
+  const foldedAngle = totalAngle - steps * stepSize; // keep within one step range
+  // Move forward in config order when dragging right (positive dx)
+  const nextStartIndex = ((startIndexRef.current + steps) % countries.length + countries.length) % countries.length;
     // Flush synchronously to reduce perceived delay during drag
     flushSync(() => {
-      setOffsetAngle(lastOffsetRef.current + degX);
+      setStartIndex(nextStartIndex);
+      setOffsetAngle(foldedAngle);
       setOffsetTilt(nextTilt);
     });
     // velocities (deg/sec) from deltas
@@ -112,6 +122,9 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
   };
   const onPointerUp = () => {
     draggingRef.current = false;
+    // Update refs baseline post-drag
+    startIndexRef.current = startIndex;
+    lastOffsetRef.current = offsetAngle;
     // start inertia animation: decay velocities smoothly
     const friction = 0.92; // decay per frame (~60fps)
     const tiltFriction = 0.90;
@@ -121,7 +134,18 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
       const rotVel = velXRef.current;
       const tiltVel = velTiltRef.current;
       // apply
-      setOffsetAngle((prev) => prev + rotVel * (1 / 60));
+      setOffsetAngle((prev) => {
+        const next = prev + rotVel * (1 / 60);
+        // fold into index updates when passing step boundaries
+        const steps = Math.trunc(next / angleStep);
+        if (steps !== 0) {
+          // Keep progression consistent with config order during inertia
+          const newIndex = ((startIndexRef.current + steps) % countries.length + countries.length) % countries.length;
+          startIndexRef.current = newIndex;
+          setStartIndex(newIndex);
+        }
+        return next - steps * angleStep;
+      });
       setOffsetTilt((prev) => {
         const next = prev + tiltVel * (1 / 60);
         return Math.max(-25, Math.min(25, next));
