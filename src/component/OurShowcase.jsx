@@ -24,7 +24,7 @@ function OurShowcase() {
         </h2>
         {/* Centered 3D carousel showing 8 countries at a time, slower rotation, flat base; wider blocks with spacing and fixed center rotation */}
         <div className={styles.carouselCenter}>
-          <CircleFlagRow countries={allCountries} duration="26s" tilt="0deg" blockWidth="160px" blockHeight="110px" spacing={25} radius={260} />
+          <CircleFlagRow countries={allCountries} duration="110s" tilt="0deg" blockWidth="160px" blockHeight="110px" spacing={25} radius={260} />
         </div>
         {/* Country Flag Thumbnails Grid - 4 per row */}
         <div className={styles['country-flags-grid']}>

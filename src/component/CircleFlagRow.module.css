@@ -11,6 +11,30 @@
   transform-origin: 50% 50%;
   will-change: transform;
   overflow: visible;
+  cursor: grab;
+  user-select: none;
+}
+
+/* 3D base plane at the center (visible at the bottom when tilted) */
+.carousel-base {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  transform-style: preserve-3d;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18), inset 0 1px 1px rgba(255,255,255,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  pointer-events: none;
 }
 
 @keyframes hexagon-rotate {
