@@ -1,22 +1,37 @@
 .supportUsPage {
-  background-color: #f7f7fa;
+  background-color: #B8D4E8;
   min-height: 100vh;
   padding: 80px 0 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  /* Match JumpIn typography */
+  font-family: 'Rubik', 'Arial', sans-serif;
+  font-size: clamp(18px, 3vw, 22px);
+  line-height: 1.18; /* tighter spacing to match other pages */
+  color: rgb(0, 0, 8);
+}
+/* Outer page wrapper to replace inline style */
+.pageRoot {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .title {
   font-size: 2.2rem;
   font-weight: 700;
   color: #d2691e;
-  margin-bottom: 1.2em;
+  margin-bottom: 0.6em; /* reduced space below H1 */
   font-family: 'Rubik', 'Arial', sans-serif;
+ 
 }
 .description {
-  font-size: 1.15rem;
-  color: #1a3a52;
+  /* Inherit font style and size from container to match JumpIn */
+  font-size: inherit;
+  color: inherit;
+  font-family: inherit;
+  line-height: inherit;
   margin-bottom: 2em;
   max-width: 600px;
 }
@@ -24,7 +39,9 @@
   list-style: disc inside;
   margin: 0 auto 2em auto;
   padding: 0;
-  font-size: 1.1rem;
+  font-size: inherit; /* keep consistent with page */
+  line-height: inherit;
+  font-family: inherit;
   color: #222;
   max-width: 480px;
   text-align: left;
@@ -58,3 +75,106 @@
   background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%) !important;
   color: #3a2600 !important;
 }
+
+/* Sample video block */
+.videoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 3rem auto 2rem auto; /* increased top spacing above the video */
+}
+.videoFrame {
+  width: 320px;
+  max-width: 92vw;
+  aspect-ratio: 1 / 1; /* make it square */
+  height: auto;        /* height follows width via aspect-ratio */
+  object-fit: cover;   /* crop to fill the square without distortion */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.18);
+  outline: 1px solid rgba(255,255,255,0.08);
+  background: #000;
+}
+.videoCaption {
+  font-size: 0.9rem;
+  color: #39586b;
+}
+
+@media (min-width: 768px) {
+  .videoFrame {
+    width: 400px;
+  }
+}
+
+/* Wide content box styled like Thoughts left-box */
+.leftBoxWide {
+  width: 85vw;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #A8D5F5;
+  border-radius: 12px;
+  border: 2px solid rgba(26, 58, 82, 0.2);
+  box-sizing: border-box;
+  padding: 20px 16px;
+  margin: 0 auto; /* centered */
+}
+
+@media (max-width: 600px) {
+  .leftBoxWide {
+    width: 92vw;
+    max-width: 98vw;
+    padding: 16px 10px;
+  }
+}
+
+/* optional spacing for sections inside the box */
+.sectionTitle {
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+}
+
+/* Contact options list below 'get in touch' */
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0.6em auto 0;
+  display: grid;
+  gap: 8px;
+  width: fit-content;
+}
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1a73e8; /* link blue */
+  text-decoration: none;
+  padding: 4px 0;
+}
+.contactItem:visited {
+  color: #1a73e8; /* keep visited same blue for consistency */
+}
+.contactLabel {
+  text-decoration: none;
+}
+.contactItem:hover .contactLabel {
+  text-decoration: underline;
+}
+
+/* Remove per-type color override so links use the unified blue set on .contactItem */
+.iconWrap {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+}
+.iconWrap svg,
+.iconWrap img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Keep hover underline only; no color change requested */
