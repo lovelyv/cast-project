@@ -65,3 +65,14 @@ export const SOCIAL_LINKS = {
   linkedin: "https://linkedin.com/company/nristories",
   tiktok: "https://tiktok.com/@nristories"
 };
+
+// Stripe Payment Links for donations (configure in Stripe Dashboard).
+// Map amounts to their corresponding Payment Link URLs.
+// Example: 'https://buy.stripe.com/test_XXXXXXXXXXXX'
+export const DONATE_LINKS = {
+  5: "https://buy.stripe.com/test_00w14p64o8Bvdjs5A818c00",
+  10: "",
+  20: "",
+  50: "",
+  100: ""
+};
