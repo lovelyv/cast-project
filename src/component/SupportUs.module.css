@@ -249,6 +249,11 @@
   gap: 12px;
   margin-top: 0.8em;
 }
+/* Extra spacing for standalone CTA rows */
+.ctaRow {
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+}
 .chipInLabel {
   font-family: 'Rubik', 'Arial', sans-serif;
   font-weight: 600;
@@ -286,6 +291,9 @@
 .chipInBtn:focus {
   animation: none;
   box-shadow: 0 4px 16px rgba(255,140,0,0.18);
+  /* retain the same colors on hover */
+  background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%);
+  color: #3a2600;
 }
 @keyframes chipIn-pulse {
   0% {

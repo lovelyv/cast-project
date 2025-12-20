@@ -12,6 +12,11 @@ import smsIcon from '../assets/sms.svg';
 function SupportUs() {
   const [chipOpen, setChipOpen] = useState(false);
   const [chipAmount, setChipAmount] = useState('5');
+  const [hostOption, setHostOption] = useState('A place to stay');
+  const [sponsorOption, setSponsorOption] = useState('Sponsor an episode');
+  const [sponsorRegion, setSponsorRegion] = useState('Africa');
+  const [sponsorAck, setSponsorAck] = useState('Visual');
+  const [sponsorEpisodePlan, setSponsorEpisodePlan] = useState('Per episode');
   const handleProceedDonation = () => {
     const url = DONATE_LINKS[Number(chipAmount)];
     if (url && typeof url === 'string' && url.length > 0) {
@@ -20,6 +25,12 @@ function SupportUs() {
     } else {
       alert('Donation link is not configured yet. Please add your Stripe Payment Link for the selected amount in src/config.js.');
     }
+  };
+  const handleSponsorMail = () => {
+    const subject = `Sponsor Us - ${sponsorOption}`;
+    const body = `Region: ${sponsorRegion}\nAcknowledgement: ${sponsorAck}\nEpisode plan: ${sponsorEpisodePlan}\n\nDetails:`;
+    const mailHref = `mailto:${CONTACT.EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailHref;
   };
   return (
     <div className={styles.pageRoot}>
@@ -127,7 +138,7 @@ function SupportUs() {
                 setChipOpen(true);
               }}
             >
-              CHIP IN
+              Chip In
             </button>
           </div>
         </div>
@@ -150,12 +161,100 @@ function SupportUs() {
         {/* Host Us box */}
         <div className={styles.leftBoxWide}>
           <h3 className={styles.sectionTitle}>Host Us</h3>
-          <p>Invite us to speak or host a screening to bring these stories to your audience.</p>
+          <p>Showcasing NRIs globally<br/>involves a lot of travelling.</p>
+          <p>Want to help us?</p>
+          <div className={styles.chipInRow}>
+            <select
+              className={styles.chipInSelect}
+              aria-label="Host us support option"
+              value={hostOption}
+              onChange={e => setHostOption(e.target.value)}
+            >
+              <option value="A place to stay">A place to stay</option>
+              <option value="Travel arrangements">Travel arrangements</option>
+              <option value="Local support">Local support</option>
+              <option value="Any other">Any other</option>
+            </select>
+            <button
+              type="button"
+              className={styles.chipInBtn}
+              onClick={() => {
+                const subject = `Help Us - ${hostOption}`;
+                const body = `I'd like to help with: ${hostOption}\n\nDetails:`;
+                const mailHref = `mailto:${CONTACT.EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.location.href = mailHref;
+              }}
+            >
+              Help Us
+            </button>
+          </div>
         </div>
         {/* Sponsor Us box */}
         <div className={styles.leftBoxWide}>
           <h3 className={styles.sectionTitle}>Sponsor Us</h3>
-          <p>Partner with us to sponsor an episode and help fund production and outreach.</p>
+          <p>Want to promote your product,<br/>service, skills or facility?</p>
+          <p><b>NRI stories</b><br/>is THE platform<br/>that you SHOULD advertise on.</p>
+          
+          {/* Regions wise */}
+          <div className={styles.chipInRow}>
+            <label htmlFor="sponsorRegion" className={styles.chipInLabel}>Region</label>
+            <select
+              id="sponsorRegion"
+              className={styles.chipInSelect}
+              aria-label="Region"
+              value={sponsorRegion}
+              onChange={e => setSponsorRegion(e.target.value)}
+            >
+              <option value="Africa">Africa</option>
+              <option value="Asia">Asia</option>
+              <option value="Europe">Europe</option>
+              <option value="North America">North America</option>
+              <option value="South America">South America</option>
+              <option value="Australia & Pacific">Australia & Pacific</option>
+              <option value="Middle East">Middle East</option>
+            </select>
+          </div>
+          {/* Acknowledgement - visual, verbal */}
+          <div className={styles.chipInRow}>
+            <label htmlFor="sponsorAck" className={styles.chipInLabel}>Acknowledgement Type</label>
+            <select
+              id="sponsorAck"
+              className={styles.chipInSelect}
+              aria-label="Acknowledgement Type"
+              value={sponsorAck}
+              onChange={e => setSponsorAck(e.target.value)}
+            >
+              <option value="Visual">Visual</option>
+              <option value="Verbal">Verbal</option>
+              <option value="Both">Both</option>
+            </select>
+          </div>
+          {/* Episodewise */}
+          <div className={styles.chipInRow}>
+            <label htmlFor="sponsorEpisodePlan" className={styles.chipInLabel}>Episode plan</label>
+            <select
+              id="sponsorEpisodePlan"
+              className={styles.chipInSelect}
+              aria-label="Episode plan"
+              value={sponsorEpisodePlan}
+              onChange={e => setSponsorEpisodePlan(e.target.value)}
+            >
+              <option value="Per episode">Per episode</option>
+              <option value="Series (3)">Series (3)</option>
+              <option value="Series (5)">Series (5)</option>
+              <option value="Custom">Custom</option>
+            </select>
+          </div>
+          {/* Get In Touch button below Episode plan */}
+          <div className={`${styles.chipInRow} ${styles.ctaRow}`}>
+            <button
+              type="button"
+              className={styles.chipInBtn}
+              onClick={handleSponsorMail}
+            >
+              Get In Touch
+            </button>
+          </div>
         </div>
         
       </div>
