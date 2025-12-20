@@ -104,6 +104,7 @@ function SupportUs() {
           <p className={styles.chipInText}>Any contribution helps.</p>
           <div className={styles.chipInRow}>
             <select
+              id="chipAmount"
               className={styles.chipInSelect}
               aria-label="Contribution amount"
               value={chipAmount}
@@ -115,7 +116,19 @@ function SupportUs() {
               <option value="50">$ 50</option>
               <option value="100">$ 100</option>
             </select>
-            <button type="button" className={styles.chipInBtn} onClick={() => setChipOpen(true)}>CHIP IN</button>
+            <button
+              type="button"
+              className={styles.chipInBtn}
+              onClick={() => {
+                if (!chipAmount) {
+                  alert('Please select an amount first.');
+                  return;
+                }
+                setChipOpen(true);
+              }}
+            >
+              CHIP IN
+            </button>
           </div>
         </div>
         {chipOpen && (
