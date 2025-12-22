@@ -64,9 +64,10 @@ function YouAFit() {
         </a>
       </div>
       </div>
-       </div>
-      {/* Only Jump In button below last element */}
       <Footer />
+       </div>
+     
+      
     </div>
   );
 }

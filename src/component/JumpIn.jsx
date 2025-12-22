@@ -46,7 +46,7 @@ function JumpIn() {
   };
 
   const [submitMessage, setSubmitMessage] = useState("");
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();
@@ -92,7 +92,7 @@ function JumpIn() {
         <div className={styles["jumpin-container"]}>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
-            <h2 className={styles["jumpin-h2"]} style={{ marginBottom: 0 }}>
+            <h2 id="jumpin-top" tabIndex="-1" className={styles["jumpin-h2"]} style={{ marginBottom: 0 }}>
               <span>We want<br/>to hear from you</span>
             </h2>
             <div style={{ display: 'flex', justifyContent: 'center', margin: '0 0 1.5em 0', marginTop: 0 }}>
@@ -282,16 +282,17 @@ across the entire digital landscape.<br/><br/><br/>
           </form>
 
          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <a href="#showcase"className={styles.ourShowcaseLink} >
+              <a
+                href="#showcase"
+                className={styles.ourShowcaseLink}
+              >
                 Our Showcase
               </a>
             </div>
-
-        </div>
-      </div>
-
       <Footer />
-
+        </div>
+    
+      </div>
     </div>
   );
 }

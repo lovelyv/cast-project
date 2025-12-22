@@ -106,7 +106,7 @@
 @media (max-height: 600px) {
   .youafit-page {
     padding-top: 120px;
-  padding-bottom: 16px;
+    padding-bottom: 0; /* remove extra space before footer */
     justify-content: flex-start;
     align-items: center;
     scroll-padding-top: 120px;
@@ -140,7 +140,7 @@
 @media (max-width: 600px) {
   .youafit-page {
     padding-top: 70px;
-  padding-bottom: 8px;
+    padding-bottom: 0; /* remove extra space before footer */
   }
   .youafit-title {
     font-size: 2rem;
@@ -179,7 +179,7 @@
 
 @media (max-width: 600px) {
   .youafit-page {
-  padding-bottom: 4vw;
+  padding-bottom: 0; /* ensure no extra space on small screens */
   }
 }
 

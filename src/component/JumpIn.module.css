@@ -1,7 +1,7 @@
 /* Plain link for Our Showcase below submit button with extra space above */
 .ourShowcaseLink {
   display: block;
-  margin: 2.5rem auto 0 auto;
+  margin: 2.5rem auto 2.5rem auto;
   color: #b86b00;
   
   font-size: 1em;
@@ -210,12 +210,12 @@ textarea.opaqueField.input40 {
   animation: fadeInUp 0.6s ease-out;
  color: rgb(0, 0, 8) !important;
   position: relative; /* Needed for absolute positioning of the link */
-  padding-bottom: 3.5rem;
+  padding-bottom: 0; /* remove extra space before footer */
 
 }
 @media (max-width: 600px) {
   .jumpin-container {
-    padding-bottom: 16vw;
+    padding-bottom: 0; /* remove extra space before footer on mobile */
   }
 }
 
@@ -350,7 +350,7 @@ input.opaqueField, textarea.opaqueField {
 /* Add extra bottom padding to container on small screens */
 @media (max-width: 600px) {
   .jumpin-container {
-    padding-bottom: 16vw;
+    padding-bottom: 0; /* ensure no extra space on small screens */
   }
 }
 

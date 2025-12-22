@@ -31,15 +31,15 @@ function HitItPage() {
          
           <p>
             <h1 className={styles["h1"]}>
-              REAL&nbsp;PEOPLE.
+              REAL&nbsp;PEOPLE
             </h1>
             It's all about real stories.<br />Told without filters, judgement<br/>or embellishment.<br /><br />
              <h1 className={styles["h1"]}>
-              REAL&nbsp;&nbsp;EMOTIONS.
+              REAL&nbsp;&nbsp;EMOTIONS
              </h1>
               Every story explores<br />the real life experiences<br/>of<br/>Non Resident Indians,<br />people of Indian lineage.<br /><br />
              <h1 className={styles["h1"]}>
-              REAL&nbsp;JOURNEYS.
+              REAL&nbsp;JOURNEYS
              </h1>
             Their journeys across continents.<br />
             Sacrifices, ambitions and triumphs.<br /><br />

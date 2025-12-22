@@ -11,6 +11,7 @@
   font-size: clamp(18px, 3vw, 22px);
   line-height: 1.18; /* tighter spacing to match other pages */
   color: rgb(0, 0, 8);
+  width: 100%; /* match navbar width on pages with footer */
 }
 /* Outer page wrapper to replace inline style */
 .pageRoot {
@@ -25,6 +26,27 @@
   margin-bottom: 0.6em; /* reduced space below H1 */
   font-family: 'Rubik', 'Arial', sans-serif;
  
+}
+/* Remove blue focus ring on headings when the page is loaded via anchor or refresh */
+.title:focus,
+.title:focus-visible,
+.sectionTitle:focus,
+.sectionTitle:focus-visible,
+.supportUsPage h1:focus,
+.supportUsPage h1:focus-visible,
+.supportUsPage h2:focus,
+.supportUsPage h2:focus-visible,
+.supportUsPage h3:focus,
+.supportUsPage h3:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+/* Broad suppression inside Support Us page to avoid any default blue focus ring on refresh */
+.supportUsPage :focus,
+.supportUsPage :focus-visible,
+.supportUsPage :focus-within {
+  outline: none !important;
+  box-shadow: none !important;
 }
 .description {
   /* Inherit font style and size from container to match JumpIn */
@@ -239,6 +261,21 @@
   color: #222;
 }
 
+/* Hidden focus sentinel to capture initial focus without visible outline */
+.focusSentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.focusSentinel:focus,
+.focusSentinel:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* Chip in enhancements */
 .chipInText {
   margin: 0.4em 0;
@@ -252,7 +289,7 @@
 /* Extra spacing for standalone CTA rows */
 .ctaRow {
   margin-top: 1.2em;
-  margin-bottom: 1.2em;
+  margin-bottom: 0; /* remove extra space below Sponsor Us */
 }
 .chipInLabel {
   font-family: 'Rubik', 'Arial', sans-serif;

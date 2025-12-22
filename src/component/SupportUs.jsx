@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import Footer from './Footer';
@@ -10,6 +10,7 @@ import whatsappIcon from '../assets/whatsapp-green.svg';
 import smsIcon from '../assets/sms.svg';
 
 function SupportUs() {
+  const focusSentinelRef = useRef(null);
   const [chipOpen, setChipOpen] = useState(false);
   const [chipAmount, setChipAmount] = useState('5');
   const [hostOption, setHostOption] = useState('A place to stay');
@@ -17,6 +18,15 @@ function SupportUs() {
   const [sponsorRegion, setSponsorRegion] = useState('Africa');
   const [sponsorAck, setSponsorAck] = useState('Visual');
   const [sponsorEpisodePlan, setSponsorEpisodePlan] = useState('Per episode');
+  // On mount, set focus to a hidden sentinel to avoid Chrome's blue focus ring on headings
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (focusSentinelRef.current && typeof focusSentinelRef.current.focus === 'function') {
+        focusSentinelRef.current.focus();
+      }
+    }, 50);
+    return () => clearTimeout(t);
+  }, []);
   const handleProceedDonation = () => {
     const url = DONATE_LINKS[Number(chipAmount)];
     if (url && typeof url === 'string' && url.length > 0) {
@@ -36,6 +46,7 @@ function SupportUs() {
     <div className={styles.pageRoot}>
       <Navbar />
       <div className={styles.supportUsPage}>
+        <div ref={focusSentinelRef} tabIndex="-1" aria-hidden="true" className={styles.focusSentinel} />
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
         {/* Small sample video on top */}
         <div className={styles.videoSection}>
@@ -53,7 +64,7 @@ function SupportUs() {
           </video>
           <div className={styles.videoCaption}>Sample video (short, muted)</div>
         </div>
-        <h1 className={styles.title}>Support Us</h1>
+  <h1 className={styles.title}>Support Us</h1>
         <div className={styles.description}>
           We are a group of<br/>
           committed communication professionals.<br/>

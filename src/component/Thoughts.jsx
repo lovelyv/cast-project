@@ -82,7 +82,7 @@ function Thoughts({ scrollTo }) {
                 Two cameras.<br/>One composite shot.<br />
                 Minimal narrative structure.<br /><br />
                 The ones that thrive<br />
-                do so through storytelling craft.<br /><br />
+                do so through<br />storytelling craft.<br /><br />
                 By holding viewer attention<br />
                 through cinematic pacing,<br />
                 emotional truth<br/> and immersive presentation.<br />
@@ -102,12 +102,12 @@ function Thoughts({ scrollTo }) {
             </button>
             {open[1] && (
               <div className={styles['accordion-content']}>
-                We have coined it as <b>D<span style={{fontSize: '0.8em'}}>OCU</span>C<span style={{fontSize: '0.8em'}}>AST</span>&trade;</b>.<br /><br />
+                We have coined it as <b>D<span style={{fontSize: '0.8em'}}>OCU</span>C<span style={{fontSize: '0.8em'}}>AST</span>&trade;</b><br /><br />
                 A hybrid<br />
                 between a podcast<br/>and a documentary.<br /><br />
                 Each episode has interviews,<br/>archival footage<br/>and cinematic visuals.<br />
-                Woven into a single narrative arc.<br /><br />
-                Storytelling that looks,<br/>sounds, and feels different.<br />
+                Woven into a<br />single narrative arc.<br /><br />
+                Storytelling that looks,<br/>sounds and feels different.<br />
                 A documentary style podcast<br/>with visual enrichment.<br/>
                 
                 
@@ -158,7 +158,7 @@ function Thoughts({ scrollTo }) {
                       <h3>The Result</h3>
                       <p>Good production value.<br/>High on content.<br/><br/>
                       Designed for<br/>digital audiences<br/>
-                      who crave emotional depth and visual substance.<br/><br/>
+                      who crave emotional depth<br />and visual substance.<br/><br/>
                       A platform<br/>where the NRI voice<br/>is heard seen and preserved.</p>
                     </div>
                 </div>
@@ -187,8 +187,9 @@ function Thoughts({ scrollTo }) {
             
           
         </div>
+         <Footer /> 
       </div>
-        <Footer />  
+        
     </div>
   );
 }
