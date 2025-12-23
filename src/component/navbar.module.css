@@ -193,7 +193,7 @@
   font-size: 0.75em;
   vertical-align: super;
   line-height: 1;
-  margin-left: 3px;
+  margin-left: 0.1em; /* bring the ® closer to 'stories' */
   color: inherit; /* keep same color as logo */
   opacity: 0.9;
 }

@@ -208,7 +208,6 @@ p.contrastText {
   font-size: clamp(18px, 3vw, 22px);
   line-height: 1.18;
   text-align: center;
-  margin: 0.4em 0 0.6em 0;
 }
 .showcase-content-bg {
   font-family: 'Rubik', 'Arial', sans-serif;
@@ -323,7 +322,42 @@ p.contrastText {
 .supportUsBtn:focus,
 .supportUsBtn:hover {
   box-shadow: 0 4px 16px 0 rgba(255,140,0,0.18);
+  /* stop pulsing on hover/focus/active */
   animation: none !important;
+  /* Ensure no transparency or style change on hover */
+  background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%) !important;
+  color: #3a2600 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  /* Force its own compositing layer to avoid any blend/opacity glitches */
+  transform: translateZ(0) scale(1) !important;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
+  
+}
+
+/* Reinforce hover style on medium and large viewports */
+@media (min-width: 601px) {
+  .supportUsBtn:active,
+  .supportUsBtn:focus,
+  .supportUsBtn:hover {
+    background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%) !important;
+    color: #3a2600 !important;
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    animation: none !important;
+    transform: translateZ(0) scale(1) !important;
+    will-change: transform, box-shadow;
+    backface-visibility: hidden;
+    isolation: isolate;
+    position: relative;
+    z-index: 1;
+  }
 }
 /* Hidden focus sentinel to capture initial focus without visible outline */
 .focusSentinel {

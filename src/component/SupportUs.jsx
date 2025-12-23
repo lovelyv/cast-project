@@ -66,60 +66,11 @@ function SupportUs() {
         </div>
   <h1 className={styles.title}>Support Us</h1>
         <div className={styles.description}>
-          We are a group of<br/>
-          committed communication professionals.<br/>
-          Wanting to immortalise unsung heroes.<br/>
-          By airing their stories as a video biography.<br/>
-          In this we need your help.
+          <b>WE</b><br />are a committed group<br />of communication professionals.<br/><br/>
+          <b>WANTING TO</b><br />document and air<br />the memoirs of<br /> PIOs, OCIs and NRIs.<br /><br/>
+          IN THIS<br />we need your support.
         </div>
-        <div className={styles.leftBoxWide}>
-          <h3 className={styles.sectionTitle}>Collaborate with us</h3>
-          <p>Do you have the skills and equipment?<br/>Want to volunteer?<br/>If so, get in touch.</p>
-          {(() => {
-                              const phoneDigits = (CONTACT.SMS_NUMBER || '').replace(/\D/g, '');
-                              const mailHref = `mailto:${CONTACT.EMAIL || ''}`;
-                              const telHref = phoneDigits ? `tel:+${phoneDigits}` : undefined;
-                              const whatsappHref = phoneDigits ? `https://wa.me/${phoneDigits}` : undefined;
-                              const smsHref = phoneDigits ? `sms:+${phoneDigits}` : undefined;
-                              return (
-                                <ul className={styles.contactList} aria-label="Contact options">
-                                  <li>
-                                    <a className={`${styles.contactItem} ${styles.email}`} href={mailHref}>
-                                      <span className={styles.iconWrap} aria-hidden="true">
-                                        <img src={emailIcon} alt="" width={22} height={22} />
-                                      </span>
-                                      <span className={styles.contactLabel}>Email</span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a className={`${styles.contactItem} ${styles.phone}`} href={telHref}>
-                                      <span className={styles.iconWrap} aria-hidden="true">
-                                        <img src={phoneIcon} alt="" width={22} height={22} />
-                                      </span>
-                                      <span className={styles.contactLabel}>Phone Call</span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a className={`${styles.contactItem} ${styles.whatsapp}`} href={whatsappHref} target="_blank" rel="noopener noreferrer">
-                                      <span className={styles.iconWrap} aria-hidden="true">
-                                        <img src={whatsappIcon} alt="" width={22} height={22} />
-                                      </span>
-                                      <span className={styles.contactLabel}>WhatsApp</span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a className={`${styles.contactItem} ${styles.sms}`} href={smsHref}>
-                                      <span className={styles.iconWrap} aria-hidden="true">
-                                        <img src={smsIcon} alt="" width={22} height={22} />
-                                      </span>
-                                      <span className={styles.contactLabel}>SMS</span>
-                                    </a>
-                                  </li>
-                                </ul>
-                              );
-                            })()}
-        </div>
-        {/* Additional support box */}
+          {/* Additional support box */}
         <div className={styles.leftBoxWide}>
           <h3 className={styles.sectionTitle}>Chip in</h3>
           <p className={styles.chipInText}>Un–hyphenated programming<br/>involves time, energy,<br/>effort and expense.</p>
@@ -169,6 +120,58 @@ function SupportUs() {
             </div>
           </div>
         )}
+        <div className={styles.leftBoxWide}>
+          <h3 className={styles.sectionTitle}>Collaborate with us</h3>
+          <p>Do you have the skills<br />and equipment?<br/><br/>Want to volunteer<br />as a stringer?<br/><br/>If so, get in touch.</p>
+          {(() => {
+                              const phoneDigits = (CONTACT.SMS_NUMBER || '').replace(/\D/g, '');
+                              const mailHref = `mailto:${CONTACT.EMAIL || ''}`;
+                              const telHref = phoneDigits ? `tel:+${phoneDigits}` : undefined;
+                              const whatsappHref = phoneDigits ? `https://wa.me/${phoneDigits}` : undefined;
+                              const smsHref = phoneDigits ? `sms:+${phoneDigits}` : undefined;
+                              return (
+                                <ul className={styles.contactList} aria-label="Contact options">
+                                  <li>
+                                    <a className={`${styles.contactItem} ${styles.email}`} href={mailHref}>
+                                      <span className={styles.iconWrap} aria-hidden="true">
+                                        <img src={emailIcon} alt="" width={22} height={22} />
+                                      </span>
+                                      <span className={styles.contactLabel}>Email</span>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className={`${styles.contactItem} ${styles.phone}`} href={telHref}>
+                                      <span className={styles.iconWrap} aria-hidden="true">
+                                        <img src={phoneIcon} alt="" width={22} height={22} />
+                                      </span>
+                                      <span className={styles.contactLabel}>Phone Call</span>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className={`${styles.contactItem} ${styles.whatsapp}`} href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                                      <span className={styles.iconWrap} aria-hidden="true">
+                                        <img src={whatsappIcon} alt="" width={22} height={22} />
+                                      </span>
+                                      <span className={styles.contactLabel}>WhatsApp</span>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className={`${styles.contactItem} ${styles.sms}`} href={smsHref}>
+                                      <span className={styles.iconWrap} aria-hidden="true">
+                                        <img src={smsIcon} alt="" width={22} height={22} />
+                                      </span>
+                                      <span className={styles.contactLabel}>SMS</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              );
+                            })()}<br/><br/>
+                            <b>You can also<br/>be associated as<br/></b>
+                            Our Travel Partner<br/> 
+                            Our Hospitality Partner<br/>
+                            Our Logistics Support Partner<br/>
+        </div>
+      
         {/* Host Us box */}
         <div className={styles.leftBoxWide}>
           <h3 className={styles.sectionTitle}>Host Us</h3>
@@ -203,8 +206,7 @@ function SupportUs() {
         {/* Sponsor Us box */}
         <div className={styles.leftBoxWide}>
           <h3 className={styles.sectionTitle}>Sponsor Us</h3>
-          <p>Want to promote your product,<br/>service, skills or facility?</p>
-          <p><b>NRI stories</b><br/>is THE platform<br/>that you SHOULD advertise on.</p>
+          <p>Partner with us<br/>to sponsor an episode(s)<br />and help fund<br />production costs</p>
           
           {/* Regions wise */}
           <div className={styles.chipInRow}>
@@ -227,7 +229,7 @@ function SupportUs() {
           </div>
           {/* Acknowledgement - visual, verbal */}
           <div className={styles.chipInRow}>
-            <label htmlFor="sponsorAck" className={styles.chipInLabel}>Acknowledgement Type</label>
+            <label htmlFor="sponsorAck" className={styles.chipInLabel}>Acknowledgement<br />Type</label>
             <select
               id="sponsorAck"
               className={styles.chipInSelect}
@@ -257,6 +259,8 @@ function SupportUs() {
             </select>
           </div>
           {/* Get In Touch button below Episode plan */}
+          {/* Sponsorship acknowledgement note placed just above the CTA */}
+          <p>All sponsorships<br />will be acknowledged<br />prime time in our program.</p>
           <div className={`${styles.chipInRow} ${styles.ctaRow}`}>
             <button
               type="button"

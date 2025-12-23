@@ -7,7 +7,10 @@ function HomeNavbar() {
       <div className={styles.navContent}>
         <div className={styles.logoContainer}>
           <img src={logo} alt="NRI Stories logo" className={styles.logoImage} />
-          <h1 className={styles.logoText}>NRI Stories</h1>
+          <h1 className={styles.logoText}>
+            NRI Stories
+            <span aria-hidden="true" style={{ verticalAlign: 'super', fontSize: '0.75em', marginLeft: '0.1em' }}>®</span>
+          </h1>
         </div>
       </div>
     </nav>
