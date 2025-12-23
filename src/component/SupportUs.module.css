@@ -83,6 +83,13 @@
   align-items: center;
   gap: 0.5rem;
   margin: 3rem auto 2rem auto; /* increased top spacing above the video */
+  /* Make this block opaque so watermark isn't visible behind/through it */
+  background-color: #A8D5F5 !important; /* match content boxes */
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+  border-radius: 12px; /* visually consistent with video corners */
+  padding: 0.6rem 0.8rem; /* slight padding to avoid hard edges */
 }
 .videoFrame {
   width: 320px;
@@ -95,6 +102,8 @@
   box-shadow: 0 6px 22px rgba(0,0,0,0.18);
   outline: 1px solid rgba(255,255,255,0.08);
   background: #000;
+  position: relative; /* ensure it renders above background layer */
+  z-index: 2;
 }
 .videoCaption {
   font-size: 0.9rem;
@@ -269,14 +278,6 @@
   font-size: 1rem;
   width: auto;
   min-width: 50px; /* half of previous width */
-}
-
-/* Sponsor Us dropdowns: left-align selected value text only for these controls */
-#sponsorRegion,
-#sponsorAck,
-#sponsorEpisodePlan {
-  text-align: left;        /* override page-level center alignment */
-  text-align-last: left;   /* ensure last line/value is left-aligned in some browsers */
 }
 .chipInBtn {
   display: inline-flex;
