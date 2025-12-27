@@ -56,6 +56,10 @@ export const CONTACT = {
   EMAIL: "contact@nristories.com"
 };
 
+// JumpIn form submission endpoint (Google Apps Script / spreadsheet backend)
+// Change this to point to your deployed script URL.
+export const JUMPIN_SUBMIT_URL = "https://script.google.com/macros/s/AKfycbwc16-4NenkpXlbHHvlmo_jedI4r0DkqqBi3IpzeRsLOfvjjHcQYslILlwZfcc2KCSD/exec";
+
 // Social media links for use in footer, banners, etc.
 export const SOCIAL_LINKS = {
   facebook: "https://facebook.com/nristories",

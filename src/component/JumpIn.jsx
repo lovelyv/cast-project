@@ -7,6 +7,7 @@ import handpointer from '../assets/handpointer.png';
 import Footer from './Footer';
 import SocialLinksBar from './SocialLinksBar';
 import { data } from 'react-router-dom';
+import { JUMPIN_SUBMIT_URL } from '../config';
 
 function JumpIn() {
   // Detect Android device
@@ -59,8 +60,7 @@ function JumpIn() {
       return;
     }
     setErrors({});
-    const url = "https://script.google.com/macros/s/AKfycbyzuobWQ3GsPOkqObvOGlZFfFJHcruQoQzPidovWn11J_KsHxDkS-JWuzvmr3a1CH8a/exec";
-    fetch(url, {
+    fetch(JUMPIN_SUBMIT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: (`fullName=${e.target.fullName.value}&email=${e.target.email.value}&phone=${e.target.phone.value}&storySummary=${e.target.storySummary.value}`)
