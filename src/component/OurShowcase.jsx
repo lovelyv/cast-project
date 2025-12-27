@@ -35,7 +35,7 @@ function OurShowcase() {
         <div ref={focusSentinelRef} tabIndex="-1" aria-hidden="true" className={styles.focusSentinel} />
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
         <h2 className={styles["showcase-h2"]}>
-          PRESERVE your JOURNEY.<br/>INSPIRE the NEXT ONE.
+          PRESERVE <span className={styles.blackWord}>your</span> JOURNEY.<br/>INSPIRE the NEXT <span className={styles.blackWord}>one</span>.
         </h2>
         {/* Centered 3D carousel showing 8 countries at a time, slower rotation, flat base; wider blocks with spacing and fixed center rotation */}
         <div className={styles.carouselCenter}>
@@ -70,7 +70,7 @@ function OurShowcase() {
         {/* Tagline above Support Us button */}
         <p className={styles.tagline}>
           IP registration underway.<br/>
-          Across 3 continents, 7 countries.
+          In 7 countries, across 3 continents.
         </p>
         {/* Support Us button above Follow Us (styled like HitIt Thought button) */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -81,11 +81,6 @@ function OurShowcase() {
           >
             Support Us
           </a>
-        </div>
-
-        <h2 className={styles["showcase-follow-h2"]}>Follow Us</h2>
-        <div className={styles.socialShowcaseRow}>
-          <SocialLinksBar size="sm" className="noMarginBottom" />
         </div>
       </div>
       <Footer />

@@ -3,7 +3,8 @@ import styles from './Thoughts.module.css';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import visualStory from '../assets/visualstory.png';
-import soundfeel from '../assets/soundfeel.jpeg';
+import soundfeelUrl from '../assets/soundfeel.png';
+
 import Footer from './Footer';
 
 function Thoughts({ scrollTo }) {
@@ -57,23 +58,28 @@ function Thoughts({ scrollTo }) {
           <b>D</b>
           <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>OCU</b>
           <b>C</b>
-          <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>AST</b>™.
+          <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>AST</b>™
         </span>
         <p className={styles['accordion-content']}>
           will feature stories<br/>
           that speak about<br/>
-          Resilience<br/>
-          Sacrifice<br/>Ambition<br/>Identity<br/>Inspiration<br/>
+          Resilience,
+          Sacrifice,<br/>Ambition,Identity and Inspiration<br/>
         </p>
 
         {/* Accordion 1: Landscape */}
         <div className={styles['accordion-section'] + ' ' + styles['docucast']}>
-          <button ref={headerRefs[0]} onClick={() => toggle(0)} className={styles['accordion-header']}>
+          <button
+            ref={headerRefs[0]}
+            onClick={() => toggle(0)}
+            className={styles['accordion-header']}
+            aria-expanded={open[0]}
+          >
             <span className={styles['accordion-title']}>Landscape</span>
           </button>
           {open[0] && (
             <div className={styles['accordion-content']}>
-              <span className={styles.overcrowded}>The Podcast world<br/> is overcrowded.</span><br />
+              <span className={styles.overcrowded}>The Podcast world<br/>is<br/>overcrowded.</span><br />
               Over 6.5 million podcasts<br/>exist worldwide.<br />
               <b>Yet...</b><br /> 
               most fade away<br />
@@ -92,7 +98,12 @@ function Thoughts({ scrollTo }) {
         </div>
         {/* Accordion 2: Introducing DocuCast® */}
         <div className={styles['accordion-section']}>
-          <button ref={headerRefs[1]}  onClick={() => toggle(1)} className={styles['accordion-header']}>
+          <button
+            ref={headerRefs[1]}
+            onClick={() => toggle(1)}
+            className={styles['accordion-header']}
+            aria-expanded={open[1]}
+          >
             <span className={styles['accordion-title']} >
               <b>D</b>
               <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>OCU</b>
@@ -106,7 +117,7 @@ function Thoughts({ scrollTo }) {
               We have coined it as <b>D<span style={{fontSize: '0.8em'}}>OCU</span>C<span style={{fontSize: '0.8em'}}>AST</span>&trade;</b><br /><br />
               A hybrid<br />
               between a podcast<br/>and a documentary.<br /><br />
-              Each episode has interviews,<br/>archival footage<br/>and cinematic visuals.<br />
+              Each episode has interviews,<br/>archival footage<br/>and cinematic visuals.<br /><br />
               Woven into a<br />single narrative arc.<br /><br />
               Storytelling that looks,<br/>sounds and feels different.<br />
               A documentary style podcast<br/>with visual enrichment.<br/>
@@ -115,34 +126,42 @@ function Thoughts({ scrollTo }) {
         </div>
         {/* Accordion 3: Indian Diaspora */}
         <div className={styles['accordion-section']}>
-          <button ref={headerRefs[2]} onClick={() => toggle(2)} className={styles['accordion-header']}>
-            <span className={styles['accordion-title']}>Indian Diaspora</span>
+          <button
+            ref={headerRefs[2]}
+            onClick={() => toggle(2)}
+            className={styles['accordion-header']}
+            aria-expanded={open[2]}
+          >
+            <span className={styles['accordion-title']}>Factoids</span>
           </button>
           {open[2] && (
             <div className={styles['accordion-content']}>
-                <b>In the world</b><br />
-                there are 195 recognized countries<br />
-                Global population is 8.2 billion <br />
-                Indian population is 1.5 billion <br /><br />
-                One in every 7 people<br />
-                In the whole world<br />
-                Is an Indian!!!<br /><br />
-                Of these, the Indian Diaspora <br />
-                numbers to 35 million plus<br /><br />
-                The population of<br />Indian diaspora is more than<br />the population of 148 countries.<br /><br />
-                <b>India is #1</b><br />
-                In population , 1.5 billion<br />
-                In diaspora , 35 million<br />
-                In remittances, 135 billion<br /><br />
-                <b>Overseas Remittance</b><br />
-                This accounts for 10%<br />
-                Of Indias gross current<br />account inflow.
+                <b>India is #1</b><br /><br />
+                <b>Population<br />1.5 billion and counting.</b><br />
+                1 out of every 7 people<br />in the world is an Indian !<br />
+                India is the most populous country<br />in the whole world.<br /><br />
+                <b>Diaspora<br />35 million.</b><br />
+                India has the world’s<br />largest overseas diaspora.<br />
+                This is more than the individual<br />population of 148 countries !<br /><br />
+                <b>Remittances<br />135 billion +</b><br />
+                Accounts for 10% of India’s<br />gross current account.<br /><br />
+                <b>Young population</b><br />
+                65% of Indians are below 35 years.<br />
+                50% of all Indians are below 25 years.<br />
+                This demographic of a young nation<br />makes it more aspirational.<br /><br />
+                <b>Emigrants<br />2.5 million every year.</b><br />
+                As a result, India has the<br />largest migrants in the whole world.
             </div>
           )}
         </div>
         {/* Accordion 4: The Experience */}
         <div className={styles['accordion-section']}>
-          <button ref={headerRefs[3]} onClick={() => toggle(3)} className={styles['accordion-header']}>
+          <button
+            ref={headerRefs[3]}
+            onClick={() => toggle(3)}
+            className={styles['accordion-header']}
+            aria-expanded={open[3]}
+          >
             <span className={styles['accordion-title']}>Experience</span>
 
           </button>
@@ -168,10 +187,10 @@ function Thoughts({ scrollTo }) {
                    the emotion.<br />Sound that never distracts.</p>
                 </div>
                 <div className={styles['right-box']}>
-                  <img
-                    src={soundfeel}
-                    alt="Sound Feel"
-                  />
+                    <img
+                      src={soundfeelUrl}
+                      alt="Sound Feel"
+                    />
                 </div>
               </div>
 

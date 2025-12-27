@@ -746,3 +746,17 @@ button.accordion-header:hover *,
   color: #000 !important;
   background: linear-gradient(90deg, #FFF9C4 0%, #FFFDE7 100%) !important;
 }
+
+/* Expanded headers: darker text */
+.accordion-header[aria-expanded="true"],
+.accordion-header[aria-expanded="true"] * {
+  color: #000 !important;
+}
+
+/* Collapsed headers: ensure title is orange even if focused */
+.accordion-header[aria-expanded="false"] .accordion-title {
+  color: rgb(210, 105, 30) !important;
+}
+.accordion-header[aria-expanded="false"]:focus .accordion-title {
+  color: rgb(210, 105, 30) !important;
+}

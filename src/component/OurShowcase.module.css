@@ -373,6 +373,10 @@ p.contrastText {
   outline: none !important;
   box-shadow: none !important;
 }
+/* Utility: force black text color for a single word */
+.blackWord {
+  color: #000 !important;
+}
 /* Pulse animation matching HitIt button */
 @keyframes pulse {
   0% {

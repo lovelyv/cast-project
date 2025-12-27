@@ -8,9 +8,14 @@ import emailIcon from '../assets/email.svg';
 import phoneIcon from '../assets/phone.svg';
 import whatsappIcon from '../assets/whatsapp-green.svg';
 import smsIcon from '../assets/sms.svg';
+// Local embedded video (Option 2): directly use supportus.mp4 from src/assets
+import supportusMp4Url from '../assets/supportus.mp4?url';
+// Optional poster if you add one later:
+// import supportusPosterUrl from '../assets/supportus.jpg?url';
 
 function SupportUs() {
   const focusSentinelRef = useRef(null);
+  const videoRef = useRef(null);
   const [chipOpen, setChipOpen] = useState(false);
   const [chipAmount, setChipAmount] = useState('5');
   const [hostOption, setHostOption] = useState('A place to stay');
@@ -18,6 +23,7 @@ function SupportUs() {
   const [sponsorRegion, setSponsorRegion] = useState('Africa');
   const [sponsorAck, setSponsorAck] = useState('Visual');
   const [sponsorEpisodePlan, setSponsorEpisodePlan] = useState('Per episode');
+  const [useFallbackVideo, setUseFallbackVideo] = useState(false);
   // On mount, set focus to a hidden sentinel to avoid Chrome's blue focus ring on headings
   useEffect(() => {
     const t = setTimeout(() => {
@@ -48,7 +54,7 @@ function SupportUs() {
       <div className={styles.supportUsPage}>
         <div ref={focusSentinelRef} tabIndex="-1" aria-hidden="true" className={styles.focusSentinel} />
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
-        {/* Small sample video on top */}
+        {/* Small video on top (uses local src/assets/supportus.mp4). If loading fails (e.g., empty file), fallback to sample clip. */}
         <div className={styles.videoSection}>
           <video
             className={styles.videoFrame}
@@ -56,13 +62,25 @@ function SupportUs() {
             preload="metadata"
             playsInline
             muted
-            poster="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm.jpg"
+            ref={videoRef}
+            onError={() => setUseFallbackVideo(true)}
+            onEmptied={() => setUseFallbackVideo(true)}
+            onStalled={() => setUseFallbackVideo(true)}
+            onLoadedMetadata={() => {
+              try {
+                const v = videoRef.current;
+                if (v && (v.duration === 0 || !isFinite(v.duration))) {
+                  setUseFallbackVideo(true);
+                }
+              } catch {}
+            }}
+            // poster={supportusPosterUrl} - optional poster image
           >
-            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
-            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+
+              <source src={supportusMp4Url} type="video/mp4" />
+            
             Your browser does not support the video tag.
           </video>
-          <div className={styles.videoCaption}>Sample video (short, muted)</div>
         </div>
   <h1 className={styles.title}>Support Us</h1>
         <div className={styles.description}>
@@ -176,7 +194,7 @@ function SupportUs() {
         <div className={styles.leftBoxWide}>
           <h3 className={styles.sectionTitle}>Host Us</h3>
           <p>Showcasing NRIs globally<br/>involves a lot of travelling.</p>
-          <p>Want to help us?</p>
+          <p>Help us.</p>
           <div className={styles.chipInRow}>
             <select
               className={styles.chipInSelect}
