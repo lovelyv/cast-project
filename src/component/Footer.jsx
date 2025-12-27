@@ -38,7 +38,8 @@ function Footer() {
           </div>
         </div>
         <div className={styles.showcaseRight}>
-          <SocialLinksBar size="xs" className="footer-social-icons" />
+          {/* Increase footer social icon size from xs to sm */}
+          <SocialLinksBar size="sm" className="footer-social-icons" />
         </div>
       </div>
     </footer>
