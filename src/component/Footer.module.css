@@ -35,6 +35,14 @@
     align-items: center !important;
     width: 100% !important;
   }
+
+  
+    .footerContent .contactDetails span:first-child
+    {
+      margin-bottom: -2px;
+    }
+  
+
   .footerContent .contactDetails span:first-child,
   .footerContent .contactDetails span:last-child {
     margin-left: -10px;
@@ -140,7 +148,8 @@
 .contactDetails {
   display: flex;
   flex-direction: column;
-  gap: 0.7em;
+  /* Reduce vertical spacing between email and phone/links */
+  gap: 0.4em;
   font-size: 0.95em;
   color: #FFFFAA;
   font-weight: normal;
@@ -148,8 +157,9 @@
 }
 
 .contactDetails span:last-child {
-  margin-top: 0.5em;
-  margin-bottom: 1.2em;
+  /* Tighten space below email and before footer edge */
+  margin-top: 0.2em;
+  margin-bottom: 0.8em;
 }
 
 .contactDetails a {

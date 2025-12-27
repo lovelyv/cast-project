@@ -8,6 +8,8 @@
   margin-top: 4vw;
   margin-bottom: 4vw;
   min-height: 320px;
+  /* Ensure child elements are not affected by ancestor blending/opacity */
+  isolation: isolate;
 }
 
 @keyframes pulse {
@@ -126,6 +128,12 @@
   min-width: 100px;
   height: auto;
   box-sizing: border-box;
+  /* Force full opacity and normal blending so the logo is not transparent */
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  /* Sit above any background watermark */
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 600px) {
