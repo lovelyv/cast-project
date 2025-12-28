@@ -10,50 +10,7 @@
   width: 100%;
 }
 
-/* Pyramid headline styles */
-.headline-people {
-  display: inline-block;
-  font-size: 2.4rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin: 0 auto;
-  max-width: 14ch;
-  white-space: nowrap;
-}
-.headline-journeys {
-  display: block;
-  font-size: 2.4rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  margin: 0.15em auto 0 auto;
-  max-width: 18ch;
-}
-.headline-emotions {
-  display: block;
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin: 0.15em auto 0 auto;
-  max-width: 22ch;
-  white-space: nowrap;
-}
 
-@media (max-width: 600px) {
-  .headline-people {
-    font-size: 1.5rem;
-    max-width: 10ch;
-  }
-  .headline-journeys {
-    font-size: 1.6rem;
-    max-width: 12ch;
-    white-space: nowrap;
-  }
-  .headline-emotions {
-    font-size: 1.7rem;
-    max-width: 14ch;
-    letter-spacing: 0.06em;
-  }
-}
 
 .docucast-small {
   font-size: 0.3rem !important;
@@ -181,18 +138,6 @@ html, body {
   margin-bottom: 2px;
 }
 @media (min-width: 870px) and (max-width: 900px) {
-  .headline {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 100vw !important;
-    box-sizing: border-box !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 2px !important;
-    display: block !important;
-    text-align: center !important;
-    font-family: 'Rubik', 'Arial', sans-serif !important;
-  }
   .hero-subcopy {
     width: 100vw !important;
     max-width: 100vw !important;
@@ -214,18 +159,8 @@ html, body {
     margin-right: 0 !important;
     display: block !important;
   }
-@media (min-width: 750px) and (max-width: 900px) {
-  
-  .headline {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 100vw !important;
-    box-sizing: border-box !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    display: block !important;
-    text-align: center !important;
-  }
+@media (min-width: 577px) and (max-width: 768px) {
+ 
   .hero-subcopy {
     width: 100vw !important;
     max-width: 100vw !important;
@@ -282,7 +217,7 @@ html, body {
     align-items: center !important;
     justify-content: center !important;
   }
-  .hero-right.copy-slide-in .headline,
+
   .hero-right.copy-slide-in .hero-subcopy {
     text-align: center !important;
     margin-left: auto !important;
@@ -566,9 +501,7 @@ html, body {
     max-height: none !important;
   }
   }
-  .headline {
-    text-align: center !important;
-  }
+  
   
   /* Removed invalid nested selectors. If you need .hero-left or .hero-image styles, define them at the top level. */
   .hero-image {
@@ -581,13 +514,14 @@ html, body {
 
 .headline {
   margin: 0;
-  font-weight: 800;
-  font-size: clamp(24px, 4.8vw, 64px);
+  /* Use a valid bold font weight; 2200 is invalid and gets ignored */
+  font-weight: 900;
+  font-style: italic;
   line-height: 1.1;
-  letter-spacing: 0.2px;
-  color: rgb(210, 105, 30);
+  color: rgb(210, 105, 30) !important;
   text-align: left;
-  font-family: 'Rubik';
+  font-family: 'Georgia';
+  text-align: center !important;
 }
 
 .hero-subcopy {
@@ -604,9 +538,104 @@ html, body {
 
  
 
+
+
+/* Fixed headline sizes per viewport (non-responsive) */
 @media (max-width: 600px) {
-  
-  .headline {
-    font-size: clamp(28px, 7vw, 40px) !important;
+  .headline { font-size: 1.5rem !important; }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .headline { font-size: 2rem !important; }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+  .headline { font-size: 2.4rem !important; }
+}
+@media (min-width: 1201px) {
+  .headline { font-size: 2.6rem !important; }
+}
+
+/* Generic page button styled like Hit It (moved from hititpage.module.css) */
+.btn {
+  background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%);
+  color: #3a2600;
+  border: none;
+  font-weight: 700;
+  font-family: 'Rubik', 'Arial', sans-serif !important;
+  font-size: clamp(18px, 3vw, 22px);
+  border-radius: 2.2rem;
+  box-shadow: 0 2px 12px 0 rgba(255,140,0,0.10);
+  cursor: pointer;
+  margin: 2.2rem 0 1.5rem 0;
+  display: inline-block;
+  width: fit-content;
+  padding: 0.5em 0.8em;
+  transition: box-shadow 0.2s;
+  animation: pulse 1.1s cubic-bezier(0.4,0,0.6,1) infinite;
+  text-decoration: none;
+}
+.btn:active, .btn:focus, .btn:hover {
+  box-shadow: 0 4px 16px 0 rgba(255,140,0,0.18);
+  animation: none !important;
+}
+@media (max-width: 600px) {
+  .btn { font-size: 0.95rem; }
+}
+/* HitIt Page container moved here for global reuse */
+.all-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color:#b8d4e8;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: #B8D4E8;
+  width: 100%;
+  margin: 0 auto;               /* center the container horizontally */
+  text-align: center;           /* center text content */
+  flex-direction: column;
+  align-items: center;          /* center children horizontally */
+  position: relative; /* Needed for absolute positioning of the link */
+  flex: 1 0 auto; /* Fill available vertical space to push footer down */
+  justify-content: center; /* Center content vertically */
+  margin-top: 32px; /* add some breathing room at the top */
+  font-family:  'Arial', sans-serif;
+  font-size: 1.125rem;
+  color: #181818;
+  font-size: clamp(18px, 3vw, 22px)
+}
+
+.container {
+  flex: 1;
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+  min-height: 320px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+}
+
+@media (min-width: 601px) {
+  .all-page {
+    justify-content: center;
+    padding-top: calc(clamp(68px, 9vw, 96px) + 12px); /* Match navbar height + extra space */
+    padding-bottom: 0;
+  }
+}
+
+.all-page p{
+  color: rgb(0, 0, 8) !important;
+  font-size: clamp(18px, 3vw, 22px);
+  font-family:  'Arial', sans-serif;
+}
+
+@media (max-height: 600px), (max-width: 600px) {
+  .all-page {
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: calc(68px + 32px); /* More space for fixed navbar overlap on short/mobile screens */
   }
 }

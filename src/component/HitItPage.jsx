@@ -3,6 +3,7 @@ import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import hindilogo from '../assets/hindilogo.png';
 import styles from './hititpage.module.css';
+import appStyles from '../App.module.css';
 
 
 import { Link } from 'react-router-dom';
@@ -23,32 +24,34 @@ function HitItPage() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
-      <div className={styles['all-page-hitit']} style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <div className={appStyles['all-page']}>
         {/* Background watermark (moved inside for stacking context) */}
         <SubpageWatermark />
        
        <div className={styles['hitit-centered-content']}>
-         
+          <h2 className={`${appStyles.headline}`}>REAL PEOPLE</h2>
           <p>
-            <h1 className={styles["h1"]}>
-              REAL&nbsp;PEOPLE
-            </h1>
-            It's all about real stories.<br />Told without filters, judgement<br/>or embellishment.<br /><br />
-             <h1 className={styles["h1"]}>
-              REAL&nbsp;&nbsp;EMOTIONS
-             </h1>
-              Every story explores<br />the real life experiences<br/>of<br/>Non Resident Indians,<br />people of Indian lineage.<br /><br />
-             <h1 className={styles["h1"]}>
-              REAL&nbsp;JOURNEYS
-             </h1>
+            It's all about real stories.<br />
+            Told without filters, judgement<br />
+            or embellishment.<br /><br />
+          </p>
+          <h2 className={`${appStyles.headline}`}>REAL EMOTIONS</h2>
+          <p>
+            Every story explores<br />
+            the real life experiences<br />
+            of<br />
+            Non Resident Indians,<br />
+            people of Indian lineage.<br /><br />
+          </p>
+          <h2 className={`${appStyles.headline}`}>REAL JOURNEYS</h2>
+          <p>
             Their journeys across continents.<br />
             Sacrifices, ambitions and triumphs.<br /><br />
-     
           </p>
           <img src={hindilogo} alt="Hindi Logo" className={styles['hitit-img']} />
           <a
             href="#thoughts"
-            className={styles['thought-btn']}
+            className={appStyles['btn']}
             onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
           >
             The Thought

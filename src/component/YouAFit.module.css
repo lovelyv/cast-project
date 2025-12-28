@@ -12,37 +12,7 @@
     box-shadow: 0 0 0 0 rgba(255, 140, 0, 0);
   }
 }
-/* Jump In button styled like Thought button */
-.jumpin-btn {
-  background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%);
-  color: #3a2600;
-  border: none;
-  font-weight: 700;
-  font-family: 'Rubik', 'Arial', sans-serif !important;
-  font-size: clamp(18px, 3vw, 22px);
-  border-radius: 2.2rem;
-  box-shadow: 0 2px 12px 0 rgba(255,140,0,0.10);
-  cursor: pointer;
-  margin: 0 auto 0 auto !important;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  padding: 0.5em 1.2em;
-  transition: box-shadow 0.2s;
-  animation: jumpin-pulse 1.1s cubic-bezier(0.4,0,0.6,1) infinite;
-  text-decoration: none;
-  width: fit-content;
-}
-.jumpin-btn:active, .jumpin-btn:focus, .jumpin-btn:hover {
-  box-shadow: 0 4px 16px 0 rgba(255,140,0,0.18);
-  animation: none !important;
-}
-@media (max-width: 600px) {
-  .jumpin-btn {
-    font-size: 0.95rem;
-    padding: 0.6em 1.3em;
-  }
-}
+/* Jump In button now uses global App.module.css .btn */
 @media (min-width: 601px) {
   .mobile-tel-link {
     pointer-events: none;
@@ -69,39 +39,30 @@
   display: inline-block;
   margin-bottom: 0.5em;
 }
-/* h2 style matching accordion-title from Thoughts, but not italic */
-.youafit-h2 {
-  font-weight: 600;
-  line-height: 1.3;
-  font-size: 2.2rem;
-  color: rgb(210, 105, 30);
-  font-family: 'Rubik', 'Arial', sans-serif;
-  opacity: 1 !important;
-  text-align: center;
-  margin: 1.5em auto 0.7em auto;
-  display: flex;
-  flex: 1;
-  font-style: normal;
+/* Removed local h2 styles; all h2 styling is centralized in App.module.css (.headline) */
+
+
+
+
+/* Page-specific spacing around the H2 headline on YouAFit */
+.headlineSpacing {
+  margin-top: 0.9em;
+  margin-bottom: 0.9em;
 }
 
-
-.youafit-page {
-  background-color: #b8d4e8;
-  box-sizing: border-box;
-  justify-content: center;
-  overflow-x: hidden;
-  padding-top: 80px;
-  min-height: 100vh;
+/* Compact CTA row and button spacing overrides for YouAFit */
+.ctaRow {
   width: 100%;
-  margin: 0 auto;
-  text-align: center;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  animation: fadeInUp 0.6s ease-out;
-  position: relative;
-  scroll-padding-top: 80px;
+  margin-top: 0; /* remove extra space above Jump In */
 }
+
+.btnCompact {
+  margin-top: 0 !important; /* override global .btn top margin locally */
+}
+
 
 @media (max-height: 600px) {
   .youafit-page {
@@ -123,18 +84,24 @@
 }
 
 .youafit-content-bg {
+  flex: 1;
+
+ 
+
+ 
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+  min-height: 320px;
+
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  font-family: 'Rubik', 'Arial', sans-serif;
-  font-size: 1.125rem;
-  color: #181818;
-  font-size: clamp(18px, 3vw, 22px)
+  
+ 
+ 
 }
 
 @media (max-width: 600px) {

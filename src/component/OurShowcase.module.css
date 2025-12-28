@@ -2,13 +2,15 @@
 .carouselCenter {
   display: flex;
   justify-content: center;
+  /* Reduce vertical spacing around the carousel */
+  margin: 0.8em 0;
 }
 /* Country flag block styling */
 .country-flag-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 110px;
+  width: clamp(88px, 12vw, 110px); /* responsive width to fit 4 in viewport */
   margin: 1em 1.2em 0 1.2em;
   text-decoration: none;
   background: black;
@@ -16,6 +18,7 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   padding: 0.5em 1em;
   transition: transform 0.15s;
+  flex: 0 0 auto; /* prevent shrink; ensure 4th block remains visible on scroll */
 }
 .country-flag-block:hover,
 .country-flag-block:focus {
@@ -26,7 +29,7 @@
   background: black;
   color: #FFFFAA;
   font-family: 'Arial', sans-serif;
-  font-size: 1.1em;
+  font-size: clamp(0.95em, 1.2vw, 1.1em); /* scale label slightly */
   font-weight: 700;
   border-radius: 0.5em 0.5em 0 0;
   padding: 0.5em 0.2em 0.3em 0.2em;
@@ -35,8 +38,8 @@
   margin-bottom: 0.5em;
 }
 .country-flag-img {
-  width: 64px;
-  height: 40px;
+  width: clamp(52px, 7vw, 64px);
+  height: clamp(32px, 4.3vw, 40px);
   object-fit: cover;
   border-radius: 0.5em;
   border: 2px solid #fff;
@@ -60,46 +63,64 @@
 .country-flags-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly; /* spread four blocks across full width */
   align-items: center;
-  gap: 2.2em;
-  margin: 2.5em auto 2.5em auto;
+  gap: clamp(0.8em, 2.2vw, 2.2em); /* responsive spacing to keep 4 items in viewport */
+  /* Slightly tighter spacing below the carousel and between rows */
+  margin: 1.6em 0;
   width: 100%;
-  max-width: 700px;
+  max-width: 100%;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow: visible; /* avoid cropping on large viewports */
+  box-sizing: border-box;
 }
 
 @media (max-width: 600px) {
+  /* Fit all 4 flags in viewport without horizontal scroll */
   .country-flags-row {
-    gap: 1.2em;
+    justify-content: space-between;
+    gap: clamp(0.4em, 2vw, 0.8em);
     max-width: 100vw;
-    padding: 0 1vw;
-    overflow-x: auto;
-  }
-  .country-flags-row {
-    gap: 0.7em;
-    max-width: 100vw;
-    padding: 0 1vw;
+    padding: 0 2vw;
     flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden; /* remove horizontal scrollbar */
   }
   .country-flag-block {
-    width: 70px;
-    min-width: 60px;
-    margin: 0.5em 0.5em 0 0.5em;
-    padding: 0.4em 0.2em 0.3em 0.2em;
+    width: clamp(56px, 20vw, 80px);
+    min-width: 0;
+    margin: 0.4em 0 0 0; /* no horizontal margins to conserve width */
+    padding: 0.4em 0.25em 0.3em 0.25em;
   }
   .country-name-block {
-    font-size: 0.85em;
-    padding: 0.08em 0.08em 0.08em 0.08em;
+    font-size: clamp(0.8em, 2.5vw, 0.95em);
+    padding: 0.06em 0.06em 0.06em 0.06em;
   }
   .country-flag-img {
-    width: 48px;
-    height: 30px;
+    width: clamp(44px, 14vw, 60px);
+    height: clamp(28px, 9vw, 36px);
   }
+}
+
+/* Medium viewports: shrink blocks slightly to keep all 4 visible without scroll */
+@media (min-width: 601px) and (max-width: 1024px) {
+  /* Fit all 4 flags in viewport without horizontal scroll on medium widths */
+  .country-flag-block {
+    width: clamp(76px, 10vw, 96px);
+    min-width: 0;
+    margin: 0.4em 0 0 0;
+    padding: 0.45em 0.3em;
   }
+  .country-flag-img {
+    width: clamp(46px, 6.2vw, 58px);
+    height: clamp(28px, 3.8vw, 34px);
+  }
+  .country-flags-row {
+    justify-content: space-between;
+    gap: clamp(0.6em, 1.8vw, 1.4em);
+    overflow-x: hidden; /* remove horizontal scrollbar */
+    padding: 0 2vw; /* small side padding to avoid clipping */
+  }
+}
 
 /* Ticker Thumbnails Grid */
 .ticker-thumbnails-row {
@@ -114,11 +135,17 @@
 /* XL viewport: prevent any horizontal scroll caused by wide/3D elements */
 @media (min-width: 1024px) {
   .carouselCenter {
-    overflow: hidden; /* clip any overflow from the carousel transforms */
+    overflow: visible; /* allow 3D transforms to render fully without clipping */
   }
-  .country-flags-row {
-    overflow-x: hidden; /* ensure no horizontal scrollbar inside the row */
-  }
+}
+
+/* Make the flags grid container use full width on larger viewports */
+.country-flags-grid {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  box-sizing: border-box;
 }
 
 @media (max-width: 600px) {
@@ -174,20 +201,16 @@
     text-decoration: underline;
   }
 }
-@media (max-width: 600px) {
-  .showcase-h2 {
-    font-size: 1.5rem !important;
-    margin-top: 0.9em !important;
-    margin-bottom: 0.5em !important;
-    padding: 0.3em 0.2em 0.3em 0.2em !important;
-  }
-}
-/* Custom style for main h2 heading on OurShowcase page */
+/* Custom style for main h2 heading on OurShowcase page (removed; use App.module.css .headline) */
 
 
 @media (max-width: 600px), (max-height: 600px) {
   .all-page-showcase {
     padding-top: 108px !important; /* Large enough for fixed navbar on mobile/short screens */
+    overflow: visible; /* allow 3D transforms to render fully without clipping */
+}
+  .country-flags-row {
+    overflow-x: hidden; /* ensure no horizontal scrollbar inside the row */
   }
 }
 /* OurShowcase page-scoped styles */
@@ -253,20 +276,7 @@ p.contrastText {
 
 
 
-.showcase-h2 {
-  font-family: 'Rubik', 'Arial', sans-serif;
-  font-size: clamp(1.7rem, 4vw, 2.2rem);
-  font-weight: 700;
-  color: rgb(210, 105, 30);
-  letter-spacing: 0.01em;
-  margin: 1.2em 0 0 0; /* remove bottom margin */
-  line-height: 1.18;
-  text-align: center;
-  opacity: 1 !important;
-  display: block;
-  font-style: normal;
-  padding: 0.5em; /* keep compact padding */
-}
+/* Removed local h2 styles; all h2 styling is centralized in App.module.css (.headline) */
 
 .jumpin-link:hover {
    background: #222;
@@ -299,66 +309,7 @@ p.contrastText {
   margin-top: 1.6rem; /* comfortable spacing above */
 }
 
-/* Support Us button styled same as HitIt Thought button */
-.supportUsBtn {
-  background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%);
-  color: #3a2600;
-  border: none;
-  font-weight: 700;
-  font-family: 'Rubik', 'Arial', sans-serif !important;
-  font-size: clamp(18px, 3vw, 22px);
-  border-radius: 2.2rem;
-  box-shadow: 0 2px 12px 0 rgba(255,140,0,0.10);
-  cursor: pointer;
-  margin: 2.2rem 0 1.5rem 0;
-  display: inline-block;
-  width: fit-content;
-  padding: 0.5em 0.8em;
-  transition: box-shadow 0.2s;
-  animation: pulse 1.1s cubic-bezier(0.4,0,0.6,1) infinite;
-  text-decoration: none;
-}
-.supportUsBtn:active,
-.supportUsBtn:focus,
-.supportUsBtn:hover {
-  box-shadow: 0 4px 16px 0 rgba(255,140,0,0.18);
-  /* stop pulsing on hover/focus/active */
-  animation: none !important;
-  /* Ensure no transparency or style change on hover */
-  background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%) !important;
-  color: #3a2600 !important;
-  opacity: 1 !important;
-  filter: none !important;
-  mix-blend-mode: normal !important;
-  /* Force its own compositing layer to avoid any blend/opacity glitches */
-  transform: translateZ(0) scale(1) !important;
-  will-change: transform, box-shadow;
-  backface-visibility: hidden;
-  isolation: isolate;
-  position: relative;
-  z-index: 1;
-  
-}
-
-/* Reinforce hover style on medium and large viewports */
-@media (min-width: 601px) {
-  .supportUsBtn:active,
-  .supportUsBtn:focus,
-  .supportUsBtn:hover {
-    background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%) !important;
-    color: #3a2600 !important;
-    opacity: 1 !important;
-    filter: none !important;
-    mix-blend-mode: normal !important;
-    animation: none !important;
-    transform: translateZ(0) scale(1) !important;
-    will-change: transform, box-shadow;
-    backface-visibility: hidden;
-    isolation: isolate;
-    position: relative;
-    z-index: 1;
-  }
-}
+/* Support Us button now uses global App.module.css .btn */
 /* Hidden focus sentinel to capture initial focus without visible outline */
 .focusSentinel {
   position: absolute;

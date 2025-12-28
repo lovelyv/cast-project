@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import Footer from './Footer';
+import appStyles from '../App.module.css';
 import styles from './SupportUs.module.css';
 import { CONTACT, DONATE_LINKS } from '../config';
 import emailIcon from '../assets/email.svg';
@@ -49,9 +50,9 @@ function SupportUs() {
     window.location.href = mailHref;
   };
   return (
-    <div className={styles.pageRoot}>
+   <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
-      <div className={styles.supportUsPage}>
+      <div className={appStyles['all-page']}>
         <div ref={focusSentinelRef} tabIndex="-1" aria-hidden="true" className={styles.focusSentinel} />
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
         {/* Small video on top (uses local src/assets/supportus.mp4). If loading fails (e.g., empty file), fallback to sample clip. */}
@@ -82,7 +83,7 @@ function SupportUs() {
             Your browser does not support the video tag.
           </video>
         </div>
-  <h1 className={styles.title}>Support Us</h1>
+  <h1 className={`${appStyles.headline}`}>Support Us</h1>
         <div className={styles.description}>
           <b>WE</b><br />are a committed group<br />of communication professionals.<br/><br/>
           <b>WANTING TO</b><br />document and air<br />the memoirs of<br /> PIOs, OCIs and NRIs.<br /><br/>
@@ -109,7 +110,7 @@ function SupportUs() {
             </select>
             <button
               type="button"
-              className={styles.chipInBtn}
+             className={styles['btn-support']}
               onClick={() => {
                 if (!chipAmount) {
                   alert('Please select an amount first.');
@@ -183,7 +184,7 @@ function SupportUs() {
                                   </li>
                                 </ul>
                               );
-                            })()}<br/><br/>
+                            })()}<br/>
                             <b>You can also<br/>be associated as<br/></b>
                             Our Travel Partner<br/> 
                             Our Hospitality Partner<br/>
@@ -193,7 +194,7 @@ function SupportUs() {
         {/* Host Us box */}
         <div className={styles.leftBoxWide}>
           <h3 className={styles.sectionTitle}>Host Us</h3>
-          <p>Showcasing NRIs globally<br/>involves a lot of travelling.</p>
+          Showcasing NRIs globally<br/>involves a lot of travelling.
           <p>Help us.</p>
           <div className={styles.chipInRow}>
             <select
@@ -209,7 +210,7 @@ function SupportUs() {
             </select>
             <button
               type="button"
-              className={styles.chipInBtn}
+             className={styles['btn-support']}
               onClick={() => {
                 const subject = `Help Us - ${hostOption}`;
                 const body = `I'd like to help with: ${hostOption}\n\nDetails:`;
@@ -261,7 +262,7 @@ function SupportUs() {
             </select>
           </div>
           {/* Episodewise */}
-          <div className={styles.chipInRow}>
+               <div className={styles.chipInRow}>
             <label htmlFor="sponsorEpisodePlan" className={styles.chipInLabel}>Episode plan</label>
             <select
               id="sponsorEpisodePlan"
@@ -279,10 +280,10 @@ function SupportUs() {
           {/* Get In Touch button below Episode plan */}
           {/* Sponsorship acknowledgement note placed just above the CTA */}
           <p>All sponsorships<br />will be acknowledged<br />prime time in our program.</p>
-          <div className={`${styles.chipInRow} ${styles.ctaRow}`}>
+          <div >
             <button
               type="button"
-              className={styles.chipInBtn}
+         className={styles['btn-support'] }
               onClick={handleSponsorMail}
             >
               Get In Touch
@@ -290,8 +291,9 @@ function SupportUs() {
           </div>
         </div>
         
-      </div>
+   
       <Footer />
+         </div>
     </div>
   );
 }

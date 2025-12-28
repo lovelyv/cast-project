@@ -64,8 +64,8 @@
 
           .folded-wall-row {
             position: relative;
-            width: 520px;
-            height: 520px;
+            width: clamp(360px, 52vw, 560px);
+            height: clamp(360px, 52vw, 560px);
             margin: 2em auto;
             perspective: 900px;
             perspective-origin: 50% 50%;

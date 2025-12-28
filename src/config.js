@@ -59,6 +59,7 @@ export const CONTACT = {
 // JumpIn form submission endpoint (Google Apps Script / spreadsheet backend)
 // Change this to point to your deployed script URL.
 export const JUMPIN_SUBMIT_URL = "https://script.google.com/macros/s/AKfycbwc16-4NenkpXlbHHvlmo_jedI4r0DkqqBi3IpzeRsLOfvjjHcQYslILlwZfcc2KCSD/exec";
+//export const JUMPIN_SUBMIT_URL = "https://script.google.com/macros/s/AKfycbyzuobWQ3GsPOkqObvOGlZFfFJHcruQoQzPidovWn11J_KsHxDkS-JWuzvmr3a1CH8a/exec";
 
 // Social media links for use in footer, banners, etc.
 export const SOCIAL_LINKS = {

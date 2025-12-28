@@ -173,10 +173,31 @@ export default function CircleFlagRow({ countries = [], duration = '12s', tilt =
   };
 
 
+  // Derive responsive block sizes from provided props (px values)
+  const parsePx = (val, fallback) => {
+    const n = typeof val === 'string' ? parseFloat(val) : Number(val);
+    return Number.isFinite(n) ? n : fallback;
+  };
+  const bw = parsePx(blockWidth, 140);
+  const bh = parsePx(blockHeight, 110);
+  const mdBw = Math.round(bw * 0.9);
+  const mdBh = Math.round(bh * 0.9);
+  const smBw = Math.round(bw * 0.8);
+  const smBh = Math.round(bh * 0.82);
   return (
     <div
       className={styles['folded-wall-row']}
-      style={{ ['--carousel-duration']: duration, ['--carousel-tilt']: tilt, ['--block-size']: blockSize, ['--block-width']: blockWidth, ['--block-height']: blockHeight }}
+      style={{
+        ['--carousel-duration']: duration,
+        ['--carousel-tilt']: tilt,
+        ['--block-size']: blockSize,
+        ['--block-width']: `${bw}px`,
+        ['--block-height']: `${bh}px`,
+        ['--block-width-md']: `${mdBw}px`,
+        ['--block-height-md']: `${mdBh}px`,
+        ['--block-width-sm']: `${smBw}px`,
+        ['--block-height-sm']: `${smBh}px`,
+      }}
     >
       <div
         className={styles['hexagon-group']}

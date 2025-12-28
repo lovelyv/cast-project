@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { CONTACT } from '../config';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
+  import appStyles from '../App.module.css';
 import styles from './YouAFit.module.css';
 import Footer from './Footer';
 
@@ -12,7 +13,7 @@ function YouAFit() {
   return (
    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
-      <div className={styles['youafit-page']}>
+       <div className={appStyles['all-page']}>
       <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
       <div className={styles['youafit-content-bg']}>
         <span style={{ whiteSpace: 'nowrap', fontWeight: 700 }}>
@@ -24,7 +25,7 @@ function YouAFit() {
           Reach out to us<br />if you or someone you know<br />has a story to tell<br />
           that fits any of these criteria.<br />
         </p>
-       <h2 className={styles['youafit-h2']}>Stories of</h2>
+  <h2 className={`${appStyles.headline} ${styles.headlineSpacing}`}>Stories of</h2>
         <div className={styles['stories-of']}>
           Success.<br />Sacrifices.<br />Raw emotions.<br />Overriding ambition.<br />
           Guts, valour and hard work.<br /><br />
@@ -40,7 +41,6 @@ function YouAFit() {
         
         
         <div className={styles['stories-of']}>
-          
           Startups.<br />
           Market leaders.<br />
           Business acumen.<br />
@@ -48,26 +48,17 @@ function YouAFit() {
           Trend setters and influencers.
         </div>
         <p>
+            <br />
           <span style={{ fontWeight: 500 }}>Text, mail or call us.<br />We will reach out to you.</span>
         </p>
-        
-
-       
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '2.5em' }}>
-        <a
-          href="#jumpin"
-          className={styles['jumpin-btn']}
-          style={{ margin: '0 auto 2.5em auto' }}
-          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
-        >
-          <span>Jump In</span>
+       <a href="#jumpin" className={appStyles['btn']}
+        onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}>
+          Jump In
         </a>
       </div>
-      </div>
+       
       <Footer />
        </div>
-     
-      
     </div>
   );
 }

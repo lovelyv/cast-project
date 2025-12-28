@@ -8,6 +8,7 @@ import CircleFlagRow from './CircleFlagRow';
 
 
 import styles from './OurShowcase.module.css';
+import appStyles from '../App.module.css';
 import youaFitStyles from './YouAFit.module.css';
 import SocialLinksBar from './SocialLinksBar';
 
@@ -29,12 +30,13 @@ function OurShowcase() {
   }, []);
   
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
-      <div className={styles['all-page-showcase']} style={{ flex: 1 }}>
+       <div className={appStyles['all-page']} style={{ flex: 1 }}>
         <div ref={focusSentinelRef} tabIndex="-1" aria-hidden="true" className={styles.focusSentinel} />
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
-        <h2 className={styles["showcase-h2"]}>
+        <div className={appStyles['container']} >
+        <h2 className={`${appStyles.headline}`}>
           PRESERVE <span className={styles.blackWord}>your</span> JOURNEY.<br/>INSPIRE the NEXT <span className={styles.blackWord}>one</span>.
         </h2>
         {/* Centered 3D carousel showing 8 countries at a time, slower rotation, flat base; wider blocks with spacing and fixed center rotation */}
@@ -72,18 +74,20 @@ function OurShowcase() {
           IP registration underway.<br/>
           In 7 countries, across 3 continents.
         </p>
-        {/* Support Us button above Follow Us (styled like HitIt Thought button) */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+        
           <a
             href="#supportus"
-            className={styles['supportUsBtn']}
+            className={appStyles['btn']}
             onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
           >
             Support Us
           </a>
-        </div>
+       
       </div>
+     
       <Footer />
+       </div>
     </div>
   );
 }

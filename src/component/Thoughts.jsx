@@ -4,6 +4,7 @@ import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import visualStory from '../assets/visualstory.png';
 import soundfeelUrl from '../assets/soundfeel.png';
+import appStyles from '../App.module.css';
 
 import Footer from './Footer';
 
@@ -50,7 +51,7 @@ function Thoughts({ scrollTo }) {
   return (
    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
-       <div className={styles['all-page-thoughts']}>
+    <div className={appStyles['all-page']}>
       <SubpageWatermark />
       <div className={styles['thoughts-content-bg']}>
         <span className={styles['accordion-content']}>
@@ -75,7 +76,7 @@ function Thoughts({ scrollTo }) {
             className={styles['accordion-header']}
             aria-expanded={open[0]}
           >
-            <span className={styles['accordion-title']}>Landscape</span>
+            <span className={appStyles['headline']}>Landscape</span>
           </button>
           {open[0] && (
             <div className={styles['accordion-content']}>
@@ -104,7 +105,7 @@ function Thoughts({ scrollTo }) {
             className={styles['accordion-header']}
             aria-expanded={open[1]}
           >
-            <span className={styles['accordion-title']} >
+            <span className={appStyles['headline']}>
               <b>D</b>
               <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>OCU</b>
               <b>C</b>
@@ -132,7 +133,7 @@ function Thoughts({ scrollTo }) {
             className={styles['accordion-header']}
             aria-expanded={open[2]}
           >
-            <span className={styles['accordion-title']}>Factoids</span>
+            <span className={appStyles['headline']}>Factoids</span>
           </button>
           {open[2] && (
             <div className={styles['accordion-content']}>
@@ -162,7 +163,7 @@ function Thoughts({ scrollTo }) {
             className={styles['accordion-header']}
             aria-expanded={open[3]}
           >
-            <span className={styles['accordion-title']}>Experience</span>
+            <span className={appStyles['headline']}>Experience</span>
 
           </button>
           {open[3] && (
@@ -208,24 +209,15 @@ function Thoughts({ scrollTo }) {
                   </div>
               </div>
 
-              <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', marginTop: '2.5em' }}>
-                <a
-                  href="#youafit"
-                 className={styles['youafit-btn']}
-                 style={{ position: 'static', right: 'unset', bottom: 'unset', marginBottom: '2.5em' }}
-                  onClick={e => {
-                    if (window.innerWidth <= 600) {
-                      e.preventDefault();
-                      window.location.href = '#youafit';
-                      setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), 10);
-                    } else {
-                      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-                    }
-                  }}
-                >
-                  <span>U a FIT ?</span>
-                </a>
-              </div>
+             <a
+            href="#youafit"
+            className={appStyles['btn']}
+            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+          >
+            U a FIT ?
+          </a>
+
+ 
             </div>
           )}
         </div>

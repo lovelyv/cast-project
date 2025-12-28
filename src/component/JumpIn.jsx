@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AudioRecorder from './Audiorecorder';
 import Navbar from './navbar';
+import appStyles from '../App.module.css';
 import styles from './JumpIn.module.css';
 import SubpageWatermark from './SubpageWatermark';
 import handpointer from '../assets/handpointer.png';
@@ -81,18 +82,14 @@ function JumpIn() {
   }
 
   return (
-    <div>
-      {/* Background watermark */}
-      
-
+     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
-
-      <div className="all-page">
+     <div className={appStyles['all-page']}>
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
         <div className={styles["jumpin-container"]}>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
-            <h2 id="jumpin-top" tabIndex="-1" className={styles["jumpin-h2"]} style={{ marginBottom: 0 }}>
+            <h2 id="jumpin-top" tabIndex="-1" className={`${appStyles.headline}`}>
               <span>We want<br/>to hear from you.</span>
             </h2>
             <div style={{ display: 'flex', justifyContent: 'center', margin: '0 0 1.5em 0', marginTop: 0 }}>
@@ -281,7 +278,7 @@ across the entire digital landscape.<br/><br/><br/>
           )}
           </form>
 
-         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <a
                 href="#showcase"
                 className={styles.ourShowcaseLink}

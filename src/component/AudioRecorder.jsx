@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import appStyles from '../App.module.css';
 
 const AudioRecorder = ({ onTranscriptReady, onClose }) => {
   const [recording, setRecording] = useState(false);
@@ -171,7 +172,7 @@ const AudioRecorder = ({ onTranscriptReady, onClose }) => {
 
   return (
   <div style={{ padding: "20px", opacity: 1, background: "#fff", minHeight: "auto", position: "relative", zIndex: 1000, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-    <h2>Audio Recorder + Transcription</h2>
+    <h2 className={`${appStyles.headline}`}>Audio Recorder + Transcription</h2>
   <div style={{ display: 'flex', gap: '12px', marginBottom: '12px', justifyContent: 'center' }}>
       <button type="button" onClick={startRecording} disabled={recording} style={{ width: 'fit-content', minWidth: 0 }}>
         Start Recording
