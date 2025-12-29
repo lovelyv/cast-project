@@ -246,6 +246,7 @@
     width: 92vw;
     max-width: 98vw;
   }
+}
 @media (max-width: 600px) {
   .container {
     margin-bottom: 18px !important;
@@ -253,7 +254,6 @@
   .container:last-child {
     margin-bottom: 0 !important;
   }
-}
 }
 
 .all-page-thoughts {
@@ -288,6 +288,19 @@
   font-weight: 800;
   display: block;
   margin-bottom: 0.5em;
+}
+
+/* title heading in Factoids: increase line-height for stacked text */
+.title {
+  display: block;
+  line-height: 0.1; /* increase spacing between POPULATION and its subline */
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Make h3 headings on the Thoughts page italic; scoped under the component container */
+.thoughts-content-bg h3 {
+  font-style: italic;
 }
 @media (max-width: 600px) {
   .right-box {

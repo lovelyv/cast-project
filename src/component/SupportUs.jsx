@@ -4,7 +4,7 @@ import SubpageWatermark from './SubpageWatermark';
 import Footer from './Footer';
 import appStyles from '../App.module.css';
 import styles from './SupportUs.module.css';
-import { CONTACT, DONATE_LINKS } from '../config';
+import { CONTACT, DONATE_LINKS, DONATE_PAYPAL_LINKS } from '../config';
 import emailIcon from '../assets/email.svg';
 import phoneIcon from '../assets/phone.svg';
 import whatsappIcon from '../assets/whatsapp-green.svg';
@@ -19,6 +19,7 @@ function SupportUs() {
   const videoRef = useRef(null);
   const [chipOpen, setChipOpen] = useState(false);
   const [chipAmount, setChipAmount] = useState('5');
+  const [paymentMethod, setPaymentMethod] = useState('card');
   const [hostOption, setHostOption] = useState('A place to stay');
   const [sponsorOption, setSponsorOption] = useState('Sponsor an episode');
   const [sponsorRegion, setSponsorRegion] = useState('Africa');
@@ -43,11 +44,27 @@ function SupportUs() {
       alert('Donation link is not configured yet. Please add your Stripe Payment Link for the selected amount in src/config.js.');
     }
   };
+  const handleProceedPayPal = () => {
+    const url = DONATE_PAYPAL_LINKS[Number(chipAmount)];
+    if (url && typeof url === 'string' && url.length > 0) {
+      window.open(url, '_blank', 'noopener');
+      setChipOpen(false);
+    } else {
+      alert('PayPal link is not configured yet. Please add your PayPal Donation Link for the selected amount in src/config.js.');
+    }
+  };
   const handleSponsorMail = () => {
     const subject = `Sponsor Us - ${sponsorOption}`;
     const body = `Region: ${sponsorRegion}\nAcknowledgement: ${sponsorAck}\nEpisode plan: ${sponsorEpisodePlan}\n\nDetails:`;
     const mailHref = `mailto:${CONTACT.EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailHref;
+  };
+  const handleProceedSelected = () => {
+    if (paymentMethod === 'card') {
+      handleProceedDonation();
+    } else if (paymentMethod === 'paypal') {
+      handleProceedPayPal();
+    }
   };
   return (
    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -83,15 +100,15 @@ function SupportUs() {
             Your browser does not support the video tag.
           </video>
         </div>
-  <h1 className={`${appStyles.headline}`}>Support Us</h1>
+  <h2 className={`${appStyles.headline} ${styles.supportHeadline}`}>Support Us</h2>
         <div className={styles.description}>
           <b>WE</b><br />are a committed group<br />of communication professionals.<br/><br/>
-          <b>WANTING TO</b><br />document and air<br />the memoirs of<br /> PIOs, OCIs and NRIs.<br /><br/>
-          IN THIS<br />we need your support.
+          <b>WANTING TO</b><br />document and air<br />the memoirs<br />of<br /> PIOs, OCIs and NRIs.<br /><br/>
+          IN THIS<br /><strong><em>we need your support.</em></strong>
         </div>
           {/* Additional support box */}
         <div className={styles.leftBoxWide}>
-          <h3 className={styles.sectionTitle}>Chip in</h3>
+          <h3 className={styles.title}>Chip in</h3>
           <p className={styles.chipInText}>Un–hyphenated programming<br/>involves time, energy,<br/>effort and expense.</p>
           <p className={styles.chipInText}>Any contribution helps.</p>
           <div className={styles.chipInRow}>
@@ -126,10 +143,33 @@ function SupportUs() {
         {chipOpen && (
           <div className={styles.modalOverlay} role="dialog" aria-modal="true" aria-label="Chip in">
             <div className={styles.modalContent}>
-              <div className={styles.modalTitle}>Secure payment via Stripe</div>
-              <p>You'll be redirected to a Stripe-hosted checkout for <b>${chipAmount}</b>.</p>
+              <div className={styles.modalTitle}>Choose a payment method</div>
+              <p>Amount: <b>${chipAmount}</b></p>
+              <div role="radiogroup" aria-label="Payment method" className={styles.radioGroup}>
+                <label className={styles.radioOption}>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="card"
+                    checked={paymentMethod === 'card'}
+                    onChange={() => setPaymentMethod('card')}
+                  />
+                  <span className={styles.radioOptionText}>Pay with Card (Visa, Mastercard, Apple Pay, Google Pay)</span>
+                </label>
+                <label className={styles.radioOption}>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="paypal"
+                    checked={paymentMethod === 'paypal'}
+                    onChange={() => setPaymentMethod('paypal')}
+                  />
+                  <span className={styles.radioOptionText}>Pay with PayPal</span>
+                </label>
+              </div>
+              <p className={styles.modalNote}>🔒 Secure payments powered by Stripe &amp; PayPal</p>
               <div className={styles.modalActions}>
-                <button type="button" className={`${styles.modalBtn}`} onClick={handleProceedDonation}>
+                <button type="button" className={`${styles.modalBtn}`} onClick={handleProceedSelected}>
                   Proceed
                 </button>
                 <button type="button" className={`${styles.modalBtn} ${styles.modalCancel}`} onClick={() => setChipOpen(false)}>
@@ -140,7 +180,7 @@ function SupportUs() {
           </div>
         )}
         <div className={styles.leftBoxWide}>
-          <h3 className={styles.sectionTitle}>Collaborate with us</h3>
+          <h3 className={styles.title}>Collaborate with us</h3>
           <p>Do you have the skills<br />and equipment?<br/><br/>Want to volunteer<br />as a stringer?<br/><br/>If so, get in touch.</p>
           {(() => {
                               const phoneDigits = (CONTACT.SMS_NUMBER || '').replace(/\D/g, '');
@@ -184,8 +224,8 @@ function SupportUs() {
                                   </li>
                                 </ul>
                               );
-                            })()}<br/>
-                            <b>You can also<br/>be associated as<br/></b>
+                            })()}<br/><br/>
+                            <b>You can also<br/>be associated as<br/><br/></b>
                             Our Travel Partner<br/> 
                             Our Hospitality Partner<br/>
                             Our Logistics Support Partner<br/>
@@ -193,9 +233,9 @@ function SupportUs() {
       
         {/* Host Us box */}
         <div className={styles.leftBoxWide}>
-          <h3 className={styles.sectionTitle}>Host Us</h3>
+          <h3 className={styles.title}>Host Us</h3>
           Showcasing NRIs globally<br/>involves a lot of travelling.
-          <p>Help us.</p>
+          <p><strong><em>Help us.</em></strong></p>
           <div className={styles.chipInRow}>
             <select
               className={styles.chipInSelect}
@@ -224,7 +264,7 @@ function SupportUs() {
         </div>
         {/* Sponsor Us box */}
         <div className={styles.leftBoxWide}>
-          <h3 className={styles.sectionTitle}>Sponsor Us</h3>
+          <h3 className={styles.title}>Sponsor Us</h3>
           <p>Partner with us<br/>to sponsor an episode(s)<br />and help fund<br />production costs</p>
           
           {/* Regions wise */}

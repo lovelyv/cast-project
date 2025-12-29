@@ -50,19 +50,6 @@
   margin-bottom: 0.9em;
 }
 
-/* Compact CTA row and button spacing overrides for YouAFit */
-.ctaRow {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0; /* remove extra space above Jump In */
-}
-
-.btnCompact {
-  margin-top: 0 !important; /* override global .btn top margin locally */
-}
-
 
 @media (max-height: 600px) {
   .youafit-page {
@@ -85,24 +72,16 @@
 
 .youafit-content-bg {
   flex: 1;
-
- 
-
- 
   margin-top: 4vw;
   margin-bottom: 4vw;
   min-height: 320px;
-
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  
- 
- 
-}
+  }
 
 @media (max-width: 600px) {
   .youafit-page {

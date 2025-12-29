@@ -81,3 +81,13 @@ export const DONATE_LINKS = {
   50: "",
   100: ""
 };
+
+// PayPal donation links (configure to your PayPal.me or hosted donation buttons)
+// Example for PayPal.me: 'https://paypal.me/yourname/5' (amount at the end)
+export const DONATE_PAYPAL_LINKS = {
+  5: "",
+  10: "",
+  20: "",
+  50: "",
+  100: ""
+};

@@ -261,13 +261,6 @@ across the entire digital landscape.<br/><br/><br/>
             
 
 
-            <button
-              type="submit"
-              className={styles['submit-btn']}
-            >
-              Submit Your Story
-            </button>
-
             
 
             {/* Removed alternate contact line per request */}
@@ -276,19 +269,27 @@ across the entire digital landscape.<br/><br/><br/>
               {submitMessage}
             </div>
           )}
-          </form>
 
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    
+              <button
+                type="submit"
+                className={styles['submit-btn']}
+              >
+                Submit Your Story
+              </button>
               <a
                 href="#showcase"
-                className={styles.ourShowcaseLink}
+                className={styles['submit-btn']}
+                onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
               >
                 Our Showcase
               </a>
-            </div>
-      <Footer />
+           
+
+          </form>
+      
         </div>
-    
+    <Footer />
       </div>
     </div>
   );

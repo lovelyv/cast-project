@@ -29,13 +29,13 @@ function HitItPage() {
         <SubpageWatermark />
        
        <div className={styles['hitit-centered-content']}>
-          <h2 className={`${appStyles.headline}`}>REAL PEOPLE</h2>
+          <h2 className={`${appStyles.headline}`}>Real People</h2>
           <p>
             It's all about real stories.<br />
             Told without filters, judgement<br />
             or embellishment.<br /><br />
           </p>
-          <h2 className={`${appStyles.headline}`}>REAL EMOTIONS</h2>
+          <h2 className={`${appStyles.headline}`}>Real Emotions</h2>
           <p>
             Every story explores<br />
             the real life experiences<br />
@@ -43,7 +43,7 @@ function HitItPage() {
             Non Resident Indians,<br />
             people of Indian lineage.<br /><br />
           </p>
-          <h2 className={`${appStyles.headline}`}>REAL JOURNEYS</h2>
+          <h2 className={`${appStyles.headline}`}>Real Journeys</h2>
           <p>
             Their journeys across continents.<br />
             Sacrifices, ambitions and triumphs.<br /><br />

@@ -37,7 +37,7 @@ function OurShowcase() {
         <SubpageWatermark size="60vmin" position="center center" zIndex={0} />
         <div className={appStyles['container']} >
         <h2 className={`${appStyles.headline}`}>
-          PRESERVE <span className={styles.blackWord}>your</span> JOURNEY.<br/>INSPIRE the NEXT <span className={styles.blackWord}>one</span>.
+          PRESERVE <span className={styles.blackWord}>your</span> JOURNEY.<br/>INSPIRE <span className={styles.blackWord}>the</span> NEXT.
         </h2>
         {/* Centered 3D carousel showing 8 countries at a time, slower rotation, flat base; wider blocks with spacing and fixed center rotation */}
         <div className={styles.carouselCenter}>
@@ -71,7 +71,7 @@ function OurShowcase() {
         
         {/* Tagline above Support Us button */}
         <p className={styles.tagline}>
-          IP registration underway.<br/>
+          <strong><em>IP registration underway.</em></strong><br/>
           In 7 countries, across 3 continents.
         </p>
 

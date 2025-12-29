@@ -18,15 +18,24 @@
   display: flex;
   flex-direction: column;
 }
-.title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  /* Inherit color from global headline style */
-  color: inherit !important;
-  margin-bottom: 0.6em; /* reduced space below H1 */
-  font-family: 'Rubik', 'Arial', sans-serif;
- 
+
+
+/* Support page main heading: underline and bold */
+.supportHeadline {
+  font-weight: 800; /* extra bold to stand out */
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
+
+.title {
+  display: block;
+  
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-style: italic;
+}
+
+
 .description {
   /* Inherit font style and size from container to match JumpIn */
   font-size: inherit;
@@ -231,6 +240,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .modalBtn {
   display: inline-flex;
   align-items: center;
@@ -243,9 +253,33 @@
   cursor: pointer;
   font-family: 'Rubik', 'Arial', sans-serif;
 }
+.modalBtnPaypal {
+  background: #003087; /* PayPal brand blue */
+  color: #fff;
+}
 .modalCancel {
   background: #e0e0e0;
   color: #222;
+}
+
+/* Keep modal button colors stable on hover/focus/active */
+.modalBtn:hover, .modalBtn:focus, .modalBtn:active {
+  background: #1a73e8 !important;
+  color: #fff !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  animation: none !important;
+}
+.modalBtnPaypal:hover, .modalBtnPaypal:focus, .modalBtnPaypal:active {
+  background: #003087 !important;
+  color: #fff !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  animation: none !important;
+}
+.modalCancel:hover, .modalCancel:focus, .modalCancel:active {
+  background: #e0e0e0 !important;
+  color: #222 !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  animation: none !important;
 }
 
 /* Chip in enhancements */
@@ -337,4 +371,33 @@
   color: #3a2600 !important;
   text-decoration: none !important;
   animation: none !important; /* stop pulse on hover/focus */
+}
+
+/* Chip In modal radio options: ensure wrapped lines align with start of text, not under the radio */
+.radioGroup {
+  text-align: left;
+  margin-top: 0.6em;
+}
+.radioOption {
+  display: grid;
+  grid-template-columns: 1.2em 1fr; /* radio + text */
+  column-gap: 8px;
+  align-items: start;
+  margin-bottom: 0.4em;
+}
+.radioOption input[type="radio"] {
+  align-self: start;
+  margin-top: 2px; /* visually center */
+}
+.radioOptionText {
+  display: block; /* allow proper wrapping aligned to text start */
+}
+.modalNote {
+  /* Slightly smaller than body text; use important to override modal/container sizing */
+  font-size: 0.85rem !important;
+  color: #6b7280; /* slate grey */
+  text-align: center;
+  margin-top: 0.6em;
+  font-family: inherit;
+  font-weight: 400;
 }

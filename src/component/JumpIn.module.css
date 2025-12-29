@@ -335,6 +335,49 @@ input.opaqueField, textarea.opaqueField {
   text-decoration: none;
 }
 
+/* Row to place submit button and Our Showcase side-by-side inside the form */
+.ctaRowForm {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Ensure buttons inside the CTA row vertically center (override standalone margins) */
+.ctaRowForm .submit-btn {
+  margin: 0; /* remove the large top margin used when the button is standalone */
+  align-self: center;
+}
+
+@media (max-width: 600px) {
+  .ctaRowForm {
+    /* Keep CTAs side-by-side on small viewports; allow wrapping if needed */
+    flex-direction: row;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+/* On very small viewports, reduce button/link font-size and padding so both fit on one line */
+@media (max-width: 420px) {
+  .ctaRowForm {
+    /* prefer single-line; allow horizontal scroll as fallback */
+    flex-wrap: nowrap;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+  .ctaRowForm .submit-btn {
+    font-size: 0.95rem !important;
+    padding: 0.35em 0.85em !important;
+    min-width: 0 !important;
+  }
+}
+
 .pointer-icon {  
   animation: wiggle 0.9s infinite;  
 }  

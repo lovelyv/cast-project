@@ -65,7 +65,7 @@ function Thoughts({ scrollTo }) {
           will feature stories<br/>
           that speak about<br/>
           Resilience,
-          Sacrifice,<br/>Ambition,Identity and Inspiration<br/>
+          Sacrifice,<br/>Ambition, Identity and Inspiration<br/>
         </p>
 
         {/* Accordion 1: Landscape */}
@@ -80,7 +80,7 @@ function Thoughts({ scrollTo }) {
           </button>
           {open[0] && (
             <div className={styles['accordion-content']}>
-              <span className={styles.overcrowded}>The Podcast world<br/>is<br/>overcrowded.</span><br />
+              <span className={styles.overcrowded}><em>The Podcast world<br/>is<br/>overcrowded.</em></span><br />
               Over 6.5 million podcasts<br/>exist worldwide.<br />
               <b>Yet...</b><br /> 
               most fade away<br />
@@ -107,15 +107,15 @@ function Thoughts({ scrollTo }) {
           >
             <span className={appStyles['headline']}>
               <b>D</b>
-              <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>OCU</b>
+              <b style={{fontSize: '0.70em', marginBottom: '-0.08em'}}>OCU</b>
               <b>C</b>
-              <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>AST</b>™
+              <b style={{fontSize: '0.70em', marginBottom: '-0.08em'}}>AST</b>™
             </span>
 
           </button>
           {open[1] && (
             <div className={styles['accordion-content']}>
-              We have coined it as <b>D<span style={{fontSize: '0.8em'}}>OCU</span>C<span style={{fontSize: '0.8em'}}>AST</span>&trade;</b><br /><br />
+              We have coined it as <b>D<span style={{fontSize: '0.70em'}}>OCU</span>C<span style={{fontSize: '0.70em'}}>AST</span>&trade;.</b><br /><br />
               A hybrid<br />
               between a podcast<br/>and a documentary.<br /><br />
               Each episode has interviews,<br/>archival footage<br/>and cinematic visuals.<br /><br />
@@ -137,21 +137,31 @@ function Thoughts({ scrollTo }) {
           </button>
           {open[2] && (
             <div className={styles['accordion-content']}>
-                <b>India is #1</b><br /><br />
-                <b>Population<br />1.5 billion and counting.</b><br />
+                <b className={styles.overcrowded}>India is #1</b><br /><br />
+                <div>
+                <b ><span className={styles.title}>POPULATION</span><br /><em>1.5 billion and counting.</em></b><br />
                 1 out of every 7 people<br />in the world is an Indian !<br />
-                India is the most populous country<br />in the whole world.<br /><br />
-                <b>Diaspora<br />35 million.</b><br />
+                India is the most populous country<br />in the whole world.<br /><br /><br /> 
+                </div>
+                <div>
+                <b ><span className={styles.title}>DIASPORA</span><br /><em>35 million.</em></b><br />
                 India has the world’s<br />largest overseas diaspora.<br />
-                This is more than the individual<br />population of 148 countries !<br /><br />
-                <b>Remittances<br />135 billion +</b><br />
-                Accounts for 10% of India’s<br />gross current account.<br /><br />
-                <b>Young population</b><br />
+                This is more than the individual<br />population of 148 countries !<br /><br /><br />
+                </div>
+                <div>
+                <b ><span className={styles.title}>REMITTANCES</span><br /><em>135 billion +</em></b><br />
+                Accounts for 10% of India’s<br />gross current account.<br /><br /><br />
+                </div>
+                <div>
+                <b ><span className={styles.title}>YOUNG POPULATION</span></b><br />
                 65% of Indians are below 35 years.<br />
                 50% of all Indians are below 25 years.<br />
-                This demographic of a young nation<br />makes it more aspirational.<br /><br />
-                <b>Emigrants<br />2.5 million every year.</b><br />
+                This demographic of a young nation<br />makes it that much more aspirational.<br /><br /><br />
+                </div>
+                <div>
+                <b ><span className={styles.title}>EMIGRANTS</span><br /><em>2.5 million every year.</em></b><br />
                 As a result, India has the<br />largest migrants in the whole world.
+                </div>
             </div>
           )}
         </div>
@@ -171,7 +181,7 @@ function Thoughts({ scrollTo }) {
               
               <div className={styles.container}>
                 <div className={styles['left-box']}>
-                  <h3>Visual Storytelling</h3>
+                  <h3>Visual Storytelling.</h3>
                   <p>Cinematic B-roll.<br/>Archival images.<br/>On-location frames.<br/><br/>All of these<br/>add context and depth.</p>
                 </div>
                 <div className={styles['right-box']}>
@@ -183,7 +193,7 @@ function Thoughts({ scrollTo }) {
               </div>
               <div className={styles.container}>
                 <div className={styles['left-box']}>
-                  <h3>Sound<br/>you can feel</h3>
+                  <h3>Sound<br/>you can feel.</h3>
                   <p>Layered sound design.<br /><br />A score<br />that supports
                    the emotion.<br />Sound that never distracts.</p>
                 </div>
@@ -197,11 +207,11 @@ function Thoughts({ scrollTo }) {
 
               <div className={styles.container}>
                 <div className={styles['left-box']}>
-                    <h3>Editorial arcs</h3>
+                    <h3>Editorial arcs.</h3>
                     <p>Each episode is <br/>structured for momentum.<br/><br/>Opening hook.<br/>Rising stakes. <br/>Resolution and reflection.<br/></p>
                   </div>
                  <div className={styles['left-box']}>
-                    <h3>The Result</h3>
+                    <h3>The Result.</h3>
                     <p>Good production value.<br/>High on content.<br/><br/>
                     Designed for<br/>digital audiences<br/>
                     who crave emotional depth<br />and visual substance.<br/><br/>
