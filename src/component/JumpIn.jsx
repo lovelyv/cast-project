@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import AudioRecorder from './Audiorecorder';
+import { useNavigate } from 'react-router-dom';
+import AudioRecorder from './AudioRecorder';
 import Navbar from './navbar';
 import appStyles from '../App.module.css';
 import styles from './JumpIn.module.css';
@@ -11,6 +12,7 @@ import { data } from 'react-router-dom';
 import { JUMPIN_SUBMIT_URL } from '../config';
 
 function JumpIn() {
+  const navigate = useNavigate();
   // Detect Android device
   const isAndroid = typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent);
   const [showRecorder, setShowRecorder] = useState(false);
@@ -277,13 +279,12 @@ across the entire digital landscape.<br/><br/><br/>
               >
                 Submit Your Story
               </button>
-              <a
-                href="#showcase"
+              <button
                 className={styles['submit-btn']}
-                onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+                onClick={() => navigate('/showcase')}
               >
                 Our Showcase
-              </a>
+              </button>
            
 
           </form>

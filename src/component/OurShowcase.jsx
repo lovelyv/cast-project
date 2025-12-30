@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { COUNTRY_FLAGS } from './countryFlags';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
@@ -29,6 +30,7 @@ function OurShowcase() {
     }
   }, []);
   
+  const navigate = useNavigate();
   return (
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
@@ -76,13 +78,12 @@ function OurShowcase() {
         </p>
 
         
-          <a
-            href="#supportus"
+          <button
             className={appStyles['btn']}
-            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+            onClick={() => navigate('/supportus')}
           >
             Support Us
-          </a>
+          </button>
        
       </div>
      

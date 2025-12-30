@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Thoughts.module.css';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
@@ -9,6 +10,7 @@ import appStyles from '../App.module.css';
 import Footer from './Footer';
 
 function Thoughts({ scrollTo }) {
+  const navigate = useNavigate();
   useEffect(() => {
     if (!scrollTo) return;
     const scrollToTarget = () => {
@@ -48,6 +50,7 @@ function Thoughts({ scrollTo }) {
     });
   };
 
+  
   return (
    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
@@ -219,13 +222,12 @@ function Thoughts({ scrollTo }) {
                   </div>
               </div>
 
-             <a
-            href="#youafit"
+             <button
             className={appStyles['btn']}
-            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+            onClick={() => navigate('/youafit')}
           >
             U a FIT ?
-          </a>
+          </button>
 
  
             </div>

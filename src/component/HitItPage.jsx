@@ -6,12 +6,13 @@ import styles from './hititpage.module.css';
 import appStyles from '../App.module.css';
 
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from './Footer';
 
 
 function HitItPage() {
   const [imgSize, setImgSize] = React.useState({ width: null, height: null });
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const img = new window.Image();
@@ -49,13 +50,12 @@ function HitItPage() {
             Sacrifices, ambitions and triumphs.<br /><br />
           </p>
           <img src={hindilogo} alt="Hindi Logo" className={styles['hitit-img']} />
-          <a
-            href="#thoughts"
+          <button
             className={appStyles['btn']}
-            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+            onClick={() => navigate('/thoughts')}
           >
             The Thought
-          </a>
+          </button>
         </div>
       </div>
      

@@ -574,11 +574,16 @@ html, body {
   text-decoration: none;
 }
 .btn:active, .btn:focus, .btn:hover {
-  box-shadow: 0 4px 16px 0 rgba(255,140,0,0.18);
+  background: linear-gradient(90deg, #FFD700 0%, #FFF8DC 40%, #FFD700 60%, #B8860B 100%) !important;
+  color: #3a2600 !important;
+  box-shadow: 0 2px 12px 0 rgba(255,140,0,0.10);
   animation: none !important;
 }
 @media (max-width: 600px) {
-  .btn { font-size: 0.95rem; }
+  .btn { 
+    font-size: 0.95rem;
+    padding: 0.6em 1.3em;
+  }
 }
 /* HitIt Page container moved here for global reuse */
 .all-page {

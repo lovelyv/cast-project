@@ -172,7 +172,7 @@ const AudioRecorder = ({ onTranscriptReady, onClose }) => {
 
   return (
   <div style={{ padding: "20px", opacity: 1, background: "#fff", minHeight: "auto", position: "relative", zIndex: 1000, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-    <h2 className={`${appStyles.headline}`}>Audio Recorder + Transcription</h2>
+    <h3 >Audio Recorder + Transcription</h3>
   <div style={{ display: 'flex', gap: '12px', marginBottom: '12px', justifyContent: 'center' }}>
       <button type="button" onClick={startRecording} disabled={recording} style={{ width: 'fit-content', minWidth: 0 }}>
         Start Recording

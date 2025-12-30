@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CONTACT } from '../config';
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
@@ -7,6 +8,7 @@ import styles from './YouAFit.module.css';
 import Footer from './Footer';
 
 function YouAFit() {
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
@@ -51,10 +53,11 @@ function YouAFit() {
             <br />
           <span style={{ fontWeight: 500 }}>Text, mail or call us.<br />We will reach out to you.</span>
         </p>
-       <a href="#jumpin" className={appStyles['btn']}
-        onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}>
+       <button
+        className={appStyles['btn']}
+        onClick={() => navigate('/jumpin')}>
           Jump In
-        </a>
+        </button>
       </div>
        
       <Footer />

@@ -1,21 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './navbar.module.css';
 import logo from '../assets/logo.png';
 
+
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeHash, setActiveHash] = useState('');
-    const base = import.meta.env.BASE_URL || '/';
     const navRef = useRef(null);
-
-    useEffect(() => {
-        const updateActiveHash = () => {
-            setActiveHash(window.location.hash);
-        };
-        updateActiveHash();
-        window.addEventListener('hashchange', updateActiveHash);
-        return () => window.removeEventListener('hashchange', updateActiveHash);
-    }, []);
+    const location = useLocation();
 
     // Close menu when clicking or focusing outside
     useEffect(() => {
@@ -50,19 +42,19 @@ function Navbar() {
         <nav className={styles.navbar} ref={navRef}>
             <div className={styles.navContent}>
                 <div className={styles.logoCol}>
-                    <a href={base} className={styles.logoLink} aria-label="Go to homepage">
+                    <Link to="/" className={styles.logoLink} aria-label="Go to homepage">
                         <div className={styles.logoWrapper}>
                             <img src={logo} alt="Logo" className={styles.logoImage} />
                         </div>
-                    </a>
+                    </Link>
                 </div>
                 <div className={styles.titleCol}>
-                    <a href={base} className={styles.logoLink} aria-label="Go to homepage">
+                    <Link to="/" className={styles.logoLink} aria-label="Go to homepage">
                         <h1 className={styles.logo}>
                             NRI stories
                             <span className={styles.regMark} aria-hidden="true">®</span>
                         </h1>
-                    </a>
+                    </Link>
                 </div>
                 <div className={styles.hamburgerCol}>
                     <button 
@@ -76,44 +68,44 @@ function Navbar() {
                 </div>
                 <ul className={`${styles.navList} ${isMenuOpen ? styles.navListOpen : ''}`}>
                     <li>
-                        <a 
-                            className={`${styles.navLink} ${(activeHash === '#thoughts' || activeHash === '#thoughts-format') ? styles.navLinkActive : ''}`} 
-                            href="#thoughts"
+                        <Link 
+                            className={`${styles.navLink} ${['/thoughts', '/thoughts-format'].includes(location.pathname) ? styles.navLinkActive : ''}`} 
+                            to="/thoughts"
                         >
                             The Thought
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a 
-                            className={`${styles.navLink} ${activeHash === '#youafit' ? styles.navLinkActive : ''}`} 
-                            href="#youafit"
+                        <Link 
+                            className={`${styles.navLink} ${location.pathname === '/youafit' ? styles.navLinkActive : ''}`} 
+                            to="/youafit"
                         >
                             U a FIT ?
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a 
-                            className={`${styles.navLink} ${activeHash === '#jumpin' ? styles.navLinkActive : ''}`} 
-                            href="#jumpin"
+                        <Link 
+                            className={`${styles.navLink} ${location.pathname === '/jumpin' ? styles.navLinkActive : ''}`} 
+                            to="/jumpin"
                         >
                             Jump In
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a 
-                            className={`${styles.navLink} ${activeHash === '#showcase' ? styles.navLinkActive : ''}`} 
-                            href="#showcase"
+                        <Link 
+                            className={`${styles.navLink} ${location.pathname === '/showcase' ? styles.navLinkActive : ''}`} 
+                            to="/showcase"
                         >
                             Our Showcase
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a 
-                            className={`${styles.navLink} ${activeHash === '#supportus' ? styles.navLinkActive : ''}`} 
-                            href="#supportus"
+                        <Link 
+                            className={`${styles.navLink} ${location.pathname === '/supportus' ? styles.navLinkActive : ''}`} 
+                            to="/supportus"
                         >
                             Support Us
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
