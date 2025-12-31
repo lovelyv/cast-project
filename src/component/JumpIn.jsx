@@ -9,7 +9,7 @@ import handpointer from '../assets/handpointer.png';
 import Footer from './Footer';
 import SocialLinksBar from './SocialLinksBar';
 import { data } from 'react-router-dom';
-import { JUMPIN_SUBMIT_URL } from '../config';
+
 
 function JumpIn() {
   const navigate = useNavigate();
@@ -40,7 +40,9 @@ function JumpIn() {
     }
     return newErrors;
   };
-
+const API_SECRET = import.meta.env.VITE_API_SECRET;
+ const JUMPIN_SUBMIT_URL = import.meta.env.VITE_SCRIPT_URL;
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -50,8 +52,8 @@ function JumpIn() {
   };
 
   const [submitMessage, setSubmitMessage] = useState("");
-
-  const handleSubmit = (e) => {
+ 
+  const handleSubmit = (e) => { 
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -66,7 +68,7 @@ function JumpIn() {
     fetch(JUMPIN_SUBMIT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: (`fullName=${e.target.fullName.value}&email=${e.target.email.value}&phone=${e.target.phone.value}&storySummary=${e.target.storySummary.value}`)
+      body: (`token=${API_SECRET}&fullName=${e.target.fullName.value}&email=${e.target.email.value}&phone=${e.target.phone.value}&storySummary=${e.target.storySummary.value}`)
     })
       .then(res => res.text())
       .then(data => {

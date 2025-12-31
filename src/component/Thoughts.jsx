@@ -140,19 +140,19 @@ function Thoughts({ scrollTo }) {
           </button>
           {open[2] && (
             <div className={styles['accordion-content']}>
-                <b className={styles.overcrowded}>India is #1</b><br /><br />
+                <em className={styles.overcrowded}>India is #1</em><br /><br />
                 <div>
-                <b ><span className={styles.title}>POPULATION</span><br /><em>1.5 billion and counting.</em></b><br />
+                <b ><span className={styles.title}>POPULATION</span><br /><b>1.4</b> <em className={styles.emGeorgia}>billion and counting.</em></b><br />
                 1 out of every 7 people<br />in the world is an Indian !<br />
                 India is the most populous country<br />in the whole world.<br /><br /><br /> 
                 </div>
                 <div>
-                <b ><span className={styles.title}>DIASPORA</span><br /><em>35 million.</em></b><br />
+                <b ><span className={styles.title}>DIASPORA</span><br /><b>35</b> <em className={styles.emGeorgia}>million.</em></b><br />
                 India has the world’s<br />largest overseas diaspora.<br />
                 This is more than the individual<br />population of 148 countries !<br /><br /><br />
                 </div>
                 <div>
-                <b ><span className={styles.title}>REMITTANCES</span><br /><em>135 billion +</em></b><br />
+                <b ><span className={styles.title}>REMITTANCES</span><br /><b>135</b> <em className={styles.emGeorgia}>billion +</em></b><br />
                 Accounts for 10% of India’s<br />gross current account.<br /><br /><br />
                 </div>
                 <div>
@@ -162,7 +162,7 @@ function Thoughts({ scrollTo }) {
                 This demographic of a young nation<br />makes it that much more aspirational.<br /><br /><br />
                 </div>
                 <div>
-                <b ><span className={styles.title}>EMIGRANTS</span><br /><em>2.5 million every year.</em></b><br />
+                <b ><span className={styles.title}>EMIGRANTS</span><br /><b>2.5</b> <em className={styles.emGeorgia}>million every year.</em></b><br />
                 As a result, India has the<br />largest migrants in the whole world.
                 </div>
             </div>

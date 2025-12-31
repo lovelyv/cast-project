@@ -29,7 +29,7 @@
 
 .title {
   display: block;
-  
+   font-family: 'Georgia';
   text-decoration: underline;
   text-underline-offset: 4px;
   font-style: italic;
@@ -105,15 +105,16 @@
 .videoFrame {
   width: 320px;
   max-width: 92vw;
-  aspect-ratio: 1 / 1; /* make it square */
-  height: auto;        /* height follows width via aspect-ratio */
-  object-fit: cover;   /* crop to fill the square without distortion */
+  aspect-ratio: 1 / 1; /* keep square */
+  height: auto;
+  object-fit: cover;
+  object-position: bottom; /* crop from the bottom, show more of the bottom */
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 6px 22px rgba(0,0,0,0.18);
   outline: 1px solid rgba(255,255,255,0.08);
   background: #000;
-  position: relative; /* ensure it renders above background layer */
+  position: relative;
   z-index: 2;
 }
 .videoCaption {

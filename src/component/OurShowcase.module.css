@@ -227,7 +227,8 @@ p.contrastText {
   color: #D2691E; /* chocolate brown */
 }
 .tagline {
-  font-family: 'Rubik', 'Arial', sans-serif;
+  
+  font-family: Georgia, serif;
   font-size: clamp(18px, 3vw, 22px);
   line-height: 1.18;
   text-align: center;

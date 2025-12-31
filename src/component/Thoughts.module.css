@@ -1,3 +1,7 @@
+/* Style for emphasized text in Thoughts page */
+.emGeorgia, h3 {
+  font-family: Georgia, serif;
+}
 @media (min-width: 1025px) and (max-width: 1440px) {
   .right-box img[alt="Visual Story"] {
     width: 100%;
@@ -288,6 +292,8 @@
   font-weight: 800;
   display: block;
   margin-bottom: 0.5em;
+  font-family: 'Georgia';
+
 }
 
 /* title heading in Factoids: increase line-height for stacked text */
@@ -296,6 +302,7 @@
   line-height: 0.1; /* increase spacing between POPULATION and its subline */
   text-decoration: underline;
   text-underline-offset: 4px;
+  
 }
 
 /* Make h3 headings on the Thoughts page italic; scoped under the component container */

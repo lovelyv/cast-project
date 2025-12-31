@@ -72,8 +72,8 @@ function OurShowcase() {
         </div>
         
         {/* Tagline above Support Us button */}
-        <p className={styles.tagline}>
-          <strong><em>IP registration underway.</em></strong><br/>
+        <p >
+          <strong><em className={styles.tagline}>IP registration underway.</em></strong><br/>
           In 7 countries, across 3 continents.
         </p>
 
