@@ -344,3 +344,28 @@ input.opaqueField, textarea.opaqueField {
 .hand-to-user {
   transform: rotate(-180deg);
 }
+
+.captchaBlock {
+  width: 100%;
+  max-width: 220px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.captchaBlock iframe,
+.captchaBlock > div,
+.captchaBlock .grecaptcha-badge,
+.captchaBlock * {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 600px) {
+  .captchaBlock {
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}

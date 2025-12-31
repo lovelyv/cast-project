@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 import AudioRecorder from './AudioRecorder';
 import Navbar from './navbar';
 import appStyles from '../App.module.css';
@@ -23,6 +24,7 @@ function JumpIn() {
   });
 
   const [errors, setErrors] = useState({});
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const validate = () => {
     const newErrors = {};
@@ -33,9 +35,14 @@ function JumpIn() {
     // Story summary: 20 to 50 words
     if (formData.storySummary) {
       const wordCount = formData.storySummary.trim().split(/\s+/).filter(w => w.length > 0).length;
-      if (wordCount < 20 || wordCount > 50) {
+      if (wordCount > 50) {
         newErrors.storySummary = 'Please enter between 20 to 50 words.';
       }
+    }
+   
+    if (!captchaToken) {
+      newErrors.captcha = "Please verify captcha";
+    
     }
     return newErrors;
   };
@@ -55,6 +62,9 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
   const handleSubmit = (e) => { 
     e.preventDefault();
     const validationErrors = validate();
+    if (!captchaToken) {
+      validationErrors.captcha = 'Please verify you are not a robot.';
+    }
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       // Focus first error field
@@ -64,17 +74,15 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
       return;
     }
     setErrors({});
-    
     fetch(JUMPIN_SUBMIT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      
-      body: (`token=${API_SECRET}&fullName=${e.target.fullName.value}&email=${e.target.email.value}&phone=${e.target.phone.value}&storySummary=${e.target.storySummary.value}`)
+      body: (`token=${API_SECRET}&fullName=${e.target.fullName.value}&email=${e.target.email.value}&phone=${e.target.phone.value}&storySummary=${e.target.storySummary.value}&captcha=${captchaToken}`)
     })
       .then(res => res.text())
       .then(resText => {
+     
         const data = JSON.parse(resText);
-   
         if (!data.success) 
           {
           
@@ -82,6 +90,12 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
           if (data.error === "Unauthorized") 
           {
             setSubmitMessage("Forbidden request – invalid token");
+            return;
+          }
+          // 🔐 Forbidden or validation error
+          if (data.error === "Captcha verification failed") 
+          {
+            setSubmitMessage("Captcha verification failed");
             return;
           }
         }
@@ -276,11 +290,6 @@ across the entire digital landscape.<br/><br/><br/>
               )}
             </div>
 
-            
-
-
-            
-
             {/* Removed alternate contact line per request */}
           {submitMessage && (
             <div style={{ marginTop: '1em', color: '#1a3a52', fontWeight: 'bold', textAlign: 'center', whiteSpace: 'pre-line' }}>
@@ -288,7 +297,17 @@ across the entire digital landscape.<br/><br/><br/>
             </div>
           )}
 
-    
+    <div className={styles.captchaBlock} style={{marginLeft: 'auto', marginRight: 'auto', display: 'flex', justifyContent: 'center'}}>
+        <ReCAPTCHA
+          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+          onChange={setCaptchaToken}
+        />
+        </div>
+        <div style={{ marginTop: '0.5em', minHeight: '1.2em' }}>
+        {errors.captcha && (
+          <div style={{ color: 'red', fontSize: '0.95em', marginTop: '0.5em' }}>{errors.captcha}</div>
+        )}
+      </div>
               <button
                 type="submit"
                 className={styles['submit-btn']}
