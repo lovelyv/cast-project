@@ -7,8 +7,7 @@ import styles from './JumpIn.module.css';
 import SubpageWatermark from './SubpageWatermark';
 import handpointer from '../assets/handpointer.png';
 import Footer from './Footer';
-import SocialLinksBar from './SocialLinksBar';
-import { data } from 'react-router-dom';
+
 
 
 function JumpIn() {
@@ -42,7 +41,7 @@ function JumpIn() {
   };
 const API_SECRET = import.meta.env.VITE_API_SECRET;
  const JUMPIN_SUBMIT_URL = import.meta.env.VITE_SCRIPT_URL;
- 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -65,13 +64,27 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
       return;
     }
     setErrors({});
+    
     fetch(JUMPIN_SUBMIT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      
       body: (`token=${API_SECRET}&fullName=${e.target.fullName.value}&email=${e.target.email.value}&phone=${e.target.phone.value}&storySummary=${e.target.storySummary.value}`)
     })
       .then(res => res.text())
-      .then(data => {
+      .then(resText => {
+        const data = JSON.parse(resText);
+   
+        if (!data.success) 
+          {
+          
+          // 🔐 Forbidden or validation error
+          if (data.error === "Unauthorized") 
+          {
+            setSubmitMessage("Forbidden request – invalid token");
+            return;
+          }
+        }
   setSubmitMessage("Thank you!\nWe will be in touch soon.");
         setFormData({
           fullName: '',
@@ -81,6 +94,7 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
         });
       })
       .catch(error => {
+        
         setSubmitMessage("There was an error submitting your story. Please try again.");
       });
   }
