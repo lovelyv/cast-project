@@ -63,12 +63,12 @@ export const JUMPIN_SUBMIT_URL = "https://script.google.com/macros/s/AKfycbyzuob
 
 // Social media links for use in footer, banners, etc.
 export const SOCIAL_LINKS = {
-  facebook: "https://facebook.com/nristories",
-  twitter: "https://twitter.com/nristories",
-  instagram: "https://instagram.com/nristories",
-  youtube: "https://youtube.com/@nristories",
-  linkedin: "https://linkedin.com/company/nristories",
-  tiktok: "https://tiktok.com/@nristories"
+  facebook: "https://facebook.com/nristoriess",
+  twitter: "https://twitter.com/nristoriess",
+  instagram: "https://instagram.com/nristoriess",
+  youtube: "https://youtube.com/@nristoriess",
+  linkedin: "https://linkedin.com/company/nristoriess",
+  tiktok: "https://tiktok.com/@nristoriess"
 };
 
 // Stripe Payment Links for donations (configure in Stripe Dashboard).
