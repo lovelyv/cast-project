@@ -119,11 +119,11 @@ function SupportUs() {
               value={chipAmount}
               onChange={e => setChipAmount(e.target.value)}
             >
-              <option value="5">$ 5</option>
-              <option value="11">$ 11</option>
-              <option value="21">$ 21</option>
-              <option value="51">$ 51</option>
-              <option value="101">$ 101</option>
+              <option value="5">USD 5</option>
+              <option value="11">USD 11</option>
+              <option value="21">USD 21</option>
+              <option value="51">USD 51</option>
+              <option value="101">USD 101</option>
             </select>
             <button
               type="button"
@@ -144,7 +144,7 @@ function SupportUs() {
           <div className={styles.modalOverlay} role="dialog" aria-modal="true" aria-label="Chip in">
             <div className={styles.modalContent}>
               <div className={styles.modalTitle}>Choose a payment method</div>
-              <p>Amount: <b>${chipAmount}</b></p>
+              <p>Amount: <b>USD {Number(chipAmount).toFixed(2)}</b></p>
               <div role="radiogroup" aria-label="Payment method" className={styles.radioGroup}>
                 <label className={styles.radioOption}>
                   <input
@@ -169,6 +169,9 @@ function SupportUs() {
                 </label>
                 */}
               </div>
+              <b className={styles.conversionDisclaimer}>
+                If your card is issued in a different currency, your bank may apply additional currency conversion fees.
+              </b>
               <p className={styles.modalNote}>🔒 Secure payments powered by Stripe &amp; PayPal</p>
               <div className={styles.modalActions}>
                 <button type="button" className={`${styles.modalBtn}`} onClick={handleProceedSelected}>
