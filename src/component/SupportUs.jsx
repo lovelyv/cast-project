@@ -120,10 +120,10 @@ function SupportUs() {
               onChange={e => setChipAmount(e.target.value)}
             >
               <option value="5">$ 5</option>
-              <option value="10">$ 10</option>
-              <option value="20">$ 20</option>
-              <option value="50">$ 50</option>
-              <option value="100">$ 100</option>
+              <option value="11">$ 11</option>
+              <option value="21">$ 21</option>
+              <option value="51">$ 51</option>
+              <option value="101">$ 101</option>
             </select>
             <button
               type="button"
@@ -156,6 +156,7 @@ function SupportUs() {
                   />
                   <span className={styles.radioOptionText}>Pay with Card (Visa, Mastercard, Apple Pay, Google Pay)</span>
                 </label>
+                {/*
                 <label className={styles.radioOption}>
                   <input
                     type="radio"
@@ -166,6 +167,7 @@ function SupportUs() {
                   />
                   <span className={styles.radioOptionText}>Pay with PayPal</span>
                 </label>
+                */}
               </div>
               <p className={styles.modalNote}>🔒 Secure payments powered by Stripe &amp; PayPal</p>
               <div className={styles.modalActions}>
@@ -225,7 +227,7 @@ function SupportUs() {
                                 </ul>
                               );
                             })()}<br/><br/>
-                            <b>You can also<br/>be associated as<br/><br/></b>
+                            <strong> <em>You can also<br/>be associated as<br/><br/></em></strong>
                             Our Travel Partner<br/> 
                             Our Hospitality Partner<br/>
                             Our Logistics Support Partner<br/>

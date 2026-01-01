@@ -353,14 +353,6 @@ input.opaqueField, textarea.opaqueField {
   display: block;
 }
 
-.captchaBlock iframe,
-.captchaBlock > div,
-.captchaBlock .grecaptcha-badge,
-.captchaBlock * {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
 @media (max-width: 600px) {
   .captchaBlock {
     max-width: 150px;

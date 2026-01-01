@@ -402,3 +402,6 @@
   font-family: inherit;
   font-weight: 400;
 }
+em {
+    font-family: 'Georgia';
+}
