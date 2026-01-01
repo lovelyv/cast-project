@@ -62,13 +62,13 @@ function Thoughts({ scrollTo }) {
           <b>D</b>
           <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>OCU</b>
           <b>C</b>
-          <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>AST</b>™
+          <b style={{fontSize: '0.8em', marginBottom: '-0.08em'}}>AST™</b>
         </span>
         <p className={styles['accordion-content']}>
           will feature stories<br/>
           that speak about<br/>
           Resilience,
-          Sacrifice,<br/>Ambition, Identity and Inspiration<br/>
+          Sacrifice,<br/>Ambition, Identity and Inspiration.<br/>
         </p>
 
         {/* Accordion 1: Landscape */}
