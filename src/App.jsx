@@ -72,7 +72,7 @@ function Home() {
 
 function App() {
   return (
-    <Router basename="/cast-project">
+    <Router>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />

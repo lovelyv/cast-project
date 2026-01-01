@@ -51,7 +51,7 @@ function YouAFit() {
         </div>
         <p>
             <br />
-          <span style={{ fontWeight: 500 }}>Text, mail or call us.<br />We will reach out to you.</span>
+          <b>Text, mail or call us.<br />We will reach out to you.</b>
         </p>
        <button
         className={appStyles['btn']}
