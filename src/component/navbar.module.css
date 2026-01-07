@@ -58,6 +58,19 @@
 
 /* Add a little left spacing on larger screens */
 @media (min-width: 1025px) {
+  .navList li:first-child {
+    margin-left: 1.5rem;
+  }
+  .navList li:first-child {
+    margin-left: 6rem;
+  }
+  .navList {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+  .navLink {
+    white-space: nowrap;
+  }
   .navContent {
     padding-left: max(1rem, env(safe-area-inset-left));
     padding-right: max(2rem, env(safe-area-inset-right)); /* add a bit more breathing room on the right */
