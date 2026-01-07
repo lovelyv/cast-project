@@ -75,7 +75,7 @@ function Home() {
 function App() {
 
   // Use env variable for basename for multi-host support
-  const basename = import.meta.env.VITE_ROUTER_BASENAME || "/";
+  const basename = import.meta.env.VITE_ROUTER_BASENAME;
   return (
     <BrowserRouter basename={basename}>
       <ScrollToTop />
