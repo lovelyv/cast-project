@@ -1,3 +1,5 @@
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { useRef } from "react";
 import Navbar from "./component/navbar";
 import ScrollToTop from "./component/ScrollToTop";
 import HitItPage from "./component/HitItPage";
@@ -71,8 +73,11 @@ function Home() {
 }
 
 function App() {
+
+  // Use env variable for basename for multi-host support
+  const basename = import.meta.env.VITE_ROUTER_BASENAME || "/";
   return (
-    <Router>
+    <BrowserRouter basename={basename}>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -85,15 +90,8 @@ function App() {
         <Route path="/supportus" element={<><SubpageWatermark size="45vw" opacity={SUBPAGE_WATERMARK_OPACITY} position="center center" zIndex={0} /><Navbar /><SupportUs /></>} />
         <Route path="/audiorecorder" element={<><SubpageWatermark size="45vw" opacity={SUBPAGE_WATERMARK_OPACITY} position="center center" zIndex={0} /><Navbar /><AudioRecorder /></>} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
 export default App;
-import { useRef } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate
-} from "react-router-dom";
