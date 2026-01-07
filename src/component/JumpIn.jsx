@@ -99,7 +99,7 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
             return;
           }
         }
-  setSubmitMessage("Thank you!\nWe will be in touch soon.");
+  setSubmitMessage("Thankyou!\nWe will be in touch soon.");
         setFormData({
           fullName: '',
           email: '',
@@ -150,62 +150,66 @@ across the entire digital landscape.<br/><br/><br/>
               <label htmlFor="fullName" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>
                 Full Name <span aria-hidden="true" style={{ color: '#b00020' }}>*</span>
               </label>
-              <input
-                className={`${styles.opaqueField} ${styles.input40} ${errors.fullName ? styles.invalid : ''}`}
-                type="text"
-                id="fullName"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Your name"
-                required
-                aria-required="true"
-                aria-invalid={errors.fullName ? 'true' : 'false'}
-                aria-describedby={errors.fullName ? 'fullName-error' : undefined}
-                autoComplete="name"
-                style={{
-                  padding: '12px',
-                  borderRadius: '6px',
-                  border: '1px solid #ccc',
-                  fontSize: '16px',
-                  color: '#0d2d44',
-                  backgroundColor: '#ffffff'
-                }}
-              />
-              {errors.fullName && (
-                <span id="fullName-error" role="alert" className={styles.errorText}>{errors.fullName}</span>
-              )}
+              <div className={styles.inputStack}>
+                <input
+                  className={`${styles.opaqueField} ${styles.input40} ${errors.fullName ? styles.invalid : ''}`}
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  placeholder="Your name"
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.fullName ? 'true' : 'false'}
+                  aria-describedby={errors.fullName ? 'fullName-error' : undefined}
+                  autoComplete="name"
+                  style={{
+                    padding: '12px',
+                    borderRadius: '6px',
+                    border: '1px solid #ccc',
+                    fontSize: '16px',
+                    color: '#0d2d44',
+                    backgroundColor: '#ffffff'
+                  }}
+                />
+                {errors.fullName && (
+                  <span id="fullName-error" role="alert" className={styles.errorText}>{errors.fullName}</span>
+                )}
+              </div>
             </div>
 
             <div className={styles['form-row']}>
               <label htmlFor="email" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>
                 Email <span aria-hidden="true" style={{ color: '#b00020' }}>*</span>
               </label>
-              <input
-                className={`${styles.opaqueField} ${styles.input40} ${errors.email ? styles.invalid : ''}`}
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="name@example.com"
-                required
-                aria-required="true"
-                aria-invalid={errors.email ? 'true' : 'false'}
-                aria-describedby={errors.email ? 'email-error' : undefined}
-                autoComplete="email"
-                style={{
-                  padding: '12px',
-                  borderRadius: '6px',
-                  border: '1px solid #ccc',
-                  fontSize: '16px',
-                  color: '#0d2d44',
-                  backgroundColor: '#ffffff'
-                }}
-              />
-              {errors.email && (
-                <span id="email-error" role="alert" className={styles.errorText}>{errors.email}</span>
-              )}
+              <div className={styles.inputStack}>
+                <input
+                  className={`${styles.opaqueField} ${styles.input40} ${errors.email ? styles.invalid : ''}`}
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="name@example.com"
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.email ? 'true' : 'false'}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
+                  autoComplete="email"
+                  style={{
+                    padding: '12px',
+                    borderRadius: '6px',
+                    border: '1px solid #ccc',
+                    fontSize: '16px',
+                    color: '#0d2d44',
+                    backgroundColor: '#ffffff'
+                  }}
+                />
+                {errors.email && (
+                  <span id="email-error" role="alert" className={styles.errorText}>{errors.email}</span>
+                )}
+              </div>
             </div>
             
 
@@ -214,29 +218,31 @@ across the entire digital landscape.<br/><br/><br/>
               <label htmlFor="phone" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>
                 Phone
               </label>
-              <input
-                className={`${styles.opaqueField} ${styles.input40} ${errors.phone ? styles.invalid : ''}`}
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Your phone number (optional)"
-                aria-invalid={errors.phone ? 'true' : 'false'}
-                aria-describedby={errors.phone ? 'phone-error' : undefined}
-                autoComplete="tel"
-                style={{
-                  padding: '12px',
-                  borderRadius: '6px',
-                  border: '1px solid #ccc',
-                  fontSize: '16px',
-                  color: '#0d2d44',
-                  backgroundColor: '#ffffff'
-                }}
-              />
-              {errors.phone && (
-                <span id="phone-error" role="alert" className={styles.errorText}>{errors.phone}</span>
-              )}
+              <div className={styles.inputStack}>
+                <input
+                  className={`${styles.opaqueField} ${styles.input40} ${errors.phone ? styles.invalid : ''}`}
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Your phone number (optional)"
+                  aria-invalid={errors.phone ? 'true' : 'false'}
+                  aria-describedby={errors.phone ? 'phone-error' : undefined}
+                  autoComplete="tel"
+                  style={{
+                    padding: '12px',
+                    borderRadius: '6px',
+                    border: '1px solid #ccc',
+                    fontSize: '16px',
+                    color: '#0d2d44',
+                    backgroundColor: '#ffffff'
+                  }}
+                />
+                {errors.phone && (
+                  <span id="phone-error" role="alert" className={styles.errorText}>{errors.phone}</span>
+                )}
+              </div>
             </div>
 
             <div className={styles['form-row']}>
@@ -265,63 +271,62 @@ across the entire digital landscape.<br/><br/><br/>
                   </button>
                 )}
               </label>
-              <textarea
-                className={`${styles.opaqueField} ${styles.input40}`}
-                id="storySummary"
-                name="storySummary"
-                value={formData.storySummary}
-                onChange={handleChange}
-                placeholder="Two to three sentences about your journey (optional)"
-                required
-                rows="4"
-                style={{
-                  padding: '12px',
-                  borderRadius: '6px',
-                  border: '1px solid #ccc',
-                  fontSize: '16px',
-                  color: '#0d2d44',
-                  backgroundColor: '#ffffff',
-                  fontFamily: 'inherit',
-                  resize: 'vertical'
-                }}
-              />
-              {errors.storySummary && (
-                <span id="storySummary-error" role="alert" className={styles.errorText}>{errors.storySummary}</span>
-              )}
+              <div className={styles.inputStack}>
+                <textarea
+                  className={`${styles.opaqueField} ${styles.input40}`}
+                  id="storySummary"
+                  name="storySummary"
+                  value={formData.storySummary}
+                  onChange={handleChange}
+                  placeholder="Two to three sentences about your journey (optional)"
+                  required
+                  rows="4"
+                  style={{
+                    padding: '12px',
+                    borderRadius: '6px',
+                    border: '1px solid #ccc',
+                    fontSize: '16px',
+                    color: '#0d2d44',
+                    backgroundColor: '#ffffff',
+                    fontFamily: 'inherit',
+                    resize: 'vertical'
+                  }}
+                />
+                {errors.storySummary && (
+                  <span id="storySummary-error" role="alert" className={styles.errorText}>{errors.storySummary}</span>
+                )}
+              </div>
             </div>
 
             {/* Removed alternate contact line per request */}
-          {submitMessage && (
-            <div style={{ marginTop: '1em', color: '#1a3a52', fontWeight: 'bold', textAlign: 'center', whiteSpace: 'pre-line' }}>
-              {submitMessage}
+            <div className={styles.captchaBlock} style={{marginLeft: 'auto', marginRight: 'auto', display: 'flex', justifyContent: 'center'}}>
+              <ReCAPTCHA
+                sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                onChange={setCaptchaToken}
+              />
             </div>
-          )}
-
-    <div className={styles.captchaBlock} style={{marginLeft: 'auto', marginRight: 'auto', display: 'flex', justifyContent: 'center'}}>
-        <ReCAPTCHA
-          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-          onChange={setCaptchaToken}
-        />
-        </div>
-        <div style={{ marginTop: '0.5em', minHeight: '1.2em' }}>
-        {errors.captcha && (
-          <div style={{ color: 'red', fontSize: '0.95em', marginTop: '0.5em' }}>{errors.captcha}</div>
-        )}
-      </div>
-              <button
-                type="submit"
-                className={styles['submit-btn']}
-              >
-                Submit Your Story
-              </button>
-              <button
-                className={styles['submit-btn']}
-                onClick={() => navigate('/showcase')}
-              >
-                Our Showcase
-              </button>
-           
-
+            <div style={{ marginTop: '0.5em', minHeight: '1.2em' }}>
+              {errors.captcha && (
+                <div style={{ color: 'red', fontSize: '0.95em', marginTop: '0.5em' }}>{errors.captcha}</div>
+              )}
+            </div>
+            {submitMessage && (
+              <div style={{ marginTop: '1em', color: '#1a3a52', fontWeight: 'bold', textAlign: 'center', whiteSpace: 'pre-line' }}>
+                {submitMessage}
+              </div>
+            )}
+            <button
+              type="submit"
+              className={styles['submit-btn']}
+            >
+              Submit Your Story
+            </button>
+            <button
+              className={styles['submit-btn']}
+              onClick={() => navigate('/showcase')}
+            >
+              Our Showcase
+            </button>
           </form>
       
         </div>
