@@ -13,7 +13,7 @@ jobs:
       # Step 1: Checkout repo
       - uses: actions/checkout@v3
         with:
-        persist-credentials: true # ensures GITHUB_TOKEN is available
+          persist-credentials: true # ensures GITHUB_TOKEN is available
 
       # Step 2: Setup Node.js
       - name: Setup Node
