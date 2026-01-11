@@ -3,7 +3,7 @@ name: Build and Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main # deploy only when main is updated
+      - main # deploy only when main gets updated
 
 jobs:
   build-and-deploy:
