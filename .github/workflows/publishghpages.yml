@@ -32,7 +32,7 @@ jobs:
         if: failure()
         run: cat /home/runner/.npm/_logs/*.log
 
-      # Step 5: Configure git user (needed for commits)
+      # Step 6: Configure git user (needed for commits)
       - name: Configure git
         run: |
           git config --global user.name "github-actions"
