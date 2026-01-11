@@ -27,6 +27,11 @@ jobs:
       - name: Build for GitHub Pages
         run: npm run build:github
 
+      # Step 4.5: Print npm log files if they exist
+      - name: Print npm log files
+        if: failure()
+        run: cat /home/runner/.npm/_logs/*.log
+
       # Step 5: Configure git user (needed for commits)
       - name: Configure git
         run: |
