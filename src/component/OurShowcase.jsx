@@ -21,11 +21,39 @@ function OurShowcase() {
   // Search and filter state
   const [search, setSearch] = useState('');
   const [region, setRegion] = useState('All');
-  // Get unique regions from data
-  const regionOptions = Array.from(new Set(COUNTRY_FLAGS.flatMap(c => c.region ? c.region.split(',').map(r => r.trim()) : [])));
-  // Filtered countries by search and region
+  // List of top countries hosting NRIs (can be expanded/updated as needed)
+  const topNriCountries = [
+    'United States', 'UAE', 'Malaysia', 'Canada', 'Saudi Arabia', 'Myanmar', 'UK', 'South Africa', 'Sri Lanka', 'Kuwait'
+  ];
+  // Custom region filters
+  const customRegions = {
+    'North America': ['USA', 'Canada', 'Mexico'],
+    'Middle East (Gulf)': ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman', 'Bahrain'],
+    'Europe': ['UK', 'Germany', 'France', 'Netherlands', 'Ireland', 'Italy', 'Spain','Russia'],
+    'Asia-Pacific': ['Singapore', 'Australia', 'New Zealand'],
+    'Africa': ['South Africa', 'Mauritius', 'Kenya', 'Tanzania', 'Uganda'],
+    'Caribbean / West Indies': ['Trinidad & Tobago', 'Guyana', 'Suriname', 'Jamaica'],
+    'Latin America': ['Brazil', 'Argentina', 'Chile', 'Peru'],
+    'South Asia'  : ['Nepal', 'Sri Lanka'],
+    'Southeast Asia': ['Singapore', 'Malaysia', 'Thailand', 'Indonesia', 'Philippines', 'Vietnam'],
+  };
+  const regionOptions = ['Top NRI Countries', ...Object.keys(customRegions).sort((a, b) => a.localeCompare(b))];
+  // Filtered countries by search, custom region, or Top NRI
   const filteredCountries = COUNTRY_FLAGS.filter(c => {
-    const matchesRegion = region === 'All' || (c.region && c.region.split(',').map(r => r.trim()).includes(region));
+    let matchesRegion = false;
+    if (region === 'All') {
+      matchesRegion = true;
+    } else if (region === 'Top NRI Countries') {
+      matchesRegion = topNriCountries.some(
+        name => name.toLowerCase() === c.name.toLowerCase() ||
+          (Array.isArray(c.aliases) && c.aliases.some(a => a.toLowerCase() === name.toLowerCase()))
+      );
+    } else if (customRegions[region]) {
+      matchesRegion = customRegions[region].some(
+        name => name.toLowerCase() === c.name.toLowerCase() ||
+          (Array.isArray(c.aliases) && c.aliases.some(a => a.toLowerCase() === name.toLowerCase()))
+      );
+    }
     const searchLower = search.trim().toLowerCase();
     const nameLower = c.name.toLowerCase();
     const aliases = Array.isArray(c.aliases) ? c.aliases.map(a => a.toLowerCase()) : [];
@@ -66,8 +94,9 @@ function OurShowcase() {
           <CircleFlagRow countries={allCountries} duration="30s" tilt="0deg" blockWidth="160px" blockHeight="110px" spacing={25} radius={260} />
         </div>
 
+
         {/* Search + Filter Combo */}
-  <div className={styles.searchFilterCombo}>  
+        <div className={styles.searchFilterCombo}>  
           <input
             type="text"
             placeholder="Search country"
@@ -83,10 +112,14 @@ function OurShowcase() {
             aria-label="Filter by region"
           >
             <option value="All">All</option>
-            {regionOptions.sort().map(r => (
+            {regionOptions.map(r => (
               <option key={r} value={r}>{r}</option>
             ))}
           </select>
+        </div>
+        {/* Filter label below search/filter combo */}
+        <div style={{ textAlign: 'center', marginTop: '0.3em', marginBottom: '0.7em', fontSize: '0.98em', color: '#444' }}>
+          {region === 'All' ? 'Showing all countries' : `${region}`}
         </div>
 
         {/* Country Flag Thumbnails Grid - 4 per row, filtered by search and region, sequential with no empty spaces */}
