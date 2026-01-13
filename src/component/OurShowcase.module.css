@@ -1,3 +1,105 @@
+/* Search + Filter Combo container */
+.searchFilterCombo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 1.2em 0 1.8em 0;
+  width: 100%;
+  max-width: 480px;
+  gap: 0;
+  position: relative;
+}
+/* Search input for OurShowcase */
+.showcaseSearchInput {
+  background: #fff url('../assets/search.svg') no-repeat 10px center;
+  background-size: 18px 18px;
+  padding: 0.12em 0.7em;
+  padding-left: 38px;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  flex: 0 1 120px;
+  height: 2.2em;
+  line-height: 2.2em;
+  box-sizing: border-box;
+  border-radius: 0.5em 0 0 0.5em;
+}
+
+/* Region select for OurShowcase */
+.showcaseRegionSelect {
+  padding: 0.18em 1em;
+  border: none;
+  border-radius: 0 0.5em 0.5em 0;
+  font-size: 1em;
+  width: clamp(140px, 22vw, 220px);
+  min-width: 120px;
+  max-width: 260px;
+  background: #f6f8fa;
+  outline: none;
+  height: 2.2em;
+  line-height: 2.2em;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .showcaseRegionSelect {
+    width: clamp(110px, 38vw, 180px);
+    min-width: 90px;
+    font-size: 0.98em;
+  }
+}
+/* Selected region filter button style */
+/* Selected region filter button style */
+.regionFilterActive {
+  color: #FF8C00 !important;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.regionFilterBtn:hover,
+.regionFilterActive:hover {
+  color: #FF8C00;
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .regionFilter {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0 !important;
+    justify-content: center !important;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+  }
+  .regionFilterBtn, .regionFilterActive {
+    width: auto;
+    text-align: center;
+    margin: 0;
+    font-size: 1.08em;
+    position: relative;
+  }
+  .regionFilterBtn:not(:last-child)::after,
+  .regionFilterActive:not(:last-child)::after {
+    content: '|';
+    color: #888;
+    margin-left: 0.2em;
+    margin-right: 0.4em;
+    font-weight: normal;
+    font-size: 1em;
+    position: relative;
+    top: -1px;
+  }
+}
+@media (min-width: 1200px) {
+  .hexFaceBlock {
+    max-width: 420px;
+    width: 24vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 /* Center the carousel horizontally */
 .carouselCenter {
   display: flex;
@@ -18,9 +120,8 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   padding: 0.5em 1em;
   transition: transform 0.15s;
-  flex: 0 0 auto; /* prevent shrink; ensure 4th block remains visible on scroll */
+  /* removed misplaced min-width, width, max-width */
 }
-.country-flag-block:hover,
 .country-flag-block:focus {
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 4px 16px rgba(255,140,0,0.18);
@@ -59,31 +160,51 @@
     height: 38px;
   }
 }
-/* Country flags row for showcase */
+/* Country flags grid and row for showcase */
+.country-flags-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 .country-flags-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly; /* spread four blocks across full width */
+  justify-content: flex-start; /* fill from left, no gaps */
   align-items: center;
   gap: clamp(0.8em, 2.2vw, 2.2em); /* responsive spacing to keep 4 items in viewport */
-  /* Slightly tighter spacing below the carousel and between rows */
   margin: 1.6em 0;
-  width: 100%;
+  width: auto;
   max-width: 100%;
   flex-wrap: nowrap;
   overflow: visible; /* avoid cropping on large viewports */
   box-sizing: border-box;
+  /* Center the row horizontally */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 600px) {
   /* Fit all 4 flags in viewport without horizontal scroll */
+  .country-flags-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    box-sizing: border-box;
+  }
   .country-flags-row {
-    justify-content: space-between;
+    justify-content: center;
     gap: clamp(0.4em, 2vw, 0.8em);
     max-width: 100vw;
-    padding: 0 2vw;
     flex-wrap: nowrap;
     overflow-x: hidden; /* remove horizontal scrollbar */
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-inline: auto;
   }
   .country-flag-block {
     width: clamp(56px, 20vw, 80px);
@@ -227,8 +348,9 @@ p.contrastText {
   color: #D2691E; /* chocolate brown */
 }
 .tagline {
-  
+  .emGeorgia, h3 {
   font-family: Georgia, serif;
+}
   font-size: clamp(18px, 3vw, 22px);
   line-height: 1.18;
   text-align: center;
