@@ -118,9 +118,9 @@ function OurShowcase() {
           </select>
         </div>
         {/* Filter label below search/filter combo */}
-        <div style={{ textAlign: 'center', marginTop: '0.3em', marginBottom: '0.7em', fontSize: '0.98em', color: '#444' }}>
-          {region === 'All' ? 'Showing all countries' : `${region}`}
-        </div>
+        <p style={{ textAlign: 'center', marginTop: '0.3em', marginBottom: '0.7em'}}>
+          {region === 'All' ? 'Showing all countries' : `Region: ${region}`}
+        </p>
 
         {/* Country Flag Thumbnails Grid - 4 per row, filtered by search and region, sequential with no empty spaces */}
         <div className={styles['country-flags-grid']}>
