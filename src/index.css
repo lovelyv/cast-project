@@ -104,14 +104,15 @@
 }
 
 
+
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden; /* prevent horizontal scroll on small screens */
   min-height: 100vh;
-  background: none !important;
-} 
+  background: var(--bg1, #0b0f1a) !important;
+}
 
 body {
   margin: 0;

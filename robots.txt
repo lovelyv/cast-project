@@ -1,0 +1,6 @@
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Specify sitemap location
+Sitemap: https://nristories.com/sitemap.xml
