@@ -35,7 +35,7 @@ function OurShowcase() {
   };
   // Region options: only custom regions, alphabetically (with 'All' first)
   const allCustomRegions = Object.keys(customRegions);
-  const pinnedTop = 'Top Nri Countries';
+  const pinnedTop = 'Top NRI Countries';
   const otherRegions = allCustomRegions
     .filter(r => r.trim().toLowerCase() !== pinnedTop.trim().toLowerCase())
     .sort((a, b) => a.localeCompare(b));
@@ -92,9 +92,7 @@ function OurShowcase() {
         <h2 className={`${appStyles.headline}`}>
           PRESERVE <span className={styles.blackWord}>your</span> JOURNEY.<br/>INSPIRE <span className={styles.blackWord}>the</span> NEXT.
         </h2>
-        <div className={styles.carouselCenter}>
-          <CircleFlagRow countries={allCountries} duration="30s" tilt="0deg" blockWidth="140px" blockHeight="80px" spacing={25} radius={260} />
-        </div>
+        <CircleFlagRow countries={allCountries} duration="30s" tilt="0deg" blockWidth="160px" blockHeight="110px" spacing={25} radius={260} />
         {/* Search + Filter Combo */}
         <div className={styles.searchFilterCombo}>  
           <input
