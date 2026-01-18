@@ -99,7 +99,7 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
             return;
           }
         }
-  setSubmitMessage("Thankyou!\nWe will be in touch soon.");
+  setSubmitMessage("Thank you!\nWe will be in touch soon.");
         setFormData({
           fullName: '',
           email: '',
@@ -315,18 +315,24 @@ across the entire digital landscape.<br/><br/><br/>
                 {submitMessage}
               </div>
             )}
-            <button
-              type="submit"
-              className={styles['submit-btn']}
-            >
-              Submit Your Story
-            </button>
-            <button
-              className={styles['submit-btn']}
-              onClick={() => navigate('/showcase')}
-            >
-              Our Showcase
-            </button>
+            {/* Only show Submit button if not successful */}
+            {!(submitMessage && submitMessage.startsWith('Thank you')) && (
+              <button
+                type="submit"
+                className={styles['submit-btn']}
+              >
+                Submit Your Story
+              </button>
+            )}
+            {/* Always show Our Showcase button, but only if submit is successful show it alone */}
+            {((submitMessage && submitMessage.startsWith('Thank you')) || !(submitMessage && submitMessage.startsWith('Thank you')) ) && (
+              <button
+                className={styles['submit-btn']}
+                onClick={() => navigate('/showcase')}
+              >
+                Our Showcase
+              </button>
+            )}
           </form>
       
         </div>

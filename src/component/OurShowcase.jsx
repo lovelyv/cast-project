@@ -92,7 +92,9 @@ function OurShowcase() {
         <h2 className={`${appStyles.headline}`}>
           PRESERVE <span className={styles.blackWord}>your</span> JOURNEY.<br/>INSPIRE <span className={styles.blackWord}>the</span> NEXT.
         </h2>
-        <CircleFlagRow countries={allCountries} duration="30s" tilt="0deg" blockWidth="160px" blockHeight="110px" spacing={25} radius={260} />
+        <div className={styles.carouselCenter}>
+          <CircleFlagRow countries={allCountries} duration="30s" tilt="0deg" blockWidth="140px" blockHeight="80px" spacing={25} radius={260} />
+        </div>
         {/* Search + Filter Combo */}
         <div className={styles.searchFilterCombo}>  
           <input

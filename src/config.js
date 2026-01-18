@@ -75,7 +75,7 @@ export const SOCIAL_LINKS = {
 // Map amounts to their corresponding Payment Link URLs.
 // Example: 'https://buy.stripe.com/test_XXXXXXXXXXXX'
 export const DONATE_LINKS = {
-  5: "https://donate.stripe.com/14A6oz79JeN1deCaT893y00",
+  5: "https://buy.stripe.com/test_00w14p64o8Bvdjs5A818c00",
   11: "https://donate.stripe.com/4gM5kv51BgV9fmK4uK93y01",
   21: "https://buy.stripe.com/cNi5kv79J6gv1vU8L093y02",
   51: "https://buy.stripe.com/7sYcMXalV6gv2zYbXc93y03",

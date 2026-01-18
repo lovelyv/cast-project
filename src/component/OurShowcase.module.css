@@ -452,8 +452,8 @@
 .carouselCenter {
   display: flex;
   justify-content: center;
-  /* Reduce vertical spacing around the carousel */
-  margin: 0.8em 0;
+  /* Remove all vertical spacing around the carousel */
+  margin: 0;
 }
 /* Country flag block styling */
 .country-flag-block {
@@ -536,6 +536,7 @@
   align-items: center;
   width: 100%;
   overflow: visible !important;
+  margin-top: 0.1em;
 }
 .country-flags-row {
   display: flex;
