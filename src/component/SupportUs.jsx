@@ -36,7 +36,12 @@ function SupportUs() {
     return () => clearTimeout(t);
   }, []);
   const handleProceedDonation = () => {
-    const url = DONATE_LINKS[Number(chipAmount)];
+    let url;
+    if (chipAmount === 'custom' || chipAmount === 'Custom') {
+      url = DONATE_LINKS['Custom'];
+    } else {
+      url = DONATE_LINKS[Number(chipAmount)];
+    }
     if (url && typeof url === 'string' && url.length > 0) {
       window.open(url, '_blank', 'noopener');
       setChipOpen(false);
@@ -124,6 +129,7 @@ function SupportUs() {
               <option value="21">USD 21</option>
               <option value="51">USD 51</option>
               <option value="101">USD 101</option>
+              <option value="custom">Custom</option>
             </select>
             <button
               type="button"
@@ -144,7 +150,9 @@ function SupportUs() {
           <div className={styles.modalOverlay} role="dialog" aria-modal="true" aria-label="Chip in">
             <div className={styles.modalContent}>
               <div className={styles.modalTitle}>Choose a payment method</div>
-              <p>Amount: <b>USD {Number(chipAmount).toFixed(2)}</b></p>
+              {chipAmount !== 'custom' && (
+                <p>Amount: <b>USD {Number(chipAmount).toFixed(2)}</b></p>
+              )}
               <div role="radiogroup" aria-label="Payment method" className={styles.radioGroup}>
                 <label className={styles.radioOption}>
                   <input
