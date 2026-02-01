@@ -36,7 +36,7 @@ function SupportUs() {
   const focusSentinelRef = useRef(null);
   const videoRef = useRef(null);
   const [chipOpen, setChipOpen] = useState(false);
-  const [chipAmount, setChipAmount] = useState('5');
+  const [chipAmount, setChipAmount] = useState('51');
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [hostOption, setHostOption] = useState('A place to stay');
   const [sponsorOption, setSponsorOption] = useState('Sponsor an episode');
@@ -152,9 +152,7 @@ function SupportUs() {
                value={chipAmount}
                onChange={e => setChipAmount(e.target.value)}
              >
-               <option value="5">USD 5</option>
-               <option value="11">USD 11</option>
-               <option value="21">USD 21</option>
+               {/* Removed 5, 11, 21 options as requested */}
                <option value="51">USD 51</option>
                <option value="101">USD 101</option>
                <option value="custom">Custom</option>
