@@ -11,7 +11,7 @@ require __DIR__ . '/PHPMailer/src/Exception.php';
 require __DIR__ . '/PHPMailer/src/PHPMailer.php';
 require __DIR__ . '/PHPMailer/src/SMTP.php';
 
-$endpoint_secret = 'whsec_UUDieBnwYWGg81JfqLfpp58IMWnY9isT';
+$endpoint_secret = getenv('STRIPE_ENDPOINT_SECRET');
 
 // Get raw body
 $payload = @file_get_contents('php://input');

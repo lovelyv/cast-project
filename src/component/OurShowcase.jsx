@@ -116,7 +116,7 @@ function OurShowcase() {
           </select>
         </div>
         {/* Filter label below search/filter combo */}
-        <p style={{ textAlign: 'center', marginTop: '0.3em', marginBottom: '0.7em'}}>
+        <p className={styles['country-name-block']}>
           {region === 'All' ? 'Showing all countries' : `Region: ${region}`}
         </p>
 
@@ -144,7 +144,7 @@ function OurShowcase() {
           ))}
         </div>
         {/* Tagline above Support Us button */}
-        <div style={{ textAlign: 'center', marginTop: '1.5em', marginBottom: '1em' }}>
+        <div className={styles.scrimTaglineBox}>
           <strong><em className={styles.tagline}>IP registration underway.</em></strong><br />
           <span>In 7 countries, across 3 continents.</span>
         </div>

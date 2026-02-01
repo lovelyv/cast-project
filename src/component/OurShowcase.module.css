@@ -496,7 +496,7 @@
 .country-name-block {
   /* Inherit glass look from parent; keep label readable */
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+
   color: #000;
   font-family: 'Arial', sans-serif;
   font-size: clamp(0.95em, 1.2vw, 1.1em); /* scale label slightly */
