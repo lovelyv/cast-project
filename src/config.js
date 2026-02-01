@@ -73,7 +73,7 @@ export const SOCIAL_LINKS = {
 
 // Stripe Payment Links for donations (configure in Stripe Dashboard).
 // Map amounts to their corresponding Payment Link URLs.
-// Example: 'https://buy.stripe.com/test_8x24gr1VneIAeIH19Fco000'
+// test: 'https://buy.stripe.com/test_8x24gr1VneIAeIH19Fco000'
 export const DONATE_LINKS = {
   5: "https://donate.stripe.com/14A6oz79JeN1deCaT893y00",
   11: "https://donate.stripe.com/4gM5kv51BgV9fmK4uK93y01",
