@@ -99,13 +99,22 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
             return;
           }
         }
-  setSubmitMessage("Thank you!\nWe will be in touch soon.");
-        setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          storySummary: ''
-        });
+      setSubmitMessage("Thank you!\nWe will be in touch soon.");
+      // Send confirmation email via backend (Outlook)
+      fetch('/send-email.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: formData.email,
+          fullName: formData.fullName
+        })
+      });
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        storySummary: ''
+      });
       })
       .catch(error => {
         

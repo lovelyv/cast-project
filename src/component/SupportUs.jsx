@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+  // Check for Stripe session_id in URL and show thank you if present
+  // (moved after import)
 import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import Footer from './Footer';
@@ -14,7 +16,23 @@ import supportusMp4Url from '../assets/supportus.mp4?url';
 // Optional poster if you add one later:
 // import supportusPosterUrl from '../assets/supportus.jpg?url';
 
+
+  
+
 function SupportUs() {
+  const [showStripeThankYou, setShowStripeThankYou] = useState(false);
+  // Scroll to #chipin if hash is present in URL (SPA-friendly)
+  useEffect(() => {
+    if (window.location.hash === '#chipin') {
+      const el = document.getElementById('chipin');
+      if (el) {
+        // Use scrollIntoView for smooth scroll
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, []);
   const focusSentinelRef = useRef(null);
   const videoRef = useRef(null);
   const [chipOpen, setChipOpen] = useState(false);
@@ -26,6 +44,15 @@ function SupportUs() {
   const [sponsorAck, setSponsorAck] = useState('Visual');
   const [sponsorEpisodePlan, setSponsorEpisodePlan] = useState('Per episode');
   const [useFallbackVideo, setUseFallbackVideo] = useState(false);
+  // Stripe thank you logic
+  
+  useEffect(() => {
+    // Check for session_id in URL (Stripe redirect)
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('session_id')) {
+      setShowStripeThankYou(true);
+    }
+  }, []);
   // On mount, set focus to a hidden sentinel to avoid Chrome's blue focus ring on headings
   useEffect(() => {
     const t = setTimeout(() => {
@@ -112,40 +139,46 @@ function SupportUs() {
           IN THIS<br /><strong><em>we need your support.</em></strong>
         </div>
           {/* Additional support box */}
-        <div className={styles.leftBoxWide}>
+  {/* <a href="#chipin" className={styles.chipInDeeplink} style={{display: 'block', margin: '1em auto', textAlign: 'center', color: '#1a73e8', textDecoration: 'underline', fontWeight: 500}}>Jump to Chip In</a> */}
+  <div id="chipin" className={styles.leftBoxWide}>
           <h3 className={styles.title}>Chip in</h3>
           <p className={styles.chipInText}>Un–hyphenated programming<br/>involves time, energy,<br/>effort and expense.</p>
           <p className={styles.chipInText}>Any contribution helps.</p>
           <div className={styles.chipInRow}>
-            <select
-              id="chipAmount"
-              className={styles.chipInSelect}
-              aria-label="Contribution amount"
-              value={chipAmount}
-              onChange={e => setChipAmount(e.target.value)}
-            >
-              <option value="5">USD 5</option>
-              <option value="11">USD 11</option>
-              <option value="21">USD 21</option>
-              <option value="51">USD 51</option>
-              <option value="101">USD 101</option>
-              <option value="custom">Custom</option>
-            </select>
-            <button
-              type="button"
-             className={styles['btn-support']}
-              onClick={() => {
-                if (!chipAmount) {
-                  alert('Please select an amount first.');
-                  return;
-                }
-                setChipOpen(true);
-              }}
-            >
-              Chip In
-            </button>
+             <select
+               id="chipAmount"
+               className={styles.chipInSelect}
+               aria-label="Contribution amount"
+               value={chipAmount}
+               onChange={e => setChipAmount(e.target.value)}
+             >
+               <option value="5">USD 5</option>
+               <option value="11">USD 11</option>
+               <option value="21">USD 21</option>
+               <option value="51">USD 51</option>
+               <option value="101">USD 101</option>
+               <option value="custom">Custom</option>
+             </select>
+             <button
+               type="button"
+              className={styles['btn-support']}
+               onClick={() => {
+                 if (!chipAmount) {
+                   alert('Please select an amount first.');
+                   return;
+                 }
+                 setChipOpen(true);
+               }}
+             >
+               Chip In
+             </button>
           </div>
-        </div>
+          {showStripeThankYou && (
+            <div style={{color: '#1a3a52', textAlign: 'center', fontWeight: 500, fontSize: '1.08em', marginTop: '1em'}}>
+              <span role="img" aria-label="check">✅</span> Thank you for your payment!<br />Your support means a lot to us.<br />
+            </div>
+          )}
+      </div>
         {chipOpen && (
           <div className={styles.modalOverlay} role="dialog" aria-modal="true" aria-label="Chip in">
             <div className={styles.modalContent}>
@@ -346,8 +379,8 @@ function SupportUs() {
         
    
       <Footer />
-         </div>
     </div>
+  </div>
   );
 }
 
