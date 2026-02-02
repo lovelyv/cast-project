@@ -30,13 +30,13 @@ try {
         $mail->setFrom("contact@nristories.com", "NRI Stories");
         $mail->addBCC('contact@nristories.com');  
         $mail->addAddress($to, $fullName);
-        $mail->Subject = "Thank you $fullName";
+        $mail->Subject = "Thank you $fullName for wanting to be showcased";
         $mail->isHTML(true);
         $name = htmlspecialchars($data['fullName'] ?? '', ENT_QUOTES, 'UTF-8');
         
         $mail->Body = '
             <img src="https://nristories.com/images/greeting.png" width="100" >
-            <p>Thank you ' . $fullName . ' for sharing a few details.</p>
+            <p><b>Thank you ' . $fullName . ' for sharing a few details.</b></p>
             <p>Our team will soon get in touch<br/>
                 to explore fit, filming <strong><em>and</em></strong> collaboration.<br/><br/>
                 Your first hand narration can enrich our and our viewers’ lives.</p>

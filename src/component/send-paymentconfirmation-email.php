@@ -53,13 +53,13 @@ if ($event->type === 'checkout.session.completed')
         $mail->setFrom("contact@nristories.com", "NRI Stories");
         $mail->addBCC('contact@nristories.com');  
         $mail->addAddress($to, $fullName);
-        $mail->Subject = "Thank you $fullName";
+        $mail->Subject = "Thank you $fullName for your support";
         $mail->isHTML(true);
         $name = htmlspecialchars($data['fullName'] ?? '', ENT_QUOTES, 'UTF-8');
         
         $mail->Body = '
             <img src="https://nristories.com/images/greeting.png" width="100" >
-            <p>Thank you ' . $fullName . '.</b><br/>Your support means a lot to us here at NRI stories®.</p>
+            <p><b>Thank you ' . $fullName . '.</b><br/>Your support means a lot to us here at NRI stories®.</p>
             <p>Un–hyphenated programming<br/>
             involves time, energy, effort and expense.<br/>
             </p>

@@ -38,11 +38,11 @@ function SupportUs() {
   const [chipOpen, setChipOpen] = useState(false);
   const [chipAmount, setChipAmount] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('card');
-  const [hostOption, setHostOption] = useState('A place to stay');
+  const [hostOption, setHostOption] = useState('');
   const [sponsorOption, setSponsorOption] = useState('Sponsor an episode');
-  const [sponsorRegion, setSponsorRegion] = useState('Africa');
-  const [sponsorAck, setSponsorAck] = useState('Visual');
-  const [sponsorEpisodePlan, setSponsorEpisodePlan] = useState('Per episode');
+  const [sponsorRegion, setSponsorRegion] = useState('');
+  const [sponsorAck, setSponsorAck] = useState('');
+  const [sponsorEpisodePlan, setSponsorEpisodePlan] = useState('');
   const [useFallbackVideo, setUseFallbackVideo] = useState(false);
   // Stripe thank you logic
   
@@ -289,6 +289,7 @@ function SupportUs() {
               value={hostOption}
               onChange={e => setHostOption(e.target.value)}
             >
+              <option value="" disabled>Select</option>
               <option value="A place to stay">A place to stay</option>
               <option value="Travel arrangements">Travel arrangements</option>
               <option value="Local support">Local support</option>
@@ -323,6 +324,7 @@ function SupportUs() {
               value={sponsorRegion}
               onChange={e => setSponsorRegion(e.target.value)}
             >
+              <option value="" disabled>Select</option>
               <option value="Africa">Africa</option>
               <option value="Asia">Asia</option>
               <option value="Europe">Europe</option>
@@ -342,6 +344,7 @@ function SupportUs() {
               value={sponsorAck}
               onChange={e => setSponsorAck(e.target.value)}
             >
+              <option value="" disabled>Select</option>
               <option value="Visual">Visual</option>
               <option value="Verbal">Verbal</option>
               <option value="Both">Both</option>
@@ -357,6 +360,7 @@ function SupportUs() {
               value={sponsorEpisodePlan}
               onChange={e => setSponsorEpisodePlan(e.target.value)}
             >
+              <option value="" disabled>Select</option>
               <option value="Per episode">Per episode</option>
               <option value="Series (3)">Series (3)</option>
               <option value="Series (5)">Series (5)</option>
