@@ -32,25 +32,26 @@ try {
         $mail->addAddress($to, $fullName);
         $mail->Subject = "Thank you $fullName for wanting to be showcased.";
         $mail->isHTML(true);
-        $name = htmlspecialchars($data['fullName'] ?? '', ENT_QUOTES, 'UTF-8');
+        $mail->CharSet = 'UTF-8';
+        $fullName  = htmlspecialchars($data['fullName'] ?? '', ENT_QUOTES, 'UTF-8');
         
         $mail->Body = '
             <img src="https://nristories.com/images/greeting.png" width="100" >
             <p><b>Thanks ' . $fullName . ' for jumping right in!</b></p>
-            <p>Every deserving story needs to be showcased.<br/>
-            We are glad that you want to share yours.<br/>
-            You definitely have made the right call.<br/><br/>
-            Our mission<br/>is to feature authentic stories<br/>from the global Indian diaspora.<br/><br/>
-            We will be traversing all over the world<br/>to film the lives of the everyday working Indian diaspora.<br/>    
+            <p>Every deserving story needs to be showcased.<br />
+            We are glad that you want to share yours.<br />
+            You definitely have made the right call.<br /><br />
+            Our mission<br />is to feature authentic stories<br />from the global Indian diaspora.<br /><br />
+            We will be traversing all over the world<br />to film the lives of the everyday working Indian diaspora.<br />    
             </p>
-            <p>Our team<br/>will connect with you soon<br/>
-            to explore fit, filming and collaboration.<br/><br/>
-            To<br/>showcase and immortalize you<br/>
+            <p>Our team<br />will connect with you soon<br />
+            to explore fit, filming and collaboration.<br /><br />
+            To<br />showcase and immortalize you<br />
             across the entire digital landscape.
             </p>
-            <p>Your involvement means a lot to us.<br/>
-            <b>Thanks yet again.</b><br/>
-                Team NRI stories®.<br/>
+            <p>Your involvement means a lot to us.<br /><br />
+            <b>Thanks yet again.</b><br />
+                Team NRI stories®.<br />
             </p>
             <img src="https://nristories.com/images/logo.png" width="200">';
         $mail->send();

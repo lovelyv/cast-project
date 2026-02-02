@@ -55,25 +55,25 @@ if ($event->type === 'checkout.session.completed')
         $mail->addAddress($to, $fullName);
         $mail->Subject = "Thank you $fullName for your support";
         $mail->isHTML(true);
-        $name = htmlspecialchars($data['fullName'] ?? '', ENT_QUOTES, 'UTF-8');
-        
+        $fullName  = htmlspecialchars($data['fullName'] ?? '', ENT_QUOTES, 'UTF-8');
+        $mail->CharSet = 'UTF-8';
         $mail->Body = '
             <img src="https://nristories.com/images/greeting.png" width="100" >
             <p><b>Thank you ' . $fullName . '. for your donation.</b><br/>
             Our misson<br/>is to feature authentic stories<br/>from the global Indian diaspora.<br/>
-            Your support means a lot to us here at <b>NRI stories®.</b></p>
+            Your support means a lot to us here at <b>NRI stories&reg;.</b></p>
             
             <p>We will be traversing all over the world<br/>
                 to film the lives of the everyday working Indian diaspora.<br/>
                 Such content creation involves time, energy, effort and expense.<br/>
-                Your support will provide a fillip and encourage us to do more at <b>NRI stories®.</b>
+                Your support will provide a fillip and encourage us to do more at <b>NRI stories&reg;.</b>
             </p>
             <p>Do reach out to us<br/>
                 if you or someone you know has a story to tell.<br/>
                 Of a journey that resonates – that deserves to be showcased.<br/>
             </p>
             <p><b>Thanks yet again.</b><br/>
-                Team NRI stories®.<br/>
+                Team NRI stories&reg;.<br/>
             </p>
             <img src="https://nristories.com/images/logo.png" width="200">';
 
