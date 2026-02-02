@@ -87,7 +87,7 @@ function SupportUs() {
   };
   const handleSponsorMail = () => {
     const subject = `Sponsor Us - ${sponsorOption}`;
-    const body = `Region: ${sponsorRegion}\nAcknowledgement: ${sponsorAck}\nEpisode plan: ${sponsorEpisodePlan}\n\nDetails:`;
+  const body = `Hi Team NRI Stories,\n\nRegion: ${sponsorRegion}\nAcknowledgement: ${sponsorAck}\nEpisode plan: ${sponsorEpisodePlan}\n\nDetails:\nThankyou,`;
     const mailHref = `mailto:${CONTACT.EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailHref;
   };
@@ -230,7 +230,7 @@ function SupportUs() {
           <p>Do you have the skills<br />and equipment?<br/><br/>Want to volunteer<br />as a stringer?<br/><br/>If so, get in touch.</p>
           {(() => {
                               const phoneDigits = (CONTACT.SMS_NUMBER || '').replace(/\D/g, '');
-                              const mailHref = `mailto:${CONTACT.EMAIL || ''}`;
+                              const mailHref = `mailto:${CONTACT.EMAIL || ''}?subject=${encodeURIComponent('Thankyou for offering to collaborate with us.')}`;
                               const telHref = phoneDigits ? `tel:+${phoneDigits}` : undefined;
                               const whatsappHref = phoneDigits ? `https://wa.me/${phoneDigits}` : undefined;
                               const smsHref = phoneDigits ? `sms:+${phoneDigits}` : undefined;
@@ -300,7 +300,7 @@ function SupportUs() {
              className={styles['btn-support']}
               onClick={() => {
                 const subject = `Help Us - ${hostOption}`;
-                const body = `I'd like to help with: ${hostOption}\n\nDetails:`;
+                const body = `Hi Team NRI Stories,\n\nI'd like to help with: ${hostOption}\n\nDetails:\nThankyou,`;
                 const mailHref = `mailto:${CONTACT.EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 window.location.href = mailHref;
               }}
