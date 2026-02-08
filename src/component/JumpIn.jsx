@@ -123,7 +123,6 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
         phone: '',
         storySummary: ''
       });
-      setSignedConsent(null);
       })
       .catch(error => {
         

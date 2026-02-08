@@ -204,6 +204,9 @@ By signing this form, I acknowledge that I have completely read and fully unders
       }}
     >
       <div style={{ width: "100%" }}>
+        <h2 style={{ textAlign: "center", margin: "4px 0 10px", color: "#0d2d44", fontSize: "1.1rem" }}>
+          Video Interview Consent and Release Form
+        </h2>
         <div
           style={{
             border: "1px solid rgba(0,0,0,0.08)",
@@ -213,6 +216,8 @@ By signing this form, I acknowledge that I have completely read and fully unders
             maxHeight: "calc(100vh - 230px)",
             minHeight: "320px",
             overflow: "auto",
+            WebkitOverflowScrolling: "touch",
+            overscrollBehavior: "contain",
           }}
         >
           <div
