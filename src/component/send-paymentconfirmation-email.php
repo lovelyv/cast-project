@@ -73,7 +73,7 @@ if ($event->type === 'checkout.session.completed')
                 Of a journey that resonates – that deserves to be showcased.<br/>
             </p>
             <p><b>Thanks yet again.</b><br/>
-                Team <b>NRI stories&reg;.</b><br/>
+                Team <b>NRI stories&reg;</b>.<br/>
             </p>
             <img src="https://nristories.com/images/logo.png" width="200">';
 
