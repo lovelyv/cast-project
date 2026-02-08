@@ -16,6 +16,7 @@ const ShowConsentModal = ({ onSubmit, onClose, fullName: propFullName = "", onFu
   const [initials, setInitials] = useState("");
   const [isStamping, setIsStamping] = useState(false);
   const [stampError, setStampError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({ fullName: "", initials: "" });
   const lastDerivedInitialsRef = useRef("");
 
   const fallbackText = useMemo(
@@ -177,6 +178,11 @@ By signing this form, I acknowledge that I have completely read and fully unders
     e.preventDefault();
     const trimmedInitials = initials.trim();
     const trimmedName = fullName.trim();
+    const newErrors = {
+      fullName: trimmedName ? "" : "Full name is required.",
+      initials: trimmedInitials ? "" : "Initials are required.",
+    };
+    setFieldErrors(newErrors);
     if (!trimmedInitials || !trimmedName) return;
     const stamped = await stampAndDownload();
     if (!stamped) return;
@@ -194,14 +200,17 @@ By signing this form, I acknowledge that I have completely read and fully unders
         padding: "clamp(16px, 3vw, 20px)",
         maxWidth: "760px",
         width: "min(calc(100vw - 24px), 760px)",
-        maxHeight: "calc(100vh - 32px)",
-  overflowY: "auto",
-  overflowX: "hidden",
+    maxHeight: "90vh",
+    overflowY: "auto",
+    overflowX: "hidden",
         margin: "16px auto",
         color: "#111",
         display: "flex",
         flexDirection: "column",
         gap: "14px",
+    WebkitOverflowScrolling: "touch",
+    overscrollBehavior: "contain",
+    paddingBottom: "20px",
       }}
     >
       <div style={{ width: "100%", flex: 1, minHeight: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -265,6 +274,7 @@ By signing this form, I acknowledge that I have completely read and fully unders
 
         <form
           onSubmit={handleSubmit}
+          noValidate
           style={{ width: "100%", display: "grid", gap: "12px", marginBottom: 0, flexShrink: 0 }}
         >
         <label
@@ -277,27 +287,36 @@ By signing this form, I acknowledge that I have completely read and fully unders
             flexWrap: "wrap",
           }}
         >
-          <span>Full Name</span>
-          <input
-            type="text"
-            value={fullName}
-            onChange={(e) => {
-              setFullName(e.target.value);
-              onFullNameChange?.(e.target.value);
-            }}
-            required
-            style={{
-              borderRadius: "6px",
-              border: "1px solid #3949ab",
-              padding: "10px 12px",
-              fontSize: "1rem",
-              color: "#111",
-              outline: "none",
-              background: "#fff",
-              maxWidth: "220px",
-              minWidth: "160px",
-            }}
-          />
+          <span>Full Name <span style={{ color: "#b71c1c" }}>*</span></span>
+          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+            <input
+              type="text"
+              value={fullName}
+              onChange={(e) => {
+                setFullName(e.target.value);
+                onFullNameChange?.(e.target.value);
+                if (fieldErrors.fullName) {
+                  setFieldErrors((prev) => ({ ...prev, fullName: "" }));
+                }
+              }}
+              style={{
+                borderRadius: "6px",
+                border: fieldErrors.fullName ? "1px solid #b71c1c" : "1px solid #3949ab",
+                padding: "10px 12px",
+                fontSize: "1rem",
+                color: "#111",
+                outline: "none",
+                background: "#fff",
+                maxWidth: "220px",
+                minWidth: "160px",
+              }}
+            />
+            {fieldErrors.fullName && (
+              <span style={{ color: "#b71c1c", fontSize: "0.9rem", fontWeight: 600 }}>
+                {fieldErrors.fullName}
+              </span>
+            )}
+          </div>
         </label>
 
         <label
@@ -310,29 +329,40 @@ By signing this form, I acknowledge that I have completely read and fully unders
             flexWrap: "wrap",
           }}
         >
-          <span>Electronic Signature (Initials)</span>
-          <input
-            type="text"
-            value={initials}
-            maxLength={6}
-            onChange={(e) => setInitials(e.target.value.toUpperCase())}
-            required
-            style={{
-              borderRadius: "6px",
-              border: "1px solid #3949ab",
-              padding: "10px 12px",
-              fontSize: "1rem",
-              color: "#111",
-              outline: "none",
-              background: "#fff",
-              maxWidth: "140px",
-            }}
-          />
+          <span>Electronic Signature (Initials) <span style={{ color: "#b71c1c" }}>*</span></span>
+          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+            <input
+              type="text"
+              value={initials}
+              maxLength={6}
+              onChange={(e) => {
+                setInitials(e.target.value.toUpperCase());
+                if (fieldErrors.initials) {
+                  setFieldErrors((prev) => ({ ...prev, initials: "" }));
+                }
+              }}
+              style={{
+                borderRadius: "6px",
+                border: fieldErrors.initials ? "1px solid #b71c1c" : "1px solid #3949ab",
+                padding: "10px 12px",
+                fontSize: "1rem",
+                color: "#111",
+                outline: "none",
+                background: "#fff",
+                maxWidth: "140px",
+              }}
+            />
+            {fieldErrors.initials && (
+              <span style={{ color: "#b71c1c", fontSize: "0.9rem", fontWeight: 600 }}>
+                {fieldErrors.initials}
+              </span>
+            )}
+          </div>
         </label>
 
         <button
           type="submit"
-          disabled={!initials.trim() || !fullName.trim() || isStamping}
+          disabled={isStamping}
           className={styles["submit-btn"]}
           style={{
             marginTop: "4px",
