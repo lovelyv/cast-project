@@ -378,7 +378,26 @@ across the entire digital landscape.<br/><br/><br/>
                 {showConsentModal && (
                   <div
                     onClick={() => setShowConsentModal(false)}
-                    style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.32)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    style={{
+                      position: 'fixed',
+                      top: 0,
+                      left: 0,
+                      width: '100vw',
+                      height: '100dvh',
+                      background: 'rgba(0,0,0,0.32)',
+                      zIndex: 10000,
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      justifyContent: 'center',
+                      paddingTop: 'calc(56px + env(safe-area-inset-top, 0px) + 8px)',
+                      paddingBottom: 'calc(24px + env(safe-area-inset-bottom, 0px))',
+                      overflowY: 'auto',
+                      WebkitOverflowScrolling: 'touch',
+                      overscrollBehavior: 'contain',
+                      boxSizing: 'border-box',
+                      scrollbarWidth: 'thin',
+                      scrollbarColor: '#90a4ae rgba(0,0,0,0.08)',
+                    }}
                   >
                     <ShowConsentModal
                       pdfUrl="https://nristories.com/CONSENT-AND-RELEASE-FORM.pdf"

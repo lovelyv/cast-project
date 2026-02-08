@@ -17,6 +17,7 @@ const ShowConsentModal = ({ onSubmit, onClose, fullName: propFullName = "", onFu
   const [isStamping, setIsStamping] = useState(false);
   const [stampError, setStampError] = useState("");
   const [fieldErrors, setFieldErrors] = useState({ fullName: "", initials: "" });
+  const [closeHover, setCloseHover] = useState(false);
   const lastDerivedInitialsRef = useRef("");
 
   const fallbackText = useMemo(
@@ -198,25 +199,81 @@ By signing this form, I acknowledge that I have completely read and fully unders
         borderRadius: "18px",
         boxShadow: "0 8px 32px rgba(10,26,79,0.18)",
         padding: "clamp(16px, 3vw, 20px)",
-        maxWidth: "760px",
-        width: "min(calc(100vw - 24px), 760px)",
-    maxHeight: "90vh",
-    overflowY: "auto",
-    overflowX: "hidden",
-        margin: "16px auto",
+  maxWidth: "760px",
+  width: "min(calc(100vw - 24px), 760px)",
+        overflowY: "visible",
+        overflowX: "hidden",
+        scrollbarWidth: "thin",
+        scrollbarColor: "#90a4ae rgba(0,0,0,0.08)",
+        margin: "0 auto",
+        flexShrink: 0,
         color: "#111",
         display: "flex",
         flexDirection: "column",
         gap: "14px",
-    WebkitOverflowScrolling: "touch",
-    overscrollBehavior: "contain",
-    paddingBottom: "20px",
+        paddingBottom: "24px",
+        minHeight: 0,
       }}
     >
       <div style={{ width: "100%", flex: 1, minHeight: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
-        <h2 style={{ textAlign: "center", margin: "4px 0 4px", color: "#0d2d44", fontSize: "1.1rem" }}>
-          Video Interview Consent and Release Form
-        </h2>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "48px 1fr 48px",
+            alignItems: "center",
+            gap: "8px",
+            position: "relative",
+            padding: "0 8px",
+            minHeight: "36px",
+            width: "100%",
+            boxSizing: "border-box",
+          }}
+        >
+          <div aria-hidden style={{ width: "48px", height: "1px" }} />
+          <h2
+            style={{
+              textAlign: "center",
+              margin: "4px 0 4px",
+              color: "#0d2d44",
+              fontSize: "1.1rem",
+              lineHeight: 1.4,
+              width: "100%",
+            }}
+          >
+            Video Interview Consent
+            <br />
+            and Release Form
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close"
+            onMouseEnter={() => setCloseHover(true)}
+            onMouseLeave={() => setCloseHover(false)}
+            style={{
+              background: closeHover ? "rgba(255,255,255,0.78)" : "rgba(255,255,255,0.62)",
+              border: "1px solid rgba(255,255,255,0.55)",
+              borderRadius: "50%",
+              width: "34px",
+              height: "34px",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              color: closeHover ? "#0a2033" : "#0d2d44",
+              fontSize: "18px",
+              lineHeight: 1,
+              boxShadow: "0 4px 12px rgba(0,0,0,0.18)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+              transition: "all 0.15s ease",
+              transform: closeHover ? "scale(1.04)" : "scale(1)",
+              justifySelf: "end",
+            }}
+          >
+            ×
+          </button>
+        </div>
 
         <div
           style={{
@@ -224,12 +281,14 @@ By signing this form, I acknowledge that I have completely read and fully unders
             borderRadius: "10px",
             background: "#f7f9fc",
             padding: "6px",
-            maxHeight: "55vh",
+            maxHeight: "45vh",
             minHeight: "200px",
-            marginBottom: "4px",
+            marginBottom: "8px",
             overflow: "auto",
             WebkitOverflowScrolling: "touch",
             overscrollBehavior: "contain",
+            scrollbarWidth: "thin",
+            scrollbarColor: "#90a4ae transparent",
             flex: 1,
             minWidth: 0,
           }}
@@ -260,6 +319,9 @@ By signing this form, I acknowledge that I have completely read and fully unders
               whiteSpace: "pre-wrap",
               background: "transparent",
               padding: "4px 6px",
+              overflow: "auto",
+              scrollbarWidth: "thin",
+              scrollbarColor: "#90a4ae transparent",
             }}
           >
             {fallbackText
@@ -275,7 +337,7 @@ By signing this form, I acknowledge that I have completely read and fully unders
         <form
           onSubmit={handleSubmit}
           noValidate
-          style={{ width: "100%", display: "grid", gap: "12px", marginBottom: 0, flexShrink: 0 }}
+          style={{ width: "100%", display: "grid", gap: "12px", marginBottom: 0, flexShrink: 0, paddingBottom: "16px" }}
         >
         <label
           style={{
