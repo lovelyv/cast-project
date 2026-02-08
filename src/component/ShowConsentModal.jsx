@@ -192,32 +192,37 @@ By signing this form, I acknowledge that I have completely read and fully unders
         borderRadius: "18px",
         boxShadow: "0 8px 32px rgba(10,26,79,0.18)",
         padding: "clamp(16px, 3vw, 20px)",
-  maxWidth: "760px",
-  width: "min(calc(100vw - 48px), 760px)",
-  maxHeight: "calc(100vh - 180px)",
-  overflow: "auto",
-  margin: "clamp(96px, 16vh, 160px) auto 24px",
+        maxWidth: "760px",
+        width: "min(calc(100vw - 24px), 760px)",
+        maxHeight: "calc(100vh - 32px)",
+  overflowY: "auto",
+  overflowX: "hidden",
+        margin: "16px auto",
         color: "#111",
         display: "flex",
         flexDirection: "column",
         gap: "14px",
       }}
     >
-      <div style={{ width: "100%" }}>
-        <h2 style={{ textAlign: "center", margin: "4px 0 10px", color: "#0d2d44", fontSize: "1.1rem" }}>
+      <div style={{ width: "100%", flex: 1, minHeight: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
+        <h2 style={{ textAlign: "center", margin: "4px 0 4px", color: "#0d2d44", fontSize: "1.1rem" }}>
           Video Interview Consent and Release Form
         </h2>
+
         <div
           style={{
             border: "1px solid rgba(0,0,0,0.08)",
             borderRadius: "10px",
             background: "#f7f9fc",
             padding: "6px",
-            maxHeight: "calc(100vh - 230px)",
-            minHeight: "320px",
+            maxHeight: "55vh",
+            minHeight: "200px",
+            marginBottom: "4px",
             overflow: "auto",
             WebkitOverflowScrolling: "touch",
             overscrollBehavior: "contain",
+            flex: 1,
+            minWidth: 0,
           }}
         >
           <div
@@ -257,9 +262,11 @@ By signing this form, I acknowledge that I have completely read and fully unders
               ))}
           </div>
         </div>
-      </div>
 
-      <form onSubmit={handleSubmit} style={{ width: "100%", display: "grid", gap: "12px" }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ width: "100%", display: "grid", gap: "12px", marginBottom: 0, flexShrink: 0 }}
+        >
         <label
           style={{
             fontWeight: 600,
@@ -336,7 +343,8 @@ By signing this form, I acknowledge that I have completely read and fully unders
         {stampError && (
           <div style={{ color: "#b71c1c", fontWeight: 600, fontSize: "0.9rem" }}>{stampError}</div>
         )}
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
