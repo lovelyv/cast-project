@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ShowConsentModal from './ShowConsentModal';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import AudioRecorder from './AudioRecorder';
@@ -58,6 +59,10 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
   };
 
   const [submitMessage, setSubmitMessage] = useState("");
+  const [showConsentModal, setShowConsentModal] = useState(false);
+    const [consentChecked, setConsentChecked] = useState(false);
+    const [consentError, setConsentError] = useState("");
+  const [signedConsent, setSignedConsent] = useState(null);
  
   const handleSubmit = (e) => { 
     e.preventDefault();
@@ -65,12 +70,14 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
     if (!captchaToken) {
       validationErrors.captcha = 'Please verify you are not a robot.';
     }
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      // Focus first error field
-      const firstError = Object.keys(validationErrors)[0];
-      const el = document.getElementById(firstError);
-      if (el && typeof el.focus === 'function') el.focus();
+    let consentErr = '';
+    if (!consentChecked || !signedConsent?.pdfBase64) {
+      consentErr = 'Please read and sign video interview consent and release form.';
+    }
+    setConsentError(consentErr);
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length > 0 || consentErr) {
+      // Show all error messages together below respective fields
       return;
     }
     setErrors({});
@@ -106,7 +113,8 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           to: formData.email,
-          fullName: formData.fullName
+          fullName: formData.fullName,
+          pdfBase64: signedConsent?.pdfBase64 || null
         })
       });
       setFormData({
@@ -115,6 +123,7 @@ const API_SECRET = import.meta.env.VITE_API_SECRET;
         phone: '',
         storySummary: ''
       });
+      setSignedConsent(null);
       })
       .catch(error => {
         
@@ -307,23 +316,41 @@ across the entire digital landscape.<br/><br/><br/>
               </div>
             </div>
 
-            {/* Removed alternate contact line per request */}
-            <div className={styles.captchaBlock} style={{marginLeft: 'auto', marginRight: 'auto', display: 'flex', justifyContent: 'center'}}>
-              <ReCAPTCHA
-                sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                onChange={setCaptchaToken}
-              />
-            </div>
-            <div style={{ marginTop: '0.5em', minHeight: '1.2em' }}>
-              {errors.captcha && (
-                <div style={{ color: 'red', fontSize: '0.95em', marginTop: '0.5em' }}>{errors.captcha}</div>
+            {/* Consent Checkbox now below captcha */}
+            <div className={styles.consentCaptchaWrap} style={{marginLeft: 'auto', marginRight: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'stretch'}}>
+              <div className={styles.captchaBlock} style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
+                <ReCAPTCHA
+                  sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                  onChange={setCaptchaToken}
+                />
+                {errors.captcha && (
+                  <span className={styles.errorText} style={{ marginTop: '8px' }}>{errors.captcha}</span>
+                )}
+              </div>
+              <div className={styles.consentCheckboxRow} style={{ marginBottom: '0.5em', marginTop: '1.2em' }}>
+                {/* Responsive left alignment for label on small screens */}
+                <input
+                  type="checkbox"
+                  id="consentCheckbox"
+                  checked={consentChecked}
+                  onChange={e => setConsentChecked(e.target.checked)}
+                  disabled={!signedConsent}
+                />
+                <label id="consentCheckboxLabel" htmlFor="consentCheckbox" style={{ color: '#1a3a52', fontWeight: 'bold', marginBottom: 0 }}>
+                  Please read and sign{' '}
+                  <button
+                    type="button"
+                    style={{ color: '#0077cc', textDecoration: 'underline', fontWeight: 500, fontStyle: 'italic', background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontSize: 'inherit' }}
+                    onClick={() => setShowConsentModal(true)}
+                  >
+                    video interview consent and release form
+                  </button>
+                </label>
+              </div>
+              {consentError && (
+                <span className={styles.errorText}>{consentError}</span>
               )}
             </div>
-            {submitMessage && (
-              <div style={{ marginTop: '1em', color: '#1a3a52', fontWeight: 'bold', textAlign: 'center', whiteSpace: 'pre-line' }}>
-                {submitMessage}
-              </div>
-            )}
             {/* Only show Submit button if not successful */}
             {!(submitMessage && submitMessage.startsWith('Thank you')) && (
               <button
@@ -332,6 +359,11 @@ across the entire digital landscape.<br/><br/><br/>
               >
                 Submit Your Story
               </button>
+            )}  
+            {submitMessage && (
+              <div style={{ marginTop: '1em', color: '#1a3a52', fontWeight: 'bold', textAlign: 'center', whiteSpace: 'pre-line' }}>
+                {submitMessage}
+              </div>
             )}
             {/* Always show Our Showcase button, but only if submit is successful show it alone */}
             {((submitMessage && submitMessage.startsWith('Thank you')) || !(submitMessage && submitMessage.startsWith('Thank you')) ) && (
@@ -343,6 +375,25 @@ across the entire digital landscape.<br/><br/><br/>
               </button>
             )}
           </form>
+
+                {showConsentModal && (
+                  <div
+                    onClick={() => setShowConsentModal(false)}
+                    style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.32)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    <ShowConsentModal
+                      pdfUrl="https://nristories.com/CONSENT-AND-RELEASE-FORM.pdf"
+                      fullName={formData.fullName}
+                      onFullNameChange={(name) => setFormData(prev => ({ ...prev, fullName: name }))}
+                      onSubmit={(payload) => {
+                        setSignedConsent(payload);
+                        setConsentChecked(true);
+                        setShowConsentModal(false);
+                      }}
+                      onClose={() => setShowConsentModal(false)}
+                    />
+                  </div>
+                )}
       
         </div>
     <Footer />
