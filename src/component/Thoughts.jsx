@@ -5,6 +5,8 @@ import Navbar from './navbar';
 import SubpageWatermark from './SubpageWatermark';
 import visualStory from '../assets/visualstory.png';
 import soundfeelUrl from '../assets/soundfeel.png';
+import image1Url from '../assets/image1.png';
+import image2Url from '../assets/image2.png';
 import appStyles from '../App.module.css';
 
 import Footer from './Footer';
@@ -213,6 +215,11 @@ function Thoughts({ scrollTo }) {
                     <h3>Editorial arcs.</h3>
                     <p>Each episode is <br/>structured for momentum.<br/><br/>Opening hook.<br/>Rising stakes. <br/>Resolution and reflection.<br/></p>
                   </div>
+                <div className={styles['right-box']}>
+                    <img src={image1Url} alt="Editorial Arcs" />
+                </div>
+              </div>
+              <div className={styles.container}>
                  <div className={styles['left-box']}>
                     <h3>The Result.</h3>
                     <p>Good production value.<br/>High on content.<br/><br/>
@@ -220,6 +227,9 @@ function Thoughts({ scrollTo }) {
                     who crave emotional depth<br />and visual substance.<br/><br/>
                     A platform<br/>where the NRI voice<br/>is heard seen and preserved.</p>
                   </div>
+                <div className={styles['right-box']}>
+                    <img src={image2Url} alt="The Result" />
+                </div>
               </div>
 
              <button
